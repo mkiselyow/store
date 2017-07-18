@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Store</title>
+    <title>Тимка</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,16 +9,20 @@
   </head>
 
   <body>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><%= link_to "Главная", root_path %></li>
+      <li role="presentation"><%= link_to "Пользователи", users_path %></li>
+      <li role="presentation"><%= link_to "Товары", products_path %></li>
+      <% if user_signed_in? %>
+        <li role="presentation"><%= link_to "Вы вошли как #{current_user.email} Редактировать Профиль", edit_user_registration_path %></li>
+        <li role="presentation"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li> 
+      <% else %>
+        <li role="presentation"><%= link_to "Регистрация", new_user_registration_path %></li>
+        <li role="presentation"><%= link_to "Войти", new_user_session_path %></li> 
+      <% end %>
+    </ul>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
     <%= yield %>
   </body>
 </html>
