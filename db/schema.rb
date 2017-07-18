@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717150536) do
+ActiveRecord::Schema.define(version: 20170718090827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.integer "size_a"
+    t.integer "size_b"
+    t.integer "size_h"
+    t.integer "purchase_price"
+    t.integer "mark_up"
+    t.integer "price"
+    t.integer "weight"
+    t.boolean "color_white"
+    t.boolean "color_black"
+    t.boolean "color_red"
+    t.boolean "color_yellow"
+    t.boolean "color_green"
+    t.boolean "color_blue"
+    t.boolean "color_violet"
+    t.string "brand"
+    t.boolean "material_plastic"
+    t.boolean "material_iron"
+    t.boolean "material_another"
+    t.boolean "material_wooden"
+    t.boolean "material_fabric"
+    t.string "supplier"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "boys"
+    t.boolean "girls"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  size_a: 1
+  size_b: 1
+  size_h: 1
+  purchase_price: 1
+  mark_up: 1
+  price: 1
+  weight: 1
+  color_white: false
+  color_black: false
+  color_red: false
+  color_yellow: false
+  color_green: false
+  color_blue: false
+  color_violet: false
+  brand: MyString
+  material_plastic: false
+  material_iron: false
+  material_another: false
+  material_wooden: false
+  material_fabric: false
+  supplier: MyString
+  quantity: 1
+
+two:
+  title: MyString
+  size_a: 1
+  size_b: 1
+  size_h: 1
+  purchase_price: 1
+  mark_up: 1
+  price: 1
+  weight: 1
+  color_white: false
+  color_black: false
+  color_red: false
+  color_yellow: false
+  color_green: false
+  color_blue: false
+  color_violet: false
+  brand: MyString
+  material_plastic: false
+  material_iron: false
+  material_another: false
+  material_wooden: false
+  material_fabric: false
+  supplier: MyString
+  quantity: 1

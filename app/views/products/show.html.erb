@@ -1,0 +1,129 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Название:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Длина:</strong>
+  <%= @product.size_a %>
+</p>
+
+<p>
+  <strong>Ширина:</strong>
+  <%= @product.size_b %>
+</p>
+
+<p>
+  <strong>Высота:</strong>
+  <%= @product.size_h %>
+</p>
+
+<p>
+  <strong>Цена закупки:</strong>
+  <%= @product.purchase_price %>
+</p>
+
+<p>
+  <strong>Наценка:</strong>
+  <%= @product.mark_up %>
+</p>
+
+<p>
+  <strong>Цена:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Вес:</strong>
+  <%= @product.weight %>
+</p>
+
+<p>
+  <strong>Мальчики:</strong>
+  <%= @product.boys %>
+</p>
+
+<p>
+  <strong>Девочки:</strong>
+  <%= @product.girls %>
+</p>
+
+<p>
+  <strong>Белый:</strong>
+  <%= @product.color_white %>
+</p>
+
+<p>
+  <strong>Черный:</strong>
+  <%= @product.color_black %>
+</p>
+
+<p>
+  <strong>Красный:</strong>
+  <%= @product.color_red %>
+</p>
+
+<p>
+  <strong>Желтый:</strong>
+  <%= @product.color_yellow %>
+</p>
+
+<p>
+  <strong>Зеленый:</strong>
+  <%= @product.color_green %>
+</p>
+
+<p>
+  <strong>Синий:</strong>
+  <%= @product.color_blue %>
+</p>
+
+<p>
+  <strong>Фиолетовый:</strong>
+  <%= @product.color_violet %>
+</p>
+
+<p>
+  <strong>Бренд:</strong>
+  <%= @product.brand %>
+</p>
+
+<p>
+  <strong>Пластик:</strong>
+  <%= @product.material_plastic %>
+</p>
+
+<p>
+  <strong>Железо:</strong>
+  <%= @product.material_iron %>
+</p>
+
+<p>
+  <strong>Другой материал:</strong>
+  <%= @product.material_another %>
+</p>
+
+<p>
+  <strong>Дерево:</strong>
+  <%= @product.material_wooden %>
+</p>
+
+<p>
+  <strong>Ткань:</strong>
+  <%= @product.material_fabric %>
+</p>
+
+<p>
+  <strong>Поставщик:</strong>
+  <%= @product.supplier %>
+</p>
+
+<p>
+  <strong>Количество:</strong>
+  <%= @product.quantity %>
+</p>
+
+<%= link_to 'Редактировать', edit_product_path(@product) %> |
+<%= link_to 'Назад', products_path %>

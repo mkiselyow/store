@@ -1,0 +1,142 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label(:title, "Название") %>
+    <%= form.text_field :title, id: :product_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:size_a, "Длина") %>
+    <%= form.number_field :size_a, id: :product_size_a %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:size_b, "Ширина") %>
+    <%= form.number_field :size_b, id: :product_size_b %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:size_h, "Висота") %>
+    <%= form.number_field :size_h, id: :product_size_h %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:purchase_price, "Цена закупки") %>
+    <%= form.number_field :purchase_price, id: :product_purchase_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:mark_up, "Наценка") %>
+    <%= form.number_field :mark_up, id: :product_mark_up %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:price, "Цена") %>
+    <%= form.number_field :price, id: :product_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:weight, "Вес") %>
+    <%= form.number_field :weight, id: :product_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:boys, "Мальчики") %>
+    <%= form.check_box :boys, id: :product_boys %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:girls, "Девочки") %>
+    <%= form.check_box :girls, id: :product_girls %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_white, "Белый") %>
+    <%= form.check_box :color_white, id: :product_color_white %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_black, "Черный") %>
+    <%= form.check_box :color_black, id: :product_color_black %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_red, "Красный") %>
+    <%= form.check_box :color_red, id: :product_color_red %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_yellow, "Желтый") %>
+    <%= form.check_box :color_yellow, id: :product_color_yellow %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_green, "Зеленый") %>
+    <%= form.check_box :color_green, id: :product_color_green %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_blue, "Синий") %>
+    <%= form.check_box :color_blue, id: :product_color_blue %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:color_violet, "Фиолетовый") %>
+    <%= form.check_box :color_violet, id: :product_color_violet %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:brand, "Бренд") %>
+    <%= form.text_field :brand, id: :product_brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:material_plastic, "Пластик") %>
+    <%= form.check_box :material_plastic, id: :product_material_plastic %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:material_iron, "Железо") %>
+    <%= form.check_box :material_iron, id: :product_material_iron %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:material_another, "Другой материал") %>
+    <%= form.check_box :material_another, id: :product_material_another %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:material_wooden, "Дерево") %>
+    <%= form.check_box :material_wooden, id: :product_material_wooden %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:material_fabric, "Ткань") %>
+    <%= form.check_box :material_fabric, id: :product_material_fabric %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:supplier, "Поставщик") %>
+    <%= form.text_field :supplier, id: :product_supplier %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:quantity, "Количество") %>
+    <%= form.number_field :quantity, id: :product_quantity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit("Завершить")%>
+  </div>
+<% end %>
