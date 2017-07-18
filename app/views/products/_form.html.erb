@@ -32,23 +32,23 @@
   </div>
 
   <div class="field">
-    <%= form.label(:purchase_price, "Цена закупки") %>
-    <%= form.number_field :purchase_price, id: :product_purchase_price %>
+    <%= form.label(:purchase_price, "Цена закупки ₴") %>
+    <%= form.number_field :purchase_price, id: :product_purchase_price, :step => 0.01 %>
   </div>
 
   <div class="field">
-    <%= form.label(:mark_up, "Наценка") %>
+    <%= form.label(:mark_up, "Наценка %") %>
     <%= form.number_field :mark_up, id: :product_mark_up %>
   </div>
 
   <div class="field">
-    <%= form.label(:price, "Цена") %>
-    <%= form.number_field :price, id: :product_price %>
+    <%= form.label(:price, "Цена ₴") %>
+    <%= form.number_field :price, id: :product_price, :step => 0.01 %>
   </div>
 
   <div class="field">
     <%= form.label(:weight, "Вес") %>
-    <%= form.number_field :weight, id: :product_weight %>
+    <%= form.number_field :weight, id: :product_weight, :step => 0.01 %>
   </div>
 
   <div class="field">

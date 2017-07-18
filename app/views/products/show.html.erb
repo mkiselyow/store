@@ -22,17 +22,17 @@
 
 <p>
   <strong>Цена закупки:</strong>
-  <%= @product.purchase_price %>
+  <%= number_to_currency(@product.purchase_price, unit: "₴") %>
 </p>
 
 <p>
   <strong>Наценка:</strong>
-  <%= @product.mark_up %>
+  <%= number_to_percentage(@product.mark_up, precision: 0) %>
 </p>
 
 <p>
   <strong>Цена:</strong>
-  <%= @product.price %>
+  <%= number_to_currency(@product.price, unit: "₴") %>
 </p>
 
 <p>
