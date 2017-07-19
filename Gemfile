@@ -66,3 +66,7 @@ gem 'bootstrap-sass'
 
 # has attached images
 gem 'paperclip'
+
+# fb omniauth
+gem 'therubyracer'
+gem 'omniauth-facebook'
