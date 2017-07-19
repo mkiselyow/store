@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #bootstrap
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+
+# has attached images
+gem 'paperclip'

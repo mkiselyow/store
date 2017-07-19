@@ -12,31 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :first_name %>
+    <%= form.label(:first_name, "Имя" ) %>
     <%= form.text_field :first_name, id: :user_first_name %>
   </div>
 
   <div class="field">
-    <%= form.label :last_name %>
+    <%= form.label(:last_name, "Фамилия" ) %>
     <%= form.text_field :last_name, id: :user_last_name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label(:email, "Эл. почта" ) %>
     <%= form.text_field :email, id: :user_email %>
   </div>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label(:number, "Номер телефона" ) %>
     <%= form.text_field :number, id: :user_number %>
   </div>
 
   <div class="field">
-    <%= form.label :admin %>
+    <%= form.label(:admin, "Администратор" ) %>
     <%= form.check_box :admin, id: :user_admin %>
   </div>
 
+  <%= form.file_field :avatar %>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit( "Подтвердить" ) %>
   </div>
 <% end %>

@@ -136,6 +136,11 @@
     <%= form.number_field :quantity, id: :product_quantity %>
   </div>
 
+  <div class="field">
+    <%= form.label(:description, "Описание") %>
+    <%= form.text_area :description, rows: 6, id: :product_description %>
+  </div>
+
   <div class="actions">
     <%= form.submit("Завершить")%>
   </div>

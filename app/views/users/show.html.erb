@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
+  <strong>Имя:</strong>
   <%= @user.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Фамилия:</strong>
   <%= @user.last_name %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>Эл. почта:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер телефона:</strong>
   <%= @user.number %>
 </p>
 
 <p>
-  <strong>Admin:</strong>
+  <strong>Администратор:</strong>
   <%= @user.admin %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <%= image_tag @user.avatar.url(:thumb) %>
+</p>
+
+<%= link_to 'Редактировать', edit_user_path(@user) %> |
+<%= link_to 'Назад', users_path %>
