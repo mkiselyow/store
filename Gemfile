@@ -70,3 +70,9 @@ gem 'paperclip'
 # fb omniauth
 gem 'therubyracer'
 gem 'omniauth-facebook'
+
+# paperclip+heroku images
+gem 'aws-sdk'
+
+# instagram omniauth
+gem 'omniauth-instagram'
