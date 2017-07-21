@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :registerable,
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:facebook, :instagram]
-        #:database_authenticatable, :validateble
+         #:database_authenticatable, :validateble
   # avatar
   has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "50x50>" }
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -38,8 +38,8 @@ class User < ApplicationRecord
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
 
-  # From Devise module Validatable
-  def email_required?
-    true
-  end
+  # # From Devise module Validatable
+  # def email_required?
+  #   true
+  # end
 end
