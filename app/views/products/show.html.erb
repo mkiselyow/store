@@ -125,5 +125,10 @@
   <%= @product.quantity %>
 </p>
 
+<p>
+  <strong>Изображение:</strong>
+  <%= cl_image_tag(@product.image_url, :alt => @product.title) %>
+</p>
+
 <%= link_to 'Редактировать', edit_product_path(@product) %> |
 <%= link_to 'Назад', products_path %>

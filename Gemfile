@@ -76,3 +76,7 @@ gem 'aws-sdk'
 
 # instagram omniauth
 gem 'omniauth-instagram'
+
+# images cloud-based service that provides an end-to-end image and video management solution
+gem 'carrierwave'
+gem 'cloudinary'

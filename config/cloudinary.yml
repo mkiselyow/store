@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dapc2mxjl
+  api_key: '816189238925946'
+  api_secret: xQs9nIUulMx6QNkGmzQOdhVg2_s
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dapc2mxjl
+  api_key: '816189238925946'
+  api_secret: xQs9nIUulMx6QNkGmzQOdhVg2_s
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dapc2mxjl
+  api_key: '816189238925946'
+  api_secret: xQs9nIUulMx6QNkGmzQOdhVg2_s
+  enhance_image_tag: true
+  static_image_support: false

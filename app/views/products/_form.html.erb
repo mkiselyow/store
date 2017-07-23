@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <%= cloudinary_js_config %>
   <div class="field">
     <%= form.label(:title, "Название") %>
     <%= form.text_field :title, id: :product_title %>
@@ -139,6 +139,16 @@
   <div class="field">
     <%= form.label(:description, "Описание") %>
     <%= form.text_area :description, rows: 6, id: :product_description %>
+  </div>
+
+<!--   <div class="field">
+    <%= form.hidden_field(:image_cache) %>
+    <%= form.cl_image_upload(:image) %>
+  </div> -->
+
+  <div class="field">
+    <%= form.hidden_field(:image_cache)  %>
+    <%= form.file_field(:image)  %>
   </div>
 
   <div class="actions">
