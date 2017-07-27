@@ -26,6 +26,21 @@ class ImageUploader < CarrierWave::Uploader::Base
     resize_to_fit(50, 50)
   end
 
+  version :gray do
+    process :resize_to_fill => [100, 150, :north]
+    # process :to_grey
+    cloudinary_transformation :effect => "grayscale"
+  end
+
+  # def to_grey
+  #   transformation = []
+  #   if product.quantity <= 0
+  #     transformation << {:effect => "grayscale"}
+  #   end
+  #   {:transformation=>transformation}
+  # end
+
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

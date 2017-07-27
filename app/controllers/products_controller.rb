@@ -40,6 +40,11 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    # if params[:image_id].present?
+    #   preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
+    #   raise "Invalid upload signature" if !preloaded.valid?
+    #   @product.image_id = preloaded.identifier
+    # end
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -61,6 +66,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def delete_image
+    @product = Product.find(params[:id])
+    # @product.image.file.delete
+    @product.image = ''
+    respond_to do |format|
+      format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+      format.json { render :show, status: :ok, location: @product }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -69,6 +84,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :size_a, :size_b, :size_h, :purchase_price, :mark_up, :price, :weight, :color_white, :color_black, :color_red, :color_yellow, :color_green, :color_blue, :color_violet, :brand, :material_plastic, :material_iron, :material_another, :material_wooden, :material_fabric, :supplier, :quantity, :image, :boys, :girls, :description, :image_cache)
+      params.require(:product).permit(:title, :size_a, :size_b, :size_h, :purchase_price, :mark_up, :price, :weight, :color_white, :color_black, :color_red, :color_yellow, :color_green, :color_blue, :color_violet, :brand, :material_plastic, :material_iron, :material_another, :material_wooden, :material_fabric, :supplier, :quantity, :image, :boys, :girls, :description, :image_cache, :image_id)
     end
 end

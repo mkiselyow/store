@@ -125,10 +125,15 @@
   <%= @product.quantity %>
 </p>
 
-<p>
-  <strong>Изображение:</strong>
-  <%= cl_image_tag(@product.image_url, :alt => @product.title) %>
-</p>
+
+<% if @product.image_url %>
+  <p>
+    <strong>Изображение:</strong>
+    <%= cl_image_tag(@product.image_url(:thumbnail, :radius => 10), :alt => @product.title) %>
+    <%= cl_image_tag(@product.image_url(:gray, :radius => 10), :alt => @product.title) %>
+  </p>
+  <%= link_to 'удалить изображение в облаке(в кеше остается)', Cloudinary::Uploader.destroy(@product.image_url, :invalidate => true) %><br>
+<% end %>
 
 <%= link_to 'Редактировать', edit_product_path(@product) %> |
 <%= link_to 'Назад', products_path %>
