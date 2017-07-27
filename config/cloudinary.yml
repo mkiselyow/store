@@ -6,11 +6,11 @@ development:
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: dapc2mxjl
-  api_key: '816189238925946'
-  api_secret: xQs9nIUulMx6QNkGmzQOdhVg2_s
+  cloud_name: hfy83q30e
+  api_key: '994467127933574'
+  api_secret: 3fON5atyTpl9uUGZVHXqlFjh-jQ
   enhance_image_tag: true
-  static_image_support: true
+  static_image_support: false
 test:
   cloud_name: dapc2mxjl
   api_key: '816189238925946'
