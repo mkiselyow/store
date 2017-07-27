@@ -14,6 +14,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= cloudinary_js_config %>
 
   </head>
 
@@ -34,6 +35,6 @@
 <!--     <p class="notice"><%= notice %></p>
  -->    <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= cloudinary_js_config %>
+    
   </body>
 </html>
