@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: store_production
-  username: store
+  username: max
   password: <%= ENV['STORE_DATABASE_PASSWORD'] %>
