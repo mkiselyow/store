@@ -1,3 +1,27 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.goods {
+  background-color: #F76F87;
+  text-align: center;
+}
+
+.goods_title {
+  font-size: 2em;
+  line-height: 2em;
+}
+
+.goods_col {
+  height: 150px;
+  overflow: hidden;
+}
+
+.goods_col.image {
+  vertical-align: middle;
+  line-height: 150px;
+}
+
+.goods_col.right  {
+  line-height: 75px;
+}
+
+.goods .row {
+
+}

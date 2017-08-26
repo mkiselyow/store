@@ -1,4 +1,46 @@
-<p id="notice"><%= notice %></p>
+  <div class="goods">
+    <div class="row equal">
+      <div class="col-md-4 goods_col">
+        <p class="goods_title">
+          <%= @product.title %>
+        </p>
+        <p>
+          <strong>Для мальчиков:</strong>
+          <% if @product.boys %>
+            Да
+          <% end %>
+        </p>
+
+        <p>
+          <strong>Для девочек:</strong>
+          <% if @product.girls %>
+            Да
+          <% end %>
+        </p>
+
+        <p>
+          <strong>Бренд:</strong>
+          <%= @product.brand %>
+        </p>
+      </div>
+      <div class="col-md-4 goods_col image">
+        <% if @product.image_url %>
+          <%= cl_image_tag(@product.image_url(:standard, :radius => 10), :alt => @product.title) %>
+        <% end %>
+      </div>
+      <div class="col-md-4 goods_col right">
+        <p>
+          <strong>Цена:</strong>
+          <%= number_to_currency(@product.price, unit: "₴") %>
+        </p>
+        <p>
+          <strong>Осталось на складе:</strong>
+          <%= @product.quantity %>
+        </p>
+      </div>
+    </div>
+  </div>
+
 
 <p>
   <strong>Название:</strong>
@@ -123,6 +165,21 @@
 <p>
   <strong>Количество:</strong>
   <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>Страна:</strong>
+  <%= @product.country %>
+</p>
+
+<p>
+  <strong>Код:</strong>
+  <%= @product.product_code %>
+</p>
+
+<p>
+  <strong>Скидка:</strong>
+  <%= @product.discount %>
 </p>
 
 

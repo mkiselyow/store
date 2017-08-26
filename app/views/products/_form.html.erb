@@ -179,6 +179,22 @@
     </div>
   </div>
 
+  <div class="field">
+    <%= form.label(:country, "Страна") %>
+    <%= form.text_field :country, id: :product_country %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:discount, "Скидка %") %>
+    <%= form.number_field :discount, id: :product_discount %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:product_code, "Код") %>
+    <%= form.number_field :product_code, id: :product_product_code %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit("Завершить")%>
   </div>
