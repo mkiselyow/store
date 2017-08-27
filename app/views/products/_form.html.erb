@@ -10,196 +10,218 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= form.label(:title, "Название") %>
-    <%= form.text_field :title, id: :product_title %>
-  </div>
 
-  <div class="field">
-    <%= form.label(:size_a, "Длина") %>
-    <%= form.number_field :size_a, id: :product_size_a %>
-  </div>
+  <div class="row">
 
-  <div class="field">
-    <%= form.label(:size_b, "Ширина") %>
-    <%= form.number_field :size_b, id: :product_size_b %>
-  </div>
+    <div class="col-md-4 product_form_column">
+      <div class="field">
+        <%= form.label(:title, "Название") %>
+        <%= form.text_field :title, id: :product_title %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:size_h, "Висота") %>
-    <%= form.number_field :size_h, id: :product_size_h %>
-  </div>
+      <div class="field">
+        <%= form.label(:size_a, "Длина") %>
+        <%= form.number_field :size_a, id: :product_size_a %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:purchase_price, "Цена закупки ₴") %>
-    <%= form.number_field :purchase_price, id: :product_purchase_price, :step => 0.01 %>
-  </div>
+      <div class="field">
+        <%= form.label(:size_b, "Ширина") %>
+        <%= form.number_field :size_b, id: :product_size_b %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:mark_up, "Наценка %") %>
-    <%= form.number_field :mark_up, id: :product_mark_up %>
-  </div>
+      <div class="field">
+        <%= form.label(:size_h, "Висота") %>
+        <%= form.number_field :size_h, id: :product_size_h %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:price, "Цена ₴") %>
-    <%= form.number_field :price, id: :product_price, :step => 0.01 %>
-  </div>
+      <div class="field">
+        <%= form.label(:purchase_price, "Цена закупки ₴") %>
+        <%= form.number_field :purchase_price, id: :product_purchase_price, :step => 0.01 %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:weight, "Вес") %>
-    <%= form.number_field :weight, id: :product_weight, :step => 0.01 %>
-  </div>
+      <div class="field">
+        <%= form.label(:mark_up, "Наценка %") %>
+        <%= form.number_field :mark_up, id: :product_mark_up %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:boys, "Мальчики") %>
-    <%= form.check_box :boys, id: :product_boys %>
-  </div>
+      <div class="field">
+        <%= form.label(:price, "Цена ₴", :title => "когда меняем любое из значений: цена закупки наценка скидка то пересчитывает конечную цену вне зависимости от того какая сейчас стоит") %>
+        <%= form.number_field :price, id: :product_price, :step => 0.01 %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:girls, "Девочки") %>
-    <%= form.check_box :girls, id: :product_girls %>
-  </div>
+      <div class="field">
+        <%= form.label(:weight, "Вес") %>
+        <%= form.number_field :weight, id: :product_weight, :step => 0.01 %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:color_white, "Белый") %>
-    <%= form.check_box :color_white, id: :product_color_white %>
-  </div>
+      <div class="field">
+        <%= form.label(:brand, "Бренд") %>
+        <%= form.text_field :brand, id: :product_brand %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:color_black, "Черный") %>
-    <%= form.check_box :color_black, id: :product_color_black %>
-  </div>
+      <div class="field">
+        <%= form.label(:supplier, "Поставщик") %>
+        <%= form.text_field :supplier, id: :product_supplier %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:color_red, "Красный") %>
-    <%= form.check_box :color_red, id: :product_color_red %>
-  </div>
+      <div class="field">
+        <%= form.label(:quantity, "Количество") %>
+        <%= form.number_field :quantity, id: :product_quantity %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:color_yellow, "Желтый") %>
-    <%= form.check_box :color_yellow, id: :product_color_yellow %>
-  </div>
+      <div class="field">
+        <%= form.label(:country, "Страна") %>
+        <%= form.text_field :country, id: :product_country %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:color_green, "Зеленый") %>
-    <%= form.check_box :color_green, id: :product_color_green %>
-  </div>
+      <div class="field">
+        <%= form.label(:discount, "Скидка %") %>
+        <%= form.number_field :discount, id: :product_discount %>
+      </div>
 
-  <div class="field">
-    <%= form.label(:color_blue, "Синий") %>
-    <%= form.check_box :color_blue, id: :product_color_blue %>
-  </div>
+      <div class="field">
+        <%= form.label(:product_code, "Код") %>
+        <%= form.number_field :product_code, id: :product_product_code %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label(:color_violet, "Фиолетовый") %>
-    <%= form.check_box :color_violet, id: :product_color_violet %>
-  </div>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-6 product_form_column">
 
-  <div class="field">
-    <%= form.label(:brand, "Бренд") %>
-    <%= form.text_field :brand, id: :product_brand %>
-  </div>
+          <div class="field">
+            <%= form.label(:boys, "Мальчики") %>
+            <%= form.check_box :boys, id: :product_boys %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:material_plastic, "Пластик") %>
-    <%= form.check_box :material_plastic, id: :product_material_plastic %>
-  </div>
+          <div class="field">
+            <%= form.label(:color_white, "Белый") %>
+            <%= form.check_box :color_white, id: :product_color_white %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:material_iron, "Железо") %>
-    <%= form.check_box :material_iron, id: :product_material_iron %>
-  </div>
+          <div class="field">
+            <%= form.label(:color_black, "Черный") %>
+            <%= form.check_box :color_black, id: :product_color_black %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:material_another, "Другой материал") %>
-    <%= form.check_box :material_another, id: :product_material_another %>
-  </div>
+          <div class="field">
+            <%= form.label(:color_red, "Красный") %>
+            <%= form.check_box :color_red, id: :product_color_red %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:material_wooden, "Дерево") %>
-    <%= form.check_box :material_wooden, id: :product_material_wooden %>
-  </div>
+          <div class="field">
+            <%= form.label(:color_yellow, "Желтый") %>
+            <%= form.check_box :color_yellow, id: :product_color_yellow %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:material_fabric, "Ткань") %>
-    <%= form.check_box :material_fabric, id: :product_material_fabric %>
-  </div>
+          <div class="field">
+            <%= form.label(:color_green, "Зеленый") %>
+            <%= form.check_box :color_green, id: :product_color_green %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:supplier, "Поставщик") %>
-    <%= form.text_field :supplier, id: :product_supplier %>
-  </div>
+          <div class="field">
+            <%= form.label(:color_blue, "Синий") %>
+            <%= form.check_box :color_blue, id: :product_color_blue %>
+          </div>
 
-  <div class="field">
-    <%= form.label(:quantity, "Количество") %>
-    <%= form.number_field :quantity, id: :product_quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label(:description, "Описание") %>
-    <%= form.text_area :description, rows: 6, id: :product_description %>
-  </div>
-
-<!--   <div class="field">
-    <%= form.hidden_field(:image_cache) %>
-    <%= form.cl_image_upload(:image) %>
-  </div> -->
-
-<!--   <div class="field">
-    <%= form.hidden_field(:image_cache)  %>
-    <%= form.file_field(:image)  %>
-  </div> -->
-
-<!--   <div class="field">
-    <%= form.cl_image_upload(:image) %>
-    <%= form.hidden_field(:image_cache)  %>
-  </div> -->
-
-  <div id="direct_upload" class="basic_form">
-  <h1>New Photo</h1>
-    <div class="form_line">
-      <%= form.label :image, "Image:" %>
-      <div class="form_controls">
-        <div class="upload_button_holder">
-          <%= link_to("Upload", "#", :class => "upload_button") %>
-          <% if @unsigned %>
-            <%= form.cl_unsigned_image_upload(:image, @preset_name) %>
-          <% else %>
-            <%= form.cl_image_upload(:image, :return_delete_token=>true) %>
-          <% end %>
         </div>
-        <span class="status"></span>
+        <div class="col-md-6 product_form_column">
+
+          <div class="field">
+            <%= form.label(:girls, "Девочки") %>
+            <%= form.check_box :girls, id: :product_girls %>
+          </div>
+
+          <div class="field">
+            <%= form.label(:color_violet, "Фиолетовый") %>
+            <%= form.check_box :color_violet, id: :product_color_violet %>
+          </div>
+
+          <div class="field">
+            <%= form.label(:material_plastic, "Пластик") %>
+            <%= form.check_box :material_plastic, id: :product_material_plastic %>
+          </div>
+
+          <div class="field">
+            <%= form.label(:material_iron, "Железо") %>
+            <%= form.check_box :material_iron, id: :product_material_iron %>
+          </div>
+
+          <div class="field">
+            <%= form.label(:material_another, "Другой материал") %>
+            <%= form.check_box :material_another, id: :product_material_another %>
+          </div>
+
+          <div class="field">
+            <%= form.label(:material_wooden, "Дерево") %>
+            <%= form.check_box :material_wooden, id: :product_material_wooden %>
+          </div>
+
+          <div class="field">
+            <%= form.label(:material_fabric, "Ткань") %>
+            <%= form.check_box :material_fabric, id: :product_material_fabric %>
+          </div>
+
+
+        </div>
       </div>
     </div>
-    <div class="form_line">
-      <div class="form_controls">
-        <div class="preview"></div>
+    <div class="col-md-4">
+
+      <div class="field">
+        <%= form.label(:description, "Описание") %>
+        <%= form.text_area :description, rows: 6, id: :product_description %>
       </div>
+
+    <!--   <div class="field">
+        <%= form.hidden_field(:image_cache) %>
+        <%= form.cl_image_upload(:image) %>
+      </div> -->
+
+    <!--   <div class="field">
+        <%= form.hidden_field(:image_cache)  %>
+        <%= form.file_field(:image)  %>
+      </div> -->
+
+    <!--   <div class="field">
+        <%= form.cl_image_upload(:image) %>
+        <%= form.hidden_field(:image_cache)  %>
+      </div> -->
+
+      <div id="direct_upload" class="basic_form">
+      <h1>New Photo</h1>
+        <div class="form_line">
+          <%= form.label :image, "Image:" %>
+          <div class="form_controls">
+            <div class="upload_button_holder">
+              <%= link_to("Upload", "#", :class => "upload_button") %>
+              <% if @unsigned %>
+                <%= form.cl_unsigned_image_upload(:image, @preset_name) %>
+              <% else %>
+                <%= form.cl_image_upload(:image, :return_delete_token=>true) %>
+              <% end %>
+            </div>
+            <span class="status"></span>
+          </div>
+        </div>
+        <div class="form_line">
+          <div class="form_controls">
+            <div class="preview"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div class="field">
-    <%= form.label(:country, "Страна") %>
-    <%= form.text_field :country, id: :product_country %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= form.submit("Завершить")%>
+      </div>
+      <%= form.hidden_field :bytes %>
+      <%= hidden_field_tag :direct, params[:direct] %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label(:discount, "Скидка %") %>
-    <%= form.number_field :discount, id: :product_discount %>
-  </div>
-
-  <div class="field">
-    <%= form.label(:product_code, "Код") %>
-    <%= form.number_field :product_code, id: :product_product_code %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit("Завершить")%>
-  </div>
-  <%= form.hidden_field :bytes %>
-  <%= hidden_field_tag :direct, params[:direct] %>
 <% end %>
 
 <!-- Configure Cloudinary jQuery plugin -->
