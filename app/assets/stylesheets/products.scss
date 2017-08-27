@@ -9,19 +9,60 @@
 }
 
 .goods_col {
-  height: 150px;
+  height: 180px;
   overflow: hidden;
 }
 
 .goods_col.image {
   vertical-align: middle;
-  line-height: 150px;
+  line-height: 180px;
 }
 
-.goods_col.right  {
-  line-height: 75px;
+.goods_col.right p  {
+  // line-height: 20px;
 }
 
 .goods .row {
 
+}
+
+.top_container {
+  height: 120px;
+}
+
+.top_container_left {
+  // background: yellow;
+  height: inherit;
+  line-height: 100px;
+  text-align: center;
+  .row {
+    padding: 10px;
+  }
+}
+
+.top_container_center {
+  // background: red;
+  height: inherit;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 35px;
+  .row {
+    padding: 10px;
+  }
+}
+
+.top_container_right {
+  // background: blue;
+  height: inherit;
+  .row {
+    padding: 10px;
+  }
+}
+
+.nav.top_buttons_menu {
+  width: 100%;
+  padding: 0 4%;
+  .top_buttons_menu_button {
+    width: 9%;
+  }
 }

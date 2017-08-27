@@ -25,7 +25,12 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    if (@product.price == nil) && @product.purchase_price && (@product.discount || @product.mark_up)
+      @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
+      if @product.discount
+        @product.price = @product.price-@product.price*@product.discount/100
+      end
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -40,6 +45,25 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    if @product.purchase_price && (@product.discount || @product.mark_up)
+      # alert ("hello")
+      @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
+      if @product.discount
+        @product.price = @product.price-@product.price*@product.discount/100
+      end
+    end
+    # if (@product.price && @product.discount || (@product.purchase_price && @product.mark_up) || (@product.purchase_price && @product.mark_up && @product.discount))
+    #   if @product.purchase_price && @product.mark_up
+    #     @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
+    #   elsif @product.purchase_price && @product.mark_up && @product.discount
+    #     @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
+    #     @product.price = @product.price-@product.price*@product.discount/100
+    #   elsif @product.price && @product.discount
+    #     @product.price = @product.price-@product.price*@product.discount/100
+    #   end
+    # end
     # if params[:image_id].present?
     #   preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
     #   raise "Invalid upload signature" if !preloaded.valid?

@@ -17,19 +17,57 @@
 
   <body>
     <div class="container-fluid">
+      <div class="row top_container">
+        <div class="col-md-4 top_container_left">
+          <div class="row">
+            <div class="col-md-4"><%= cl_image_tag("logo.png", :quality=>15, :width=>100, :crop=>"scale") %></div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"> Звонок</span>
+              </button>
+            </div>
+            <div class="col-md-4"><p>Тимка - это детская радость</p></div>
+          </div>
+        </div>
+        <div class="col-md-4 top_container_center">
+          <div class="row">
+            <div>095 000 00 00</div>
+            <div>068 000 00 00</div>
+            <div>TimKa</div>
+          </div>
+        </div>
+        <div class="col-md-4 top_container_right">
+          <div class="row">
+            <div class="col-md-8">
+              <% if user_signed_in? %>
+                <div role="presentation"><%= link_to "Вы вошли как #{current_user.email}", current_user %></div>
+                <div role="presentation"><%= link_to "Редактировать профиль", edit_user_registration_path %></div>
+                <div role="presentation"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></div> 
+              <% else %>
+                <div role="presentation"><%= link_to "Регистрация", new_user_registration_path %></div>
+                <div role="presentation"><%= link_to "Войти", new_user_session_path %></div> 
+              <% end %>
+              <p>Тут будет поиск</p>
+            </div>
+            <div class="col-md-4">
+              <p>Корзина</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
       <div class="row">
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><%= cl_image_tag("logo.png", :quality=>15, :width=>100, :crop=>"scale") %></li>
-          <li role="presentation" class="active"><%= link_to "Главная", root_path %></li>
-          <li role="presentation"><%= link_to "Пользователи", users_path %></li>
-          <li role="presentation"><%= link_to "Товары", products_path %></li>
-          <% if user_signed_in? %>
-            <li role="presentation"><%= link_to "Вы вошли как #{current_user.email} Редактировать Профиль", edit_user_registration_path %></li>
-            <li role="presentation"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li> 
-          <% else %>
-            <li role="presentation"><%= link_to "Регистрация", new_user_registration_path %></li>
-            <li role="presentation"><%= link_to "Войти", new_user_session_path %></li> 
-          <% end %>
+        <ul class="nav nav-pills top_buttons_menu">
+          <li role="presentation" class="active top_buttons_menu_button"><%= link_to "Главная", root_path %></li>
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Пользователи", users_path %></li>
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Товары", products_path %></li>
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Оплата и доставка", root_path %></li>
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Полезные статьи", root_path %></li> 
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Акции", root_path %></li> 
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Отзывы", root_path %></li> 
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Контакты", root_path %></li> 
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "О нас", root_path %></li> 
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Конкурсы", root_path %></li> 
         </ul>
       </div>
       <div class="row">

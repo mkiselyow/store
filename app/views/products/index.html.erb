@@ -2,7 +2,7 @@
 <% @products.each do |product| %>
   <div class="row">
     <div class="col-md-4">
-      <%= product.title %>
+      <%= link_to product.title, product %>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4"></div>
@@ -45,7 +45,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.title %></td>
+        <td><%= link_to product.title, product %></td>
         <td><%= product.size_a %></td>
         <td><%= product.size_b %></td>
         <td><%= product.size_h %></td>
