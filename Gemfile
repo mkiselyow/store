@@ -80,3 +80,6 @@ gem 'omniauth-instagram'
 # images cloud-based service that provides an end-to-end image and video management solution
 gem 'carrierwave'
 gem 'cloudinary'
+
+#social shares
+gem 'social-share-button'
