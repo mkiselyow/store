@@ -6,4 +6,12 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
+
+  get '/about' => 'pages#about'
+  get '/comments' => 'pages#comments'
+  get '/competitions' => 'pages#competitions'
+  get '/contacts' => 'pages#contacts'
+  get '/payment_and_delivery' => 'pages#payment_and_delivery'
+  get '/special_offers' => 'pages#special_offers'
+  get '/useful_articles' => 'pages#useful_articles'
 end
