@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  mount_uploader :image, ImageUploader
   # extend Textacular
 
   # belongs_to :searchable, polymorphic: true
