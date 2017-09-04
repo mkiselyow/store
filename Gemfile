@@ -83,3 +83,10 @@ gem 'cloudinary'
 
 #social shares
 gem 'social-share-button'
+
+# pagination
+# gem 'will_paginate'
+
+# text search gem
+# gem 'textacular', '~> 5.0'
+# gem 'texticle', require: 'texticle/rails'
