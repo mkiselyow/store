@@ -1,6 +1,6 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <%= form_tag(products_path, method: :get) do %>
-  <%= text_field_tag :query, params[:query] %>
+  Мальчики: <%= check_box_tag :search_boys, true, false, :class => "search_boys" %>
   <%= submit_tag 'Искать', title: nil  %>
 <% end %>
 
