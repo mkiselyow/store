@@ -1,6 +1,7 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <%= form_tag(products_path, method: :get) do %>
-  Мальчики: <%= check_box_tag :search_boys, true, false, :class => "search_boys" %>
+  Мальчики: <%= check_box_tag :boys, false, true, :class => "boys" %>
+  Девочки: <%= check_box_tag :girls, false, true, :class => "girls" %>
   <%= submit_tag 'Искать', title: nil  %>
 <% end %>
 

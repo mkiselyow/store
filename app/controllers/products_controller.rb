@@ -5,10 +5,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    # @search = params[:search_boys], params[:color_white], params[:color_black], params[:color_red], params[:color_yellow], params[:color_green], params[:color_blue], params[:color_violet], params[:material_plastic], params[:material_iron], params[:material_another], params[:material_wooden], params[:material_fabric], params[:girls]
+    @search = params[:boys], params[:girls]# params[:color_white], params[:color_black], params[:color_red], params[:color_yellow], params[:color_green], params[:color_blue], params[:color_violet], params[:material_plastic], params[:material_iron], params[:material_another], params[:material_wooden], params[:material_fabric], params[:girls]
     # @products = Product.text_search(params[:query])#.page(params[:page]).per_page(3)
     # @products = Product.search(params[:search_boys])#.page(params[:page]).per_page(3)
-    @products = Product.search(params[:search_boys])#*@search)
+    @products = Product.search(*@search)#)
   end
 
   # GET /products/1
