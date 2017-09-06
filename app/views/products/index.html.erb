@@ -2,6 +2,9 @@
 
 <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
   Мальчики: <%= check_box_tag :boys, :true, :false, :class => "boys" %>
+  Девочки: <%= check_box_tag :girls, :true, :false, :class => "girls" %>
+  Желтый: <%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>
+  Название: <%= text_field_tag :title %>
   <%= submit_tag 'Искать', title: nil  %>
 <% end %>
 

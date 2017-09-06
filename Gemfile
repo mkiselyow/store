@@ -90,3 +90,4 @@ gem 'social-share-button'
 # text search gem
 # gem 'textacular', '~> 5.0'
 # gem 'texticle', require: 'texticle/rails'
+gem 'pg_search'

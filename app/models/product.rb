@@ -1,6 +1,11 @@
 class Product < ApplicationRecord
   mount_uploader :image, ImageUploader
   # extend Textacular
+  include PgSearch
+  pg_search_scope :search_by_title, :against => :title
+  pg_search_scope :search_by_boys, :against => :boys
+  pg_search_scope :search_by_girls, :against => :girls
+  pg_search_scope :search_by_color_yellow, :against => :color_yellow
 
   # belongs_to :searchable, polymorphic: true
   # mount_uploader :image, ImageUploader

@@ -7,11 +7,26 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     if params[:boys]
+      @products = Product.search_by_boys(params[:boys])
+    else
+      @products = Product.search_by_boys("false")
+    end
+    if params[:girls]
+      @products = Product.search_by_girls(params[:girls])
+    else
+      @products = Product.search_by_girls("false")
+    end
+    if params[:color_yellow]
+      @products = Product.search_by_color_yellow(params[:color_yellow])
+    else
+      @products = Product.search_by_color_yellow("false")
+    end
+    # if params[:boys]
     # @search = params[:search_boys], params[:color_white], params[:color_black], params[:color_red], params[:color_yellow], params[:color_green], params[:color_blue], params[:color_violet], params[:material_plastic], params[:material_iron], params[:material_another], params[:material_wooden], params[:material_fabric], params[:girls]
     # @products = Product.text_search(params[:query])#.page(params[:page]).per_page(3)
     # @products = Product.search(params[:search_boys])#.page(params[:page]).per_page(3)
-      @products = Product.search(params[:boys])#*@search)
-    end
+    #   @products = Product.search(params[:boys])#*@search)
+    # end
   end
 
   # GET /products/1
