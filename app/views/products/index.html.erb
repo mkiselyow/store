@@ -1,6 +1,7 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<%= form_tag(products_path, method: :get) do %>
-  Мальчики: <%= check_box_tag :search_boys, true, false, :class => "search_boys" %>
+
+<%= form_tag({controller: "products", action: "index"}, method: :get) do %>
+  Мальчики: <%= check_box_tag :boys, :true, :false, :class => "boys" %>
   <%= submit_tag 'Искать', title: nil  %>
 <% end %>
 

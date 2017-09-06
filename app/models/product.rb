@@ -32,13 +32,13 @@ class Product < ApplicationRecord
     end
   end
 
-  def self.search(search_boys) #, search_girls, search_color_white, search_color_black, search_color_red, search_color_green, search_color_yellow, search_color_violet, search_color_blue, search_material_wooden, search_material_iron, search_material_another, search_material_fabric, search_material_plastic)
-    if search_boys.present?
-      where(:boys => search_boys != "false")
+  def self.search(boys) #, search_girls, search_color_white, search_color_black, search_color_red, search_color_green, search_color_yellow, search_color_violet, search_color_blue, search_material_wooden, search_material_iron, search_material_another, search_material_fabric, search_material_plastic)
+    if boys.present?
+      where(:boys => boys != "false")
     # elsif search_girls.present?
     #   where(:girls => search_boys != "false")
     else
-      unscoped
+      where(:boys => boys == "false")
     end
   end
 
