@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Тимка</title>
+    <title>Мапапама</title>
     <!-- Bootstrap core CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -20,8 +20,8 @@
       <div class="row top_container">
         <div class="col-md-4 top_container_left">
           <div class="row">
-            <div class="col-md-6">
-              <%= cl_image_tag("Тимка_ruelff.png", :height=>100, :quality=>24, :crop=>"scale") %>
+            <div class="col-md-8">
+              <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
             </div>
             <div class="col-md-2">
               <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
@@ -31,8 +31,8 @@
                 <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
               </button>
             </div> -->
-            <div class="col-md-4">
-              <p>Тимка - это детская радость</p>
+            <div class="col-md-2">
+              <p>Мапапама - это детская радость</p>
             </div>
           </div>
         </div>
@@ -54,7 +54,12 @@
                 <div role="presentation"><%= link_to "Регистрация", new_user_registration_path %></div>
                 <div role="presentation"><%= link_to "Войти", new_user_session_path %></div> 
               <% end %>
-              <p>Тут будет поиск</p>
+              <p>    
+                <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
+                  <%= text_field_tag :title %>
+                  <%= submit_tag 'Искать', title: nil  %>
+                <% end %>
+              </p>
               
               
             </div>
@@ -81,7 +86,7 @@
         </ul>
       </div>
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
           <!--     <p class="notice"><%= notice %></p>--> 
           <p class="alert"><%= alert %></p>
           <%= yield %>

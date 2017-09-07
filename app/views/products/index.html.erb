@@ -1,95 +1,140 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-<%= form_tag({controller: "products", action: "index"}, method: :get) do %>
-  Мальчики: <%= check_box_tag :boys, :true, :false, :class => "boys" %>
-  Девочки: <%= check_box_tag :girls, :true, :false, :class => "girls" %>
-  Желтый: <%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>
-  Название: <%= text_field_tag :title %>
-  <%= submit_tag 'Искать', title: nil  %>
-<% end %>
 
-
-<% if @products then @products.each do |product| %>
-    <div class="row">
-      <div class="col-md-4">
-        <%= link_to product.title, product %>
+<main>
+  <aside>
+    <%= link_to 'Добавить товар', new_product_path %><br>
+    Подбор по параметрам
+    <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
+      <div class="row">
+        <hr>
+        <p>Пол</p>
+        <div class="col-md-6">
+          <p><%= check_box_tag :boys, :true, :false, :class => "boys" %>Мальчики</p>
+        </div>
+        <div class="col-md-6">
+          <p><%= check_box_tag :girls, :true, :false, :class => "girls" %>Девочки</p>
+        </div>
       </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-4"></div>
-    </div>
-  <% end %>
-<% end %>
-<h1>Товары</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Название</th>
-      <th>Длина</th>
-      <th>Ширина</th>
-      <th>Высота</th>
-      <th>Цена закупки</th>
-      <th>Наценка</th>
-      <th>Цена</th>
-      <th>Вес</th>
-      <th>Мальчики</th>
-      <th>Девочки</th>
-      <th>Белый</th>
-      <th>Черный</th>
-      <th>Красный</th>
-      <th>Желтый</th>
-      <th>Зеленый</th>
-      <th>Синий</th>
-      <th>Фиолетовый</th>
-      <th>Бренд</th>
-      <th>Пластик</th>
-      <th>Железо</th>
-      <th>Другой материал</th>
-      <th>Дерево</th>
-      <th>Ткань</th>
-      <th>Поставщик</th>
-      <th>Количество</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%  if @products then @products.each do |product| %>
-        <tr>
-          <td><%= link_to product.title, product %></td>
-          <td><%= product.size_a %></td>
-          <td><%= product.size_b %></td>
-          <td><%= product.size_h %></td>
-          <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
-          <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
-          <td><%= number_to_currency(product.price, unit: "₴") %></td>
-          <td><%= product.weight %></td>
-          <td><%= product.boys %></td>
-          <td><%= product.girls %></td>
-          <td><%= product.color_white %></td>
-          <td><%= product.color_black %></td>
-          <td><%= product.color_red %></td>
-          <td><%= product.color_yellow %></td>
-          <td><%= product.color_green %></td>
-          <td><%= product.color_blue %></td>
-          <td><%= product.color_violet %></td>
-          <td><%= product.brand %></td>
-          <td><%= product.material_plastic %></td>
-          <td><%= product.material_iron %></td>
-          <td><%= product.material_another %></td>
-          <td><%= product.material_wooden %></td>
-          <td><%= product.material_fabric %></td>
-          <td><%= product.supplier %></td>
-          <td><%= product.quantity %></td>
-          <td><%= link_to 'Показать', product %></td>
-          <td><%= link_to 'Редактировать', edit_product_path(product) %></td>
-          <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверенны?' } %></td>
-        </tr>
+      <div class="row">
+        <hr>
+        <p>Цвет</p>
+        <div class="col-md-6">
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_white" %>Белый</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Желтый</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_green" %>Зеленый</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_violet" %>Фиолетовый</p>
+        </div>
+        <div class="col-md-6">
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_black" %>Черный</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_red" %>Красный</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_blue" %>Синий</p>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+        <p>Материал</p>
+        <div class="col-md-6">
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Пластик</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Дерево</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Другой</p>
+        </div>
+        <div class="col-md-6">
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Железо</p>
+          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Ткань</p>
+        </div>
+      </div>
+      <%= submit_tag 'Искать', title: nil  %>
+    <% end %>
+  </aside>
+  <article>
+    
+    <% if @products then @products.each do |product| %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= link_to product.title, product %>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+        </div>
       <% end %>
     <% end %>
-  </tbody>
-</table>
+    <h1>Товары</h1>
 
-<br>
+    <table>
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Длина</th>
+          <th>Ширина</th>
+          <th>Высота</th>
+          <th>Цена закупки</th>
+          <th>Наценка</th>
+          <th>Цена</th>
+          <th>Вес</th>
+          <th>Мальчики</th>
+          <th>Девочки</th>
+          <th>Белый</th>
+          <th>Черный</th>
+          <th>Красный</th>
+          <th>Желтый</th>
+          <th>Зеленый</th>
+          <th>Синий</th>
+          <th>Фиолетовый</th>
+          <th>Бренд</th>
+          <th>Пластик</th>
+          <th>Железо</th>
+          <th>Другой материал</th>
+          <th>Дерево</th>
+          <th>Ткань</th>
+          <th>Поставщик</th>
+          <th>Количество</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<%= link_to 'Добавить товар', new_product_path %>
+      <tbody>
+        <%  if @products then @products.each do |product| %>
+            <tr>
+              <td><%= link_to product.title, product %></td>
+              <td><%= product.size_a %></td>
+              <td><%= product.size_b %></td>
+              <td><%= product.size_h %></td>
+              <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
+              <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
+              <td><%= number_to_currency(product.price, unit: "₴") %></td>
+              <td><%= product.weight %></td>
+              <td><%= product.boys %></td>
+              <td><%= product.girls %></td>
+              <td><%= product.color_white %></td>
+              <td><%= product.color_black %></td>
+              <td><%= product.color_red %></td>
+              <td><%= product.color_yellow %></td>
+              <td><%= product.color_green %></td>
+              <td><%= product.color_blue %></td>
+              <td><%= product.color_violet %></td>
+              <td><%= product.brand %></td>
+              <td><%= product.material_plastic %></td>
+              <td><%= product.material_iron %></td>
+              <td><%= product.material_another %></td>
+              <td><%= product.material_wooden %></td>
+              <td><%= product.material_fabric %></td>
+              <td><%= product.supplier %></td>
+              <td><%= product.quantity %></td>
+              <td><%= link_to 'Показать', product %></td>
+              <td><%= link_to 'Редактировать', edit_product_path(product) %></td>
+              <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверенны?' } %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </article>
+</main>
+              <p>    
+                <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
+                  <%= text_field_tag :title, nil, placeholder: "название товара" %>
+                  <%= submit_tag 'Искать', title: nil  %>
+                <% end %>
+              </p>
+              

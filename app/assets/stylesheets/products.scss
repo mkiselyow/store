@@ -46,6 +46,7 @@
   overflow: hidden;
   box-sizing: border-box;
   line-height: 35px;
+  text-align: center;
   .row {
     padding: 10px;
   }
@@ -70,5 +71,23 @@
 .product_form_column {
   input {
     float: right;
+  }
+}
+main {
+  article {
+    background-color: gray;
+    min-height: 100px;
+    width: 83%;
+    float: right;
+  }
+
+  aside {
+    background-color: yellow;
+    min-height: 100px;
+    width: 17%;
+    float: left;
+    padding: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 }
