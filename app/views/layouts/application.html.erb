@@ -56,7 +56,7 @@
               <% end %>
               <p>    
                 <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
-                  <%= text_field_tag :title %>
+                  <%= text_field_tag :title, nil, placeholder: "название товара" %>
                   <%= submit_tag 'Искать', title: nil  %>
                 <% end %>
               </p>
