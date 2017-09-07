@@ -19,4 +19,7 @@ class PagesController < ApplicationController
 
   def competitions
   end
+
+  def partners
+  end
 end

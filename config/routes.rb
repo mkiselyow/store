@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/payment_and_delivery' => 'pages#payment_and_delivery'
   get '/special_offers' => 'pages#special_offers'
   get '/useful_articles' => 'pages#useful_articles'
+  get '/partners' => 'pages#partners'
 end

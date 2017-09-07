@@ -20,13 +20,20 @@
       <div class="row top_container">
         <div class="col-md-4 top_container_left">
           <div class="row">
-            <div class="col-md-4"><%= cl_image_tag("logo.png", :quality=>15, :width=>100, :crop=>"scale") %></div>
-            <div class="col-md-4">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-earphone" aria-hidden="true"> Звонок</span>
-              </button>
+            <div class="col-md-6">
+              <%= cl_image_tag("Тимка_ruelff.png", :height=>100, :quality=>24, :crop=>"scale") %>
             </div>
-            <div class="col-md-4"><p>Тимка - это детская радость</p></div>
+            <div class="col-md-2">
+              <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
+            </div>
+<!--             <div class="col-md-2">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+              </button>
+            </div> -->
+            <div class="col-md-4">
+              <p>Тимка - это детская радость</p>
+            </div>
           </div>
         </div>
         <div class="col-md-4 top_container_center">
@@ -70,6 +77,7 @@
           <li role="presentation" class="top_buttons_menu_button"><%= link_to "Контакты", contacts_path %></li> 
           <li role="presentation" class="top_buttons_menu_button"><%= link_to "О нас", about_path %></li> 
           <li role="presentation" class="top_buttons_menu_button"><%= link_to "Конкурсы", competitions_path %></li> 
+          <li role="presentation" class="top_buttons_menu_button"><%= link_to "Партнерам", partners_path %></li> 
         </ul>
       </div>
       <div class="row">
