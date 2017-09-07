@@ -5,7 +5,18 @@ class Product < ApplicationRecord
   pg_search_scope :search_by_title, :against => :title
   pg_search_scope :search_by_boys, :against => :boys
   pg_search_scope :search_by_girls, :against => :girls
+  pg_search_scope :search_by_color_white, :against => :color_white
+  pg_search_scope :search_by_color_black, :against => :color_black
+  pg_search_scope :search_by_color_red, :against => :color_red
   pg_search_scope :search_by_color_yellow, :against => :color_yellow
+  pg_search_scope :search_by_color_green, :against => :color_green
+  pg_search_scope :search_by_color_blue, :against => :color_blue
+  pg_search_scope :search_by_color_violet, :against => :color_violet
+  pg_search_scope :search_by_material_another, :against => :material_another
+  pg_search_scope :search_by_material_plastic, :against => :material_plastic
+  pg_search_scope :search_by_material_iron, :against => :material_iron
+  pg_search_scope :search_by_material_wood, :against => :material_wood
+  pg_search_scope :search_by_material_fabric, :against => :material_fabric
 
   # belongs_to :searchable, polymorphic: true
   # mount_uploader :image, ImageUploader

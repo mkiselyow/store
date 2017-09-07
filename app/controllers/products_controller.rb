@@ -21,10 +21,65 @@ class ProductsController < ApplicationController
         else
           @products = Product.search_by_girls("false")
         end
+        if params[:color_black]
+          @products = Product.search_by_color_black(params[:color_black])
+        else
+          @products = Product.search_by_color_black("false")
+        end
+        if params[:color_white]
+          @products = Product.search_by_color_white(params[:color_white])
+        else
+          @products = Product.search_by_color_white("false")
+        end
         if params[:color_yellow]
           @products = Product.search_by_color_yellow(params[:color_yellow])
         else
           @products = Product.search_by_color_yellow("false")
+        end
+        if params[:color_red]
+          @products = Product.search_by_color_red(params[:color_red])
+        else
+          @products = Product.search_by_color_red("false")
+        end
+        if params[:color_green]
+          @products = Product.search_by_color_green(params[:color_green])
+        else
+          @products = Product.search_by_color_green("false")
+        end
+        if params[:color_blue]
+          @products = Product.search_by_color_blue(params[:color_blue])
+        else
+          @products = Product.search_by_color_blue("false")
+        end
+        if params[:color_violet]
+          @products = Product.search_by_color_violet(params[:color_violet])
+        else
+          @products = Product.search_by_color_violet("false")
+        end
+        if params[:material_another]
+          @products = Product.search_by_material_another(params[:material_another])
+        else
+          @products = Product.search_by_material_another("false")
+        end
+        if params[:material_wood]
+          @products = Product.search_by_material_wood(params[:material_wood])
+        else
+          @products = Product.search_by_material_wood("false")
+        end
+        if params[:material_iron]
+          @products = Product.search_by_material_iron(params[:material_iron])
+        else
+          @products = Product.search_by_material_iron("false")
+        end
+        if params[:material_fabric]
+          @products = Product.search_by_material_fabric(params[:material_fabric])
+        else
+          @products = Product.search_by_material_fabric("false")
+        end
+        if params[:material_plastic]
+          @products = Product.search_by_material_plastic(params[:material_plastic])
+        else
+          @products = Product.search_by_material_plastic("false")
         end
       end
     end

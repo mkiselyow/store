@@ -79,6 +79,15 @@ main {
     min-height: 100px;
     width: 83%;
     float: right;
+    .carousel.slide.multi-item-carousel {
+      background: black;
+      .col-sm-3.col-xs-3 {
+        text-align: center;
+      }
+      .carousel-control {
+        width: 5%;
+      }
+    }
   }
 
   aside {
