@@ -48,63 +48,65 @@
     <% end %>
   </aside>
   <article>
-    <div class="carousel_multiple">
-      <h1>Elegant &amp; Genuine</h1>
-      This is how our works looks like :)
-      <div class="row">
-        <div class="col-sm-12 col-xs-12">
-          <div class="carousel slide multi-item-carousel" id="theCarousel">
-            <div class="carousel-inner">
-              <div class="item active">
-                <div class="row">
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>SMS Clouds</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Blue Apple Soft</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Together Application</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Together Application</p></a></div>
+    <% if @newest_ten_products.any? %>
+      <div class="carousel_multiple">
+        <h1>Elegant &amp; Genuine</h1>
+        This is how our works looks like :)
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <div class="carousel slide multi-item-carousel" id="theCarousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <div class="row">
+                    <% @newest_ten_products.first(4).each do |newest_first_four_products| %>
+                      <div class="col-sm-3 col-xs-3 product_image"><a href="#1">
+                        <% if newest_first_four_products.image_url %>
+                          <%= cl_image_tag(newest_first_four_products.image_url(:standard, :radius => 10), :alt => newest_first_four_products.title.mb_chars.capitalize.to_s) %>
+                        <% else %>
+                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара") %>
+                        <% end %>
+                        <p><%= newest_first_four_products.title.mb_chars.capitalize.to_s %></p></a>
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Blue Apple Soft</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Together Application</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>FCBarcelona Club</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>FCBarcelona Club</p></a></div>
+                <div class="item">
+                  <div class="row">
+                    <% @newest_ten_products.last(4).each do |newest_last_four_products| %>
+                      <div class="col-sm-3 col-xs-3"><a href="#1">
+                        <% if newest_last_four_products.image_url %>
+                          <%= cl_image_tag(newest_last_four_products.image_url(:standard, :radius => 10), :alt => newest_last_four_products.title.mb_chars.capitalize.to_s) %>
+                        <% else %>
+                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара") %>
+                        <% end %>
+                        <p><%= newest_last_four_products.title.mb_chars.capitalize.to_s %></p></a>
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
+                
+                <!--  Example item end -->
               </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Blue Apple Soft</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Together Application</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>FCBarcelona Club</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>FCBarcelona Club</p></a></div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Together Application</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>FCBarcelona Club</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>SMS Clouds</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>SMS Clouds</p></a></div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><<%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>FCBarcelona Club</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>SMS Clouds</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Blue Apple Soft</p></a></div>
-                  <div class="col-sm-3 col-xs-3"><a href="#1"><%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %><p>Blue Apple Soft</p></a></div>
-                </div>
-              </div>
-              
-              <!--  Example item end -->
+              <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+              <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
-            <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-            <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
     <% if @products then @products.each do |product| %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= link_to product.title, product %>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+        </div>
+      <% end %>
+    <% end %>
+    <h1>Товары</h1>
+
+    <% if @newest_ten_products then @newest_ten_products.each do |product| %>
         <div class="row">
           <div class="col-md-4">
             <%= link_to product.title, product %>
