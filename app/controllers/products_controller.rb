@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @newest_ten_products = Product.all.order('created_at DESC').take(8)
+    @products_wth_special_offers = Product.where("discount != 0").limit(20)
+    @newest_ten_products = Product.order('created_at DESC').limit(8)
     if params.present? #params[:one].present?
       if params[:title]
         @products = Product.search_by_title(params[:title])

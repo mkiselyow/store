@@ -40,6 +40,12 @@
   }
 }
 
+@media all and (min-width: 1199px) and (max-width: 1600px) {
+  body .top_container_left .col-lg-8 img {
+    width: 110%;
+  }
+}
+
 .top_container_center {
   // background: red;
   height: inherit;
@@ -47,6 +53,7 @@
   box-sizing: border-box;
   line-height: 35px;
   text-align: center;
+
   .row {
     padding: 10px;
   }

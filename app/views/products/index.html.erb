@@ -50,45 +50,242 @@
   <article>
     <% if @newest_ten_products.any? %>
       <div class="carousel_multiple">
-        <h1>Elegant &amp; Genuine</h1>
-        This is how our works looks like :)
+        <h1>Новинки</h1>
         <div class="row">
           <div class="col-sm-12 col-xs-12">
             <div class="carousel slide multi-item-carousel" id="theCarousel">
               <div class="carousel-inner">
                 <div class="item active">
                   <div class="row">
-                    <% @newest_ten_products.first(4).each do |newest_first_four_products| %>
+                    <% @newest_ten_products.limit(4).each do |newest_first_four_products| %>
                       <div class="col-sm-3 col-xs-3 product_image"><a href="#1">
                         <% if newest_first_four_products.image_url %>
-                          <%= cl_image_tag(newest_first_four_products.image_url(:standard, :radius => 10), :alt => newest_first_four_products.title.mb_chars.capitalize.to_s) %>
+                          <%= cl_image_tag(newest_first_four_products.image_url(:standard, :radius => 10), :alt => newest_first_four_products.title.mb_chars.capitalize.to_s, :title => newest_first_four_products.title.mb_chars.capitalize.to_s) %>
                         <% else %>
-                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара") %>
+                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
                         <% end %>
                         <p><%= newest_first_four_products.title.mb_chars.capitalize.to_s %></p></a>
                       </div>
                     <% end %>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="row">
-                    <% @newest_ten_products.last(4).each do |newest_last_four_products| %>
-                      <div class="col-sm-3 col-xs-3"><a href="#1">
-                        <% if newest_last_four_products.image_url %>
-                          <%= cl_image_tag(newest_last_four_products.image_url(:standard, :radius => 10), :alt => newest_last_four_products.title.mb_chars.capitalize.to_s) %>
-                        <% else %>
-                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара") %>
-                        <% end %>
-                        <p><%= newest_last_four_products.title.mb_chars.capitalize.to_s %></p></a>
-                      </div>
-                    <% end %>
+                <% if @newest_ten_products.limit(4).offset(4).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @newest_ten_products.last(4).each do |newest_last_four_products| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if newest_last_four_products.image_url %>
+                            <%= cl_image_tag(newest_last_four_products.image_url(:standard, :radius => 10), :alt => newest_last_four_products.title.mb_chars.capitalize.to_s, :title => newest_last_four_products.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= newest_last_four_products.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
+                <% end %>
                 
                 <!--  Example item end -->
               </div>
               <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
               <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- special offers carousel -->
+
+    <% if @products_wth_special_offers.any? %>
+      <div class="carousel_multiple">
+        <h1>Акции &amp; Скидки</h1>
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <div class="carousel slide multi-item-carousel" id="theCarousel_special">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <div class="row">
+                    <% @products_wth_special_offers.limit(4).each do |wth_special_offers_row| %>
+                      <div class="col-sm-3 col-xs-3 product_image"><a href="#1">
+                        <% if wth_special_offers_row.image_url %>
+                          <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                        <% else %>
+                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                        <% end %>
+                        <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <% if @products_wth_special_offers.limit(4).offset(4).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(4).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @products_wth_special_offers.limit(4).offset(8).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(8).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @products_wth_special_offers.limit(4).offset(12).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(12).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @products_wth_special_offers.limit(4).offset(16).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(16).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                
+                <!--  Example item end -->
+              </div>
+              <a class="left carousel-control" href="#theCarousel_special" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+              <a class="right carousel-control" href="#theCarousel_special" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- top viewed carousel -->
+
+    <% if @products_wth_special_offers.any? %>
+      <div class="carousel_multiple">
+        <h1>Хит Продаж</h1>
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <div class="carousel slide multi-item-carousel" id="theCarousel_special">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <div class="row">
+                    <% @products_wth_special_offers.limit(4).each do |wth_special_offers_row| %>
+                      <div class="col-sm-3 col-xs-3 product_image"><a href="#1">
+                        <% if wth_special_offers_row.image_url %>
+                          <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                        <% else %>
+                          <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                        <% end %>
+                        <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <% if @products_wth_special_offers.limit(4).offset(4).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(4).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @products_wth_special_offers.limit(4).offset(8).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(8).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @products_wth_special_offers.limit(4).offset(12).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(12).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @products_wth_special_offers.limit(4).offset(16).any? %>
+                  <div class="item">
+                    <div class="row">
+                      <% @products_wth_special_offers.limit(4).offset(16).each do |wth_special_offers_row| %>
+                        <div class="col-sm-3 col-xs-3"><a href="#1">
+                          <% if wth_special_offers_row.image_url %>
+                            <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
+                          <% else %>
+                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+                          <% end %>
+                          <p><%= wth_special_offers_row.title.mb_chars.capitalize.to_s %></p></a>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                
+                <!--  Example item end -->
+              </div>
+              <a class="left carousel-control" href="#theCarousel_special" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+              <a class="right carousel-control" href="#theCarousel_special" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
           </div>
         </div>
