@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Корзина</h2>
+<ul>
+  <% @cart.line_items.each do |item| %>
+    <li><%= item.product.title.mb_chars.capitalize.to_s %></li>
+  <% end %>
+</ul>
+<%= link_to 'Редактировать ', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

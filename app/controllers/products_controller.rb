@@ -1,11 +1,14 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :add_times_viewed, only: [:show]
+
   # before_action :set_price, only: [:update, :edit]
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    @products_most_viewed = Product.where("times_viewed >= 0").order("times_viewed DESC").limit(20)
     @products_wth_special_offers = Product.where("discount != 0").limit(20)
     @newest_ten_products = Product.order('created_at DESC').limit(8)
     if params.present? #params[:one].present?
@@ -167,6 +170,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  #считаем кол-во просмотров
+  def add_times_viewed
+    if @product.times_viewed
+      times = @product.times_viewed +=1
+      @product.update(times_viewed: times)
+    else
+      @product.update(times_viewed: 1)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -183,6 +196,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :size_a, :size_b, :size_h, :purchase_price, :mark_up, :price, :weight, :color_white, :color_black, :color_red, :color_yellow, :color_green, :color_blue, :color_violet, :brand, :material_plastic, :material_iron, :material_another, :material_wooden, :material_fabric, :supplier, :quantity, :image, :boys, :girls, :description, :image_cache, :image_id, :country, :product_code, :discount)
+      params.require(:product).permit(:title, :size_a, :size_b, :size_h, :purchase_price, :mark_up, :price, :weight, :color_white, :color_black, :color_red, :color_yellow, :color_green, :color_blue, :color_violet, :brand, :material_plastic, :material_iron, :material_another, :material_wooden, :material_fabric, :supplier, :quantity, :image, :boys, :girls, :description, :image_cache, :image_id, :country, :product_code, :discount, :times_viewed)
     end
 end

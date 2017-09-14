@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   mount_uploader :image, ImageUploader
   # extend Textacular
   include PgSearch
@@ -66,4 +70,19 @@ class Product < ApplicationRecord
   # def self.searchable_columns
   #   [:title, :description]
   # end
+
+  #latest updated products
+  def self.latest
+    Product.order(:updated_at).last
+  end
+
+  # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'существуют товарные позиции')
+      return false
+    end
+  end
 end
