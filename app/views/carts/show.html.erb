@@ -1,10 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <h2>Корзина</h2>
-<ul>
   <% @cart.line_items.each do |item| %>
-    <li><%= item.product.title.mb_chars.capitalize.to_s %></li>
+    <ul>
+      <li><%= item.quantity %> &times; <%= item.product.title.mb_chars.capitalize.to_s %></li>
+      <li><%= link_to 'удалить', item, method: :delete %></li>
+      <li><%= link_to 'уменьшить кол-во', line_item_decrease_quantity_path(item), method: :put  %></li>
+      <li><%= link_to 'увеличить кол-во', line_item_increase_quantity_path(item), method: :put  %></li>
+      <li>Цена <%= number_to_currency(item.product.price, unit: "₴") %></li>
+      <li>Сумма <%= number_to_currency(item.count_line_item_price, unit: "₴") %></li>
+    </ul>
   <% end %>
-</ul>
+
 <%= link_to 'Редактировать ', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

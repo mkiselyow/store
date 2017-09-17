@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :line_items
+  resources :line_items do
+    put 'decrease_quantity'
+    put 'increase_quantity'
+  end
   resources :carts
   resources :products
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }

@@ -40,7 +40,7 @@
           <div class="row">
             <div>095 000 00 00</div>
             <div>068 000 00 00</div>
-            <div>TimKa</div>
+            <div>мапапама</div>
           </div>
         </div>
         <div class="col-lg-4 col-md-12 top_container_right">
@@ -64,7 +64,7 @@
               
             </div>
             <div class="col-xs-6 col-md-6 col-lg-4">
-              <p>Корзина</p>
+              <%= link_to "Корзина", cart_path(@cart.id) %>
             </div>
           </div>
         </div>
@@ -87,8 +87,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <!--     <p class="notice"><%= notice %></p>--> 
-          <p class="alert"><%= alert %></p>
+         <p id="notice"><%= notice %></p> 
           <%= yield %>
         </div>
       </div>

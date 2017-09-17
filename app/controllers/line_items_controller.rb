@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  # before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -27,7 +27,8 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.add_product(product.id)
+    # @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|
       if @line_item.save
@@ -59,8 +60,40 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to @line_item.cart, notice: 'Товар был успешно убран из корзины' }
       format.json { head :no_content }
+    end
+  end
+
+  def decrease_quantity
+    @line_item = LineItem.find(params[:line_item_id])
+    if @line_item.quantity >= 2
+      decreased_quantity = @line_item.quantity - 1
+      @line_item.update(quantity: decreased_quantity)
+      respond_to do |format|
+        format.html { redirect_to @line_item.cart, notice: 'Количество было успешно уменьшено' }
+        format.json { head :no_content }
+      end
+    else
+      @line_item.destroy
+      respond_to do |format|
+        format.html { redirect_to @line_item.cart, notice: 'Товар был успешно убран из корзины' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
+  def increase_quantity
+    @line_item = LineItem.find(params[:line_item_id])
+    if @line_item
+      increased_quantity = @line_item.quantity + 1
+      @line_item.update(quantity: increased_quantity)
+      respond_to do |format|
+        format.html { redirect_to @line_item.cart, notice: 'Количество было успешно уменьшено' }
+        format.json { head :no_content }
+      end
+    else
+      format.html { redirect_to root_path, notice: 'неизвестная ошибка' }
     end
   end
 
@@ -72,6 +105,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id)
     end
 end
