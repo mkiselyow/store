@@ -91,3 +91,6 @@ gem 'social-share-button'
 # gem 'textacular', '~> 5.0'
 # gem 'texticle', require: 'texticle/rails'
 gem 'pg_search'
+
+#ui kit pach
+gem 'uikit2-rails', '~> 0.1.10'

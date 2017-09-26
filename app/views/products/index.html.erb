@@ -300,91 +300,93 @@
         </div>
       </div>
     <% end %>
-    <% cache ['products', Product.latest] do %>
-      <% if @products then @products.each do |product| %>
-        <% cache ['entry', product] do %>
-            <div class="row">
-              <div class="col-md-4">
-                <%= link_to product.title, product %>
+    <div data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">
+      <% cache ['products', Product.latest] do %>
+        <% if @products then @products.each do |product| %>
+          <% cache ['entry', product] do %>
+              <div class="row">
+                <div class="col-md-4">
+                  <%= link_to product.title, product %>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
               </div>
-              <div class="col-md-4"></div>
-              <div class="col-md-4"></div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
-    <h1>Товары</h1>
+      <h1>Товары</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Название</th>
-          <th>Длина</th>
-          <th>Ширина</th>
-          <th>Высота</th>
-          <th>Цена закупки</th>
-          <th>Наценка</th>
-          <th>Цена</th>
-          <th>Вес</th>
-          <th>Мальчики</th>
-          <th>Девочки</th>
-          <th>Белый</th>
-          <th>Черный</th>
-          <th>Красный</th>
-          <th>Желтый</th>
-          <th>Зеленый</th>
-          <th>Синий</th>
-          <th>Фиолетовый</th>
-          <th>Бренд</th>
-          <th>Пластик</th>
-          <th>Железо</th>
-          <th>Другой материал</th>
-          <th>Дерево</th>
-          <th>Ткань</th>
-          <th>Поставщик</th>
-          <th>Количество</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+      <table>
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Длина</th>
+            <th>Ширина</th>
+            <th>Высота</th>
+            <th>Цена закупки</th>
+            <th>Наценка</th>
+            <th>Цена</th>
+            <th>Вес</th>
+            <th>Мальчики</th>
+            <th>Девочки</th>
+            <th>Белый</th>
+            <th>Черный</th>
+            <th>Красный</th>
+            <th>Желтый</th>
+            <th>Зеленый</th>
+            <th>Синий</th>
+            <th>Фиолетовый</th>
+            <th>Бренд</th>
+            <th>Пластик</th>
+            <th>Железо</th>
+            <th>Другой материал</th>
+            <th>Дерево</th>
+            <th>Ткань</th>
+            <th>Поставщик</th>
+            <th>Количество</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <%  if @products then @products.each do |product| %>
-            <tr>
-              <td><%= link_to product.title, product %></td>
-              <td><%= product.size_a %></td>
-              <td><%= product.size_b %></td>
-              <td><%= product.size_h %></td>
-              <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
-              <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
-              <td><%= number_to_currency(product.price, unit: "₴") %></td>
-              <td><%= product.weight %></td>
-              <td><%= product.boys %></td>
-              <td><%= product.girls %></td>
-              <td><%= product.color_white %></td>
-              <td><%= product.color_black %></td>
-              <td><%= product.color_red %></td>
-              <td><%= product.color_yellow %></td>
-              <td><%= product.color_green %></td>
-              <td><%= product.color_blue %></td>
-              <td><%= product.color_violet %></td>
-              <td><%= product.brand %></td>
-              <td><%= product.material_plastic %></td>
-              <td><%= product.material_iron %></td>
-              <td><%= product.material_another %></td>
-              <td><%= product.material_wooden %></td>
-              <td><%= product.material_fabric %></td>
-              <td><%= product.supplier %></td>
-              <td><%= product.quantity %></td>
-              <td><%= link_to 'Показать', product %></td>
-              <td><%= link_to 'Редактировать', edit_product_path(product) %></td>
-              <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверенны?' } %></td>
-            </tr>
+        <tbody>
+          <%  if @products then @products.each do |product| %>
+              <tr>
+                <td><%= link_to product.title, product %></td>
+                <td><%= product.size_a %></td>
+                <td><%= product.size_b %></td>
+                <td><%= product.size_h %></td>
+                <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
+                <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
+                <td><%= number_to_currency(product.price, unit: "₴") %></td>
+                <td><%= product.weight %></td>
+                <td><%= product.boys %></td>
+                <td><%= product.girls %></td>
+                <td><%= product.color_white %></td>
+                <td><%= product.color_black %></td>
+                <td><%= product.color_red %></td>
+                <td><%= product.color_yellow %></td>
+                <td><%= product.color_green %></td>
+                <td><%= product.color_blue %></td>
+                <td><%= product.color_violet %></td>
+                <td><%= product.brand %></td>
+                <td><%= product.material_plastic %></td>
+                <td><%= product.material_iron %></td>
+                <td><%= product.material_another %></td>
+                <td><%= product.material_wooden %></td>
+                <td><%= product.material_fabric %></td>
+                <td><%= product.supplier %></td>
+                <td><%= product.quantity %></td>
+                <td><%= link_to 'Показать', product %></td>
+                <td><%= link_to 'Редактировать', edit_product_path(product) %></td>
+                <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверенны?' } %></td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </article>
 </main>
               
