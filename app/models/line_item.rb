@@ -3,6 +3,8 @@ class LineItem < ApplicationRecord
   belongs_to :cart
 
   def count_line_item_price
-    self.product.price * self.quantity
+    if self.product.price.class != nil
+      self.product.price * self.quantity
+    end
   end
 end
