@@ -1,0 +1,17 @@
+
+<%= link_to product do %>
+  <% if product.image_url %>
+    <%= cl_image_tag(product.image_url(:standard, :radius => 10), :alt => product.title.mb_chars.capitalize.to_s, :title => product.title.mb_chars.capitalize.to_s) %>
+  <% else %>
+    <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :radius => 10, :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
+  <% end %>
+
+  <% if product.discount %>
+      <%= tag.div("Скидка #{number_to_percentage(product.discount, precision: 0)}", :class => "product_price_text") %>
+  <% end %>
+
+  <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
+  <%= tag.div(number_to_currency(product.price, unit: "₴"), :class => "product_price_text") %>
+  <%= if product.quantity then tag.div("Остаток #{product.quantity}", :class => "product_quantity_text") else tag.div("Под заказ", :class => "  product_quantity_text") end %>
+  <%= tag.div(product.product_code, :class => "product_code_text") %>
+<% end %>

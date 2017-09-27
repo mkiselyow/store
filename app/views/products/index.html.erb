@@ -58,16 +58,9 @@
                 <div class="item active">
                   <div class="row">
                     <% @newest_ten_products.limit(4).each do |newest_first_four_products| %>
-                      <div class="col-sm-3 col-xs-3 product_image">
-                        <%= link_to newest_first_four_products do %>
-                          <% if newest_first_four_products.image_url %>
-                            <%= cl_image_tag(newest_first_four_products.image_url(:standard, :radius => 10), :alt => newest_first_four_products.title.mb_chars.capitalize.to_s, :title => newest_first_four_products.title.mb_chars.capitalize.to_s) %>
-                          <% else %>
-                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
-                          <% end %>
-                          <p><%= newest_first_four_products.title.mb_chars.capitalize.to_s %></p>
-                        <% end %>
-                        <%= button_to 'Добавить в Корзину', line_items_path(product_id: newest_first_four_products) %>
+                      <div class="col-sm-3 col-xs-3 product_view_class">
+                        <%= render  partial: "products/product", locals: { product: newest_first_four_products } %>
+                        <%= button_to 'В Корзину', line_items_path(product_id: newest_first_four_products) %>
                       </div>
                     <% end %>
                   </div>
@@ -76,13 +69,8 @@
                   <div class="item">
                     <div class="row">
                       <% @newest_ten_products.last(4).each do |newest_last_four_products| %>
-                        <div class="col-sm-3 col-xs-3"><a href="#1">
-                          <% if newest_last_four_products.image_url %>
-                            <%= cl_image_tag(newest_last_four_products.image_url(:standard, :radius => 10), :alt => newest_last_four_products.title.mb_chars.capitalize.to_s, :title => newest_last_four_products.title.mb_chars.capitalize.to_s) %>
-                          <% else %>
-                            <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
-                          <% end %>
-                          <p><%= newest_last_four_products.title.mb_chars.capitalize.to_s %></p></a>
+                        <div class="col-sm-3 col-xs-3 product_view_class"><a href="#1">
+                        <%= render  partial: "products/product", locals: { product: newest_last_four_products } %>
                         <%= button_to 'Добавить в Корзину', line_items_path(product_id: newest_last_four_products) %>
                         </div>
                       <% end %>
@@ -112,7 +100,7 @@
                 <div class="item active">
                   <div class="row">
                     <% @products_wth_special_offers.limit(4).each do |wth_special_offers_row| %>
-                      <div class="col-sm-3 col-xs-3 product_image"><a href="#1">
+                      <div class="col-sm-3 col-xs-3 product_view_class"><a href="#1">
                         <% if wth_special_offers_row.image_url %>
                           <%= cl_image_tag(wth_special_offers_row.image_url(:standard, :radius => 10), :alt => wth_special_offers_row.title.mb_chars.capitalize.to_s, :title => wth_special_offers_row.title.mb_chars.capitalize.to_s) %>
                         <% else %>
@@ -215,7 +203,7 @@
                 <div class="item active">
                   <div class="row">
                     <% @products_most_viewed.limit(4).each do |products_most_viewed_row| %>
-                      <div class="col-sm-3 col-xs-3 product_image"><a href="#1">
+                      <div class="col-sm-3 col-xs-3 product_view_class"><a href="#1">
                         <% if products_most_viewed_row.image_url %>
                           <%= cl_image_tag(products_most_viewed_row.image_url(:standard, :radius => 10), :alt => products_most_viewed_row.title.mb_chars.capitalize.to_s, :title => products_most_viewed_row.title.mb_chars.capitalize.to_s) %>
                         <% else %>
