@@ -151,6 +151,9 @@ main {
         }
       }
     }
+    .all_products_div {
+      @extend .carousel.slide.multi-item-carousel;
+    }
   }
 
   aside {

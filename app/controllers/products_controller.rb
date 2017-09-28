@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @products_count = Product.count
     @products = Product.all
     @products_most_viewed = Product.where("times_viewed >= 0").order("times_viewed DESC").limit(20)
     @products_wth_special_offers = Product.where("discount != 0").limit(20)

@@ -1,0 +1,19 @@
+<% if some_array_of_products.any? %>
+  <div class="all_products">
+    <h1><%= name_of_div %></h1>
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="all_products_div">
+          <% (rows_count).times do |count| %>
+            <% offset_count = (count+1)*4 %>
+            <% if some_array_of_products.limit(4).offset(offset_count).any? %>
+              <div class="item">
+                <%= render  partial: "products/carousel_row", locals: { some_array_of_products_limited: some_array_of_products.limit(4).offset(offset_count) } %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
