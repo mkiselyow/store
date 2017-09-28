@@ -60,7 +60,7 @@
                     <% @newest_ten_products.limit(4).each do |newest_first_four_products| %>
                       <div class="col-sm-3 col-xs-3 product_view_class">
                         <%= render  partial: "products/product", locals: { product: newest_first_four_products } %>
-                        <%= button_to 'В Корзину', line_items_path(product_id: newest_first_four_products) %>
+                        <%= button_to 'В Корзину', line_items_path(product_id: newest_first_four_products), :class => "buttom_add_to_cart" %>
                       </div>
                     <% end %>
                   </div>
@@ -71,7 +71,7 @@
                       <% @newest_ten_products.last(4).each do |newest_last_four_products| %>
                         <div class="col-sm-3 col-xs-3 product_view_class"><a href="#1">
                         <%= render  partial: "products/product", locals: { product: newest_last_four_products } %>
-                        <%= button_to 'Добавить в Корзину', line_items_path(product_id: newest_last_four_products) %>
+                        <%= button_to 'В Корзину', line_items_path(product_id: newest_last_four_products), :class => "buttom_add_to_cart" %>
                         </div>
                       <% end %>
                     </div>
