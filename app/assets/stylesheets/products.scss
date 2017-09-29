@@ -136,8 +136,9 @@ body {
       .col-sm-3.col-xs-3 {
         width: 24%;
       }
-      .col-sm-12.col-xs-12 {
-        width: 100%;
+      .col-sm-12.col-xs-12 {    
+        width: 90%;
+        margin-left: 2%;
       }
       .col-sm-3.col-xs-3:hover, .col-sm-12.col-xs-12:hover {
         .button_to .buttom_add_to_cart {
@@ -242,6 +243,11 @@ a.top_nav_button:hover {
   a.top_nav_button {
     width: 9%;
   }
+  // .top_nav {
+  //   position: fixed;
+  //   top: 0px;
+  //   width: 100%;
+  // }
   .mobile {
     display: none;
   }
@@ -277,3 +283,13 @@ a.top_nav_button:hover {
   }
 }
 
+.sticky {
+  width: 100%;
+  z-index: 100;
+}
+
+.sticky.fixed {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
