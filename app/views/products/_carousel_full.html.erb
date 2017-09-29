@@ -11,9 +11,9 @@
             </div>
             <% (rows_count-1).times do |count| %>
               <% offset_count = (count+1)*4 %>
-              <% if some_array_of_products.limit(1).offset(offset_count).any? %>
+              <% if some_array_of_products.limit(4).offset(offset_count).any? %>
                 <div class="item">
-                  <%= render  partial: "products/carousel_row", locals: { some_array_of_products_limited: some_array_of_products.limit(1).offset(offset_count) } %>
+                  <%= render  partial: "products/carousel_row", locals: { some_array_of_products_limited: some_array_of_products.limit(4).offset(offset_count) } %>
                 </div>
               <% end %>
             <% end %>
