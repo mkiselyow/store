@@ -5,10 +5,10 @@
       <div class="col-sm-12 col-xs-12">
         <div class="all_products_div">
           <% (rows_count).times do |count| %>
-            <% offset_count = (count)*4 %>
-            <% if some_array_of_products.limit(4).offset(offset_count).any? %>
+            <% offset_count = (count)*1 %>
+            <% if some_array_of_products.limit(1).offset(offset_count).any? %>
               <div class="item">
-                <%= render  partial: "products/carousel_row", locals: { some_array_of_products_limited: some_array_of_products.limit(4).offset(offset_count) } %>
+                <%= render  partial: "products/carousel_row_mobile", locals: { some_array_of_products_limited: some_array_of_products.limit(1).offset(offset_count) } %>
               </div>
             <% end %>
           <% end %>

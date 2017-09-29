@@ -6,8 +6,10 @@
     <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :radius => 10, :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара") %>
   <% end %>
 
-  <% if product.discount %>
-      <%= tag.div("Скидка #{number_to_percentage(product.discount, precision: 0)}", :class => "product_price_text") %>
+  <%= tag.div :class => "product_price_text" do %>
+    <% if product.discount %>
+        <%= "Скидка #{number_to_percentage(product.discount, precision: 0)}" %>
+    <% end %>
   <% end %>
 
   <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>

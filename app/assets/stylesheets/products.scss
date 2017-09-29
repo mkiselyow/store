@@ -84,12 +84,12 @@
     float: right;
   }
 }
-main {
+body {
   h1 {
     line-height: 2;
     text-align: center;
   }
-  article {
+  article, .mobile {
     // background-color: gray;
     min-height: 100px;
     width: 83%;
@@ -100,7 +100,7 @@ main {
         margin-left: 2%;
         border-left: 1px solid transparent;
       }
-      .col-sm-3.col-xs-3 {
+      .product_view_class {
         border: 1px solid transparent;
         text-align: center;
         border-left: 1px solid #ebedee;
@@ -112,7 +112,7 @@ main {
         a {
           display: block;
         }
-        .button_to .buttom_add_to_cart {
+        .buttom_add_to_cart {
           display: none;
           border: none;
           background: #ff3801;
@@ -129,16 +129,24 @@ main {
           text-decoration: none;
           color: #666;
         }
+        a:focus {
+          color: #666;
+        }
       }
-      .col-sm-3.col-xs-3:hover {
+      .col-sm-3.col-xs-3 {
+        width: 24%;
+      }
+      .col-sm-12.col-xs-12 {
+        width: 100%;
+      }
+      .col-sm-3.col-xs-3:hover, .col-sm-12.col-xs-12:hover {
         .button_to .buttom_add_to_cart {
           display: initial;
         }
         border: 1px solid #ebedee;
         box-shadow: 10px 10px 5px #888888;
       }
-      .product_view_class:hover {
-      }
+
       .carousel-control {
         width: 5%;
       }
@@ -194,12 +202,78 @@ main {
 }
 
 .product_quantity_text {
-  @extend .product_price_text;
+  @extend .product_common_text;
 }
 
 .product_code_text {
-  @extend .product_price_text;
+  @extend .product_common_text;
+}
+
+.top_nav {
+  text-align: center;
+}
+
+a.top_nav_button {
+  border: none;
+  background: #ff3801;
+  border-radius: 5px;
+  color: #FFF;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  width: 9%;
+  font-family: "SF Pro Text",sans-serif;
+  font-size: 14px;
+  display: inline-block;
+  height: 30px;
+  vertical-align: bottom;
+}
+
+a.top_nav_button:visited {
+  color: #FFF;
+}
+
+a.top_nav_button:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media all and (min-width: 992px) and (max-width: 1600px) {
+  a.top_nav_button {
+    width: 9%;
+  }
+  .mobile {
+    display: none;
+  }
 }
 
 
+@media all and (min-width: 768px) and (max-width: 991px) {
+  a.top_nav_button {
+    width: 19%;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+
+
+@media all and (min-width: 1px) and (max-width: 767px) {
+  a.top_nav_button {
+    width: 49%;
+  }
+  body article {
+    display: none;
+  }
+  .mobile {
+    display: initial;
+  }
+  body aside {
+    display: none;
+  }
+  body article, body .mobile {
+    width: 100%;
+  }
+}
 

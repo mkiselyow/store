@@ -60,8 +60,24 @@
 
     <!-- all products -->
 
-    <%= render  partial: "products/all_products_div", locals: { some_array_of_products: @products, rows_count: @products_count, name_of_div: "Все Товары" } %>
+    <%= render  partial: "products/all_products_div", locals: { some_array_of_products: @products, rows_count: (@products_count/4), name_of_div: "Все Товары" } %>
 
   </article>
 </main>
+
+<div class="mobile">
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4, id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: "Новинки"  } %>
+
+  <!-- special offers carousel -->
+  
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_wth_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: "Акции" } %>
+  
+  <!-- top viewed carousel -->
+
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4, id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: "Популярные" } %>
+
+  <!-- all products -->
+
+  <%= render  partial: "products/all_products_div_mobile", locals: { some_array_of_products: @products, rows_count: @products_count, name_of_div: "Все Товары" } %>
+</div>
               
