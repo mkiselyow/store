@@ -20,28 +20,28 @@
         <hr>
         <p>Цвет</p>
         <div class="col-md-6">
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_white" %>Белый</p>
+          <p><%= check_box_tag :color_white, :true, :false, :class => "color_white" %>Белый</p>
           <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Желтый</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_green" %>Зеленый</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_violet" %>Фиолетовый</p>
+          <p><%= check_box_tag :color_green, :true, :false, :class => "color_green" %>Зеленый</p>
+          <p><%= check_box_tag :color_violet, :true, :false, :class => "color_violet" %>Фиолетовый</p>
         </div>
         <div class="col-md-6">
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_black" %>Черный</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_red" %>Красный</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_blue" %>Синий</p>
+          <p><%= check_box_tag :color_black, :true, :false, :class => "color_black" %>Черный</p>
+          <p><%= check_box_tag :color_red, :true, :false, :class => "color_red" %>Красный</p>
+          <p><%= check_box_tag :color_blue, :true, :false, :class => "color_blue" %>Синий</p>
         </div>
       </div>
       <div class="row">
         <hr>
         <p>Материал</p>
         <div class="col-md-6">
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Пластик</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Дерево</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Другой</p>
+          <p><%= check_box_tag :material_plastic, :true, :false, :class => "color_yellow" %>Пластик</p>
+          <p><%= check_box_tag :material_wood, :true, :false, :class => "color_yellow" %>Дерево</p>
+          <p><%= check_box_tag :material_another, :true, :false, :class => "color_yellow" %>Другой</p>
         </div>
         <div class="col-md-6">
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Железо</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Ткань</p>
+          <p><%= check_box_tag :material_iron, :true, :false, :class => "color_yellow" %>Железо</p>
+          <p><%= check_box_tag :material_fabric, :true, :false, :class => "color_yellow" %>Ткань</p>
         </div>
       </div>
       <%= submit_tag 'Искать', title: nil %>

@@ -8,85 +8,104 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products_count = Product.count
-    # @products = Product.all
+    @products = Product.all
     @products_most_viewed = Product.where("times_viewed >= 0").order("times_viewed DESC").limit(20)
     @products_wth_special_offers = Product.where("discount != 0").limit(20)
     @newest_ten_products = Product.order('created_at DESC').limit(8)
     if params.present? #params[:one].present?
+      puts "HAVING params[:params.present?] SEARCHED"
       if params[:title]
         @products = Product.search_by_title(params[:title])
       else
-        @products = Product.all
+        @products = Product.all.to_a
         if params[:boys]
-          @products = Product.search_by_boys(params[:boys])
-        else
-          @products = Product.search_by_boys("false")
+          @products = @products & Product.search_by_boys(params[:boys]).to_a
+          puts "HAVING params[:boys] SEARCHED"
+          puts "boys count #{Product.search_by_boys(params[:boys]).count} #{@products.count}"
+        # else
+        #   @products = Product.search_by_boys("false")
         end
         if params[:girls]
-          @products = Product.search_by_girls(params[:girls])
-        else
-          @products = Product.search_by_girls("false")
+          @products = @products & Product.search_by_girls(params[:girls]).to_a
+          puts "HAVING params[:girls] SEARCHED"
+        # else
+        #   @products = Product.search_by_girls("false")
         end
         if params[:color_black]
-          @products = Product.search_by_color_black(params[:color_black])
-        else
-          @products = Product.search_by_color_black("false")
+          @products = @products & Product.search_by_color_black(params[:color_black]).to_a
+          puts "HAVING params[:color_black] SEARCHED"
+        # else
+        #   @products = Product.search_by_color_black("false")
         end
         if params[:color_white]
-          @products = Product.search_by_color_white(params[:color_white])
-        else
-          @products = Product.search_by_color_white("false")
+          @products = @products & Product.search_by_color_white(params[:color_white]).to_a
+          puts "HAVING params[:color_white] SEARCHED"
+        # else
+        #   @products = Product.search_by_color_white("false")
         end
         if params[:color_yellow]
-          @products = Product.search_by_color_yellow(params[:color_yellow])
-        else
-          @products = Product.search_by_color_yellow("false")
+          @products = @products & Product.search_by_color_yellow(params[:color_yellow]).to_a
+          puts "HAVING params[:color_yellow] SEARCHED"
+          puts "color_yellow count #{Product.search_by_color_yellow(params[:color_yellow]).count} #{@products.count}"
+        # else
+        #   @products = Product.search_by_color_yellow("false")
         end
         if params[:color_red]
-          @products = Product.search_by_color_red(params[:color_red])
-        else
-          @products = Product.search_by_color_red("false")
+          @products = @products & Product.search_by_color_red(params[:color_red]).to_a
+          puts "HAVING params[:color_red] SEARCHED"
+        # else
+        #   @products = Product.search_by_color_red("false")
         end
         if params[:color_green]
-          @products = Product.search_by_color_green(params[:color_green])
-        else
-          @products = Product.search_by_color_green("false")
+          @products = @products & Product.search_by_color_green(params[:color_green]).to_a
+          puts "HAVING params[:color_green] SEARCHED"
+        # else
+        #   @products = Product.search_by_color_green("false")
         end
         if params[:color_blue]
-          @products = Product.search_by_color_blue(params[:color_blue])
-        else
-          @products = Product.search_by_color_blue("false")
+          @products = @products & Product.search_by_color_blue(params[:color_blue]).to_a
+          puts "HAVING params[:color_blue] SEARCHED"
+        # else
+        #   @products = Product.search_by_color_blue("false")
         end
         if params[:color_violet]
-          @products = Product.search_by_color_violet(params[:color_violet])
-        else
-          @products = Product.search_by_color_violet("false")
+          @products = @products & Product.search_by_color_violet(params[:color_violet]).to_a
+          puts "HAVING params[:color_violet] SEARCHED"
+        # else
+        #   @products = Product.search_by_color_violet("false")
         end
         if params[:material_another]
-          @products = Product.search_by_material_another(params[:material_another])
-        else
-          @products = Product.search_by_material_another("false")
+          @products = @products & Product.search_by_material_another(params[:material_another]).to_a
+          puts "HAVING params[:material_another] SEARCHED"
+        # else
+        #   @products = Product.search_by_material_another("false")
         end
         if params[:material_wood]
-          @products = Product.search_by_material_wood(params[:material_wood])
-        else
-          @products = Product.search_by_material_wood("false")
+          @products = @products & Product.search_by_material_wood(params[:material_wood]).to_a
+          puts "HAVING params[:material_wood] SEARCHED"
+        # else
+        #   @products = Product.search_by_material_wood("false")
         end
         if params[:material_iron]
-          @products = Product.search_by_material_iron(params[:material_iron])
-        else
-          @products = Product.search_by_material_iron("false")
+          @products = @products & Product.search_by_material_iron(params[:material_iron]).to_a
+          puts "HAVING params[:material_iron] SEARCHED"
+        # else
+        #   @products = Product.search_by_material_iron("false")
         end
         if params[:material_fabric]
-          @products = Product.search_by_material_fabric(params[:material_fabric])
-        else
-          @products = Product.search_by_material_fabric("false")
+          @products = @products & Product.search_by_material_fabric(params[:material_fabric]).to_a
+          puts "HAVING params[:material_fabric] SEARCHED"
+        # else
+        #   @products = Product.search_by_material_fabric("false")
         end
         if params[:material_plastic]
-          @products = Product.search_by_material_plastic(params[:material_plastic])
-        else
-          @products = Product.search_by_material_plastic("false")
+          @products = @products & Product.search_by_material_plastic(params[:material_plastic]).to_a
+          puts "HAVING params[:material_plastic] SEARCHED"
+          puts "material_plastic count #{Product.search_by_material_plastic(params[:material_plastic]).count} #{@products.count}"
+        # else
+        #   @products = Product.search_by_material_plastic("false")
         end
+        @products = Product.where(id: @products.map(&:id))
       end
     end
     # if params[:boys]
