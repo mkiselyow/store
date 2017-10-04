@@ -180,6 +180,16 @@ body {
     padding: 15px;
     overflow: hidden;
     box-sizing: border-box;
+    .row .col-md-6, .row .col-md-12 {
+      padding-left: 5px;
+      padding-right: 5px;
+      p {
+      font-size: 10px;
+        input {
+          margin-right: 4px;
+        }
+      }
+    }
   }
 }
 
@@ -202,6 +212,7 @@ body {
   font-size: 16px;
   color: #ff3801;
   line-height: 2.5;
+  max-height: 40px;
 }
 
 .product_price_text {
@@ -250,12 +261,21 @@ a.top_nav_button:hover {
   a.top_nav_button {
     width: 9%;
   }
+  aside.sticky.fixed {
+    top: 40px;
+    width: 16.5%;
+  }
 }
 
 
 @media all and (min-width: 768px) and (max-width: 991px) {
   a.top_nav_button {
     width: 19%;
+  }
+  aside.sticky.fixed {
+    top: 80px;
+    width: 16.5%;
+    position: static;
   }
 }
 
@@ -293,4 +313,7 @@ a.top_nav_button:hover {
 .sticky {
   width: 100%;
   z-index: 100;
+}
+aside.sticky {
+  width: 17%;
 }
