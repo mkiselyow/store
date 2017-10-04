@@ -3,51 +3,7 @@
 
 <main>
   <aside class="sticky">
-    <%= link_to 'Добавить товар', new_product_path %><br>
-    Подбор по параметрам
-    <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
-      <div class="row">
-        <hr>
-        <p>Пол</p>
-        <div class="col-md-6">
-          <p><%= check_box_tag :boys, :true, :false, :class => "boys" %>Мальчики</p>
-        </div>
-        <div class="col-md-6">
-          <p><%= check_box_tag :girls, :true, :false, :class => "girls" %>Девочки</p>
-        </div>
-      </div>
-      <div class="row">
-        <hr>
-        <p>Цвет</p>
-        <div class="col-md-6">
-          <p><%= check_box_tag :color_white, :true, :false, :class => "color_white" %>Белый</p>
-          <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Желтый</p>
-          <p><%= check_box_tag :color_green, :true, :false, :class => "color_green" %>Зеленый</p>
-        </div>
-        <div class="col-md-6">
-          <p><%= check_box_tag :color_black, :true, :false, :class => "color_black" %>Черный</p>
-          <p><%= check_box_tag :color_red, :true, :false, :class => "color_red" %>Красный</p>
-          <p><%= check_box_tag :color_blue, :true, :false, :class => "color_blue" %>Синий</p>
-        </div>
-        <div class="col-md-12">
-          <p><%= check_box_tag :color_violet, :true, :false, :class => "color_violet" %>Фиолетовый</p>
-        </div>
-      </div>
-      <div class="row">
-        <hr>
-        <p>Материал</p>
-        <div class="col-md-6">
-          <p><%= check_box_tag :material_plastic, :true, :false, :class => "color_yellow" %>Пластик</p>
-          <p><%= check_box_tag :material_wood, :true, :false, :class => "color_yellow" %>Дерево</p>
-          <p><%= check_box_tag :material_another, :true, :false, :class => "color_yellow" %>Другой</p>
-        </div>
-        <div class="col-md-6">
-          <p><%= check_box_tag :material_iron, :true, :false, :class => "color_yellow" %>Железо</p>
-          <p><%= check_box_tag :material_fabric, :true, :false, :class => "color_yellow" %>Ткань</p>
-        </div>
-      </div>
-      <%= submit_tag 'Искать', title: nil %>
-    <% end %>
+    <%= render  partial: "products/search_multiple_form" %>
   </aside>
   <article>
     <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2, id_of_this_carousel: "newest_carousel", name_of_carousel: "Новинки"  } %>
@@ -63,11 +19,21 @@
     <!-- all products -->
 
     <%= render  partial: "products/all_products_div", locals: { some_array_of_products: @products, rows_count: (@products_count/4), name_of_div: "Все Товары" } %>
-    <a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
   </article>
 </main>
 
-<div class="mobile">
+<div class="mobile" name="top">
+  <!-- This is the container enabling the JavaScript -->
+  <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
+
+      <!-- This is the element toggling the dropdown -->
+      <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+
+      <!-- This is the dropdown -->
+      <div class="uk-dropdown">
+        <%= render  partial: "products/search_multiple_form" %>
+      </div>
+  </div>
   <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4, id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: "Новинки"  } %>
 
   <!-- special offers carousel -->
@@ -82,4 +48,4 @@
 
   <%= render  partial: "products/all_products_div_mobile", locals: { some_array_of_products: @products, rows_count: @products_count, name_of_div: "Все Товары" } %>
 </div>
-              
+<a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>

@@ -1,0 +1,13 @@
+@import 'button_to_top';
+
+.mobile_search_button {
+  @extend .cd-top;
+
+  bottom: 100px;
+  background-color: red;
+
+  visibility: visible;
+  opacity: 0.5;
+
+  z-index: 1021;
+}
