@@ -125,6 +125,7 @@ body {
           width: 50%;
           font-family: "SF Pro Text",sans-serif;
           font-size: 14px;
+          min-height: 42px;
         }
         a:hover {
           text-decoration: none;
@@ -132,6 +133,9 @@ body {
         }
         a:focus {
           color: #666;
+        }
+        form.button_to {
+          min-height: 52px;
         }
       }
       .col-sm-3.col-xs-3 {
@@ -299,14 +303,15 @@ a.top_nav_button:hover {
   }
 }
 
-@media all and (min-width: 768px) and (max-width: 1600px) {
-  .mobile {
-    display: none;
-  }
+@media all and (min-width: 768px) {
   .sticky.fixed {
     position: fixed;
     top: 0px;
     width: 100%;
+  }
+  aside.sticky.fixed {
+    width: 17%;
+    top: 50px;
   }
 }
 
@@ -314,6 +319,13 @@ a.top_nav_button:hover {
   width: 100%;
   z-index: 100;
 }
+
 aside.sticky {
   width: 17%;
+}
+
+@media all and (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
 }

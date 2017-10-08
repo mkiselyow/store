@@ -97,3 +97,6 @@ gem 'uikit2-rails', '~> 0.1.10'
 
 # random names gem
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+
+# user interface lib
+gem 'jquery-ui-rails'

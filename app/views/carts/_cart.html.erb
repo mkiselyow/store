@@ -1,0 +1,9 @@
+<% unless @cart.line_items.empty? %>
+  <h2>Корзина</h2>
+    <%= render(@cart.line_items) %>
+    <div>Сумма покупок <%= number_to_currency(@cart.cart_total_price, unit: "₴") %></div>
+
+  <%= link_to 'Редактировать ', edit_cart_path(@cart) %> |
+  <%= link_to 'Back', carts_path %>
+  <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' } %>
+<% end %>

@@ -1,0 +1,12 @@
+<% if line_item == @current_item %>
+  <ul id="current_item">
+<% else %>
+  <ul>
+<% end %>
+  <li><%= line_item.quantity %> &times; <%= line_item.product.title.mb_chars.capitalize.to_s %></li>
+  <li><%= link_to 'удалить', line_item, method: :delete %></li>
+  <li><%= link_to 'уменьшить кол-во', line_item_decrease_quantity_path(line_item), method: :put  %></li>
+  <li><%= link_to 'увеличить кол-во', line_item_increase_quantity_path(line_item), method: :put  %></li>
+  <li>Цена <%= number_to_currency(line_item.product.price, unit: "₴") %></li>
+  <li>Сумма <%= number_to_currency(line_item.count_line_item_price, unit: "₴") %></li>
+</ul>

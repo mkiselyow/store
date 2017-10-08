@@ -59,14 +59,14 @@
               <p>    
                 <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
                   <%= text_field_tag :title, nil, placeholder: "название товара" %>
-                  <%= submit_tag 'Искать', title: nil  %>
+                  <%= submit_tag 'Искать', title: nil, class: "uk-button"  %>
                 <% end %>
               </p>
               
               
             </div>
             <div class="col-xs-6 col-md-6 col-lg-4">
-              <%= link_to "Корзина", cart_path(@cart.id) %>
+              <%= link_to "Корзина", cart_path(@cart.id), class: "uk-button" %>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
   <% some_array_of_products_limited.each do |some_array_of_products_limited_each| %>
     <div class="col-sm-3 col-xs-3 product_view_class">
       <%= render  partial: "products/product", locals: { product: some_array_of_products_limited_each } %>
-      <%= button_to 'В Корзину', line_items_path(product_id: some_array_of_products_limited_each), :class => "buttom_add_to_cart" %>
+      <%= button_to 'В Корзину', line_items_path(product_id: some_array_of_products_limited_each), :class => "buttom_add_to_cart", remote: true %>
     </div>
   <% end %>
 </div>
