@@ -1,0 +1,52 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name, "Имя получателя" %>
+    <%= form.text_field :first_name, id: :order_first_name, size: 40, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name, "Фамилия получателя" %>
+    <%= form.text_field :last_name, id: :order_last_name, size: 40, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number, "Контактный номер телефона" %>
+    <%= form.text_field :number, id: :order_number, size: 40, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment, "Комментарий" %>
+    <%= form.text_area :comment, id: :order_comment, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city, "Населенный пункт и Область доставки" %>
+    <%= form.text_field :city, id: :order_city, size: 40, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_office_number, "Номер отделения 'Нова Пошта'" %>
+    <%= form.number_field :post_office_number, id: :order_post_office_number, size: 40, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pay_type, "Способ оплаты" %>
+    <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Выберите способ оплаты', id: :order_pay_type, :required => true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Подтвердить заказ" %>
+  </div>
+<% end %>

@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label(:number, "Номер телефона" ) %>
-    <%= form.text_field :number, id: :user_number %>
+    <%= form.text_field :number, id: :user_number, :required => true, :placeholder => "обязательное поле" %>
   </div>
 
   <div class="field">

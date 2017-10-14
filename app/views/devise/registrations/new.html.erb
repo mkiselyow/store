@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label(:number, "Номер телефона" ) %><br />
-    <%= f.text_field :number, id: :user_number %>
+    <%= f.text_field :number, id: :user_number, :required => true, :placeholder => "Обязательное поле" %>
   </div>
 
   <div class="field">

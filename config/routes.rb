@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     put 'increase_quantity'
   end
   resources :carts
+  resources :orders
   resources :products
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users

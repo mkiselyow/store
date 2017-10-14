@@ -100,3 +100,6 @@ gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 # user interface lib
 gem 'jquery-ui-rails'
+
+# ukrainian regions
+gem 'ruuaby'

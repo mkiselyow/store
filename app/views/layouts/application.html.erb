@@ -57,7 +57,7 @@
                 <div role="presentation"><%= link_to "Войти", new_user_session_path %></div> 
               <% end %>
               <p>    
-                <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
+                <%= form_tag(products_path, method: :get) do %>
                   <%= text_field_tag :title, nil, placeholder: "название товара" %>
                   <%= submit_tag 'Искать', title: nil, class: "uk-button"  %>
                 <% end %>

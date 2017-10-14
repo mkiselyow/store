@@ -5,5 +5,6 @@
 
   <%= link_to 'Редактировать ', edit_cart_path(@cart) %> |
   <%= link_to 'Back', carts_path %>
+  <%= button_to "Подтвердить", new_order_path, method: :get %>
   <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' } %>
 <% end %>

@@ -18,6 +18,11 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label(:number, "Номер телефона" ) %><br />
+    <%= f.text_field :number, id: :user_number, :required => true, :placeholder => "Обязательное поле" %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Ожидаем подтверждения : <%= resource.unconfirmed_email %></div>
   <% end %>
