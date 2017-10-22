@@ -1,0 +1,8 @@
+<%= sprintf("%2d x %s",
+line_item.quantity,
+truncate(line_item.product.title.mb_chars.capitalize.to_s, length: 50)) %>
+
+
+<%= line_item.quantity %> &times; <%= line_item.product.title.mb_chars.capitalize.to_s %>
+Цена <%= number_to_currency(line_item.product.price, unit: "₴") %>
+Сумма <%= number_to_currency(line_item.count_line_item_price, unit: "₴") %>

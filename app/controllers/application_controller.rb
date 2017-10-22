@@ -15,4 +15,15 @@ class ApplicationController < ActionController::Base
 
   # only logged in users
   # before_action :authenticate_user!
+  private 
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user == @user
+    end
+
+    def only_admin_access
+      unless current_user && current_user.admin?
+        redirect_to(root_url)
+      end
+    end
 end

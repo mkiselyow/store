@@ -32,8 +32,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :city, "Населенный пункт и Область доставки" %>
-    <%= form.text_field :city, id: :order_city, size: 40, :required => true %>
+    <%= form.label :city, "Область" %>
+    <%= form.select 'city[region]', Order::REGIONS, prompt: 'Выберите область', id: :order_city_region, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city, "Областной центр" %>
+    <%= form.select 'city[area]', Order::AREAS, prompt: 'Выберите центр', id: :order_city_area, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city, "Населенный пункт" %>
+    <%= form.text_field 'city[city]', id: :order_city_city, size: 40, :required => true %>
   </div>
 
   <div class="field">

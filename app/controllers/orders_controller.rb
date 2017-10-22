@@ -28,13 +28,21 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    address_array = params[:order][:city]
+    address_string = address_array[:area] + ', ' + address_array[:region] + ', ' + address_array[:city]
+    params[:order][:city] = address_string
     @order = Order.new(order_params)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        @order.add_line_items_from_cart(@cart)
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        OrderNotifierMailer.recieved(@order).deliver
+        format.html { redirect_to root_url, notice: 'Ваш заказ отправлен в обработку' }
         format.json { render :show, status: :created, location: @order }
       else
+        # @cart = current_cart
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end

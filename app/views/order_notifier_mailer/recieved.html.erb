@@ -1,0 +1,6 @@
+Ув.Администратор, Получен заказ:
+h t m l but partial text 
+
+<%= render @order.line_items -%>
+
+Сумма покупок <%= number_to_currency(@order.order_total_price, unit: "₴") %>

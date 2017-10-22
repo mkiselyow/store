@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   get '/special_offers' => 'pages#special_offers'
   get '/useful_articles' => 'pages#useful_articles'
   get '/partners' => 'pages#partners'
+  resources :products do
+    get :who_bought, on: :member
+  end
 end

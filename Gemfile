@@ -103,3 +103,4 @@ gem 'jquery-ui-rails'
 
 # ukrainian regions
 gem 'ruuaby'
+gem 'curb'

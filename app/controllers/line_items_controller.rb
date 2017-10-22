@@ -72,13 +72,13 @@ class LineItemsController < ApplicationController
       decreased_quantity = @line_item.quantity - 1
       @line_item.update(quantity: decreased_quantity)
       respond_to do |format|
-        format.html { redirect_to @line_item.cart, notice: 'Количество было успешно уменьшено' }
+        format.html { redirect_to root_url, notice: 'Количество было успешно уменьшено' }
         format.json { head :no_content }
       end
     else
       @line_item.destroy
       respond_to do |format|
-        format.html { redirect_to @line_item.cart, notice: 'Товар был успешно убран из корзины' }
+        format.html { redirect_to root_url, notice: 'Товар был успешно убран из корзины' }
         format.json { head :no_content }
       end
     end
@@ -90,11 +90,11 @@ class LineItemsController < ApplicationController
       increased_quantity = @line_item.quantity + 1
       @line_item.update(quantity: increased_quantity)
       respond_to do |format|
-        format.html { redirect_to @line_item.cart, notice: 'Количество было успешно уменьшено' }
+        format.html { redirect_to root_url, notice: 'Количество было успешно уменьшено' }
         format.json { head :no_content }
       end
     else
-      format.html { redirect_to root_path, notice: 'неизвестная ошибка' }
+      format.html { redirect_to root_path, notice: 'Неизвестная ошибка' }
     end
   end
 
