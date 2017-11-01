@@ -1,8 +1,4 @@
 $(document).ready(function(){
-
-// Фиксация
-
-
   var $window = $(window),
   $navigation = $(".sticky");
 
@@ -14,7 +10,4 @@ $(document).ready(function(){
         $navigation.removeClass("fixed");
     }
   }); 
-
-
-
 });

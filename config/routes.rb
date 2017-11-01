@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   resources :products do
     get :who_bought, on: :member
   end
+
+  namespace :admin do
+    root to: 'pages#index'
+    resources :pages, only: :index
+  end
 end

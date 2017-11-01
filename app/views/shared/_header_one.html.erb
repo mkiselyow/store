@@ -1,0 +1,56 @@
+<div class="col-lg-6 col-md-12 top_container_left">
+  <div class="row">
+    <div class="col-md-4 col-lg-6">
+      <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
+    </div>
+    <div class="col-md-4 col-lg-2">
+      <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <p class='tagline'><b>Мапапама</b> - это детская радость</p>
+    </div>
+  </div>
+</div>
+<div class="col-lg-2 col-md-12 top_container_center">
+  <div class="row">
+    <div class="phone-numbers">
+      <%= fa_icon 'phone', text: '095 000 00 00' %>
+      <br>
+      <%= fa_icon 'phone', text: '068 000 00 00' %>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 col-md-12 top_container_right">
+  <div class="row">
+    <div class="col-xs-6 col-md-6 col-lg-8">
+      <div class="login-reg-menu">
+        <% if user_signed_in? %>
+          <div role="presentation"><%= link_to "Вы вошли как #{current_user.email}", current_user %></div>
+          <div role="presentation"><%= link_to "Редактировать профиль", edit_user_registration_path %></div>
+          <div role="presentation"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></div> 
+        <% else %>
+          <%= link_to "Регистрация", new_user_registration_path %>
+          |
+          <%= link_to "Войти", new_user_session_path %>
+        <% end %>
+      </div>
+      <p>    
+        <%= form_tag(products_path, method: :get) do %>
+          <span class="input-group">
+            <%= text_field_tag :title, nil, placeholder: "Название товара", class: 'form-control search-input' %>
+            <span class="input-group-btn">
+              <%= submit_tag 'Искать', title: nil, class: "btn btn-default"  %>
+            </span>
+          </span>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-xs-6 col-md-6 col-lg-4">
+      <div class="login-reg-menu">
+        <%= link_to cart_path(@cart.id), class: "uk-button" do %>
+          <%= fa_icon 'shopping-basket' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

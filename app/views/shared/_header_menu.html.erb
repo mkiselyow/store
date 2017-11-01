@@ -1,0 +1,12 @@
+<%= tag.div class: 'top_nav sticky' do %>
+  <%= link_to "Главная", root_path,                           class: 'top_nav_button' %>
+  <%= link_to "Товары", products_path,                        class: 'top_nav_button' %>
+  <%= link_to "Оплата и доставка", payment_and_delivery_path, class: 'top_nav_button' %>
+  <%= link_to "Полезные статьи", useful_articles_path,        class: 'top_nav_button' %> 
+  <%= link_to "Акции", special_offers_path,                   class: 'top_nav_button' %> 
+  <%= link_to "Отзывы", comments_path,                        class: 'top_nav_button' %>
+  <%= link_to "Контакты", contacts_path,                      class: 'top_nav_button' %> 
+  <%= link_to "О нас", about_path,                            class: 'top_nav_button' %> 
+  <%= link_to "Конкурсы", competitions_path,                  class: 'top_nav_button' %> 
+  <%= link_to "Партнерам", partners_path,                     class: 'top_nav_button' %> 
+<% end %>

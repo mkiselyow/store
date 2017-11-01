@@ -1,0 +1,32 @@
+/*
+  *= require jquery-ui
+  *= require_tree .
+  *= require_self
+  *= require font-awesome
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "social-share-button";
+@import "uikit";
+.facebook-icon{
+  color: #4267b2;
+}
+.instagram-icon{
+  color: #da4668;
+}
+.upload_avatar{
+  height: 50px;
+  width: 50px;
+}
+.tagline{
+  margin-top: 35px;
+}
+.phone-numbers{
+  margin-top: 15px;
+}
+.login-reg-menu{
+  margin-top: 15px;
+}
+// .search-input:hover {
+//   width: 120%;
+// }
