@@ -23,8 +23,13 @@
         <%= render 'shared/header_menu' %>
       </div>
       <div class="row">
+        <br>
         <div class="col-md-12">
-         <p id="notice"><%= notice %></p> 
+          <div class='col-md-4'>
+            <%- flash.each do |name, msg|%>
+              <%= content_tag :div, msg, id: "flash_#{name}", class: 'alert alert-info message' %>
+            <% end %>
+          </div> 
           <%= yield %>
         </div>
       </div>

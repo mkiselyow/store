@@ -71,6 +71,9 @@ gem 'font-awesome-rails'
 # paperclip+heroku images
 gem 'aws-sdk'
 
+# add WYSAWYG text-creator
+gem 'trix'
+
 # instagram omniauth
 gem 'omniauth-instagram'
 

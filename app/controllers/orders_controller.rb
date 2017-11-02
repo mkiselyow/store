@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: %i[show edit update destroy]
 
   # GET /orders
   # GET /orders.json
@@ -9,21 +9,19 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   # GET /orders/1.json
-  def show
-  end
+  def show; end
 
   # GET /orders/new
   def new
     if @cart.line_items.empty?
-      redirect_to root_url, notice: "Корзина пока пуста"
+      redirect_to root_url, notice: 'Корзина пока пуста'
       return
     end
     @order = Order.new
   end
 
   # GET /orders/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /orders
   # POST /orders.json
@@ -74,13 +72,14 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type)
+  end
 end

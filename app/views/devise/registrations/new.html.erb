@@ -1,26 +1,26 @@
-<h2>Регистрация</h2>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><center>Регистрация</center></h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
       <div class="row">
-        <div class="field col-md-6">
+        <div class="field col-md-6 col-xs-6">
           <%= f.label(:first_name, "Имя" ) %><br />
           <%= f.text_field :first_name, id: :user_first_name, class: 'form-control', placeholder: 'Ваше имя' %>
         </div>
     
-        <div class="field col-md-6">
+        <div class="field col-md-6 col-xs-6">
           <%= f.label(:last_name, "Фамилия" ) %><br />
           <%= f.text_field :last_name, id: :user_last_namee, class: 'form-control', placeholder: 'Ваша фамилия' %>
         </div>
       </div>
       <div class="row">
-        <div class="field col-md-6">
+        <div class="field col-md-6 col-xs-6">
           <%= f.label(:email, "Эл. почта" ) %><br />
           <%= f.email_field :email, autofocus: true, class: 'form-control', required: true, placeholder: 'Ваш email' %>
         </div>
   
-        <div class="field col-md-6">
+        <div class="field col-md-6 col-xs-6">
           <%= f.label(:number, "Номер телефона" ) %><br />
           <%= f.text_field :number, id: :user_number, required: true, class: 'form-control', :placeholder => "Обязательное поле" %>
         </div>
@@ -48,8 +48,8 @@
         </div>
       </div>
       <div class="actions">
-        <%= f.submit "Подтвердить" %>
-        <%= link_to "Вход", new_session_path(resource_name) %>
+        <%= f.submit "Зарегистрироватся", class: 'btn btn-success' %>
+        <%= link_to "Вход", new_session_path(resource_name), class: 'btn btn-primary pull-right' %>
       </div>
     <% end %>
   </div>

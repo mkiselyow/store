@@ -3,6 +3,7 @@
   *= require_tree .
   *= require_self
   *= require font-awesome
+  *= require trix
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -24,9 +25,51 @@
 .phone-numbers{
   margin-top: 15px;
 }
+@media (max-width: 768px){
+  .phone-numbers{
+    margin-top: 0px;
+  }
+}
+@media (max-width: 768px){
+  .tagline{
+    margin-top: 0px;
+  }
+}
 .login-reg-menu{
   margin-top: 15px;
 }
-// .search-input:hover {
-//   width: 120%;
-// }
+.input-product{
+  width: 175px;
+}
+.sex-boys{
+  color: blue;
+}
+.sex-girls{
+  color: #e8556f;
+}
+.square{
+  width: 20px;
+  height: 20px;
+  border-style: double;
+}
+.white-square{
+  background-color: white;
+}
+.black-square{
+  background-color: black;
+}
+.red-square{
+  background-color: red;
+}
+.yellow-square{
+  background-color: yellow;
+}
+.green-square{
+  background-color: green;
+}
+.blue-square{
+  background-color: blue;
+}
+.violet-square{
+  background-color: purple;
+}
