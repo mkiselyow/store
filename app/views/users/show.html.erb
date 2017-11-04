@@ -4,7 +4,9 @@
     <%= image_tag @user.avatar_url(:thumb), class: 'img-thumbnail profile-avatar' %>
     <center>
       <div class="btn-group">
-        <%= link_to 'Редактировать', edit_user_registration_path(@user), class: 'btn btn-warning' %>
+        <% if current_user.id == @user.id %>
+          <%= link_to 'Редактировать', edit_user_registration_path(@user), class: 'btn btn-warning' %>
+        <% end %>
         <%= link_to 'Назад', users_path, class: 'btn btn-primary' %>
       </div>
     </center>

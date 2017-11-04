@@ -27,7 +27,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: 'pages#index'
-    resources :pages, only: :index
+    root to: 'users#index'
+    resources :users do
+      get :banned_user, on: :member
+      get :change_permission, on: :member
+    end
+    resources :products
+    resources :categories
   end
 end

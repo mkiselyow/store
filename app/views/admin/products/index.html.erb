@@ -1,0 +1,30 @@
+<h1>Продукты</h1>
+<table class="table table-hover">
+  <thead>
+    <th>#</th>
+    <th>Название</th>
+    <th>Изображение</th>
+    <th>Категория</th>
+    <th>Брэнд</th>
+    <th>Габариты</th>
+    <th>Цена</th>
+    <th>Действия</th>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr id = <%= "product_#{product.id}" %>>
+        <td><%= product.id %></td>
+        <td><%= link_to product.title, product_path(product), target: '_blank' %></td>
+        <td><%= cl_image_tag(product.image_url(:standard, :radius => 10), width: '50px', height: '50px', :alt => product.title) %></td>
+        <td><%= product.category.name %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.size_a %>x<%= product.size_b %>x<%= product.size_h %></td>
+        <td><%= product.price %></td>
+        <td>
+          <%= link_to 'Редактировать', edit_product_path(product), class: 'label label-warning', target: '_blank' %>
+          <%= link_to 'Удалить', admin_product_path(product), class: 'label label-danger', method: :delete, remote: true, data: { confirm: "Вы действительго хотите удалить #{ product.title}" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
