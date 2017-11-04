@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook instagram]
 
   # avatar
+  has_many :comments
   has_attached_file :avatar, styles: { medium: '100x100>', thumb: '50x50>' }
   validates_attachment_content_type :avatar, content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
 

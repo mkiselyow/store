@@ -1,13 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Имя:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Фамилия:</strong>
-  <%= @user.last_name %>
+  <h2><%= @user.full_name %></h1>
 </p>
 
 <p>
@@ -21,8 +15,12 @@
 </p>
 
 <p>
-  <strong>Администратор:</strong>
-  <%= @user.admin %>
+  <strong>Роль:</strong>
+  <% if @user.admin? %>
+    <span class="label label-danger">Администратор</span>
+  <% else %>
+    <span class="label label-primary">Пользователь</span>
+  <% end %>
 </p>
 
 <p>

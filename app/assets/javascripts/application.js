@@ -6,9 +6,12 @@
 //= require social-share-button
 //= require uikit
 //= require trix
+//= require jquery.raty
+//= require jquery.raty.min
 //= require_tree .
 $(function() {
   setTimeout(function(){ 
     $('.message').hide('fade');
   }, 3000);
 });
+$('.comment_rating').raty();

@@ -132,7 +132,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.create(product_params)
-    binding.pry
     # if (@product.price == nil) && @product.purchase_price && (@product.discount || @product.mark_up)
     #   @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
     #   if @product.discount

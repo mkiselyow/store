@@ -5,8 +5,6 @@ class PagesController < ApplicationController
 
   def special_offers; end
 
-  def comments; end
-
   def contacts; end
 
   def about; end

@@ -1,0 +1,65 @@
+<div class="col-md-6 col-xs 12">
+  <%= form_for @comment, remote: true do |f| %>
+    <%= f.label "Ваш коментарий" %>
+    <br>
+    <%= f.trix_editor :body, class: 'comment-form', required: true %>
+    <br>
+    <%= fa_icon 'star', class: 'star_id_1 fa-2x' %>
+    <%= fa_icon 'star', class: 'star_id_2 fa-2x' %>
+    <%= fa_icon 'star', class: 'star_id_3 fa-2x' %>
+    <%= fa_icon 'star', class: 'star_id_4 fa-2x' %>
+    <%= fa_icon 'star', class: 'star_id_5 fa-2x' %>
+    <p>
+    <%= f.label "Ваша оценка (от 1 до 5-ти)" %>
+    <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]), {}, class: 'form-control', id: 'select_rating' %>
+    <br>
+    <%= f.submit class: 'btn btn-success' %>
+    <br>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function(){
+    $('#select_rating').on('change', function() {
+      if ( this.value == '1')
+      {
+        $(".star_id_1").show();
+        $(".star_id_2").hide();
+        $(".star_id_3").hide();
+        $(".star_id_4").hide();
+        $(".star_id_5").hide();
+      }
+      else if ( this.value == '2')
+      {
+        $(".star_id_1").hide();
+        $(".star_id_2").hide();
+        $(".star_id_3").hide();
+        $(".star_id_4").show();
+        $(".star_id_5").show();
+      }
+      else if ( this.value == '3')
+      {
+        $(".star_id_1").hide();
+        $(".star_id_2").hide();
+        $(".star_id_3").show();
+        $(".star_id_4").show();
+        $(".star_id_5").show();
+      }
+      else if ( this.value == '4')
+      {
+        $(".star_id_1").hide();
+        $(".star_id_2").show();
+        $(".star_id_3").show();
+        $(".star_id_4").show();
+        $(".star_id_5").show();
+      }
+      else
+      {
+        $(".star_id_1").show();
+        $(".star_id_2").show();
+        $(".star_id_3").show();
+        $(".star_id_4").show();
+        $(".star_id_5").show();
+      }
+    });
+  });
+</script>
