@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
-  PAYMENT_TYPES = ['Оплата на Банковскую Карту', 'Оплата при получении'].freeze
-  REGIONS = [].freeze
-  AREAS = [].freeze
+  PAYMENT_TYPES = ['Оплата на Банковскую Карту', 'Оплата при получении']
+  REGIONS = []
+  AREAS = []
   Ruuaby.data_path = 'db/'
   Ruuaby.load_data
   Ruuaby.countries['Украина'].each_key { |key| REGIONS << key.to_s }
