@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :add_times_viewed, only: [:show]
+  before_action :only_admin_access, only: [:new, :create, :update, :destroy, :edit]
 
   # before_action :set_price, only: [:update, :edit]
 
