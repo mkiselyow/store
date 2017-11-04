@@ -2,7 +2,7 @@
   <%= form_for @comment, remote: true do |f| %>
     <%= f.label "Ваш коментарий" %>
     <br>
-    <%= f.trix_editor :body, class: 'comment-form', required: true %>
+    <%= f.trix_editor :body, class: 'comment-form' %>
     <br>
     <%= fa_icon 'star', class: 'star_id_1 fa-2x' %>
     <%= fa_icon 'star', class: 'star_id_2 fa-2x' %>
@@ -13,7 +13,7 @@
     <%= f.label "Ваша оценка (от 1 до 5-ти)" %>
     <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]), {}, class: 'form-control', id: 'select_rating' %>
     <br>
-    <%= f.submit class: 'btn btn-success' %>
+    <%= f.submit 'Добавить отзыв', class: 'btn btn-success', id: 'btnSubmit' %>
     <br>
   <% end %>
 </div>
@@ -61,5 +61,25 @@
         $(".star_id_5").show();
       }
     });
+  });
+  $(document).ready(function() {
+      $('#btnSubmit').click(function(e) {
+          var isValid = true;
+          $('.formatted_content').each(function() {
+              if ($.trim($(this).val()) == '') {
+                  isValid = false;
+                  $(this).css({
+                      "border": "2px solid red",
+                      "background": "#FFCECE"
+                  });
+              }
+              else {
+                  $(this).css({
+                      "border": "",
+                      "background": ""
+                  });
+              }
+          });
+      });
   });
 </script>

@@ -32,11 +32,10 @@
   </div>
 
   <div class="field">
-    <%= form.label(:admin, "Администратор" ) %>
-    <%= form.check_box :admin, id: :user_admin %>
+    <%= form.label(:avatar, "Аватар" ) %>
+    <%= form.file_field :avatar, class: 'profile_upload' %>
+    <%= form.hidden_field(:avatar_cache) %>
   </div>
-
-  <%= form.file_field :avatar %>
 
   <div class="actions">
     <%= form.submit( "Подтвердить" ) %>

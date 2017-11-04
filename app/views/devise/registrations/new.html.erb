@@ -28,7 +28,8 @@
       <div class="row">
         <div class="field col-md-6">
           <%= f.label(:avatar, "Фото профиля" ) %><br />
-          <%= f.file_field :avatar, id: :user_avatar, class: 'profile_upload' %>
+          <%= f.file_field :avatar, class: 'profile_upload' %>
+          <%= f.hidden_field(:avatar_cache) %>
         </div>
         <div class="col-md-6 upload-preview">
           <img class="upload_avatar" />
