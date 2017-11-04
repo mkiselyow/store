@@ -1,0 +1,26 @@
+<h1>Список пользователей</h1>
+<%- @users.each do |user| %>
+  <div class="media">
+    <a href="#" class="pull-left">
+      <%= image_tag user.avatar_url(:thumb), class: 'media-object img-thumbnail', style: "width: 64px; height: 64px"%>        
+    </a>
+    <div class="media-body">
+      <h3 class="media-heading"><strong><a href="#"><%= link_to user.full_name, user_path(user) %></a></strong></h3>
+      <p class="small">
+        <% if user.admin? %>
+          <%= fa_icon 'star', text: 'Администратор' %>
+        <% else %>
+          <%= fa_icon 'user', text: 'Пользователь' %>
+        <% end %>
+        <% if user.banned? %>
+          <%= fa_icon 'ban', class: 'text-danger' %>
+        <% end %>
+      </p>
+      <% if current_user.id != user.id %>
+        <%= link_to "#{ user.admin ? 'Разжаловать в пользователи' : 'Назначить администратором' }", change_permission_admin_user_path(user) %> |
+        <%= link_to "#{ user.banned ? 'Разблокировать' : 'Заблокировать' }", banned_user_admin_user_path(user) %>
+      <% end %>
+    </div>
+  </div>
+  <br>
+<% end %>

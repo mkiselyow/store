@@ -1,33 +1,35 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Имя:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Фамилия:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Эл. почта:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Номер телефона:</strong>
-  <%= @user.number %>
-</p>
-
-<p>
-  <strong>Администратор:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <%= image_tag @user.avatar.url(:thumb) %>
-</p>
-
-<%= link_to 'Редактировать', edit_user_registration_path(@user) %> |
-<%= link_to 'Назад', users_path %>
+<div class="row">
+  <div class="col-md-2 col-md-offset-2 col-xs-6">
+    <%= image_tag @user.avatar_url(:thumb), class: 'img-thumbnail profile-avatar' %>
+    <center>
+      <div class="btn-group">
+        <% if current_user.id == @user.id %>
+          <%= link_to 'Редактировать', edit_user_registration_path(@user), class: 'btn btn-warning' %>
+        <% end %>
+        <%= link_to 'Назад', users_path, class: 'btn btn-primary' %>
+      </div>
+    </center>
+  </div>
+  <div class="col-md-6 col-xs-6">
+    <div class="well">
+      <h2><%= @user.full_name %></h1>
+      <p>
+        <strong>Эл. почта:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <strong>Номер телефона:</strong>
+        <%= @user.number %>
+      </p>
+      <p>
+        <strong>Роль:</strong>
+        <% if @user.admin? %>
+          <span class="label label-danger">Администратор</span>
+        <% else %>
+          <span class="label label-primary">Пользователь</span>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

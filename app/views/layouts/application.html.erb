@@ -2,13 +2,10 @@
 <html>
   <head>
     <title>Мапапама</title>
-    <!-- Bootstrap core CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= favicon_link_tag %>
-    
-    <!-- Custom styles for this project -->
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -20,75 +17,19 @@
   <body>
     <div class="container-fluid">
       <div class="row top_container">
-        <div class="col-lg-4 col-md-12 top_container_left">
-          <div class="row">
-            <div class="col-md-4 col-lg-8">
-              <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
-            </div>
-            <div class="col-md-4 col-lg-2">
-              <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
-            </div>
-<!--             <div class="col-md-2">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-              </button>
-            </div> -->
-            <div class="col-md-4 col-lg-2">
-              <p>Мапапама - это детская радость</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-12 top_container_center">
-          <div class="row">
-            <div>095 000 00 00</div>
-            <div>068 000 00 00</div>
-            <div>мапапама</div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-12 top_container_right">
-          <div class="row">
-            <div class="col-xs-6 col-md-6 col-lg-8">
-              <% if user_signed_in? %>
-                <div role="presentation"><%= link_to "Вы вошли как #{current_user.email}", current_user %></div>
-                <div role="presentation"><%= link_to "Редактировать профиль", edit_user_registration_path %></div>
-                <div role="presentation"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></div> 
-              <% else %>
-                <div role="presentation"><%= link_to "Регистрация", new_user_registration_path %></div>
-                <div role="presentation"><%= link_to "Войти", new_user_session_path %></div> 
-              <% end %>
-              <p>    
-                <%= form_tag(products_path, method: :get) do %>
-                  <%= text_field_tag :title, nil, placeholder: "название товара" %>
-                  <%= submit_tag 'Искать', title: nil, class: "uk-button"  %>
-                <% end %>
-              </p>
-              
-              
-            </div>
-            <div class="col-xs-6 col-md-6 col-lg-4">
-              <%= link_to "Корзина", cart_path(@cart.id), class: "uk-button" %>
-            </div>
-          </div>
-        </div>
-
+        <%= render 'shared/header_one' %>
       </div>
       <div class="row">
-        <%= tag.div class: 'top_nav sticky' do %>
-          <%= link_to "Главная", root_path,                           class: 'top_nav_button' %>
-          <%= link_to "Товары", products_path,                        class: 'top_nav_button' %>
-          <%= link_to "Оплата и доставка", payment_and_delivery_path, class: 'top_nav_button' %>
-          <%= link_to "Полезные статьи", useful_articles_path,        class: 'top_nav_button' %> 
-          <%= link_to "Акции", special_offers_path,                   class: 'top_nav_button' %> 
-          <%= link_to "Отзывы", comments_path,                        class: 'top_nav_button' %>
-          <%= link_to "Контакты", contacts_path,                      class: 'top_nav_button' %> 
-          <%= link_to "О нас", about_path,                            class: 'top_nav_button' %> 
-          <%= link_to "Конкурсы", competitions_path,                  class: 'top_nav_button' %> 
-          <%= link_to "Партнерам", partners_path,                     class: 'top_nav_button' %> 
-        <% end %>
+        <%= render 'shared/header_menu' %>
       </div>
       <div class="row">
+        <br>
         <div class="col-md-12">
-         <p id="notice"><%= notice %></p> 
+          <div class='col-md-4'>
+            <%- flash.each do |name, msg|%>
+              <%= content_tag :div, msg, id: "flash_#{name}", class: 'alert alert-info message' %>
+            <% end %>
+          </div> 
           <%= yield %>
         </div>
       </div>

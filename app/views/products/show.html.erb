@@ -65,6 +65,11 @@
 </p>
 
 <p>
+  <strong>Категория:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
   <strong>Длина:</strong>
   <%= @product.size_a %>
 </p>
@@ -100,48 +105,66 @@
 </p>
 
 <p>
-  <strong>Мальчики:</strong>
-  <%= @product.boys %>
+  <% if @product.boys? %>
+    <strong>Мальчики:</strong>
+    <%= @product.boys %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Девочки:</strong>
-  <%= @product.girls %>
+  <% if @product.girls? %>
+    <strong>Девочки:</strong>
+    <%= @product.girls %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Белый:</strong>
-  <%= @product.color_white %>
+  <% if @product.color_white? %>
+    <strong>Белый:</strong>
+    <%= @product.color_white %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Черный:</strong>
-  <%= @product.color_black %>
+  <% if @product.color_black? %>
+    <strong>Черный:</strong>
+    <%= @product.color_black %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Красный:</strong>
-  <%= @product.color_red %>
+  <% if @product.color_red? %>
+    <strong>Красный:</strong>
+    <%= @product.color_red %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Желтый:</strong>
-  <%= @product.color_yellow %>
+  <% if @product.color_yellow? %>
+    <strong>Желтый:</strong>
+    <%= @product.color_yellow %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Зеленый:</strong>
-  <%= @product.color_green %>
+  <% if @product.color_green? %>
+    <strong>Зеленый:</strong>
+    <%= @product.color_green %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Синий:</strong>
-  <%= @product.color_blue %>
+  <% if @product.color_blue? %>
+    <strong>Синий:</strong>
+    <%= @product.color_blue %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Фиолетовый:</strong>
-  <%= @product.color_violet %>
+  <% if @product.color_violet? %>
+    <strong>Фиолетовый:</strong>
+    <%= @product.color_violet %>
+  <% end %>
 </p>
 
 <p>
@@ -150,28 +173,38 @@
 </p>
 
 <p>
-  <strong>Пластик:</strong>
-  <%= @product.material_plastic %>
+  <% if @product.material_plastic? %>
+    <strong>Пластик:</strong>
+    <%= @product.material_plastic %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Железо:</strong>
-  <%= @product.material_iron %>
+  <% if @product.material_iron? %>
+    <strong>Железо:</strong>
+    <%= @product.material_iron %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Другой материал:</strong>
-  <%= @product.material_another %>
+  <% if @product.material_another? %>
+    <strong>Другой материал:</strong>
+    <%= @product.material_another %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Дерево:</strong>
-  <%= @product.material_wooden %>
+  <% if @product.material_wooden? %>
+    <strong>Дерево:</strong>
+    <%= @product.material_wooden %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Ткань:</strong>
-  <%= @product.material_fabric %>
+  <% if @product.material_fabric? %>
+    <strong>Ткань:</strong>
+    <%= @product.material_fabric %>
+  <% end %>
 </p>
 
 <p>
@@ -198,7 +231,10 @@
   <strong>Скидка:</strong>
   <%= @product.discount %>
 </p>
-
+<p>
+  <strong>Описание</strong>
+  <%= raw @product.description %>
+</p>
 
 <% if @product.image_url %>
   <p>

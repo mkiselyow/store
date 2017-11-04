@@ -1,0 +1,23 @@
+<h1>Отзывы клиентов</h1>
+<div class="container">
+  <div class="all_comments">
+    <%= render @comments %>
+  </div>
+  <div class="row comment-success-alert">
+    <div class="col-md-6">
+      <div class="alert alert-success">
+        <strong>Поздравляем!</strong> ваш отзыв успешно добавлен!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+</div>
+<script>
+  $(function() {
+    setTimeout(function(){ 
+      $('.comment-success-alert').hide('fade');
+    }, 5000);
+  });
+</script>

@@ -4,8 +4,6 @@ class LineItem < ApplicationRecord
   belongs_to :order, optional: true
 
   def count_line_item_price
-    if self.product.price != nil
-      self.product.price * self.quantity
-    end
+    product.price * quantity unless product.price.nil?
   end
 end

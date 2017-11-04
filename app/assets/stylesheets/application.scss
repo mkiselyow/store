@@ -1,0 +1,89 @@
+/*
+  *= require jquery-ui
+  *= require_tree .
+  *= require_self
+  *= require font-awesome
+  *= require trix
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "social-share-button";
+@import "uikit";
+.facebook-icon{
+  color: #4267b2;
+}
+.instagram-icon{
+  color: #da4668;
+}
+.upload_avatar{
+  height: 50px;
+  width: 50px;
+}
+.tagline{
+  margin-top: 35px;
+}
+.phone-numbers{
+  margin-top: 15px;
+}
+@media (max-width: 768px){
+  .phone-numbers{
+    margin-top: 0px;
+  }
+}
+@media (max-width: 768px){
+  .tagline{
+    margin-top: 0px;
+  }
+}
+.login-reg-menu{
+  margin-top: 15px;
+}
+.input-product{
+  width: 175px;
+}
+.sex-boys{
+  color: blue;
+}
+.sex-girls{
+  color: #e8556f;
+}
+.square{
+  width: 20px;
+  height: 20px;
+  border-style: double;
+}
+.white-square{
+  background-color: white;
+}
+.black-square{
+  background-color: black;
+}
+.red-square{
+  background-color: red;
+}
+.yellow-square{
+  background-color: yellow;
+}
+.green-square{
+  background-color: green;
+}
+.blue-square{
+  background-color: blue;
+}
+.violet-square{
+  background-color: purple;
+}
+.comment-success-alert{
+  display: none;
+}
+.profile-avatar{
+  width: 200px;
+  height: 200px;
+}
+.header-avatar{
+  width: 30px;
+  height: 30px;
+}
+.change-password{
+  display: none;
+}

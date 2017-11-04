@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   resources :products
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users
+  resources :comments
+  resources :ratings, only: :update
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "products#index"
 
   get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
 
   get '/about' => 'pages#about'
-  get '/comments' => 'pages#comments'
   get '/competitions' => 'pages#competitions'
   get '/contacts' => 'pages#contacts'
   get '/payment_and_delivery' => 'pages#payment_and_delivery'
@@ -23,5 +24,15 @@ Rails.application.routes.draw do
   get '/partners' => 'pages#partners'
   resources :products do
     get :who_bought, on: :member
+  end
+
+  namespace :admin do
+    root to: 'users#index'
+    resources :users do
+      get :banned_user, on: :member
+      get :change_permission, on: :member
+    end
+    resources :products
+    resources :categories
   end
 end

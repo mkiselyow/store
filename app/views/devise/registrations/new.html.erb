@@ -1,54 +1,60 @@
-<h2>Регистрация</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label(:first_name, "Имя" ) %><br />
-    <%= f.text_field :first_name, id: :user_first_name %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><center>Регистрация</center></h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="row">
+        <div class="field col-md-6 col-xs-6">
+          <%= f.label(:first_name, "Имя" ) %><br />
+          <%= f.text_field :first_name, id: :user_first_name, class: 'form-control', placeholder: 'Ваше имя' %>
+        </div>
+    
+        <div class="field col-md-6 col-xs-6">
+          <%= f.label(:last_name, "Фамилия" ) %><br />
+          <%= f.text_field :last_name, id: :user_last_namee, class: 'form-control', placeholder: 'Ваша фамилия' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field col-md-6 col-xs-6">
+          <%= f.label(:email, "Эл. почта" ) %><br />
+          <%= f.email_field :email, autofocus: true, class: 'form-control', required: true, placeholder: 'Ваш email' %>
+        </div>
+  
+        <div class="field col-md-6 col-xs-6">
+          <%= f.label(:number, "Номер телефона" ) %><br />
+          <%= f.text_field :number, id: :user_number, required: true, class: 'form-control', :placeholder => "Обязательное поле" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field col-md-6">
+          <%= f.label(:avatar, "Фото профиля" ) %><br />
+          <%= f.file_field :avatar, class: 'profile_upload' %>
+          <%= f.hidden_field(:avatar_cache) %>
+        </div>
+        <div class="col-md-6 upload-preview">
+          <img class="upload_avatar" />
+        </div>
+      </div>
+      <div class="row">  
+        <div class="field col-md-6">
+          <%= f.label(:password, "Пароль" ) %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> знаков минимум)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Введите пароль', required: true %>
+        </div>
+        <div class="field col-md-6">
+          <%= f.label(:password_confirmation, "Подтверждения пароля" ) %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Подтвердите пароль', required: true %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "Зарегистрироватся", class: 'btn btn-success' %>
+        <%= link_to "Вход", new_session_path(resource_name), class: 'btn btn-primary pull-right' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label(:last_name, "Фамилия" ) %><br />
-    <%= f.text_field :last_name, id: :user_last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label(:email, "Эл. почта" ) %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label(:number, "Номер телефона" ) %><br />
-    <%= f.text_field :number, id: :user_number, :required => true, :placeholder => "Обязательное поле" %>
-  </div>
-
-  <div class="field">
-    <%= f.label(:admin, "Администратор" ) %><br />
-    <%= f.check_box :admin, id: :user_admin %>
-  </div>
-
-  <div class="field">
-    <%= f.label(:avatar, "Аватар" ) %><br />
-    <%= f.file_field :avatar, id: :user_avatar %>
-  </div>
-
-  <div class="field">
-    <%= f.label(:password, "Пароль" ) %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> знаков минимум)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label(:password_confirmation, "Подтверждения пароля" ) %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Подтвердить" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+<div class="row">
+  <%= render "devise/shared/links" %>
+</div>

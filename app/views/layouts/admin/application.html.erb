@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Мапапама - Панель администратора</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= favicon_link_tag %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= cloudinary_js_config %>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'Мапапама', admin_root_path, class: "navbar-brand" %>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Пользователи', admin_users_path %></li>
+          <li><%= link_to 'Товары', admin_products_path %></li>
+          <li><a href="#">Категории</a></li>
+          <li><a href="#">Заказы</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Назад', root_path %></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <p id="notice"><%= notice %></p>
+          <%= yield %>
+        </div>
+      </div>
+    </div>  
+  </body>
+</html>
