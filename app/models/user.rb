@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   # has_attached_file :avatar, styles: { medium: '100x100>', thumb: '50x50>' }
   # validates_attachment_content_type :avatar, content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-  validates_presence_of  :avatar
+  # validates_presence_of  :avatar
   mount_uploader :avatar, AvatarUploader
   # omniauth
   def self.from_omniauth(auth)

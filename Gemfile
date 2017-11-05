@@ -58,7 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #bootstrap
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-
 # has attached images
 gem 'paperclip'
 
@@ -93,6 +92,8 @@ gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 # user interface lib
 gem 'jquery-ui-rails'
+
+gem "nested_form"
 
 # ukrainian regions
 gem 'ruuaby'

@@ -15,22 +15,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <%= link_to 'Мапапама', admin_root_path, class: "navbar-brand" %>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'Пользователи', admin_users_path %></li>
-          <li><%= link_to 'Товары', admin_products_path %></li>
-          <li><a href="#">Категории</a></li>
-          <li><a href="#">Заказы</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Назад', root_path %></li>
-        </ul>
-      </div>
-    </nav>
+    <%= render 'shared/admin/header' %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">

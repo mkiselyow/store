@@ -8,6 +8,7 @@
 //= require trix
 //= require jquery.raty
 //= require jquery.raty.min
+//= require jquery_nested_form
 //= require_tree .
 $(function() {
   setTimeout(function(){ 
