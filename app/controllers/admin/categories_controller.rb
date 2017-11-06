@@ -1,11 +1,10 @@
 class Admin::CategoriesController < AdminsController
 
-  before_action :category_resource, only: [:edit, :update]
+  before_action :category_resource, only: [:edit, :update, :destroy]
 
   def index
-    @categories = Category.includes(:subcategories).all
+    @categories = Category.includes(:subcategories).includes(:subsubcategories).all
     @category = Category.new
-    @category.subcategories.build
   end
 
   def create
@@ -17,9 +16,6 @@ class Admin::CategoriesController < AdminsController
     end
   end
 
-  def edit
-  end
-
   def update
     if @category.update(category_params)
       redirect_to admin_categories_path
@@ -28,10 +24,14 @@ class Admin::CategoriesController < AdminsController
     end
   end
 
+  def destroy
+    @category.destroy!
+  end
+
   private
 
   def category_params
-    params.require(:category).permit(:name, subcategories_attributes: %i[id name parent_category_id _destroy])
+    params.require(:category).permit(:name, subcategories_attributes: [:id, :name, :parent_category_id, :_destroy, subsubcategories_attributes: [:id, :name, :parent_category_id, :parent_subcategory_id, :_destroy]])
   end
 
   def category_resource

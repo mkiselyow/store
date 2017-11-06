@@ -1,21 +1,39 @@
-<div class="col-xs-12 col-md-6">
-  <%= nested_form_for [:admin, @category] do |f| %>
-    <%= f.label :name %>
-    <br>
-    <%= f.text_field :name, placeholder: :name, class: 'form-control' %>
-    <h3>Подкатегории</h3>
-    <%= f.fields_for :subcategories do |ff| %>
-      <div class="row">
-        <div class="col-xs-9 col-md-6">
-          <%= ff.label :name %>
-          <%= ff.text_field :name, class: 'form-control' %>
-          <%= ff.link_to_remove "Удалить подкатегорию" %>
-          <%= ff.hidden_field :parent_category_id, value: @category.id %>
+<div class="col-xs-12 col-md-8">
+  <div class="well">
+    <%= nested_form_for [:admin, @category] do |f| %>
+      <%= f.label :name %>
+      <br>
+      <%= f.text_field :name, placeholder: :name, class: 'form-control', required: true %>
+      <h3>Подкатегории</h3>
+      <%= f.fields_for :subcategories do |ff| %>
+        <div class="row">
+          <div class="col-xs-9 col-md-9">
+            <%= ff.text_field :name, class: 'form-control', required: true, placeholder: 'Введите название подкатегории' %>
+            <%= ff.hidden_field :parent_category_id, value: @category.id %>
+            <br>
+          </div>
+          <div class="col-xs-3 col-md-3">
+            <%= ff.link_to_remove "Удалить подкатегорию", class: 'btn btn-danger btn-sm' %>
+          </div>
         </div>
-      </div>
+        <%= ff.fields_for :subsubcategories do |fff| %>
+          <hr>
+          <div class="row well">
+            <div class="col-xs-9 col-md-8">
+              <%= fff.text_field :name, class: 'form-control', required: true, placeholder: 'Введите название подподкатегории  ' %>
+              <%= fff.hidden_field :parent_category_id, value: @category.id %>
+              <%= fff.hidden_field :parent_subcategory_id, value: @category.subcategories.ids %>
+            </div>
+            <div class="col-xs-3 col-md-4">
+              <%= fff.link_to_remove "Удалить подподкатегорию", class: 'btn btn-warning btn-sm' %>
+            </div>
+          </div>
+        <% end %>
+        <p><%= ff.link_to_add "Добавить подподкатегорию", :subsubcategories, class: 'btn btn-info btn-sm' %></p>
+      <% end %>
+      <p><%= f.link_to_add "Добавить подкатегорию", :subcategories, class: 'btn btn-primary btn-sm' %></p>
+      <br>
+      <%= f.submit class: 'btn btn-success' %>
     <% end %>
-    <p><%= f.link_to_add "Добавить подкатегорию", :subcategories %></p>
-    <br>
-    <%= f.submit 'Добавить', class: 'btn btn-success' %>
-  <% end %>
+  </div>
 </div>

@@ -244,6 +244,10 @@
   </p>
   <%= link_to 'удалить изображение в облаке(в кеше остается)', Cloudinary::Uploader.destroy(@product.image_url, :invalidate => true) %><br>
 <% end %>
+<h3>Дополнительные изображения</h3>
+<% @product.image_products.each do |im_prod| %>
+  <%= image_tag im_prod.image.url(:thumb) %>
+<% end %>
 
 <%= link_to 'Редактировать', edit_product_path(@product) %> |
 <%= link_to 'Назад', products_path %>

@@ -9,6 +9,8 @@
 //= require jquery.raty
 //= require jquery.raty.min
 //= require jquery_nested_form
+//= require nested_form_fields
+//= require nested_form_fields
 //= require_tree .
 $(function() {
   setTimeout(function(){ 

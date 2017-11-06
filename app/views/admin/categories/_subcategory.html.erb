@@ -1,3 +1,8 @@
 <% subcategories.each do |subc| %>
-  <b><%= subc.name %></b> | 
+  <% if subc.parent_subcategory_id.blank? %>
+    <li><%= subc.name %></li>
+  <% end %>
+  <% subc.subsubcategories.each do |subsubc| %>
+	<li class='subsubc'><i><%= subsubc.name %></i></li>
+  <% end %>
 <% end %>

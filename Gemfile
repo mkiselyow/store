@@ -94,6 +94,7 @@ gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem 'jquery-ui-rails'
 
 gem "nested_form"
+gem 'nested_form_fields'
 
 # ukrainian regions
 gem 'ruuaby'

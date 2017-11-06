@@ -1,16 +1,35 @@
-<h1>Категории</h1>
-<div class="row">
-  <%= render 'form' %>
-</div>
-<div class="row">
-  <div class="col-md-8 col-xs-12">
-    <br>
-    <% @categories.each do |category| %>
-      <% if category.parent_category_id.blank? %>
-        <p><%= category.name %></p>
-        <p><%= link_to 'Изменить', edit_admin_category_path(category) %></p>
-      <% end %>
-      <%= render partial: 'subcategory', locals: {subcategories: category.subcategories} if category.subcategories.present? %>
-    <% end %>
+<div class="container">
+  <h1>Категории</h1>
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-xs-12">
+      <br>
+      <table class="table">
+        <thead>
+          <th>Категория</th>
+          <th>Подкатегории</th>
+          <th>Действия</th>
+        </thead>
+        <% @categories.each do |category| %>
+          <tr id = <%= "category_#{category.id}" %>>
+            <% if category.parent_category_id.blank?  && category.parent_subcategory_id.blank? %>
+            <td>
+              <p><%= category.name %></p>
+            <td>
+              <%= render partial: 'subcategory', locals: {subcategories: category.subcategories} if category.subcategories.present? %>
+            </td>
+            </td>
+            <td>
+              <p><%= link_to 'Изменить', edit_admin_category_path(category), class: 'btn btn-warning btn-sm' %> | 
+              <%= link_to 'Удалить', admin_category_path(category), method: :delete, remote: true, class: 'btn btn-danger btn-sm', data: { confirm: "Действительно вы хотите удалить категорию #{ category.name }"} %>
+              </p>
+            </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>

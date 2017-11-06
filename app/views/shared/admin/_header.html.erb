@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to 'Мапапама', admin_root_path, class: "navbar-brand" %>
+      <%= link_to admin_root_path, class: "navbar-brand" do %>
+        <%= cl_image_tag("logo.png", :quality=>15, :width=>40, :crop=>"scale", class: 'admin-logo') %>
+      <% end %>
     </div>
     <ul class="nav navbar-nav">
       <li><%= link_to 'Пользователи', admin_users_path %></li>

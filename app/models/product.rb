@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   has_many :line_items
   has_many :orders, through: :line_items
+  has_many :image_products, dependent: :destroy
   belongs_to :category
   validates :title, presence: true
 
@@ -26,8 +27,7 @@ class Product < ApplicationRecord
   pg_search_scope :search_by_material_wood,     against: :material_wood
   pg_search_scope :search_by_material_fabric,   against: :material_fabric
 
-  # belongs_to :searchable, polymorphic: true
-  # mount_uploader :image, ImageUploader
+  accepts_nested_attributes_for :image_products, allow_destroy: true
 
   after_save :count_price, if: proc { |u| u.mark_up_changed? || u.discount_changed? || u.purchase_price_changed? }
 

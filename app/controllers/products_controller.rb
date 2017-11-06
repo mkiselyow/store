@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   def index
     @products_count = Product.count
     @products = Product.all
+    @categories = Category.all
     @products_most_viewed = Product.where('times_viewed >= 0').order('times_viewed DESC').limit(20)
     @products_wth_special_offers = Product.where('discount != 0').limit(20)
     @newest_ten_products = Product.order('created_at DESC').limit(8)
@@ -124,6 +125,9 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    3.times do
+      @product.image_products.build
+    end
   end
 
   # GET /products/1/edit
@@ -235,6 +239,6 @@ class ProductsController < ApplicationController
                                     :material_wooden, :material_fabric, :supplier, :quantity,
                                     :image, :boys, :girls, :description, :image_cache,
                                     :image_id, :country, :product_code, :discount,
-                                    :times_viewed, :category_id)
+                                    :times_viewed, :category_id, image_products_attributes: [:id, :image, :product_id, :_destroy])
   end
 end

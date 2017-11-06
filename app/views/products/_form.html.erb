@@ -1,15 +1,5 @@
 <%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render 'error', product: product %>
   <div class="row">
     <div class="col-md-4 product_form_column">
       <div class="field">
@@ -21,9 +11,16 @@
       <div class="field">
         <%= form.label(:category, "Категория") %>
         <div class="pull-right">
-          <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {}, class: 'form-control input-product' %>
+          <%= form.select :category_id, options_from_collection_for_select(Category.without_parent, :id, :name), {}, class: 'form-control input-product' %>
         </div>
       </div>
+
+<!--       <div class="field">
+        <%= form.label(:category, "Под-Категория") %>
+        <div class="pull-right">
+          <%= form.select :category_id, options_from_collection_for_select(Category.without_subcategory, :id, :name), {}, class: 'form-control input-product' %>
+        </div>
+      </div> -->
       <p>
       <div class="field">
         <%= form.label(:size_a, "Длина") %>
@@ -211,30 +208,27 @@
           </div>
         </div>
       </div>
+      <div class="col-md-12">
+        <h3>Дополнительные изображения</h3>
+        <%= form.nested_fields_for :image_products do |form_image| %>
+          <div class="col-md-7 col-xs-9">
+            <%= form_image.file_field :image %>
+            <%= form_image.hidden_field(:image_cache) %>
+          </div>
+          <div class="col-md-3 col-xs-3">
+            <%= form_image.remove_nested_fields_link %>
+          </div>
+        <% end %>
+        <%= form.add_nested_fields_link :image_products %>
+      </div>
     </div>
     <div class="col-md-3">
-    <!--   <div class="field">
-        <%= form.hidden_field(:image_cache) %>
-        <%= form.cl_image_upload(:image) %>
-      </div> -->
-
-    <!--   <div class="field">
-        <%= form.hidden_field(:image_cache)  %>
-        <%= form.file_field(:image)  %>
-      </div> -->
-
-    <!--   <div class="field">
-        <%= form.cl_image_upload(:image) %>
-        <%= form.hidden_field(:image_cache)  %>
-      </div> -->
-
       <div id="direct_upload" class="basic_form">
       <h2>Прикрепить фото</h2>
         <div class="form_line">
           <%= form.label :image, "Image:" %>
           <div class="form_controls">
             <div class="upload_button_holder">
-<!--               <%= link_to("Upload", "#", :class => "upload_button") %> -->
               <% if @unsigned %>
                 <%= form.cl_unsigned_image_upload(:image, @preset_name) %>
               <% else %>
