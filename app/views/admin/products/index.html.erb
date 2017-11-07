@@ -15,7 +15,7 @@
       <tr id = <%= "product_#{product.id}" %>>
         <td><%= product.id %></td>
         <td><%= link_to product.title, product_path(product), target: '_blank' %></td>
-        <td><%= cl_image_tag(product.image_url(:standard, :radius => 10), width: '50px', height: '50px', :alt => product.title) %></td>
+        <td><%= image_tag product.image.url(:thumbnail), width: '50px', height: '50px' %></td>
         <td><%= product.category.name %></td>
         <td><%= product.brand %></td>
         <td><%= product.size_a %>x<%= product.size_b %>x<%= product.size_h %></td>

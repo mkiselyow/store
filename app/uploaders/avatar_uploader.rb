@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   def default_url
-    [thumb, 'thumb_default.png'].compact.join('_')
+    [thumb, 'default_user.png'].compact.join('_')
   end
 
   process tags: ['photo_album_sample']

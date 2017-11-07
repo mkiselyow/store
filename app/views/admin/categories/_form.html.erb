@@ -21,7 +21,6 @@
           <div class="row well">
             <div class="col-xs-9 col-md-8">
               <%= fff.text_field :name, class: 'form-control', required: true, placeholder: 'Введите название подподкатегории  ' %>
-              <%= fff.hidden_field :parent_category_id, value: @category.id %>
               <%= fff.hidden_field :parent_subcategory_id, value: @category.subcategories.ids %>
             </div>
             <div class="col-xs-3 col-md-4">

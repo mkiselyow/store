@@ -1,9 +1,5 @@
 <%= link_to product do %>
-  <% if product.image_url %>
-    <%= cl_image_tag(product.image_url(:standard, :radius => 10, :secure=>"true"), :alt => product.title.mb_chars.capitalize.to_s, :title => product.title.mb_chars.capitalize.to_s) %>
-  <% else %>
-    <%= cl_image_tag("imgonline-com-ua-Resize-gscuXH3dcq_mgrit0.png", :radius => 10, :effect=>"grayscale", :quality=>50, :width=>100, :crop=>"scale", :alt => "Нет изображения для этого товара", :title => "Нет изображения для этого товара", :secure=>"true") %>
-  <% end %>
+  <%= image_tag product.image.url(:medium), width: '150px', height: '150px' %>
 
   <%= tag.div :class => "product_price_text" do %>
     <% if product.discount %>

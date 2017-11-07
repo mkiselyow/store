@@ -4,9 +4,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
   process :tags => ['post_picture']
 
-  # def default_url
-  #   [thumb, 'default_user.png'].compact.join('_')
-  # end
+  def default_url
+    [thumb, 'default_image.png'].compact.join('_')
+  end
   
   version :standard do
     process :resize_to_fill => [100, 100, :north]
