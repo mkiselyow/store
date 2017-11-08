@@ -105,7 +105,7 @@
       <div class="row">
         <div class="field">
           <%= form.label(:description, "Описание") %>
-          <%= form.trix_editor :description, rows: 6, id: :product_description, placeholder: 'Добавить описание', class: 'form-control' %>
+          <%= form.trix_editor :description, rows: 6, id: :product_description, placeholder: 'Добавить описание' %>
         </div>
         <div class="col-md-12 product_form_column">
           <div class="row">
@@ -195,7 +195,8 @@
               <%= form.label(:material_wooden, "Дерево") %>
               <%= form.check_box :material_wooden, id: :product_material_wooden %>
             </div>
-  
+          </div>
+          <div class="row">
             <div class="field col-md-3">
               <%= form.label(:material_fabric, "Ткань") %>
               <%= form.check_box :material_fabric, id: :product_material_fabric %>
@@ -206,20 +207,33 @@
               <%= form.check_box :material_another, id: :product_material_another %>
             </div>
           </div>
+          <div class="row">
+            <div class="field col-md-8">
+              <%= form.label(:other_desc, "Другой материал") %>
+              <%= form.text_field :other_desc, id: :other_desc, class: 'form-control', disabled: true %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-12">
         <h3>Дополнительные изображения</h3>
         <%= form.nested_fields_for :image_products do |form_image| %>
-          <div class="col-md-7 col-xs-9">
-            <%= form_image.file_field :image %>
+          <div class="col-md-9 col-xs-9">
+            <%= form_image.file_field :image, class: 'image_product_upload' %>
             <%= form_image.hidden_field(:image_cache) %>
+            <div class="col-md-6 image_product_upload_preview">
+              <img class="product_upload_image" />
+            </div>
           </div>
           <div class="col-md-3 col-xs-3">
-            <%= form_image.remove_nested_fields_link %>
+            <%= form_image.remove_nested_fields_link class: 'btn btn-danger' do %>
+              <%= fa_icon 'minus-circle ', class: 'fa-1x' %>
+            <% end %>
           </div>
         <% end %>
-        <%= form.add_nested_fields_link :image_products %>
+        <%= form.add_nested_fields_link :image_products, class: 'btn btn-primary' do %>
+          <%= fa_icon 'plus-circle ', class: 'fa-1x', text: "Добавить изображение" %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-3">
@@ -264,21 +278,8 @@
 
 <script>
   $(document).ready(function() {
-    // Cloudinary jQuery integration library uses jQuery File Upload widget
-    // (see http://blueimp.github.io/jQuery-File-Upload/).
-    // Any file input field with cloudinary-fileupload class is automatically
-    // wrapped using the File Upload widget and configured for Cloudinary uploads.
-    // You can further customize the configuration using .fileupload method
-    // as we do below.
     $(".cloudinary-fileupload")
       .cloudinary_fileupload({
-        // Uncomment the following lines to enable client side image resizing and valiation.
-        // Make sure cloudinary/processing is included the js file
-        //disableImageResize: false,
-        //imageMaxWidth: 800,
-        //imageMaxHeight: 600,
-        //acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
-        //maxFileSize: 20000000, // 20MB
         dropZone: "#direct_upload",
         start: function (e) {
           $(".status").text("Starting upload...");
@@ -295,7 +296,7 @@
         $(".status").text("");
         var preview = $(".preview").html('');
         $.cloudinary.image(data.result.public_id, {
-          format: data.result.format, width: 50, height: 50, crop: "fit"
+          format: data.result.format, width: 200, height: 200, crop: "fit"
         }).appendTo(preview);
 
         $('<a/>').
@@ -334,4 +335,22 @@
           .append($("<table>").append(rows)));
     }
     $('.cloudinary-fileupload').bind('fileuploadchange', function() { $(this).hide()})
+
+  $(document).on('ready page:load', function () {
+    $(".image_product_upload_previewimg").hide();
+    var preview = $(".image_product_upload_preview img");
+  
+    $(".image_product_upload").change(function(event){
+      var input = $(event.currentTarget);
+      var profile_upload = input[0].files[0];
+      var reader = new FileReader();
+      reader.onload = function(e){
+        image_base64 = e.target.result;
+        preview.show();
+        preview.attr("src", image_base64);
+      };
+      reader.readAsDataURL(profile_upload);
+    });
+  });
+
 </script>

@@ -125,9 +125,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    3.times do
-      @product.image_products.build
-    end
+    @product.image_products.build
   end
 
   # GET /products/1/edit
@@ -239,6 +237,6 @@ class ProductsController < ApplicationController
                                     :material_wooden, :material_fabric, :supplier, :quantity,
                                     :image, :boys, :girls, :description, :image_cache,
                                     :image_id, :country, :product_code, :discount,
-                                    :times_viewed, :category_id, image_products_attributes: [:id, :image, :product_id, :_destroy])
+                                    :times_viewed, :category_id, :other_desc, image_products_attributes: [:id, :image, :product_id, :_destroy])
   end
 end

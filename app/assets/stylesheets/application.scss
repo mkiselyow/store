@@ -93,3 +93,36 @@
 .subsubc{
   margin-left: 10px;
 }
+.preview{
+  width: 200px;
+  height: 200px;
+}
+
+.hide-bullets {
+  list-style:none;
+  margin-left: -40px;
+  margin-top:20px;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  width: 100%;
+}
+#carousel-bounding-box{
+  width: 400px;
+  height: 200px;
+}
+.carousel-product{
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+}
+.main-picture-product{
+  height: 100px;
+}
+.info-about-product{
+  display: none;
+}
