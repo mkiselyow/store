@@ -42,7 +42,7 @@
                 <!-- Carousel items -->
                 <div class="carousel-inner">
                   <div class="active item" data-slide-number="0">
-                    <%= image_tag(@product.image_url(:medium), class: 'main-picture-product') %>
+                    <%= image_tag(@product.image_url(:large), class: 'main-picture-product') %>
                   </div>
                   <% @product.image_products.each_with_index do |im_prod, i| %>
                     <div class="item" data-slide-number="<%= (i+1) %>">
@@ -63,12 +63,22 @@
         </div>
       </div>
       <div class="col-md-4 goods_col right">
-        <h2><%= number_to_currency(@product.price, unit: "₴", precision: 2) %></h2>
+        <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
+        <h2>
+          <% if @product.discount.present? %>
+            <s><%= number_to_currency(@product.price, unit: "₴")%></s> 
+            <p class='label label-success'><%= number_to_currency(@product.discount_price, unit: "₴")%></p> 
+          <% else %>
+            <%= number_to_currency(@product.price, unit: "₴")%>
+          <% end %>
+        </h2>
         <% if @product.discount %>
           <% if @product.discount != 0 %>
             <p>
-              <strong>Скидка:</strong>
-              <%= number_to_percentage(@product.discount, precision: 0) %>
+              <span class="uk-badge uk-badge-notification uk-badge-danger">
+                <strong>Скидка</strong>
+                <%= number_to_percentage(@product.discount, precision: 0) %>
+              </span>
             </p>
           <% end %>
         <% end %>
@@ -124,10 +134,15 @@
     </div>
   </div>
 </div>
+<!-- <%= image_tag(@product.image_url(:large), class: 'main-picture-product', id: "product_avatar") %>
+<img id="zoom_02" src="http://rulsmart.com/uploads/devices/wallpapers/icons/best/Blue%20n%20Green.png" data-zoom-image="https://cs9.pikabu.ru/post_img/big/2016/11/26/7/1480156409133769842.jpg"/> -->
+<script>
+  $("#product_avatar").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5});
+</script> 
 <script>
   jQuery(document).ready(function($) {
     $('#myCarousel').carousel({
-            interval: 5000
+       interval: 5000
     });
         //Handles the carousel thumbnails
     $('[id^=carousel-selector-]').click(function () {

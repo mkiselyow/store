@@ -34,6 +34,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     cloudinary_transformation quality: 80
   end
 
+  version :big_large do
+    eager
+    resize_to_fit(1280, 720)
+    cloudinary_transformation quality: 80
+  end
+
   version :gray do
     process :resize_to_fill => [100, 150, :north]
     # process :to_grey

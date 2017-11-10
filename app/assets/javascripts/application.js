@@ -6,6 +6,7 @@
 //= require social-share-button
 //= require uikit
 //= require trix
+//= require jquery.elevatezoom
 //= require jquery.raty
 //= require jquery.raty.min
 //= require jquery_nested_form

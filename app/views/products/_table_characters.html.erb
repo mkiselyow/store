@@ -32,7 +32,14 @@
     </tr>
     <tr>
       <th>Цена</th>
-      <td><%= number_to_currency(@product.price, unit: "₴") %></td>
+      <td>
+        <% if @product.discount.present? %>
+          <s><%= number_to_currency(@product.price, unit: "₴")%></s> 
+          <p class='uk-badge uk-badge-notification uk-badge-success'><%= number_to_currency(@product.discount_price, unit: "₴")%></p> 
+        <% else %>
+          <%= number_to_currency(@product.price, unit: "₴")%>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>Цена закупки</th>

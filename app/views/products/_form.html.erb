@@ -209,8 +209,7 @@
           </div>
           <div class="row">
             <div class="field col-md-8">
-              <%= form.label(:other_desc, "Другой материал") %>
-              <%= form.text_field :other_desc, id: :other_desc, class: 'form-control', disabled: true %>
+              <%= form.text_field :other_desc, id: :other_desc, class: 'form-control', disabled: true, placeholder: 'Введите название материала' %>
             </div>
           </div>
         </div>
@@ -350,6 +349,16 @@
         preview.attr("src", image_base64);
       };
       reader.readAsDataURL(profile_upload);
+    });
+  });
+
+  $(function(){
+    $("#product_material_another").change(function(){
+    if($("#product_material_another").prop("checked") == true){
+      $("#other_desc").prop("disabled", false);
+    }else{
+      $("#other_desc").prop("disabled", true);
+    }
     });
   });
 

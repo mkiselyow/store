@@ -1,5 +1,5 @@
 <%= link_to product do %>
-  <%= image_tag product.image.url(:medium), width: '150px', height: '150px' %>
+  <%= image_tag product.image.url(:medium), width: '150px', height: '150px', id: "product_#{product.id}" %>
 
   <%= tag.div :class => "product_price_text" do %>
     <% if product.discount %>

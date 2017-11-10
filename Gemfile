@@ -92,6 +92,7 @@ gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 # user interface lib
 gem 'jquery-ui-rails'
+gem 'elevatezoom-rails'
 
 gem "nested_form"
 gem 'nested_form_fields'

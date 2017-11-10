@@ -66,6 +66,10 @@ class Product < ApplicationRecord
     end
   end
 
+  def discount_price
+    price - ((price/100) * discount)
+  end
+
   # def self.searchable_language
   #   'russian'
   # end

@@ -13,6 +13,6 @@ class Category < ApplicationRecord
   accepts_nested_attributes_for :subcategories, allow_destroy: true
   accepts_nested_attributes_for :subsubcategories, allow_destroy: true
 
-  scope :without_parent, -> { where(parent_category_id: nil) }
+  scope :without_parent, -> { where(parent_category_id: nil).where(parent_subcategory_id: nil) }
   scope :without_subcategory, -> { where('parent_category_id IS NOT NULL') }
 end
