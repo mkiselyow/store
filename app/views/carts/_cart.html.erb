@@ -1,10 +1,34 @@
+<h1>Корзина <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' }, class: "btn btn-danger"%>
+</h1>
 <% unless @cart.line_items.empty? %>
-  <h2>Корзина</h2>
-    <%= render(@cart.line_items) %>
-    <div>Сумма покупок <%= number_to_currency(@cart.cart_total_price, unit: "₴") %></div>
-
-  <%= link_to 'Редактировать ', edit_cart_path(@cart) %> |
-  <%= link_to 'Back', carts_path %>
-  <%= button_to "Подтвердить", new_order_path, method: :get %>
-  <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' } %>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="container">
+    <table id="cart" class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th style="width:50%">Продукт</th>
+          <th style="width:10%">Цена</th>
+          <th style="width:8%">Кол-во</th>
+          <th style="width:12%" class="text-center">Сумма</th>
+          <th style="width:10%"></th>
+        </tr>
+      </thead>
+      <%= render(@cart.line_items) %>
+      <tfoot>
+        <tr class="visible-xs">
+          <td class="text-center"><strong><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></strong></td>
+        </tr>
+        <tr>
+          <td><%= link_to 'Назад в магазин', root_path, class: "btn btn-warning" %></td>
+          <td colspan="2" class="hidden-xs"></td>
+          <td class="hidden-xs text-center">
+            <h2><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></h2>
+          </td>
+          <td>
+            <%= button_to "Подтвердить", new_order_path, method: :get, class: "btn btn-success btn-block" %>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 <% end %>

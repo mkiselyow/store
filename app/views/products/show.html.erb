@@ -42,21 +42,24 @@
                 <!-- Carousel items -->
                 <div class="carousel-inner">
                   <div class="active item" data-slide-number="0">
-                    <%= image_tag(@product.image_url(:large), class: 'main-picture-product') %>
+                    <% if @product.image.present? %>
+                      <img id="main_avatar" src="<%= @product.image_url(:large) %>" data-zoom-image="<%= @product.image_url(:large) %>", class='img-thumbnail profile-avatar'/>
+                    <% else %>
+                        <%= image_tag( @product.image_url(:medium), width: '470px', height: '480px') %>
+                    <% end %>
+                    <script>
+                      $("#main_avatar").elevateZoom();
+                    </script>
                   </div>
                   <% @product.image_products.each_with_index do |im_prod, i| %>
-                    <div class="item" data-slide-number="<%= (i+1) %>">
-                      <%= image_tag(im_prod.image.url(:large), width: '470px', height: '480px')%>
+                    <div class="item" data-slide-number="<%= (i+1) %>"">
+                      <img id="image_<%= (i+1) %>" src="<%= im_prod.image.url(:large) %>" data-zoom-image="<%= im_prod.image.url(:large) %>", class='img-thumbnail profile-avatar', width='470px', height='480px'/>
                     </div>
+                    <script>
+                      $("#image_<%= (i+1) %>").elevateZoom();
+                    </script>
                   <% end %>
                 </div>
-                <!-- Carousel nav -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
               </div>
             </div>
           </div>
@@ -65,7 +68,7 @@
       <div class="col-md-4 goods_col right">
         <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <h2>
-          <% if @product.discount.present? %>
+          <% if @product.discount > 0 %>
             <s><%= number_to_currency(@product.price, unit: "₴")%></s> 
             <p class='label label-success'><%= number_to_currency(@product.discount_price, unit: "₴")%></p> 
           <% else %>
@@ -134,15 +137,11 @@
     </div>
   </div>
 </div>
-<!-- <%= image_tag(@product.image_url(:large), class: 'main-picture-product', id: "product_avatar") %>
-<img id="zoom_02" src="http://rulsmart.com/uploads/devices/wallpapers/icons/best/Blue%20n%20Green.png" data-zoom-image="https://cs9.pikabu.ru/post_img/big/2016/11/26/7/1480156409133769842.jpg"/> -->
-<script>
-  $("#product_avatar").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5});
-</script> 
+
 <script>
   jQuery(document).ready(function($) {
     $('#myCarousel').carousel({
-       interval: 5000
+       interval: 15000
     });
         //Handles the carousel thumbnails
     $('[id^=carousel-selector-]').click(function () {
