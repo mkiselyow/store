@@ -3,10 +3,58 @@
 <% else %>
   <ul>
 <% end %>
-  <li><%= line_item.quantity %> &times; <%= line_item.product.title.mb_chars.capitalize.to_s %></li>
-  <li><%= link_to 'удалить', line_item, method: :delete %></li>
-  <li><%= link_to 'уменьшить кол-во', line_item_decrease_quantity_url(line_item), method: :put  %></li>
-  <li><%= link_to 'увеличить кол-во', line_item_increase_quantity_url(line_item), method: :put  %></li>
-  <li>Цена <%= number_to_currency(line_item.product.price, unit: "₴") %></li>
-  <li>Сумма <%= number_to_currency(line_item.count_line_item_price, unit: "₴") %></li>
 </ul>
+<tbody>
+  <tr>
+    <td>
+      <div class="row">
+        <div class="col-sm-2 hidden-xs">
+          <%= image_tag(line_item.product.image_url(:thumb), class: "img-responsive", title: "#{line_item.product.title}") %>
+        </div>
+        <div class="col-sm-10">
+          <h4 class="nomargin"><%= line_item.product.title.mb_chars.capitalize.to_s %></h4>
+          <div class="description-item">
+            <p>
+              <%= raw line_item.product.description.truncate(120) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td data-th="Цена">
+      <%= number_to_currency(line_item.product.price, unit: "₴") %>
+    </td>
+    <td data-th="Количество">
+      <div class="count-item">
+        <p>
+          <%= link_to line_item_increase_quantity_url(line_item), method: :put do %>
+            <%= fa_icon 'caret-square-o-up', class: 'fa-1x' %>
+          <% end %>        
+        </p>
+        <p><%= line_item.quantity %></p>
+        <p>
+          <%= link_to line_item_decrease_quantity_url(line_item), method: :put do %>
+            <%= fa_icon 'caret-square-o-down', class: 'fa-1x' %>
+          <% end %>        
+        </p>
+      </div>
+      <div class="count-item-mobile">
+        <%= link_to line_item_decrease_quantity_url(line_item), method: :put do %>
+          <%= fa_icon 'caret-square-o-left', class: 'fa-1x' %>
+        <% end %>     
+        <%= line_item.quantity %>  
+        <%= link_to line_item_increase_quantity_url(line_item), method: :put do %>
+          <%= fa_icon 'caret-square-o-right', class: 'fa-1x' %>
+        <% end %>         
+      </div>
+    </td>
+    <td data-th="Сумма" class="text-center">
+      <%= number_to_currency(line_item.count_line_item_price, unit: "₴") %>
+    </td>
+    <td class="actions" data-th="">
+      <%= link_to line_item, method: :delete, class: "btn btn-danger btn-sm" do %>
+        <%= fa_icon 'trash-o', class: 'fa-2x' %>
+      <% end %>               
+    </td>
+  </tr>
+</tbody>

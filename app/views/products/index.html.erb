@@ -6,9 +6,9 @@
     <div id="search_multiple_form">
       <%= render  partial: "products/search_multiple_form" %>
     </div>
-    <%= hidden_div_if(@cart.line_items.empty?, id: 'my_cart', class: 'my_cart') do %>
+<!--     <%= hidden_div_if(@cart.line_items.empty?, id: 'my_cart', class: 'my_cart') do %>
       <%= render @cart %>
-    <% end %>
+    <% end %> -->
   </aside>
   <article>
     <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2, id_of_this_carousel: "newest_carousel", name_of_carousel: "Новинки"  } %>
