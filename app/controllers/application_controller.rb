@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
   protect_from_forgery with: :exception
   before_action :banned?
-
-  # devise email
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def banned?
@@ -21,9 +19,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: %i[email first_name last_name email number admin avatar username banned])
     devise_parameter_sanitizer.permit(:login, keys: [:email])
   end
-
-  # only logged in users
-  # before_action :authenticate_user!
 
   private
 

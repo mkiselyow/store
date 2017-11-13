@@ -1,6 +1,8 @@
 <h1>Корзина <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' }, class: "btn btn-danger"%>
 </h1>
 <% unless @cart.line_items.empty? %>
+  <h1>Корзина <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' }, class: "btn btn-danger"%>
+  </h1>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <div class="container">
     <table id="cart" class="table table-hover table-condensed">
@@ -31,4 +33,5 @@
       </tfoot>
     </table>
   </div>
+<% end %>
 <% end %>

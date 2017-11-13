@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   end
   resources :carts
   resources :orders
-  resources :products
+  resources :products do
+    resources :line_items
+  end
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users
