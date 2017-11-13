@@ -12,6 +12,7 @@ class LineItemsController < ApplicationController
   end
 
   def create
+    # binding.pry
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
     # @line_item = @cart.line_items.build(product: product)
@@ -73,7 +74,7 @@ class LineItemsController < ApplicationController
       increased_quantity = @line_item.quantity + 1
       @line_item.update(quantity: increased_quantity)
       respond_to do |format|
-        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно уменьшено' }
+        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно увеличино' }
         format.json { head :no_content }
       end
     else

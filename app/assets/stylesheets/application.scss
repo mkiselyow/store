@@ -193,3 +193,15 @@
   table#cart tfoot td{display:block; }
   table#cart tfoot td .btn{display:block;}
 }
+.buttom_add_to_cart{
+    border: none;
+    background: #ff3801;
+    border-radius: 5px;
+    color: #FFF;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 50%;
+    font-size: 14px;
+    min-height: 42px;
+}
