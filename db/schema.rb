@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20171113142617) do
     t.string "country"
     t.integer "discount"
     t.integer "product_code"
-    t.integer "times_viewed", default: 1
+    t.integer "times_viewed"
     t.bigint "category_id"
     t.string "other_desc"
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -137,9 +137,12 @@ ActiveRecord::Schema.define(version: 20171113142617) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "username"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string "provider"
     t.string "uid"
-    t.string "avatar"
     t.boolean "banned", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
