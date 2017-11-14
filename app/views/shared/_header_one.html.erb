@@ -1,13 +1,13 @@
 <div class="col-lg-6 col-md-12 top_container_left">
   <div class="row">
-    <div class="col-md-4 col-lg-6">
+    <div class="col-md-4 col-lg-5">
       <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
     </div>
     <div class="col-md-4 col-lg-2 ">
       <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
     </div>
-    <div class="col-md-4 col-lg-4">
-      <p class='tagline'><b>Мапапама</b> - это детская радость</p>
+    <div class="col-md-4 col-lg-5">
+      <b>Мапапама</b> - это детская радость
     </div>
   </div>
 </div>
@@ -23,7 +23,7 @@
 <div class="col-lg-4 col-md-12 col-xs-12 top_container_right">
   <div class="row">
     <div class="col-xs-10 col-md-6 col-lg-8">
-      <div class="login-reg-menu">
+      <div class="col-md-8 col-xs-10">
         <% if user_signed_in? %>
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.full_name %> <%= image_tag current_user.avatar_url(:small), class: 'img-circle header-avatar' %>
@@ -43,23 +43,25 @@
           <%= link_to "Войти", new_user_session_path %>
         <% end %>
       </div>
-      <p>    
-        <%= form_tag(products_path, method: :get) do %>
-          <span class="input-group">
-            <%= text_field_tag :title, nil, placeholder: "Название товара", required: true, class: 'form-control search-input' %>
-            <span class="input-group-btn">
-              <%= submit_tag 'Искать', title: nil, class: "btn btn-default"  %>
-            </span>
-          </span>
-        <% end %>
-      </p>
+      <% if user_signed_in? %>
+        <div class="col-md-4 col-xs-2">
+          <%= link_to cart_path(@cart.id), class: "btn btn-success pull-right btn-lg" do %>
+            <%= fa_icon 'shopping-basket' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-xs-1 col-md-6 col-lg-4">
-      <div class="login-reg-menu">
-        <%= link_to cart_path(@cart.id), class: "btn btn-success" do %>
-          <%= fa_icon 'shopping-basket' %>
-        <% end %>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag(products_path, method: :get) do %>
+        <span class="input-group">
+          <%= text_field_tag :title, nil, placeholder: "Название товара", required: true, class: 'form-control search-input' %>
+          <span class="input-group-btn">
+            <%= submit_tag 'Искать', title: nil, class: "btn btn-default"  %>
+          </span>
+        </span>
+      <% end %>
     </div>
   </div>
 </div>

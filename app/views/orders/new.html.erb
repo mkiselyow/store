@@ -1,9 +1,7 @@
-<div class="store_form">
-  <fieldset>
-    <h1>Подтвердите Заказ</h1>
+<h1>Подтвердите Заказ</h1>
 
-    <%= render 'form', order: @order %>
-
-    <%= link_to 'Назад', orders_path %>
-  </fieldset>
+<%= render 'form', order: @order %>
+<br>
+<div class="row">
+  <%= link_to 'Назад', orders_path %>
 </div>

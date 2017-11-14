@@ -1,31 +1,64 @@
-<%= link_to 'Добавить товар', new_product_path %><br>
+<% if current_user.try(:admin) %>
+  <%= link_to 'Добавить товар', new_product_path %><br>
+<% end %>
 Подбор по параметрам
 <%= form_tag({controller: "products", action: "index"}, method: :get) do %>
   <div class="row">
     <hr>
     <p>Пол</p>
     <div class="col-md-6">
-      <p><%= check_box_tag :boys, :true, :false, :class => "boys" %>Мальчики</p>
+      <%= check_box_tag :boys, :true, :false, :class => "boys" %>
+      <%= fa_icon 'mars-stroke', class: 'fa-1x sex-boys', text: 'Мальчики' %>
     </div>
     <div class="col-md-6">
-      <p><%= check_box_tag :girls, :true, :false, :class => "girls" %>Девочки</p>
+      <%= check_box_tag :girls, :true, :false, :class => "girls" %>
+      <%= fa_icon 'mars-stroke', class: 'fa-1x sex-girls', text: 'Девочки' %>
+    </div>
+  </div>
+  <div class="row">
+    <hr>
+    <p>Категория</p>
+    <div class="col-md-6">
+      <%= select_tag :category_id, options_from_collection_for_select(Category.without_parent, :id, :name),  class: 'form-control input-product' %>
     </div>
   </div>
   <div class="row">
     <hr>
     <p>Цвет</p>
-    <div class="col-md-6">
-      <p><%= check_box_tag :color_white, :true, :false, :class => "color_white"%>Белый</p>
-      <p><%= check_box_tag :color_yellow, :true, :false, :class => "color_yellow" %>Желтый</p>
-      <p><%= check_box_tag :color_green, :true, :false, :class => "color_green" %>Зеленый</p>
-    </div>
-    <div class="col-md-6">
-      <p><%= check_box_tag :color_black, :true, :false, :class => "color_black" %>Черный</p>
-      <p><%= check_box_tag :color_red, :true, :false, :class => "color_red" %>Красный</p>
-      <p><%= check_box_tag :color_blue, :true, :false, :class => "color_blue" %>Синий</p>
-    </div>
     <div class="col-md-12">
-      <p><%= check_box_tag :color_violet, :true, :false, :class => "color_violet" %>Фиолетовый</p>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-default btn-sm">
+          <%= check_box_tag :color_white, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label>
+        <label class="btn btn-warning btn-sm">
+          <%= check_box_tag :color_yellow, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label> 
+        <label class="btn btn-success btn-sm">
+          <%= check_box_tag :color_green, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label>
+        <label class="btn btn-black btn-sm">
+          <%= check_box_tag :color_black, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label>
+      </div>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-danger btn-sm">
+          <%= check_box_tag :color_red, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label>
+        <label class="btn btn-primary btn-sm">
+          <%= check_box_tag :color_blue, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label>      
+
+        <label class="btn btn-violet btn-sm">
+          <%= check_box_tag :color_violet, :true, :false %>
+          <span class="glyphicon glyphicon-ok"></span>
+        </label>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -41,5 +74,8 @@
       <p><%= check_box_tag :material_fabric, :true, :false, :class => "color_yellow" %>Ткань</p>
     </div>
   </div>
-  <%= submit_tag 'Искать', title: nil %>
+  <%= submit_tag 'Искать', class: 'btn btn-success' %>
 <% end %>
+<script>
+  $('input[type="checkbox"]').prop('checked' , false);
+</script>

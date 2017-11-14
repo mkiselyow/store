@@ -1,62 +1,66 @@
-<%= form_with(model: order, local: true) do |form| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :first_name, "Имя получателя" %>
-    <%= form.text_field :first_name, id: :order_first_name, size: 40, :required => true %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_with(model: order, local: true) do |form| %>
+      <%= render 'error', order: order %>
+  
+      <div class="row">
+        <div class="field col-md-6">
+          <%= form.label :first_name, "Имя получателя" %>
+          <%= form.text_field :first_name, id: :order_first_name, :required => true, class: 'form-control', placeholder: 'Введите имя' %>
+        </div>
+        <div class="field col-md-6"">
+          <%= form.label :last_name, "Фамилия получателя" %>
+          <%= form.text_field :last_name, id: :order_last_name, :required => true, class: 'form-control', placeholder: 'Введите фамилию' %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="field col-md-6">
+          <%= form.label :number, "Контактный номер телефона" %>
+          <%= form.text_field :number, id: :order_number, :required => true, class: 'form-control', placeholder: 'Введите номер телефона' %>
+        </div>
+      
+        <div class="field col-md-6">
+          <%= form.label :city, "Областной центр" %>
+          <div class="form-control">
+            <%= form.select 'city[area]', Order::AREAS, prompt: 'Выберите центр', id: :order_city_area, :required => true, class: 'form-control' %>
+          </div>
+        </div>      
+      </div>
+      <br>
+      <div class="row">
+        <div class="field col-md-6">
+          <%= form.label :city, "Населенный пункт" %>
+          <%= form.text_field 'city[city]', id: :order_city_city, :required => true, class: 'form-control' %>
+        </div>
+        <div class="field col-md-6">
+          <%= form.label :post_office_number, "Номер отделения 'Нова Пошта'" %>
+          <%= form.number_field :post_office_number, id: :order_post_office_number, :required => true, class: 'form-control' %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="field col-md-6">
+          <%= form.label :pay_type, "Способ оплаты" %>
+          <br>
+          <div class="form-control">
+            <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Выберите способ оплаты', id: :order_pay_type, :required => true %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="field col-md-12">
+          <%= form.label :comment, "Комментарий" %>
+          <%= form.text_area :comment, id: :order_comment, class: 'form-control'%>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <%= form.submit "Подтвердить заказ", class: 'btn btn-success' %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :last_name, "Фамилия получателя" %>
-    <%= form.text_field :last_name, id: :order_last_name, size: 40, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :number, "Контактный номер телефона" %>
-    <%= form.text_field :number, id: :order_number, size: 40, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comment, "Комментарий" %>
-    <%= form.text_area :comment, id: :order_comment, rows: 3, cols: 40 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city, "Область" %>
-    <%= form.select 'city[region]', Order::REGIONS, prompt: 'Выберите область', id: :order_city_region, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city, "Областной центр" %>
-    <%= form.select 'city[area]', Order::AREAS, prompt: 'Выберите центр', id: :order_city_area, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city, "Населенный пункт" %>
-    <%= form.text_field 'city[city]', id: :order_city_city, size: 40, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :post_office_number, "Номер отделения 'Нова Пошта'" %>
-    <%= form.number_field :post_office_number, id: :order_post_office_number, size: 40, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pay_type, "Способ оплаты" %>
-    <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Выберите способ оплаты', id: :order_pay_type, :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Подтвердить заказ" %>
-  </div>
-<% end %>
+</div>

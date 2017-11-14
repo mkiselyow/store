@@ -1,0 +1,20 @@
+<table class="table-hover">
+  <thead>
+    <tr>
+      <td>Товар</td>
+      <td>Цена</td>
+      <td>Кол-во</td>
+      <td>Сумма</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.line_items.each do |item| %>
+      <tr>
+        <td><%= item.product.title %></td>
+        <td><%= number_to_currency(item.product.price, unit: "₴") %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.count_line_item_price, unit: "₴") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
