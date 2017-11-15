@@ -74,7 +74,7 @@ class LineItemsController < ApplicationController
       increased_quantity = @line_item.quantity + 1
       @line_item.update(quantity: increased_quantity)
       respond_to do |format|
-        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно увеличино' }
+        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно уменьшено' }
         format.json { head :no_content }
       end
     else

@@ -68,8 +68,8 @@
       <div class="col-md-4 goods_col right">
         <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <h2>
-          <% if @product.discount.present? %>
-            <s><%= number_to_currency(@product.price, unit: "₴")%></s> 
+          <% if @product.present? %>
+            <s><%= number_to_currency(@product.price, unit: "₴")%></s>
             <p class='label label-success'><%= number_to_currency(@product.discount_price, unit: "₴")%></p> 
           <% else %>
             <%= number_to_currency(@product.price, unit: "₴")%>

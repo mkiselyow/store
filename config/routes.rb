@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     put 'decrease_quantity'
     put 'increase_quantity'
   end
+
   resources :carts
   resources :orders
   resources :products do
