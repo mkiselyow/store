@@ -64,13 +64,17 @@ gem 'paperclip'
 # fb omniauth
 gem 'therubyracer'
 gem 'omniauth-facebook'
+
 gem 'font-awesome-rails'
+# vk omniauth
+gem 'omniauth-vkontakte'
 
 # paperclip+heroku images
 gem 'aws-sdk'
 
 # add WYSAWYG text-creator
 gem 'trix'
+gem 'ckeditor'
 
 # instagram omniauth
 gem 'omniauth-instagram'

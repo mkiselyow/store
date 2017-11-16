@@ -1,37 +1,49 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="col-md-4">
-    <h2 align="center">Вход</h2>
-    <div class="row">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+  <div class="row">
+    <div class="container">
+      <div class="omb_login">
+        <h2 class="omb_authTitle">Войти или <%= link_to "Зарегистрироваться", new_registration_path(resource_name) %></h3>
+          <div class="row">
+            <%= render "devise/shared/links" %>
+          </div>
+          <div class="row omb_row-sm-offset-3 omb_loginOr">
+            <div class="col-xs-12 col-sm-6">
+              <hr class="omb_hrOr">
+              <span class="omb_spanOr">или</span>
+            </div>
+          </div>
+          <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-6">  
+              <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Ваш email" %>
+                </div>
+                <span class="help-block"></span>
+                          
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                  <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Ваш пароль"  %>
+                </div>
+               <br>
+               <%= f.submit "Войти", class: 'btn btn-lg btn-primary btn-block' %>
+             </form>
+           </div>
+          </div>
+        <div class="row omb_row-sm-offset-3">
+          <div class="col-xs-12 col-sm-3">
+            <label class="checkbox">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "Запомнить меня" %>
+            </label>
+          </div>
+          <div class="col-xs-12 col-sm-3">
+            <p class="omb_forgotPwd">
+              <%= link_to "Забыли пароль?", new_password_path(resource_name) %>
+            </p>
+          </div>
+        </div>        
       </div>
     </div>
-    <div class="row">
-      <div class="field">
-        <%= f.label :password, "Пароль" %><br />
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
-      </div>
-    </div>
-    <div class="row">
-      <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, "Запомнить меня" %>
-        </div>
-      <% end -%>
-    </div>
-    <div class="row">
-      <div class="actions">
-        <%= f.submit "Войти", class: 'btn btn-success' %>
-        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <%= link_to "Регистрация", new_registration_path(resource_name), class: 'btn btn-primary' %>
-        <% end -%>
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to "Забыли пароль?", new_password_path(resource_name), class: 'btn btn-warning' %><br />
-        <% end -%>
-      </div>
-    </div>
-  <% end %>
-  <%= render "devise/shared/links" %>
   </div>
+<% end %>

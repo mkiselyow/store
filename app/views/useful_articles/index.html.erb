@@ -1,0 +1,38 @@
+<h1>Полезные статьи</h1>
+<% @useful_articles.each do |u_a| %>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-8 well">
+         <div class="row">
+           <div class="col-md-8">
+             <h3><strong><%= link_to u_a.title, useful_article_path(u_a) %></strong></h3>
+           </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag u_a.preview_url(:medium), class: 'thumbnail' %>
+          </div>
+          <div class="col-md-7">      
+            <p>
+              <%= raw u_a.body.truncate(220) %>
+            </p>
+            <p><%= link_to 'Читать далее', useful_article_path(u_a), class: "btn btn-default" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <p></p>
+            <p>
+              <%= link_to user_path(u_a.user) do %>
+                <%= fa_icon 'user', text: "#{ u_a.user.full_name}" %>
+              <% end %>
+              | <%= fa_icon 'calendar', text: "#{ u_a.created_at.strftime("%B %dth, %Y") }" %>
+              | <%= fa_icon 'comment' %> <a href="#">3 Comments</a>
+              | <%= social_share_button_tag(u_a.title) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

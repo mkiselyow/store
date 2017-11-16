@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  get 'useful_articles/index'
+
+  get 'useful_articles/show'
+
   resources :line_items do
     put 'decrease_quantity'
     put 'increase_quantity'
@@ -14,8 +19,11 @@ Rails.application.routes.draw do
   resources :users
   resources :comments
   resources :ratings, only: :update
+  resources :useful_articles, only: [:show, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "products#index"
+
+  # mount Ckeditor::Engine => '/ckeditor'
 
   get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
 
@@ -36,6 +44,7 @@ Rails.application.routes.draw do
       get :banned_user, on: :member
       get :change_permission, on: :member
     end
+    resources :useful_articles
     resources :products
     resources :categories
   end

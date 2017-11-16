@@ -19,7 +19,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <p id="notice"><%= notice %></p>
+          <div class="row">
+            <%- flash.each do |name, msg|%>
+              <%= content_tag :div, msg, id: "flash_#{name}", class: 'alert alert-info message' %>
+            <% end %>
+          </div>
           <%= yield %>
         </div>
       </div>

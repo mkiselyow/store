@@ -8,10 +8,13 @@
 
 <%- if devise_mapping.omniauthable? %>
   <center>
-    <h3>Авторизация через социальные сети</h3>
     <%- resource_class.omniauth_providers.each do |provider| %>
       <%= link_to omniauth_authorize_path(resource_name, provider) do %>
-        <%= fa_stacked_icon "#{OmniAuth::Utils.camelize(provider).downcase}", class: "fa-2x #{OmniAuth::Utils.camelize(provider).downcase}-icon", base: "square-o"  %>
-        <% end -%>
+        <% if OmniAuth::Utils.camelize(provider) == 'Vkontakte' %>
+          <%= fa_stacked_icon "vk", class: "fa-2x vk-icon", base: "square-o"  %>
+        <% else %>
+          <%= fa_stacked_icon "#{OmniAuth::Utils.camelize(provider).downcase}", class: "fa-2x #{OmniAuth::Utils.camelize(provider).downcase}-icon", base: "square-o"  %>
+        <% end %>
+      <% end -%>
     <% end -%>
 <% end -%>

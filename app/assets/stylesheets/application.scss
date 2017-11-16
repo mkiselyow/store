@@ -10,6 +10,8 @@
 @import "social-share-button";
 @import "uikit";
 @import 'carousel_product_show';
+@import 'session_form';
+
 .facebook-icon{
   color: #4267b2;
 }
@@ -181,4 +183,14 @@
 .btn-violet{
   background-color: purple;
   color: white;
+}
+.thumb-contenido{
+  margin-bottom: 1%;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.useful_articles_image_index{
+  width: 50px;
+  height: 50px;
+  margin: 15px;
 }
