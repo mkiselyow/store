@@ -1,0 +1,6 @@
+<%= form_for([@useful_article, @useful_article.comment_posts.build]) do |f| %>
+  <br>
+  <%= f.trix_editor :body %>
+  <br>
+  <%= f.submit 'Оставить комментарий', class: 'btn btn-success'%>
+<% end %>

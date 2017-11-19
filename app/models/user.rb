@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # avatar
   has_many :comments, dependent: :destroy
+  has_many :comment_posts, dependent: :destroy
   has_many :userful_articles, dependent: :destroy
   # has_attached_file :avatar, styles: { medium: '100x100>', thumb: '50x50>' }
   # validates_attachment_content_type :avatar, content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']

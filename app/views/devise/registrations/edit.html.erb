@@ -13,6 +13,7 @@
           <%= f.text_field :last_name, id: :user_last_name, class: 'form-control' %>
         </div>
       </div>
+      <p></p>
       <div class="row">
         <div class="field col-md-4">
           <%= f.label(:email, "Эл. почта" ) %><br />
@@ -23,13 +24,13 @@
           <%= f.text_field :number, id: :user_number, :required => true, :placeholder => "Обязательное поле", class: 'form-control' %>
         </div>
       </div>
-  
+      <p>
       <div class="row">
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Ожидаем подтверждения : <%= resource.unconfirmed_email %></div>
         <% end %>
       </div>
-    
+      <p>
       <div class="row">
         <div class="field col-md-4">
           <%= f.label(:avatar, "Аватар" ) %><br />
@@ -40,7 +41,7 @@
           <img class="upload_avatar edit_upload_avatar" />
         </div>
       </div>
-      
+      <p>
       <div class="row">
         <div class="col-md-4">
           <a class="btn btn-info" id='changePasswordForm'>Изменить пароль</a>
@@ -60,18 +61,20 @@
           <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
         </div>
       </div>
+      <p>
       <div class="row">
-        <br>
+        <p>
         <div class="field col-md-4">
           <%= f.label(:current_password, "Пароль" ) %> <i>(введите текущий пароль чтобы подтвердить изменения)</i><br />
           <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
         </div>
       </div>
-    
+      <p></p>
       <div class="actions">
         <%= f.submit "Отправить изменения", class: 'btn btn-warning' %>
       </div>
     <% end %>
+    <p></p>
     <div class="well col-md-8">
       <center>
         <h3>Удалить аккаунт</h3>

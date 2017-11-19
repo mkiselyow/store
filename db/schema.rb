@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116151738) do
+ActiveRecord::Schema.define(version: 20171118113936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20171116151738) do
     t.integer "parent_subcategory_id"
   end
 
+  create_table "category_posts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
@@ -38,6 +44,16 @@ ActiveRecord::Schema.define(version: 20171116151738) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "comment_posts", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "useful_article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["useful_article_id"], name: "index_comment_posts_on_useful_article_id"
+    t.index ["user_id"], name: "index_comment_posts_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -128,6 +144,8 @@ ActiveRecord::Schema.define(version: 20171116151738) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "published", default: false
+    t.integer "category_id"
     t.index ["user_id"], name: "index_useful_articles_on_user_id"
   end
 
@@ -149,14 +167,20 @@ ActiveRecord::Schema.define(version: 20171116151738) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "username"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string "provider"
     t.string "uid"
-    t.string "avatar"
     t.boolean "banned", default: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comment_posts", "useful_articles"
+  add_foreign_key "comment_posts", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "image_products", "products"
   add_foreign_key "line_items", "carts"

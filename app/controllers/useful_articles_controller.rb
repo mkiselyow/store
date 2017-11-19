@@ -1,6 +1,6 @@
 class UsefulArticlesController < ApplicationController
   def index
-    @useful_articles = UsefulArticle.all
+    @useful_articles = UsefulArticle.where(published: true)
   end
 
   def show

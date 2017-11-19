@@ -27,5 +27,16 @@
         </div>
        </div>
     </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h3><%= count_comments %></h3>
+        <%= render 'comment_posts/comment' %>
+      </div> 
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= render 'comment_posts/form' %>
+      </div>
+    </div>
   </div>
 </div>

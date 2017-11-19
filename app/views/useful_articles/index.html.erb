@@ -27,7 +27,7 @@
                 <%= fa_icon 'user', text: "#{ u_a.user.full_name}" %>
               <% end %>
               | <%= fa_icon 'calendar', text: "#{ u_a.created_at.strftime("%B %dth, %Y") }" %>
-              | <%= fa_icon 'comment' %> <a href="#">3 Comments</a>
+              | <%= fa_icon 'comment', text: "#{ u_a.comment_posts.count } комментариев"  %>
               | <%= social_share_button_tag(u_a.title) %>
             </p>
           </div>

@@ -3,6 +3,11 @@
   <br>
   <%= f.text_field :title, placeholder: "Введите заголовок", class: 'form-control', required: true %>
   <br>
+  <%= f.select :category_id, options_from_collection_for_select(CategoryPost.all, :id, :name), {}, class: 'form-control' %>
+  <br>
+    <%= f.label(:published, "Публикация") %>
+    <%= f.check_box :published %>
+  <hr>
   <%= f.label 'Содержание' %>
   <%= f.hidden_field  :user_id, value: current_user.id %>
   <br>
@@ -11,7 +16,7 @@
   <%= f.file_field :preview %>
   <%= f.hidden_field(:preview_cache) %>
   <br>
-  <%= f.submit 'Новая статья', class: 'btn btn-success pull-left' %>
+  <%= f.submit class: 'btn btn-success pull-left' %>
   <%= link_to 'Назад к статьям', admin_useful_articles_path, class: 'btn btn-primary pull-right' %>
   <p>
 <% end %>

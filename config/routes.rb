@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  get 'useful_articles/index'
-
-  get 'useful_articles/show'
 
   resources :line_items do
     put 'decrease_quantity'
@@ -19,7 +16,9 @@ Rails.application.routes.draw do
   resources :users
   resources :comments
   resources :ratings, only: :update
-  resources :useful_articles, only: [:show, :index]
+  resources :useful_articles, only: [:show, :index] do
+    resources :comment_posts
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "products#index"
 
