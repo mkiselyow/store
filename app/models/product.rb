@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
   has_many :orders, through: :line_items
   has_many :image_products, dependent: :destroy
   belongs_to :category
@@ -14,6 +14,8 @@ class Product < ApplicationRecord
   pg_search_scope :search_by_title,             against: :title
   pg_search_scope :search_by_boys,              against: :boys
   pg_search_scope :search_by_girls,             against: :girls
+  pg_search_scope :search_by_brand,             against: :brand
+  pg_search_scope :search_by_category,          against: :category_id
   pg_search_scope :search_by_color_white,       against: :color_white
   pg_search_scope :search_by_color_black,       against: :color_black
   pg_search_scope :search_by_color_red,         against: :color_red
@@ -70,15 +72,6 @@ class Product < ApplicationRecord
     price - ((price/100) * discount)
   end
 
-  # def self.searchable_language
-  #   'russian'
-  # end
-
-  # def self.searchable_columns
-  #   [:title, :description]
-  # end
-
-  # latest updated products
   def self.latest
     Product.order(:updated_at).last
   end

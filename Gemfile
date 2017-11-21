@@ -79,6 +79,9 @@ gem 'ckeditor'
 # instagram omniauth
 gem 'omniauth-instagram'
 
+# paginate pages
+gem 'will_paginate-bootstrap'
+
 # images cloud-based service that provides an end-to-end image and video management solution
 gem 'carrierwave'
 gem 'cloudinary'

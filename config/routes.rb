@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :line_items
   end
+  resources :shares, only: [:show, :index]
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users
@@ -19,10 +20,8 @@ Rails.application.routes.draw do
   resources :useful_articles, only: [:show, :index] do
     resources :comment_posts
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "products#index"
 
-  # mount Ckeditor::Engine => '/ckeditor'
+  root to: "products#index"
 
   get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
 
@@ -30,8 +29,6 @@ Rails.application.routes.draw do
   get '/competitions' => 'pages#competitions'
   get '/contacts' => 'pages#contacts'
   get '/payment_and_delivery' => 'pages#payment_and_delivery'
-  get '/special_offers' => 'pages#special_offers'
-  get '/useful_articles' => 'pages#useful_articles'
   get '/partners' => 'pages#partners'
   resources :products do
     get :who_bought, on: :member
@@ -46,5 +43,6 @@ Rails.application.routes.draw do
     resources :useful_articles
     resources :products
     resources :categories
+    resources :shares
   end
 end

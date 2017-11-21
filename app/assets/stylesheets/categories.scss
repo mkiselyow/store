@@ -1,0 +1,91 @@
+body {
+  h1 {
+    line-height: 2;
+    text-align: center;
+  }
+  article, .mobile {
+    // background-color: gray;
+    min-height: 100px;
+    width: 83%;
+    float: right;
+    .carousel.slide.multi-item-carousel {
+      // background: black;
+      .col-sm-3.col-xs-3:nth-child(1) {
+        margin-left: 2%;
+        border-left: 1px solid transparent;
+      }
+      .product_view_class {
+        border: 1px solid transparent;
+        text-align: center;
+        border-left: 1px solid #ebedee;
+        min-height: 286px;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 24%;
+        a {
+          display: block;
+          color: #666;
+        }
+        .buttom_add_to_cart {
+          display: none;
+          border: none;
+          background: #ff3801;
+          border-radius: 5px;
+          color: #FFF;
+          padding: 5px;
+          box-sizing: border-box;
+          margin-top: 10px;
+          width: 50%;
+          // font-family: "SF Pro Text",sans-serif;
+          font-size: 14px;
+          min-height: 42px;
+        }
+        a:hover {
+          text-decoration: none;
+          color: #666;
+        }
+        a:focus {
+          color: #666;
+        }
+        form.button_to {
+          min-height: 52px;
+        }
+      }
+      .col-sm-3.col-xs-3 {
+        width: 24%;
+      }
+      .col-sm-12.col-xs-12 {    
+        width: 90%;
+        margin-left: 2%;
+        min-height: 322px;
+        border-bottom: 1px solid #ebedee;
+        .buttom_add_to_cart {
+          display: initial;
+        }
+      }
+      .col-sm-3.col-xs-3:hover, .col-sm-12.col-xs-12:hover {
+        .button_to .buttom_add_to_cart {
+          display: initial;
+        }
+        border: 1px solid #ebedee;
+        box-shadow: 10px 10px 5px #888888;
+      }
+
+      .carousel-control {
+        width: 5%;
+      }
+      .carousel-control.left, .carousel-control.right {
+        background-image: none;
+        color: #259433;
+        background: none;
+        a:hover {
+          background: none;
+        }
+      }
+    }
+    .all_products_div {
+      @extend .carousel.slide.multi-item-carousel;
+    }
+  }
+}

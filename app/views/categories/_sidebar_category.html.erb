@@ -1,0 +1,20 @@
+<ul class="list-group">
+  <%= link_to categories_path do %>
+    <li class="list-group-item">
+      Все категории
+      <span class="badge badge-primary">
+        <%= @products_count %>
+      </span>
+    </li>
+  <% end %>
+  <% Category.without_parent.each do |category| %>
+    <%= link_to category_path(category) do %>
+      <li class="list-group-item">
+        <%= category.name %>
+        <span class="badge badge-primary">
+          <%= category.products.count %>
+        </span>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

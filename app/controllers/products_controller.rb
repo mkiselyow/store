@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
 
   def index
     @products_count = Product.count
-    @products = Product.all
+    @rows_count = (@products_count/4)
+    @products = Product.order(:id)
     @categories = Category.all
     @products_most_viewed = Product.where('times_viewed >= 0').order('times_viewed DESC').limit(20)
     @products_wth_special_offers = Product.where('discount != 0').limit(20)
@@ -16,13 +17,10 @@ class ProductsController < ApplicationController
         @products = Product.search_by_title(params[:title])
       else
         @products = Product.all.to_a
-        # binding.pry
         if params[:category_id]
-          @products &= Product.where(category_id: params[:category_id])
+          @products &= Product.search_by_brand(params[:category_id]).to_a
           puts 'HAVING params[:category_id] SEARCHED'
           puts "Count product for category #{Product.search(params[:category_id]).count} #{@products.count}"
-          # else
-          #   @products = Product.search_by_boys("false")
         end
         if params[:boys]
           @products &= Product.search_by_boys(params[:boys]).to_a
@@ -36,6 +34,10 @@ class ProductsController < ApplicationController
           puts 'HAVING params[:girls] SEARCHED'
           # else
           #   @products = Product.search_by_girls("false")
+        end
+        if params[:brand]
+          @products &= Product.search_by_brand(params[:brand]).to_a
+          puts 'HAVING params[:brand] SEARCHED'
         end
         if params[:color_black]
           @products &= Product.search_by_color_black(params[:color_black]).to_a

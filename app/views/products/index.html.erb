@@ -2,13 +2,15 @@
 
 <main>
   <aside class="sticky search_multiple_form">
-    <button class="uk-button hide_side_nav_button" data-uk-toggle="{target:'#search_multiple_form'}">Показать корзину</button>
+    <button class="uk-button hide_side_nav_button">Показать корзину</button>
     <div id="search_multiple_form">
       <%= render  partial: "products/search_multiple_form" %>
     </div>
-    <%= hidden_div_if(@cart.line_items.empty?, id: 'my_cart', class: 'my_cart') do %>
-      <%= render 'cart_product' %>
-    <% end %>
+    <div class="cart_sidebar">
+      <%= hidden_div_if(@cart.line_items.empty?, id: 'my_cart', class: 'my_cart') do %>
+        <%= render 'cart_product' %>
+      <% end %>
+    </div>
   </aside>
   <article>
     <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2, id_of_this_carousel: "newest_carousel", name_of_carousel: "Новинки"  } %>
@@ -23,7 +25,7 @@
 
     <!-- all products -->
 
-    <%= render  partial: "products/all_products_div", locals: { some_array_of_products: @products, rows_count: (@products_count/4), name_of_div: "Все Товары" } %>
+    <%= render  partial: "products/all_products_div", locals: { some_array_of_products: @products, rows_count: @rows_count, name_of_div: "Все Товары" } %>
   </article>
 </main>
 

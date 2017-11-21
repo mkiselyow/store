@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-2 col-md-offset-2 col-xs-6">
-    <img id="zoom_02" src="<%= @user.avatar_url(:medium) %>" data-zoom-image="<%= @user.avatar_url(:large) %>", class='img-thumbnail profile-avatar'/>
+    <% if @user.avatar.present? %>
+      <img id="zoom_02" src="<%= @user.avatar_url(:medium) %>" data-zoom-image="<%= @user.avatar_url(:large) %>", class='img-thumbnail profile-avatar'/>
+    <% else %>
+      <%= image_tag @user.avatar_url(:medium), class: 'img-thumbnail profile-avatar' %>
+    <% end %>
     <center>
       <div class="btn-group">
         <% if current_user.id == @user.id %>

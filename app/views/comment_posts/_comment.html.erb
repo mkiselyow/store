@@ -17,10 +17,12 @@
         </div> 
         <div class="post-description"> 
           <p><%= raw comment.body %></p>
-          <% if comment.user_id = current_user.id %>
-            <div class="stats">
-              <%= link_to 'Удалить', useful_article_comment_post_path(comment.useful_article, comment), method: :delete, data: { confirm: 'Вы действительно хотите удалить этот комментарий?' }, class: "btn btn-default stat-item" %>
-            </div>
+          <% if current_user %>
+            <% if current_user.id == comment.user_id %>
+              <div class="stats">
+                <%= link_to 'Удалить', useful_article_comment_post_path(comment.useful_article, comment), method: :delete, data: { confirm: 'Вы действительно хотите удалить этот комментарий?' }, class: "btn btn-default stat-item" %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -96,6 +96,14 @@
 .subsubc{
   margin-left: 10px;
 }
+@media (max-width: 768px){
+  .leuze{
+    height: 50px;
+  }
+  .mapapama_logo{
+    height: 48px;
+  }
+}
 .preview{
   width: 200px;
   height: 200px;
@@ -158,18 +166,6 @@
   table#cart tfoot td{display:block; }
   table#cart tfoot td .btn{display:block;}
 }
-.buttom_add_to_cart{
-    border: none;
-    background: #ff3801;
-    border-radius: 5px;
-    color: #FFF;
-    padding: 5px;
-    box-sizing: border-box;
-    margin-top: 10px;
-    width: 50%;
-    font-size: 14px;
-    min-height: 42px;
-}
 .btn span.glyphicon {         
   opacity: 0;       
 }
@@ -193,4 +189,81 @@
   width: 50px;
   height: 50px;
   margin: 15px;
+}
+.cart_sidebar{
+  display: none;
+}
+.category-lists{}
+
+
+.product_view_class {
+  border: 1px solid transparent;
+  text-align: center;
+  border-left: 1px solid #ebedee;
+  min-height: 286px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 10px;
+  a {
+    display: block;
+    color: #666;
+  }
+  @media (min-width: 768px){
+    .buttom_add_to_cart {
+      display: none;
+      border: none;
+      background: #ff3801;
+      border-radius: 5px;
+      color: #FFF;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-top: 10px;
+      width: 50%;
+      // font-family: "SF Pro Text",sans-serif;
+      font-size: 14px;
+      min-height: 42px;
+    }
+  }
+  a:hover {
+    text-decoration: none;
+    color: #666;
+  }
+  a:focus {
+    color: #666;
+  }
+  form.button_to {
+    min-height: 52px;
+  }
+}
+.product_view_class:hover {
+  border: 1px solid #ebedee;
+  box-shadow: 10px 10px 5px #888888;
+  .buttom_add_to_cart {
+    display: initial;
+  }
+}
+.item-category{
+  height: 350px;
+}
+.image-product-category-index{
+  height: 160px;
+  width: 150px;
+}
+.badge {
+  background-color: #4CAF50;
+}
+@media (max-width: 768px){
+  .buttom_add_to_cart {
+    display: initial;
+    background: #ff3801;
+    border-radius: 5px;
+    color: #FFF;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 50%;
+    // font-family: "SF Pro Text",sans-serif;
+    font-size: 14px;
+    min-height: 42px;
+  }
 }

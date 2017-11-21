@@ -19,59 +19,70 @@
     <hr>
     <p>Категория</p>
     <div class="col-md-6">
-      <%= select_tag :category_id, options_from_collection_for_select(Category.without_parent, :id, :name),  class: 'form-control input-product' %>
+      <%= select_tag :category_id, options_from_collection_for_select(Category.without_parent, :id, :name), prompt: 'Выберите категорию',  class: 'form-control input-product' %>
     </div>
   </div>
+  <br>
   <div class="row">
-    <hr>
-    <p>Цвет</p>
-    <div class="col-md-12">
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-default btn-sm">
-          <%= check_box_tag :color_white, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label>
-        <label class="btn btn-warning btn-sm">
-          <%= check_box_tag :color_yellow, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label> 
-        <label class="btn btn-success btn-sm">
-          <%= check_box_tag :color_green, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label>
-        <label class="btn btn-black btn-sm">
-          <%= check_box_tag :color_black, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label>
-      </div>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-danger btn-sm">
-          <%= check_box_tag :color_red, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label>
-        <label class="btn btn-primary btn-sm">
-          <%= check_box_tag :color_blue, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label>      
-
-        <label class="btn btn-violet btn-sm">
-          <%= check_box_tag :color_violet, :true, :false %>
-          <span class="glyphicon glyphicon-ok"></span>
-        </label>
-      </div>
-    </div>
+    <a href="#advanced_search" data-toggle="collapse" class="btn btn-primary">Дополнительный поиск</a>
+    <br>
   </div>
-  <div class="row">
-    <hr>
-    <p>Материал</p>
-    <div class="col-md-6">
-      <p><%= check_box_tag :material_plastic, :true, :false, :class => "color_yellow" %>Пластик</p>
-      <p><%= check_box_tag :material_wood, :true, :false, :class => "color_yellow" %>Дерево</p>
-      <p><%= check_box_tag :material_another, :true, :false, :class => "color_yellow" %>Другой</p>
+  <br>
+  <div class="collapse" id="advanced_search">
+    <div class="row">
+      <div class="col-md-12">
+        <%= text_field_tag :brand, nil, placeholder: "Название бренда", class: 'form-control search-input' %>
+      </div>
+      <hr>
+      <p>Цвет</p>
+      <div class="col-md-12">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default btn-sm">
+            <%= check_box_tag :color_white, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label>
+          <label class="btn btn-warning btn-sm">
+            <%= check_box_tag :color_yellow, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label> 
+          <label class="btn btn-success btn-sm">
+            <%= check_box_tag :color_green, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label>
+          <label class="btn btn-black btn-sm">
+            <%= check_box_tag :color_black, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label>
+        </div>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-danger btn-sm">
+            <%= check_box_tag :color_red, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label>
+          <label class="btn btn-primary btn-sm">
+            <%= check_box_tag :color_blue, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label>      
+  
+          <label class="btn btn-violet btn-sm">
+            <%= check_box_tag :color_violet, :true, :false %>
+            <span class="glyphicon glyphicon-ok"></span>
+          </label>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <p><%= check_box_tag :material_iron, :true, :false, :class => "color_yellow" %>Железо</p>
-      <p><%= check_box_tag :material_fabric, :true, :false, :class => "color_yellow" %>Ткань</p>
+    <div class="row">
+      <hr>
+      <p>Материал</p>
+      <div class="col-md-6">
+        <p><%= check_box_tag :material_plastic, :true, :false, :class => "color_yellow" %>Пластик</p>
+        <p><%= check_box_tag :material_wood, :true, :false, :class => "color_yellow" %>Дерево</p>
+        <p><%= check_box_tag :material_another, :true, :false, :class => "color_yellow" %>Другой</p>
+      </div>
+      <div class="col-md-6">
+        <p><%= check_box_tag :material_iron, :true, :false, :class => "color_yellow" %>Железо</p>
+        <p><%= check_box_tag :material_fabric, :true, :false, :class => "color_yellow" %>Ткань</p>
+      </div>
     </div>
   </div>
   <%= submit_tag 'Искать', class: 'btn btn-success' %>

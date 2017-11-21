@@ -1,0 +1,30 @@
+<h1>Полезные статьи</h1>
+<div class="col-md-10 col-xs-12">
+  <%= link_to 'Новая акция', new_admin_share_path %>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr class='info'>
+        <td>#</td>
+        <td width="35%">Заголовок</td>
+        <td width="60px">Изображение</td>
+        <td width="200px">Дата публикации</td>
+        <td>Действия</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shares.each_with_index do |share, i| %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= link_to share.title, share_path(share), target: '_blank' %></td>
+          <td><%= image_tag share.poster_url(:thumbnail), class: 'thumbnail useful_articles_image_index' %></td>
+          <td><%= share.created_at.strftime("%B %dth, %Y") %></td>
+          <td>
+            <%= link_to 'Редактивировать', edit_admin_share_path(share), class: 'btn btn-sm btn-warning' %> |
+            <%= link_to 'Удалить', admin_share_path(share), method: :delete, data: { confirm: "Вы действительно хотите удалить статью № #{ i+1 }" }, class: 'btn btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
