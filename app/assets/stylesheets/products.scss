@@ -215,11 +215,6 @@ body {
   }
 }
 
-// @font-face {
-//   font-family: "SF Pro Text";
-//   src: url(/assets/SF_Pro_Text.ttf) format("truetype");
-// }
-
 .product_common_text {
   // font-family: "SF Pro Text",sans-serif;
   font-size: 14px;
@@ -332,7 +327,6 @@ a.top_nav_button:hover {
     top: 50px;
   }
 }
-
 .sticky {
   width: 100%;
   z-index: 100;
@@ -346,4 +340,7 @@ aside.sticky {
   .mobile {
     display: none;
   }
+}
+.image_product_index{
+  height: 150px;
 }

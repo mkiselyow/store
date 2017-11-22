@@ -3,11 +3,11 @@ class CategoriesController < ApplicationController
   before_action :count_products
 
   def show
-    @products = @category.products.all
+    @products = @category.products.paginate(page: params[:page], per_page: 18)
   end
 
   def index
-    @products = Product.order(:id)
+    @products = Product.order(:id).paginate(page: params[:page], per_page: 18)
   end
 
   private
