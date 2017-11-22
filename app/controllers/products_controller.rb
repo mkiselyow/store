@@ -18,7 +18,8 @@ class ProductsController < ApplicationController
       else
         @products = Product.all.to_a
         if params[:category_id]
-          @products &= Product.search_by_brand(params[:category_id]).to_a
+          @products &= Product.where(category_id: params[:category_id])
+          # @products &= Product.search_by_brand(params[:category_id]).to_a
           puts 'HAVING params[:category_id] SEARCHED'
           puts "Count product for category #{Product.search(params[:category_id]).count} #{@products.count}"
         end
@@ -36,7 +37,7 @@ class ProductsController < ApplicationController
           #   @products = Product.search_by_girls("false")
         end
         if params[:brand]
-          @products &= Product.search_by_brand(params[:brand]).to_a
+          # @products &= Product.search_by_brand(params[:brand]).to_a
           puts 'HAVING params[:brand] SEARCHED'
         end
         if params[:color_black]

@@ -109,9 +109,9 @@
         <div class="col-md-12 col-xs-12" id="slider-thumbs">
           <ul class="hide-bullets">
             <li class="col-sm-2 col-xs-6">
-                <a class="thumbnail" id="carousel-selector-0">
-                  <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
-                </a>
+              <a class="thumbnail" id="carousel-selector-0">
+                <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
+              </a>
             </li>
             <% @product.image_products.each_with_index do |im_prod, i| %>
               <li class="col-sm-2 col-xs-6">
