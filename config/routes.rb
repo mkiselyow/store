@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :comment_posts
   end
 
-  root to: "products#index"
+  resource :send_message, only: [:new, :create]
+
+  root to: "pages#main"
 
   get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
 
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
   get '/contacts' => 'pages#contacts'
   get '/payment_and_delivery' => 'pages#payment_and_delivery'
   get '/partners' => 'pages#partners'
+  get '/main' => 'pages#main'
+
   resources :products do
     get :who_bought, on: :member
   end

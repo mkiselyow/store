@@ -1,0 +1,44 @@
+<%= form_for SendMessage.new, url: send_message_url do |f| %>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="form-group">
+          <%= f.label 'Имя' %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <%= fa_icon 'user' %>
+            </span>
+            <%= f.text_field :name, placeholder: 'Name', class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="form-group">
+          <%= f.label :email %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <%= fa_icon 'envelope' %>
+            </span>
+            <%= f.email_field :email, placeholder: 'Email', class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="form-group">
+          <%= f.label 'Сообщение:' %>
+          <%= f.trix_editor :content, placeholder: 'Message', required: true %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="col-md-11">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      <%= f.submit 'Связаться с нами', class: 'btn btn-success pull-right' %>
+    </div>
+  </div>
+<% end %>

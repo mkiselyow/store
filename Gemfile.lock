@@ -545,6 +545,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
@@ -691,6 +693,8 @@ GEM
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
     ruuaby (0.1.0)
       oj
     sass (3.5.3)
@@ -773,6 +777,7 @@ DEPENDENCIES
   devise
   elevatezoom-rails
   faker!
+  figaro
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -792,6 +797,7 @@ DEPENDENCIES
   rails (~> 5.1.1)
   rails_12factor
   rubocop
+  russian
   ruuaby
   sass-rails (~> 5.0)
   selenium-webdriver

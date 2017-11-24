@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 20171121072359) do
     t.text "body"
     t.string "poster"
     t.bigint "user_id"
+    t.date "start_share"
+    t.date "end_share"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shares_on_user_id"

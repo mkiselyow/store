@@ -1,5 +1,5 @@
 class Admin::SharesController < AdminsController
-  before_action :article_resource, only: [:edit, :update, :destroy]
+  before_action :share_resource, only: [:edit, :update, :destroy]
 
   def index
     @shares = Share.all
@@ -38,6 +38,6 @@ class Admin::SharesController < AdminsController
   end
 
   def share_params
-    params.require(:share).permit(:title, :body, :poster, :user_id)
+    params.require(:share).permit(:title, :body, :poster, :user_id, :start_share, :end_share)
   end
 end

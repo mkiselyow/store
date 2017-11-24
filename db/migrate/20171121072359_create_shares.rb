@@ -5,6 +5,8 @@ class CreateShares < ActiveRecord::Migration[5.1]
       t.text :body
       t.string :poster
       t.belongs_to :user, foreign_key: true
+      t.date :start_share
+      t.date :end_share
 
       t.timestamps
     end

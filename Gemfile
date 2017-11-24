@@ -107,3 +107,6 @@ gem 'nested_form_fields'
 # ukrainian regions
 gem 'ruuaby'
 gem 'curb'
+
+gem 'russian'
+gem 'figaro'

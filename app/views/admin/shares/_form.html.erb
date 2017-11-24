@@ -1,17 +1,45 @@
 <%= form_for [:admin, @share] do |f| %>
-  <%= f.label 'Введите заголовок' %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.label 'Введите заголовок' %>
+      <br>
+      <%= f.text_field :title, placeholder: "Введите заголовок", class: 'form-control', required: true %>
+    </div>
+  </div>
   <br>
-  <%= f.text_field :title, placeholder: "Введите заголовок", class: 'form-control', required: true %>
-  <hr>
-  <%= f.label 'Содержание' %>
-  <%= f.hidden_field  :user_id, value: current_user.id %>
+  <div class="row">
+    <div class="col-md-6 col-xs-6">
+      <%= f.label 'Дата начала акции' %>
+      <br>
+      <%= f.text_field :start_share, type: 'date', class: 'form-control' %>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <%= f.label 'Дата конца акции' %>
+      <br>
+      <%= f.text_field :end_share, type: 'date', class: 'form-control' %>
+    </div>
+  </div>
   <br>
-  <%= f.cktext_area :body, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' }, placeholder: "Введите заголовок", required: true %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.label 'Содержание' %>
+      <%= f.hidden_field  :user_id, value: current_user.id %>
+      <br>
+      <%= f.cktext_area :body, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' }, placeholder: "Введите заголовок", required: true %>
+    </div>
+  </div>
   <br>
-  <%= f.file_field :poster %>
-  <%= f.hidden_field(:poster_cache) %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.file_field :poster %>
+      <%= f.hidden_field(:poster_cache) %>
+    </div>
+  </div>
   <br>
-  <%= f.submit class: 'btn btn-success pull-left' %>
-  <%= link_to 'Назад к статьям', admin_shares_path, class: 'btn btn-primary pull-right' %>
-  <p>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.submit class: 'btn btn-success pull-left' %>
+      <%= link_to 'Назад к статьям', admin_shares_path, class: 'btn btn-primary pull-right' %>
+    </div>
+  </div>
 <% end %>

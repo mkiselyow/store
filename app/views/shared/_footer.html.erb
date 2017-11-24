@@ -1,77 +1,49 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<footer>
-  <div class="container">
-    <div class="footer" id="footer">
-       <div class="row">
-           <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-               <h3> Lorem Ipsum </h3>
-               <ul>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-               </ul>
-           </div>
-           <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-               <h3> Lorem Ipsum </h3>
-               <ul>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-               </ul>
-           </div>
-           <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-               <h3> Lorem Ipsum </h3>
-               <ul>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-               </ul>
-           </div>
-           <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-               <h3> Lorem Ipsum </h3>
-               <ul>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-                   <li> <a href="#"> Lorem Ipsum </a> </li>
-               </ul>
-           </div>
-           <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-               <h3> Lorem Ipsum </h3>
-               <ul>
-                   <li>
-                       <div class="input-append newsletter-box text-center">
-                           <input type="text" class="full text-center" placeholder="Email ">
-                           <button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"></i> </button>
-                       </div>
-                   </li>
-               </ul>
-               <ul class="social">
-                   <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-                   <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-                   <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-                   <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-                   <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
-               </ul>
-           </div>
-       </div>
-  </div>
-  <!--/.footer-->
-  <div class="footer-bottom">
-      <div class="container">
-          <p class="pull-left"> Copyright © Footer E-commerce Plugin 2014. All right reserved. </p>
-          <div class="pull-right">
-              <ul class="nav nav-pills payments">
-                  <li><i class="fa fa-cc-visa"></i></li>
-                  <li><i class="fa fa-cc-mastercard"></i></li>
-                  <li><i class="fa fa-cc-amex"></i></li>
-                  <li><i class="fa fa-cc-paypal"></i></li>
-              </ul>
-          </div>
+<footer class="footer">
+  <div class="footer-wrap">
+    <div class="footer__subscribe-wrap">
+      <div class="footer-subscribe">
+        <button class='btn btn-primary' data-toggle="modal" data-target="#form_send">Связаться с нами!</button>
+        <%= render 'shared/modal_send_form' %>
+        <p>
       </div>
+      <div class="header__phone">
+        <%= fa_icon 'phone', text: '095 000 00 00' %>
+        <p>
+          <%= fa_icon 'phone', text: '068 000 00 00' %>
+        </p>
+      </div>
+    </div>
+    <div class="footer__layout">
+      <div class="footer__columns-wrap">
+        <div class="footer__columns">
+          <ul class="footer-list">
+            <p></p>
+            <% Category.without_parent.each do |category| %>
+              <%= link_to category_path(category) do %>
+                <li class="footer-list__item"><%= category.name %></li>
+              <% end %>
+            <% end %>
+          </ul>
+          <ul class="footer-list">
+            <li class="footer-list__item"><%= link_to "Все товары", products_path %></li>
+            <li class="footer-list__item"><%= link_to "Все категории", categories_path %></li>
+            <li class="footer-list__item"><%= link_to "Оплата и доставка", payment_and_delivery_path %></li>
+            <li class="footer-list__item"><%= link_to "Полезные статьи", useful_articles_path %></li>
+            <li class="footer-list__item"><%= link_to "Акции", shares_path %></li>
+            <li class="footer-list__item"><%= link_to "Отзывы", comments_path %></li>
+            <li class="footer-list__item"><%= link_to "Контакты", contacts_path %></li>
+            <li class="footer-list__item"><%= link_to "Партнерам", partners_path  %></li>
+          </ul>
+        </div>
+        <div class="footer-copyright">
+          <%= link_to root_path do %>
+            <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>40, :crop=>"scale") %>
+            <%= cl_image_tag("logo.png", :quality=>15, :width=>40, :crop=>"scale") %>
+          <% end %>
+          <p>Мапапама - это детская радость</p>
+        </div>
+        <div class="footer-text">© 2016-2017</div>
+      </div>
+    </div>
   </div>
 </footer>
-

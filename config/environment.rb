@@ -14,8 +14,8 @@ Store::Application.configure do
       port:                 587,
       domain:               'max-X751SJ',#"domain.of.sender.net",
       authentication:       "plain",
-      user_name:            "m.kiselyow@gmail.com",
-      password:             "M0678700130",
+      user_name:            "mapapama1994@gmail.com",
+      password:             "qazwsx2017",
       enable_starttls_auto: true 
     }
 end

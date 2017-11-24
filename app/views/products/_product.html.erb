@@ -2,7 +2,7 @@
   <%= image_tag product.image.url(:medium), width: '150px', height: '150px', class: 'image_product_index' %>
 
   <%= tag.div :class => "product_price_text" do %>
-    <% if product.discount %>
+    <% if product.discount != 0 %>
         <%= "Скидка #{number_to_percentage(product.discount, precision: 0)}" %>
     <% end %>
   <% end %>

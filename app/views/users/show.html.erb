@@ -1,23 +1,22 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-  <div class="col-md-2 col-md-offset-2 col-xs-6">
+  <div class="col-md-2 col-md-offset-2 col-xs-4">
     <% if @user.avatar.present? %>
       <img id="zoom_02" src="<%= @user.avatar_url(:medium) %>" data-zoom-image="<%= @user.avatar_url(:large) %>", class='img-thumbnail profile-avatar'/>
     <% else %>
       <%= image_tag @user.avatar_url(:medium), class: 'img-thumbnail profile-avatar' %>
     <% end %>
-    <center>
-      <div class="btn-group">
-        <% if current_user.id == @user.id %>
-          <%= link_to 'Редактировать', edit_user_registration_path(@user), class: 'btn btn-warning' %>
-        <% end %>
-        <%= link_to 'Назад', users_path, class: 'btn btn-primary' %>
-      </div>
-    </center>
   </div>
-  <div class="col-md-6 col-xs-6">
+  <div class="col-md-6 col-xs-8">
     <div class="well">
-      <h2><%= @user.full_name %></h1>
+      <h2>
+        <%= @user.full_name %>
+        <% if current_user.id == @user.id %>
+          <%= link_to edit_user_registration_path(@user) do %>
+            <%= fa_icon 'pencil', title: 'Изменить профиль' %>
+          <% end %>
+        <% end %>
+      </h1>
       <p>
         <strong>Эл. почта:</strong>
         <%= @user.email %>
