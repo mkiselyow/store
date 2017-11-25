@@ -7,20 +7,31 @@
         <%= form.text_field :title, id: :product_title, class: 'form-control input-product' %>
         <p>
       </div>
-
       <div class="field">
-        <%= form.label(:category, "Категория") %>
-        <div class="pull-right">
-          <%= form.select :category_id, options_from_collection_for_select(Category.without_parent, :id, :name), {}, class: 'form-control input-product' %>
-        </div>
+        <select name="carlist" id='main_category' class='form-control input-product'>
+          <option>Выберите категорию</option>
+          <% Category.without_parent.each do |category| %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+          <% end %>
+        </select>
         <p></p>
       </div>
       <div class="field">
-        <%= form.label(:category, "Под-Категория") %>
-        <div class="pull-right">
-          <%= form.select :category_id, options_from_collection_for_select(Category.without_subcategory, :id, :name), {}, class: 'form-control input-product' %>
-        </div>
-        <p></p>
+         <% Category.without_parent.each do |category| %>
+           <%= form.select :category_id, options_from_collection_for_select(category.subcategories.all, :id, :name), {},  class: 'form-control input-product subcategories', id: "parent_#{ category.id }" %>
+           <script>
+             $(document).ready(function() {
+               $("#main_category").change(function() {
+                 if ($(this).val() === "<%= category.id %>") {
+                   return $("#parent_<%= category.id %>").show();
+                 }
+                 else
+                   return $("#parent_<%= category.id %>").hide();
+               });
+             });
+           </script>
+           <p></p>
+         <% end %>
       </div>
       <div class="field">
         <%= form.label(:size_a, "Длина") %>
@@ -274,7 +285,17 @@
 
 <!-- Configure Cloudinary jQuery plugin -->
 <%= cloudinary_js_config %>
-
+<!-- <script>
+  $(document).ready(function() {
+    $("#main_category").change(function() {
+      if ($(this).val() === '1') {
+        return $(".test").show();
+      } else {
+        return $(".test").hide();
+      }
+    });
+  });
+</script> -->
 <script>
   $(document).ready(function() {
     $(".cloudinary-fileupload")

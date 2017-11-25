@@ -41,14 +41,16 @@
         <% end %>
       </td>
     </tr>
-    <tr>
-      <th>Цена закупки</th>
-      <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
-    </tr>
-    <tr>
-      <th>Наценка</th>
-      <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
-    </tr>
+    <% if current_user.try(:admin) %>
+      <tr>
+        <th>Цена закупки</th>
+        <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
+      </tr>
+      <tr>
+        <th>Наценка</th>
+        <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
+      </tr>
+    <% end %>
     <tr>
       <th>Цвета</th>
       <td>

@@ -12,10 +12,8 @@ class LineItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
-    # @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|
       if @line_item.save
@@ -74,7 +72,7 @@ class LineItemsController < ApplicationController
       increased_quantity = @line_item.quantity + 1
       @line_item.update(quantity: increased_quantity)
       respond_to do |format|
-        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно уменьшено' }
+        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно увеличено' }
         format.json { head :no_content }
       end
     else
@@ -84,12 +82,10 @@ class LineItemsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_line_item
     @line_item = LineItem.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def line_item_params
     params.require(:line_item).permit(:product_id)
   end

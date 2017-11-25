@@ -33,7 +33,7 @@
     <tr>
       <th>Цена</th>
       <td>
-        <% if @product.discount.present? %>
+        <% if @product.discount != 0 %>
           <s><%= number_to_currency(@product.price, unit: "₴")%></s> 
           <p class='uk-badge uk-badge-notification uk-badge-success'><%= number_to_currency(@product.discount_price, unit: "₴")%></p> 
         <% else %>
@@ -41,14 +41,16 @@
         <% end %>
       </td>
     </tr>
-    <tr>
-      <th>Цена закупки</th>
-      <td><%= number_to_currency(@product.purchase_price, unit: "₴") %></td>
-    </tr>
-    <tr>
-      <th>Наценка</th>
-      <td><%= number_to_percentage(@product.mark_up, precision: 0) %></td>
-    </tr>
+    <% if current_user.try(:admin) %>
+      <tr>
+        <th>Цена закупки</th>
+        <td><%= number_to_currency(@product.purchase_price, unit: "₴") %></td>
+      </tr>
+      <tr>
+        <th>Наценка</th>
+        <td><%= number_to_percentage(@product.mark_up, precision: 0) %></td>
+      </tr>
+    <% end %>
     <tr>
       <th>Цвета</th>
       <td>

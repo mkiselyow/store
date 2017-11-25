@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  belongs_to :user
+
   PAYMENT_TYPES = ['Оплата на Банковскую Карту', 'Оплата при получении']
   REGIONS = []
   AREAS = []
@@ -24,5 +26,9 @@ class Order < ApplicationRecord
 
   def order_total_price
     line_items.to_a.sum { |item| item.count_line_item_price.to_f }
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

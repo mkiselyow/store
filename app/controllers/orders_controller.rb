@@ -1,10 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update destroy]
 
-  def index
-    @orders = Order.all
-  end
-
   def new
     if @cart.line_items.empty?
       redirect_to root_url, notice: 'Корзина пока пуста'
@@ -28,7 +24,6 @@ class OrdersController < ApplicationController
         format.html { redirect_to root_url, notice: 'Ваш заказ отправлен в обработку' }
         format.json { render :show, status: :created, location: @order }
       else
-        # @cart = current_cart
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -47,14 +42,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
   def set_order
@@ -62,6 +49,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type)
+    params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type, :user_id)
   end
 end

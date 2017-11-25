@@ -1,6 +1,55 @@
-Ув.Администратор, Получен заказ:
-h t m l but partial text 
+<p>Ув.Администратор, Получен заказ:</p>
 
-<%= render @order.line_items -%>
+<table border="1">
+  <tr>
+    <th>Номер заказа</th>
+    <td><%= @order.id %></td>
+  </tr>
+  <tr>
+    <th>Имя</th>
+    <td><%= @order.full_name %></td>
+  </tr>
+  <tr>
+    <th>Номер телефона</th>
+    <td><%= @order.number %></td>
+  </tr>
+  <tr>
+    <th>Город</th>
+    <td><%= @order.city %></td>
+  </tr>
+  <tr>
+    <th>Номер отделения новой почты</th>
+    <td><%= @order.post_office_number %></td>
+  </tr>
+  <tr>
+    <th>Способ оплаты</th>
+    <td><%= @order.pay_type %></td>
+  </tr>
+  <tr>
+    <th>Комментарий</th>
+    <td><%= raw @order.comment %></td>
+  </tr>
+</table>
+<h4>Список товаров</h4>
+<table border="1">
+  <thead>
+    <th>#</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Количество</th>
+    <th>Сумма</th>
+  </thead>
+  <tbody>
+    <% @order.line_items.each_with_index do |line_item, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= line_item.product.title %></td>
+        <td><%= line_item.price_discount %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= line_item.count_line_item_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-Сумма покупок <%= number_to_currency(@order.order_total_price, unit: "₴") %>
+<h2>Сумма покупок <%= number_to_currency(@order.order_total_price, unit: "₴") %></h2>

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       get :banned_user, on: :member
       get :change_permission, on: :member
     end
+    resources :orders
     resources :useful_articles
     resources :products
     resources :categories

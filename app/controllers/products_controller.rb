@@ -152,11 +152,6 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    # if params[:image_id].present?
-    #   preloaded = Cloudinary::PreloadedFile.new(params[:image_id])
-    #   raise "Invalid upload signature" if !preloaded.valid?
-    #   @product.image_id = preloaded.identifier
-    # end
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Продукт был успешно обновлен.' }

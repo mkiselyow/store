@@ -6,24 +6,25 @@
       <div class="row">
         <div class="field col-md-6">
           <%= form.label :first_name, "Имя получателя" %>
-          <%= form.text_field :first_name, id: :order_first_name, :required => true, class: 'form-control', placeholder: 'Введите имя' %>
+          <%= form.text_field :first_name, id: :order_first_name, :required => true, class: 'form-control', placeholder: 'Введите имя', value: (current_user.first_name if current_user)  %>
+          <%= form.hidden_field :user_id, value: (current_user.id if current_user) %>
         </div>
         <div class="field col-md-6"">
           <%= form.label :last_name, "Фамилия получателя" %>
-          <%= form.text_field :last_name, id: :order_last_name, :required => true, class: 'form-control', placeholder: 'Введите фамилию' %>
+          <%= form.text_field :last_name, id: :order_last_name, :required => true, class: 'form-control', placeholder: 'Введите фамилию', value: (current_user.last_name if current_user)  %>
         </div>
       </div>
       <br>
       <div class="row">
         <div class="field col-md-6">
           <%= form.label :number, "Контактный номер телефона" %>
-          <%= form.text_field :number, id: :order_number, :required => true, class: 'form-control', placeholder: 'Введите номер телефона' %>
+          <%= form.text_field :number, id: :order_number, :required => true, class: 'form-control', placeholder: 'Введите номер телефона', value: (current_user.number if current_user)  %>
         </div>
       
         <div class="field col-md-6">
           <%= form.label :city, "Областной центр" %>
           <div class="form-control">
-            <%= form.select 'city[area]', Order::AREAS, prompt: 'Выберите центр', id: :order_city_area, :required => true, class: 'form-control' %>
+            <%= form.select 'city[area]', Order::AREAS, prompt: 'Выберите центр', id: :order_city_area, :required => true %>
           </div>
         </div>      
       </div>
@@ -52,7 +53,7 @@
       <div class="row">
         <div class="field col-md-12">
           <%= form.label :comment, "Комментарий" %>
-          <%= form.text_area :comment, id: :order_comment, class: 'form-control'%>
+          <%= form.trix_editor :comment, id: :order_comment %>
         </div>
       </div>
       <br>
