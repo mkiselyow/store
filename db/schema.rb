@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20171125102030) do
     t.string "country"
     t.integer "discount"
     t.integer "product_code"
-    t.integer "times_viewed", default: 1
+    t.integer "times_viewed"
     t.bigint "category_id"
     t.string "other_desc"
     t.index ["category_id"], name: "index_products_on_category_id"
