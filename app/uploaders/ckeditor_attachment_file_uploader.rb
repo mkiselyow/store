@@ -1,8 +1,13 @@
 # encoding: utf-8
 require 'carrierwave'
+require 'mini_magick'
+
 
 class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
+
+  include Cloudinary::CarrierWave
+
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
