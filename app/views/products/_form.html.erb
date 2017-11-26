@@ -7,7 +7,9 @@
         <%= form.text_field :title, id: :product_title, class: 'form-control input-product' %>
         <p>
       </div>
-      <div class="field">
+      <div class="field ">
+        <%= form.label(:title, "Категория") %>
+        <br>
         <select name="carlist" id='main_category' class='form-control input-product'>
           <option>Выберите категорию</option>
           <% Category.without_parent.each do |category| %>
@@ -26,7 +28,7 @@
                    return $("#parent_<%= category.id %>").show();
                  }
                  else
-                   return $("#parent_<%= category.id %>").hide();
+                   return $("#parent_<%= category.id %>").remove();
                });
              });
            </script>

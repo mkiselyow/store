@@ -29,3 +29,8 @@
     <% end %>
   </tbody>
 </table>
+<div class="row">
+  <center>
+    <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+  </center>
+</div>

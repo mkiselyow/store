@@ -1,7 +1,7 @@
 class Admin::ProductsController < AdminsController
 
   def index
-    @products = Product.order(:id)
+    @products = Product.order(:id).paginate(page: params[:page], per_page: 50)
   end
 
   def destroy

@@ -33,5 +33,5 @@ Rails.application.configure do
   end
 
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'shielded-citadel-23950.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'mapapama.heroku.com' }
 end
