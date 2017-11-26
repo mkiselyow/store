@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :line_items
   end
   resources :shares, only: [:show, :index]
-  resources :categories
+  resources :categories do
+    resources :subcategories, only: [:show]
+  end
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users
   resources :comments

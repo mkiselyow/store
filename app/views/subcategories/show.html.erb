@@ -1,0 +1,8 @@
+<h1><%= link_to @category.parent.name, category_path(@category.parent) %> / <%= @category.name %></h1>
+<div class="col-md-3 category-lists">
+  <%= render 'categories/sidebar_category' %>
+</div>
+<div class="all_products col-md-9">
+  <%= render 'products' %>
+</div>
+<a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>

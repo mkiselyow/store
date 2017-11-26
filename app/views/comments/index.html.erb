@@ -11,7 +11,13 @@
     </div>
   </div>
   <div class="row">
-    <%= render 'form' %>
+    <% if current_user %>
+      <%= render 'form' %>
+    <% else %>
+      <div class="col-md-6 alert alert-warning">
+        <p>Для того, чтобы оставить отзыв необходимо <%= link_to 'войти в систему', new_user_session_path %></p>
+      </div>
+    <% end %>
   </div>
 </div>
 <script>

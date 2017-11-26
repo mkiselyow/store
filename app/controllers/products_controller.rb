@@ -14,17 +14,17 @@ class ProductsController < ApplicationController
     if params.present? # params[:one].present?
       puts 'HAVING params[:params.present?] SEARCHED'
       if params[:title]
-        @products = Product.search_by_title(params[:title])
+        # @products = Product.search_by_title(params[:title])
+        @products = Product.where('title LIKE ?', "%#{params[:title]}%")
       else
         @products = Product.all.to_a
         if params[:category_id]
           @products &= Product.where(category_id: params[:category_id])
-          # @products &= Product.search_by_brand(params[:category_id]).to_a
           puts 'HAVING params[:category_id] SEARCHED'
           puts "Count product for category #{Product.search(params[:category_id]).count} #{@products.count}"
         end
         if params[:boys]
-          @products &= Product.search_by_boys(params[:boys]).to_a
+          @products &= Product.where(params[:boys])
           puts 'HAVING params[:boys] SEARCHED'
           puts "boys count #{Product.search_by_boys(params[:boys]).count} #{@products.count}"
           # else
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
           #   @products = Product.search_by_girls("false")
         end
         if params[:brand]
-          # @products &= Product.search_by_brand(params[:brand]).to_a
+          @products &= Product.where('brand LIKE ?', "%#{params[:brand]}%")
           puts 'HAVING params[:brand] SEARCHED'
         end
         if params[:color_black]

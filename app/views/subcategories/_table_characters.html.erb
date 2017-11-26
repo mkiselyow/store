@@ -1,0 +1,119 @@
+<table class="table-striped table">
+  <thead>
+    <tr>
+      <th><h2><%= product.title %></h2></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Категория</th>
+      <td><%= product.category.name %></td>
+    </tr>
+    <tr>
+      <th>Код</th>
+      <td><%= product.product_code %></td>
+    </tr>
+    <tr>
+      <th>Бренд:</th>
+      <td><%= product.brand %></td>
+    </tr>
+    <tr>
+      <th>Поставщик</th>
+      <td><%= product.supplier %></td>
+    </tr>
+    <tr>
+      <th>Габариты</th>
+      <td>
+        <i>Длина: </i><%= product.size_a %><p>
+        <i>Ширина: </i><%= product.size_b %><p>
+        <i>Высота: </i><%= product.size_h %><p>
+        <i>Вес: </i><%= product.weight %>
+      </td>
+    </tr>
+    <tr>
+      <th>Цена</th>
+      <td>
+        <% if product.discount != 0 %>
+          <s><%= number_to_currency(product.price, unit: "₴")%></s> 
+          <p class='uk-badge uk-badge-notification uk-badge-success'><%= number_to_currency(product.discount_price, unit: "₴")%></p> 
+        <% else %>
+          <%= number_to_currency(product.price, unit: "₴")%>
+        <% end %>
+      </td>
+    </tr>
+    <% if current_user.try(:admin) %>
+      <tr>
+        <th>Цена закупки</th>
+        <td><%= number_to_currency(product.purchase_price, unit: "₴") %></td>
+      </tr>
+      <tr>
+        <th>Наценка</th>
+        <td><%= number_to_percentage(product.mark_up, precision: 0) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th>Цвета</th>
+      <td>
+        <div class="col-md-1">
+          <% if product.color_white? %>
+            <div class="square white-square" title='Белый'></div>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <% if product.color_black? %>
+            <div class="square black-square" title='Чёрный'></div>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <% if product.color_red? %>
+            <div class="square red-square" title='Красный'></div>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <% if product.color_yellow? %>
+            <div class="square yellow-square" title='Желтый'></div>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <% if product.color_green? %>
+            <div class="square green-square" title='Зелёный'></div>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <% if product.color_blue? %>
+            <div class="square blue-square" title='Синий'></div>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <% if product.color_violet? %>
+            <div class="square violet-square" title='Фиолетовый'></div>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Материал</th>
+      <td>
+        <% if product.material_plastic? %>
+          Пластик
+        <% end %>
+        <% if product.material_iron? %>
+          Железо
+        <% end %>
+        <% if product.material_wooden? %>
+          Дерево
+        <% end %>
+        <% if product.material_fabric? %>
+          Ткань
+        <% end %>
+        <% if product.material_another? %>
+          Другой материал
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>Количество</th>
+      <td><%= product.quantity %></td>
+    </tr>
+  </tbody>
+</table>

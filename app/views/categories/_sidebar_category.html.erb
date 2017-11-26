@@ -8,13 +8,33 @@
     </li>
   <% end %>
   <% Category.without_parent.each do |category| %>
-    <%= link_to category_path(category) do %>
-      <li class="list-group-item">
-        <%= category.name %>
-        <span class="badge badge-primary">
-          <%= category.products.count %>
-        </span>
-      </li>
-    <% end %>
+    <li class="list-group-item">
+      <%= link_to category.name, category_path(category) %>
+      <span id="cat_<%= category.id %>" class='pull-right' href="">
+        <%= fa_icon 'arrow-down', class: 'arrow text-info' %>
+      </span>
+    </li>
+    <div id="subcat_<%= category.id %>" class='subcat'>
+      <% category.subcategories.each do |subcategory| %>
+        <% if subcategory.products.count != 0 %>
+          <%= link_to category_subcategory_path(category, subcategory) do %>
+            <li class="list-group-item subcategory_name">
+              <%= subcategory.name %>
+              <span class="badge badge-primary">
+                <%= subcategory.products.count %>
+              </span>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <script>
+      $(document).ready(function(){
+        $("#cat_<%= category.id %>").click(function(){
+          $("#subcat_<%= category.id %>").toggle();
+        });
+      });
+    </script>
   <% end %>
 </ul>
+

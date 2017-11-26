@@ -6,7 +6,7 @@
     <% "#{comment.rating}".to_i.times do %>
       <%= fa_icon 'star', class: 'fa-1x text-success' %>
     <% end %>
-    <% if current_user.admin? %>
+    <% if current_user.try(:admin) %>
       <p>
         <%= link_to 'Удалить коммент', comment_path(comment), method: :delete, remote: true, data: { confirm: 'Вы действительно желаете удалить этот отзыв?' } %>
       </p>

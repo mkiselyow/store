@@ -18,7 +18,7 @@
         <div class="footer__columns">
           <ul class="footer-list">
             <p></p>
-            <% Category.without_parent.each do |category| %>
+            <% Category.without_parent.limit(8).each do |category| %>
               <%= link_to category_path(category) do %>
                 <li class="footer-list__item"><%= category.name %></li>
               <% end %>
