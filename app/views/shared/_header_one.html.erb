@@ -1,10 +1,14 @@
 <div class="col-lg-6 col-md-6 col-xs-12 top_container_left">
   <div class="row">
     <div class="col-md-4 col-lg-5 col-xs-9 mapapama_logo">
-      <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
+      <%= link_to root_path do %>
+        <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
+      <% end %>
     </div>
     <div class="col-md-4 col-lg-2 col-xs-3 mapapama_logo">
-      <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
+      <%= link_to root_path do %>
+        <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
+      <% end %>
     </div>
     <div class="col-md-4 col-lg-5 col-xs-12 leuze">
       <b>Мапапама</b> - это детская радость
@@ -26,7 +30,7 @@
 <div class="col-lg-4 col-md-4 col-xs-12 top_container_right">
   <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-      <div class="col-md-10 col-xs-10">
+      <div class="col-md-8 col-xs-7">
         <% if user_signed_in? %>
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.full_name %> <%= image_tag current_user.avatar_url(:small), class: 'img-circle header-avatar' %>
@@ -46,10 +50,15 @@
           <%= link_to "Войти", new_user_session_path %>
         <% end %>
       </div>
-      <div class="col-md-2 col-xs-2">
-        <%= link_to cart_path(@cart.id), class: "btn btn-success pull-right btn-lg" do %>
-          <%= fa_icon 'shopping-basket' %>
-        <% end %>
+      <div class="col-md-4 col-xs-5">
+        <div class="btn-group">
+          <%= link_to cart_path(@cart.id), class: "btn btn-success" do %>
+            <%= fa_icon 'shopping-basket' %>
+          <% end %>
+          <button class='btn btn-primary' data-toggle="modal" data-target="#form_send">
+            <%= fa_icon 'envelope-o' %>
+          </button>
+        </div>
       </div>
     </div>
   </div>

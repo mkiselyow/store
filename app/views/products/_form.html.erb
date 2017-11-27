@@ -1,16 +1,19 @@
 <%= form_with(model: product, local: true) do |form| %>
-  <%= render 'error', product: product %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= render 'error', product: product %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-4 product_form_column">
       <div class="field">
         <%= form.label(:title, "Название") %>
-        <%= form.text_field :title, id: :product_title, class: 'form-control input-product' %>
+        <%= form.text_field :title, id: :product_title, class: 'form-control input-product', required: true %>
         <p>
       </div>
       <div class="field ">
         <%= form.label(:title, "Категория") %>
-        <br>
-        <select name="carlist" id='main_category' class='form-control input-product'>
+        <select name="carlist" id='main_category' class='form-control input-product pull-right'>
           <option>Выберите категорию</option>
           <% Category.without_parent.each do |category| %>
             <option value="<%= category.id %>"><%= category.name %></option>
@@ -19,20 +22,20 @@
         <p></p>
       </div>
       <div class="field">
-         <% Category.without_parent.each do |category| %>
-           <%= form.select :category_id, options_from_collection_for_select(category.subcategories.all, :id, :name), {},  class: 'form-control input-product subcategories', id: "parent_#{ category.id }" %>
-           <script>
-             $(document).ready(function() {
-               $("#main_category").change(function() {
-                 if ($(this).val() === "<%= category.id %>") {
-                   return $("#parent_<%= category.id %>").show();
-                 }
-                 else
-                   return $("#parent_<%= category.id %>").remove();
-               });
-             });
-           </script>
-           <p></p>
+        <% Category.without_parent.each do |category| %>
+          <%= form.select :category_id, options_from_collection_for_select(category.subcategories.all, :id, :name), {},  class: 'form-control input-product subcategories  pull-righ', id: "parent_#{ category.id }" %>
+          <script>
+            $(document).ready(function() {
+              $("#main_category").change(function() {
+                if ($(this).val() === "<%= category.id %>") {
+                  return $("#parent_<%= category.id %>").show();
+                }
+                else
+                  return $("#parent_<%= category.id %>").remove();
+              });
+            });
+          </script>
+          <p></p>
          <% end %>
       </div>
       <div class="field">
@@ -67,7 +70,7 @@
 
       <div class="field">
         <%= form.label(:price, "Цена ₴", :title => "когда меняем любое из значений: цена закупки наценка скидка то пересчитывает конечную цену вне зависимости от того какая сейчас стоит") %>
-        <%= form.number_field :price, id: :product_price, :step => 0.01, min: 0, class: 'form-control input-product' %>
+        <%= form.number_field :price, id: :product_price, :step => 0.01, min: 0, class: 'form-control input-product', required: true %>
         <p>
       </div>
 

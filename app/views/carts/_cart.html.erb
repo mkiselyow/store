@@ -1,6 +1,5 @@
 <% unless @cart.line_items.empty? %>
-  <h1>Корзина <%= button_to 'Очистить Корзину', @cart, method: :delete, data: { confirm: 'Вы уверены что хотите очистить корзину?' }, class: "btn btn-danger"%>
-  </h1>
+  <h1>Корзина</h1>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <div class="container">
     <table id="cart" class="table table-hover table-condensed">
@@ -13,13 +12,15 @@
           <th style="width:10%"></th>
         </tr>
       </thead>
-      <%= render(@cart.line_items) %>
+      <%= render(@cart.line_items.order(:id)) %>
       <tfoot>
         <tr class="visible-xs">
           <td class="text-center"><strong><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></strong></td>
         </tr>
         <tr>
-          <td><%= link_to 'Назад в магазин', root_path, class: "btn btn-warning" %></td>
+          <td>
+            <%= link_to 'Назад в магазин', root_path, class: "btn btn-warning" %>
+          </td>
           <td colspan="2" class="hidden-xs"></td>
           <td class="hidden-xs text-center">
             <h2><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></h2>
@@ -30,5 +31,6 @@
         </tr>
       </tfoot>
     </table>
+    <br>
   </div>
 <% end %>

@@ -17,7 +17,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to root_url, notice: 'Товарная позиция создана.' }
+        format.html { redirect_back(fallback_location: root_path, notice: 'Товарная позиция создана.') }
         format.js { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
       else
@@ -58,7 +58,6 @@ class LineItemsController < ApplicationController
       end
     else
       @line_item.destroy
-      # redirect_to :back, notice: 'Товар был успешно убран из корзины'
       respond_to do |format|
         format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Товар был успешно убран из корзины' }
         format.json { head :no_content }

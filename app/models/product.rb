@@ -3,7 +3,10 @@ class Product < ApplicationRecord
   has_many :orders, through: :line_items
   has_many :image_products, dependent: :destroy
   belongs_to :category
+
   validates :title, presence: true
+  validates :category_id, presence: true
+  validates :price, presence: true
 
   before_destroy :ensure_not_referenced_by_any_line_item
 

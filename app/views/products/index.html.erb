@@ -20,14 +20,17 @@
 <div class="mobile" name="top">
   <!-- This is the container enabling the JavaScript -->
   <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
+    <!-- This is the element toggling the dropdown -->
+    <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <p></p>
 
-      <!-- This is the element toggling the dropdown -->
-      <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <!-- This is the element toggling the dropdown -->
+<!--     <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> -->
 
-      <!-- This is the dropdown -->
-      <div class="uk-dropdown">
-        <%= render  partial: "products/search_multiple_form" %>
-      </div>
+    <!-- This is the dropdown -->
+    <div class="uk-dropdown">
+      <%= render  partial: "products/search_multiple_form" %>
+    </div>
   </div>
   <!-- all products -->
   <%= render  partial: "products/all_products_div_mobile", locals: { some_array_of_products: @products, rows_count: @products_count, name_of_div: "Все Товары" } %>
