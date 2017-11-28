@@ -37,23 +37,16 @@ class Product < ApplicationRecord
   after_save :count_price, if: proc { |u| u.mark_up_changed? || u.discount_changed? || u.purchase_price_changed? }
 
   def count_price
-    # if self.update_attributes(params[:mark_up]) || self.update_attributes(params[:discount]) || self.update_attributes(params[:purchase_price])
-    # if self.price == nil
     price = (purchase_price * mark_up / 100 + purchase_price) * (100 - discount) / 100
     update_column(:price, price)
-    # self.update(:price => price)
-    # end
-    # end
+  end
+
+  def price_mark_up
+    purchase_price + (purchase_price * (mark_up * 0.01))
   end
 
   def self.text_search(query)
     if query.present?
-      # basic_search({title: query, description: query}, false)
-      # basic_search(query)
-      # query.split.each do |query|
-      #   advanced_search(query)
-      # end
-      # where('name LIKE ?', "%#{params[:query]}%")
       where('title @@ :q or description @@ :q', q: query)
     else
       # where(nil)

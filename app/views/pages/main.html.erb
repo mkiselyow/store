@@ -16,6 +16,14 @@
           <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_most_viewed, rows_count: 5,  id_of_this_carousel: "top_viewed_carousel", name_of_carousel: "Популярные" } %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Все товары</h1>
+          <div id="products">
+            <%= render 'products' %>
+          </div>
+        </div>
+      </div>
     </article>
   </main>
 
@@ -40,12 +48,13 @@
 
     <button href='#all_products_list' data-toggle="collapse" class='btn btn-info btn-block'>Показать все товары</button>
     <div id="all_products_list" class="collapse">
-      <!-- all products -->
-      <%= render  partial: "products/all_products_div_mobile", locals: { some_array_of_products: @products, rows_count: @products_count, name_of_div: "Все Товары" } %>
       <div class="row">
-        <center>
-          <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
-        </center>
+        <div class="col-md-12">
+          <h1>Все товары</h1>
+          <div id="products_mobile">
+            <%= render 'products_mobile' %>
+          </div>
+        </div>
       </div>
     </div>
     <br>

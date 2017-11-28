@@ -12,8 +12,14 @@
     </div>
   </aside>
   <article class='article_products'>
-    <!-- all products -->
-    <%= render  partial: "products/all_products_div", locals: { some_array_of_products: @products, rows_count: @rows_count, name_of_div: "Все Товары" } %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Все товары</h1>
+        <div id="products">
+          <%= render 'products' %>
+        </div>
+      </div>
+    </div>
   </article>
 </main>
 
@@ -30,6 +36,14 @@
     <!-- This is the dropdown -->
     <div class="uk-dropdown">
       <%= render  partial: "products/search_multiple_form" %>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Все товары</h1>
+          <div id="products_mobile">
+            <%= render 'products_mobile' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- all products -->

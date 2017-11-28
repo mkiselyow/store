@@ -1,0 +1,13 @@
+<div class="row">
+  <% @products_page.each do |product| %>
+    <div class="col-sm-3 product_view_class">
+      <%= render  partial: "products/product", locals: { product: product } %>
+      <%= button_to 'В Корзину', product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <center>
+    <%= will_paginate @products_page, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>

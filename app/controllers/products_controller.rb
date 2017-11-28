@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
     @products_count = Product.count
     @rows_count = (@products_count/4)
     @products = Product.order(:id)
+    @products_page = @products.paginate(page: params[:page], per_page: 24)
+    @products_page_mobile = @products.paginate(page: params[:page], per_page: 12)
     @categories = Category.all
     @products_most_viewed = Product.where('times_viewed >= 0').order('times_viewed DESC').limit(20)
     @products_wth_special_offers = Product.where('discount != 0').limit(20)
@@ -132,12 +134,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.create(product_params)
-    # if (@product.price == nil) && @product.purchase_price && (@product.discount || @product.mark_up)
-    #   @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
-    #   if @product.discount
-    #     @product.price = @product.price-@product.price*@product.discount/100
-    #   end
-    # end
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Вы создали продукт.' }
@@ -152,6 +148,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @product.price = @product.price_mark_up
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Продукт был успешно обновлен.' }
@@ -211,15 +208,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # def set_price
-  #   @product = Product.find(params[:id])
-  #   @product.price = @product.purchase_price*@product.mark_up/100 + @product.purchase_price
-  #   if @product.discount
-  #     @product.price = @product.price-@product.price*@product.discount/100
-  #   end
-  # end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
     params.require(:product).permit(:title, :size_a, :size_b, :size_h,
                                     :purchase_price, :mark_up, :price, :weight,

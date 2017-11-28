@@ -1,0 +1,4 @@
+jQuery('#products').html("<%= escape_javascript(render("products")) %>");
+$('.pagination a').attr('data-remote', 'true');
+jQuery('#products_mobile').html("<%= escape_javascript(render("products_mobile")) %>");
+$('.pagination a').attr('data-remote', 'true');

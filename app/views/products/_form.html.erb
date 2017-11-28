@@ -58,28 +58,28 @@
 
       <div class="field">
         <%= form.label(:purchase_price, "Цена закупки ₴") %>
-        <%= form.number_field :purchase_price, id: :product_purchase_price, :step => 0.01, class: 'form-control input-product', min: 0  %>
+        <%= form.number_field :purchase_price, id: 'num1', name: 'num1', :step => 0.01, class: 'form-control input-product input-product-count', min: 0  %>
         <p>
       </div>
 
       <div class="field">
         <%= form.label(:mark_up, "Наценка %") %>
-        <%= form.number_field :mark_up, id: :product_mark_up, class: 'form-control input-product', min: 0  %>
+        <%= form.number_field :mark_up, id: 'num2', name: 'num2', class: 'form-control input-product input-product-count', min: 0  %>
         <p>
       </div>
 
       <div class="field">
-        <%= form.label(:price, "Цена ₴", :title => "когда меняем любое из значений: цена закупки наценка скидка то пересчитывает конечную цену вне зависимости от того какая сейчас стоит") %>
-        <%= form.number_field :price, id: :product_price, :step => 0.01, min: 0, class: 'form-control input-product', required: true %>
-        <p>
+        <tr>
+          <td><%= form.label(:price, "Цена ₴", :title => "когда меняем любое из значений: цена закупки наценка скидка то пересчитывает конечную цену вне зависимости от того какая сейчас стоит") %></td>
+          <td><%= form.text_field :price, class: 'form-control input-product input-product-count', min: 0, id: "sum"  %></td>
+        </tr>
+        <p></p>
       </div>
-
       <div class="field">
         <%= form.label(:weight, "Вес") %>
         <%= form.number_field :weight, id: :product_weight, :step => 0.01, min: 0, class: 'form-control input-product' %>
         <p>
       </div>
-
       <div class="field">
         <%= form.label(:brand, "Бренд") %>
         <%= form.text_field :brand, id: :product_brand, class: 'form-control input-product' %>
@@ -290,17 +290,7 @@
 
 <!-- Configure Cloudinary jQuery plugin -->
 <%= cloudinary_js_config %>
-<!-- <script>
-  $(document).ready(function() {
-    $("#main_category").change(function() {
-      if ($(this).val() === '1') {
-        return $(".test").show();
-      } else {
-        return $(".test").hide();
-      }
-    });
-  });
-</script> -->
+
 <script>
   $(document).ready(function() {
     $(".cloudinary-fileupload")
@@ -385,5 +375,19 @@
       $("#other_desc").prop("disabled", true);
     }
     });
+  });
+  $(document).ready(function() {
+    sum();
+    $("#num1, #num2").on("keydown keyup", function() {
+      sum();
+    });
+    function sum() {
+      var num1 = document.getElementById('num1').value;
+      var num2 = document.getElementById('num2').value;
+      var result = parseFloat(num1) + (parseFloat(num1) * (parseFloat(num2) / 100));
+      if (!isNaN(result)) {
+        document.getElementById('sum').value = result;
+      }
+    }
   });
 </script>

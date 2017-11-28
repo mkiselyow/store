@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20171127130030) do
     t.integer "size_b"
     t.integer "size_h"
     t.decimal "purchase_price", precision: 8, scale: 2
-    t.integer "mark_up"
+    t.integer "mark_up", default: 0
     t.decimal "price", precision: 8, scale: 2
     t.decimal "weight", precision: 8, scale: 2
     t.boolean "color_white"
