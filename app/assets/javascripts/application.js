@@ -14,9 +14,14 @@
 //= require nested_form_fields
 //= require ckeditor/init
 //= require_tree .
-$(function() {
-  setTimeout(function(){ 
-    $('.message').hide('fade');
-  }, 3000);
+jQuery(document).ready(function($){
+  $(function() {
+    setTimeout(function(){ 
+      $('.message').hide('fade');
+    }, 3000);
+  });
+  $('.comment_rating').raty();
+  $(function(){
+     $('.pagination a').attr('data-remote', 'true')
+  });
 });
-$('.comment_rating').raty();

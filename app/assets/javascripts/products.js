@@ -11,7 +11,7 @@ $(document).ready(function(){
       }
     });
   });
-  $(function(){
-     $('.pagination a').attr('data-remote', 'true')
+  $("#info-product").click(function(){
+    $(".info-about-product").toggle();
   });
 });

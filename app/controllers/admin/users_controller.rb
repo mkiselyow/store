@@ -7,12 +7,13 @@ class Admin::UsersController < AdminsController
 
   def banned_user
     @user.update(banned: !@user.banned)
-    redirect_to admin_root_path
+    redirect_back(fallback_location: admin_root_path,
+                  notice: "Пользователь #{@user.full_name} был #{@user.banned ? 'заблокирован' : 'разблокирован'}")
   end
 
   def change_permission
     @user.update(admin: !@user.admin)
-    redirect_to admin_root_path
+    redirect_back(fallback_location: admin_root_path, notice: 'Статус пользователя был изменён')
   end
 
   def destroy
