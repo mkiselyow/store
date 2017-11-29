@@ -46,17 +46,11 @@
                     <% else %>
                         <%= image_tag( @product.image_url(:medium), width: '470px', height: '480px') %>
                     <% end %>
-                    <script>
-                      $("#main_avatar").elevateZoom();
-                    </script>
                   </div>
                   <% @product.image_products.each_with_index do |im_prod, i| %>
                     <div class="item" data-slide-number="<%= (i+1) %>"">
-                      <img id="image_<%= (i+1) %>" src="<%= im_prod.image.url(:large) %>" data-zoom-image="<%= im_prod.image.url(:large) %>", class='img-thumbnail profile-avatar', width='470px', height='480px'/>
+                      <img id="image_<%= im_prod.id %>" src="<%= im_prod.image.url(:large) %>" data-zoom-image="<%= im_prod.image.url(:large) %>", class='img-thumbnail profile-avatar', width='470px', height='480px'/>
                     </div>
-                    <script>
-                      $("#image_<%= (i+1) %>").elevateZoom();
-                    </script>
                   <% end %>
                 </div>
               </div>
@@ -139,7 +133,12 @@
     </div>
   </div>
 </div>
-
+<!-- <script>
+  $("#main_avatar").elevateZoom();
+  <% @product.image_products.each do |im_prod| %>
+    $("#image_<%= im_prod.id %>").elevateZoom();
+  <% end %>
+</script> -->
 <script>
   jQuery(document).ready(function($) {
     $('#myCarousel').carousel({

@@ -1,63 +1,73 @@
-<div class="container">
-  <main>
-    <article>
-      <div class="row">
-        <div class="col-md-12">
-          <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2,  id_of_this_carousel: "newest_carousel", name_of_carousel: "Новинки"  } %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_wth_special_offers, rows_count:   5, id_of_this_carousel: "offers_carousel", name_of_carousel: "Акции" } %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_most_viewed, rows_count: 5,  id_of_this_carousel: "top_viewed_carousel", name_of_carousel: "Популярные" } %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Все товары</h1>
-          <div id="products">
-            <%= render 'products' %>
-          </div>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <div class="mobile" name="top">
-    <!-- This is the container enabling the JavaScript -->
-    <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
-      <!-- This is the dropdown -->
-      <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-      <div class="uk-dropdown">
-        <%= render  partial: "products/search_multiple_form" %>
+<h1></h1>
+<main>
+  <aside class="sticky search_multiple_form">
+    <button class="uk-button hide_side_nav_button">Показать корзину</button>
+    <div id="search_multiple_form">
+      <%= render  partial: "products/search_multiple_form" %>
+    </div>
+    <div class="cart_sidebar">
+      <%= hidden_div_if(@cart.line_items.empty?, id: 'my_cart', class: 'my_cart') do %>
+        <%= render 'products/cart_product' %>
+      <% end %>
+    </div>
+  </aside>
+  <article class='article_products'>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2,  id_of_this_carousel: "newest_carousel", name_of_carousel: "Новинки"  } %>
       </div>
     </div>
-    <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4,  id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: "Новинки"  } %>
-  
-    <!-- special offers carousel -->
-    
-    <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_wth_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: "Акции" } %>
-    
-    <!-- top viewed carousel -->
-
-    <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4,  id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: "Популярные" } %>
-
-    <button href='#all_products_list' data-toggle="collapse" class='btn btn-info btn-block'>Показать все товары</button>
-    <div id="all_products_list" class="collapse">
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Все товары</h1>
-          <div id="products_mobile">
-            <%= render 'products_mobile' %>
-          </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_wth_special_offers, rows_count:   5, id_of_this_carousel: "offers_carousel", name_of_carousel: "Акции" } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_most_viewed, rows_count: 5,  id_of_this_carousel: "top_viewed_carousel", name_of_carousel: "Популярные" } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Все товары</h1>
+        <div id="products">
+          <%= render 'products' %>
         </div>
       </div>
     </div>
-    <br>
+  </article>
+</main>
+
+<div class="mobile" name="top">
+  <!-- This is the container enabling the JavaScript -->
+  <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
+    <!-- This is the dropdown -->
+    <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <div class="uk-dropdown">
+      <%= render  partial: "products/search_multiple_form" %>
+    </div>
   </div>
-  <a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4,  id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: "Новинки"  } %>
+
+  <!-- special offers carousel -->
+  
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_wth_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: "Акции" } %>
+  
+  <!-- top viewed carousel -->
+
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4,  id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: "Популярные" } %>
+
+  <button href='#all_products_list' data-toggle="collapse" class='btn btn-info btn-block'>Показать все товары</button>
+  <div id="all_products_list" class="collapse">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Все товары</h1>
+        <div id="products_mobile">
+          <%= render 'products_mobile' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
 </div>
+<a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>

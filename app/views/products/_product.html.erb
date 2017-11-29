@@ -9,7 +9,6 @@
 
   <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
   <% if product.discount != 0 %>
-<!--     <%= fa_icon 'asterisk', text: "#{ number_to_currency(product.discount_price, unit: "₴") }", class: 'text-danger fa-1x' %> -->
   <%= tag.div(number_to_currency(product.discount_price, unit: "₴"), :class => "product_price_text") %>
   <% else %>
     <%= tag.div(number_to_currency(product.price, unit: "₴"), :class => "product_price_text") %>

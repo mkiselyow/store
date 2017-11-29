@@ -43,8 +43,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'users#index'
     resources :users do
-      get :banned_user, on: :member
-      get :change_permission, on: :member
+      put :banned_user, on: :member
+      put :change_permission, on: :member
     end
     resources :orders
     resources :useful_articles

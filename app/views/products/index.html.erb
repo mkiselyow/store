@@ -28,22 +28,8 @@
   <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
     <!-- This is the element toggling the dropdown -->
     <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-    <p></p>
-
-    <!-- This is the element toggling the dropdown -->
-<!--     <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> -->
-
-    <!-- This is the dropdown -->
     <div class="uk-dropdown">
       <%= render  partial: "products/search_multiple_form" %>
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Все товары</h1>
-          <div id="products_mobile">
-            <%= render 'products_mobile' %>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <!-- all products -->

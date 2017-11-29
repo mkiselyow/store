@@ -32,7 +32,9 @@
             <% end %>
           </ul>
         </td>
-        <td></td>
+        <td>
+          <%= link_to 'Удалить', admin_order_path(order), method: :delete, data: { confirm: "Вы действительно хотите удалить этот заказ?" }, class: 'btn btn-sm btn-danger'%>
+        </td>
       </tr>
     <% end %>
   </tbody>

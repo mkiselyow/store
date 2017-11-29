@@ -17,7 +17,7 @@
         <% end %>
       </p>
       <% if current_user.id != user.id %>
-        <%= link_to "#{ user.admin ? 'Разжаловать в пользователи' : 'Назначить администратором' }", change_permission_admin_user_path(user) %> |
+        <%= link_to "#{ user.admin ? 'Разжаловать в пользователи' : 'Назначить администратором' }", change_permission_admin_user_path(user), data: { url: admin_users_path(id: user.id), method: :put }%> |
         <%= link_to "#{ user.banned ? 'Разблокировать' : 'Заблокировать' }", banned_user_admin_user_path(user) %> |
         <%= link_to "Удалить аккаунт", admin_user_path(user), method: :delete, remote: true, data: { confirm: 'Вы действительно хотите удалить этого пользователя?' } %>
       <% end %>

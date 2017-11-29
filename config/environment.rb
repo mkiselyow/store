@@ -8,6 +8,7 @@ Rails.application.initialize!
 # config.action_mailer.default_url_options = { :host => 'localhost' }
 Store::Application.configure do
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.smtp_settings = {
       address:              "smtp.gmail.com",
@@ -17,5 +18,5 @@ Store::Application.configure do
       user_name:            "mapapama1994@gmail.com",
       password:             "qazwsx2017",
       enable_starttls_auto: true 
-    }
+  }
 end

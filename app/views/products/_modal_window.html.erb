@@ -37,14 +37,14 @@
               <% end %>
             </p>
           </div>
-          <div class="col-md-4" id="slider">
-            <div class="col-sm-12" id="image-bounding">
+          <div class="col-md-6" id="slider">
+            <div class="col-sm-12" id="carousel-bounding-box">
               <div class="carousel-inner">
                 <div class="active item" data-slide-number="0">
                   <% if product.image.present? %>
-                    <img id="main_avatar" src="<%= product.image_url(:large) %>" data-zoom-image="<%= product.image_url(:large) %>" class='img-thumbnail image-product-show'/>
+                    <img id="main_avatar" src="<%= product.image_url(:large) %>" data-zoom-image="<%= product.image_url(:large) %>", class='img-thumbnail profile-avatar'/>
                   <% else %>
-                    <%= image_tag( product.image_url(:large), class: 'image-product-show') %>
+                    <%= image_tag( product.image_url(:large), width: '470px', height: '480px') %>
                   <% end %>
                 </div>
                 <% product.image_products.each_with_index do |im_prod, i| %>
@@ -112,10 +112,10 @@
         <div class="row">
           <div class="col-md-12">
             <br>
-            <button id="info-product_<%= product.id  %>" class='btn btn-primary btn-block'>Больше информации</button>
+            <button id="info-product_path_<%= product.id  %>" class='btn btn-primary btn-block'>Больше информации</button>
           </div>
         </div>
-        <div class="row info-about-product_<%= product.id  %> info-about-product">
+        <div class="row info-about-prod_<%= product.id  %> info-about-product">
           <br>
           <div class="col-md-6">
             <%= render 'table_characters', product: product %>
@@ -138,8 +138,8 @@
 </div>
 <script>
   $(document).ready(function(){
-    $("#info-product_<%= product.id  %>").click(function(){
-      $(".info-about-product_<%= product.id  %>").toggle();
+    $("#info-product_path_<%= product.id  %>").click(function(){
+      $(".info-about-prod_<%= product.id  %>").toggle();
     });
   });
 </script>

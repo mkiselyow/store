@@ -34,4 +34,17 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { :host => 'mapapama.heroku.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.smtp_settings = {
+      address:              "smtp.gmail.com",
+      port:                 587,
+      domain:               'max-X751SJ',#"domain.of.sender.net",
+      authentication:       "plain",
+      user_name:            "mapapama1994@gmail.com",
+      password:             "qazwsx2017",
+      enable_starttls_auto: true
+  }
+  end
 end

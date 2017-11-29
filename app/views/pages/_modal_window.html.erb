@@ -37,14 +37,14 @@
               <% end %>
             </p>
           </div>
-          <div class="col-md-4" id="slider">
-            <div class="col-sm-12" id="image-bounding">
+          <div class="col-md-6" id="slider">
+            <div class="col-sm-12" id="carousel-bounding-box">
               <div class="carousel-inner">
                 <div class="active item" data-slide-number="0">
                   <% if product.image.present? %>
-                    <img id="main_avatar" src="<%= product.image_url(:large) %>" data-zoom-image="<%= product.image_url(:large) %>" class='img-thumbnail image-product-show'/>
+                    <img id="main_avatar" src="<%= product.image_url(:large) %>" data-zoom-image="<%= product.image_url(:large) %>", class='img-thumbnail profile-avatar'/>
                   <% else %>
-                    <%= image_tag( product.image_url(:large), class: 'image-product-show') %>
+                    <%= image_tag( product.image_url(:large), width: '470px', height: '480px') %>
                   <% end %>
                 </div>
                 <% product.image_products.each_with_index do |im_prod, i| %>
