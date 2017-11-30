@@ -1,7 +1,12 @@
 class Admin::ProductsController < AdminsController
 
   def index
-    @products = Product.order(:id).paginate(page: params[:page], per_page: 50)
+    @products =
+      if params[:title]
+        Product.title_search(params[:title])
+      else
+        Product.order(:id)
+      end.paginate(page: params[:page], per_page: 50)
   end
 
   def destroy
@@ -18,9 +23,9 @@ class Admin::ProductsController < AdminsController
                                     :color_green, :color_blue, :color_violet, :brand,
                                     :material_plastic, :material_iron, :material_another,
                                     :material_wooden, :material_fabric, :supplier, :quantity,
-                                    :image, :boys, :girls, :description, :image_cache,
+                                    :image, :sex_id, :description, :image_cache,
                                     :image_id, :country, :product_code, :discount,
-                                    :times_viewed, :category_id, :other_desc,
+                                    :times_viewed, :category_id, :other_desc, :min_age, :max_age,
                                     image_products_attributes: [:id, :image, :product_id, :_destroy])
   end
 end

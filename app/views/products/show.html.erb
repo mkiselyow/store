@@ -13,6 +13,7 @@
         </p>
         <p>
           <strong>Пол:</strong>
+          <%= @product.sex.name %>
           <% if @product.boys %>
             <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
           <% end %>
@@ -27,6 +28,14 @@
         <p>
           <strong>Страна:</strong>
           <%= @product.country %>
+        </p>
+        <p>
+          <strong>Минимальный возраст:</strong>
+          <%= @product.min_age %>
+        </p>
+        <p>
+          <strong>Максимальный возраст:</strong>
+          <%= @product.max_age %>
         </p>
         <% if current_user.try(:admin) %>
           <%= link_to 'Редактировать', edit_product_path(@product) %> |
@@ -100,13 +109,13 @@
         <div class="col-md-12 col-xs-12" id="slider-thumbs">
           <ul class="hide-bullets">
             <li class="col-sm-2 col-xs-6">
-              <a class="thumbnail" id="carousel-selector-0">
+              <a class="thumbnail product_image_add" id="carousel-selector-0">
                 <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
               </a>
             </li>
             <% @product.image_products.each_with_index do |im_prod, i| %>
               <li class="col-sm-2 col-xs-6">
-                <a class="thumbnail" id="carousel-selector-<%= (i+1) %>">
+                <a class="thumbnail product_image_add" id="carousel-selector-<%= (i+1) %>">
                   <%= image_tag(im_prod.image.url(:thumb), width: '150px', height: '150px')%>
                 </a>
               </li>

@@ -1,0 +1,56 @@
+<table class="table table-hover">
+  <thead>
+    <th>#</th>
+    <th>Название</th>
+    <th class='mobile-hidden' width='50px'>Изображение</th>
+    <th class='mobile-hidden'>Категория</th>
+    <th>Брэнд</th>
+    <th>Код</th>
+    <th>Цена</th>
+    <th class="mobile-hidden">Действия</th>
+  </thead>
+  <tbody>
+    <% @products.each_with_index do |product, i| %>
+      <tr id = <%= "product_#{product.id}" %>>
+        <td><%= i+1 %></td>
+        <td>
+          <%= link_to product.title, product_path(product), target: '_blank' %>
+          <div class="dropdown action-dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown">Действия
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Редактировать', edit_product_path(product), target: '_blank' %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Удалить', admin_product_path(product), method: :delete, remote: true, data: { confirm: "Вы действительго хотите удалить #{ product.title}" } %></li>
+            </ul>
+          </div>
+        </td>
+        <td class='mobile-hidden image-product'><%= image_tag product.image.url(:thumbnail), width: '50px', height: '50px' %></td>
+        <% if product.category.parent.present? %>
+          <td class="mobile-hidden"><b><%= product.category.parent.name %></b> / <%= product.category.name %></td>
+        <% else %>
+          <td class="mobile-hidden"><b><%= product.category.name %></b></td>
+        <% end %>
+        <td><%= product.brand %></td>
+        <td><%= product.product_code %></td>
+        <td><%= number_to_currency(product.price, unit: "₴") %></td>
+        <td class="mobile-hidden">
+          <div class="dropdown">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Действия
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Редактировать', edit_product_path(product), target: '_blank' %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Удалить', admin_product_path(product), method: :delete, remote: true, data: { confirm: "Вы действительго хотите удалить #{ product.title}" } %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="row">
+  <center>
+    <%= will_paginate @products, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>

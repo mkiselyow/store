@@ -10,10 +10,21 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-3">
-            <p>
-              <b>Категория:</b>
-              <%= product.category.name %>
-            </p>
+            <% if product.category.parent.present? %>
+              <p>
+                <b>Категория:</b>
+                <%= product.category.parent.name %>
+              </p>
+              <p>
+                <b>Подкатегория:</b>
+                <%= product.category.name %>
+              </p>
+            <% else %>
+              <p>
+                <b>Категория:</b>
+                <%= product.category.name %>
+              </p>
+            <% end %>
             <p>
               <strong>Пол:</strong>
               <% if product.boys %>
@@ -90,13 +101,13 @@
           <div class="col-md-12 col-xs-12" id="slider-thumbs">
             <ul class="hide-bullets">
               <li class="col-sm-3 col-xs-6">
-                <a class="thumbnail" id="carousel-selector-0">
+                <a class="thumbnail product_image_add" id="carousel-selector-0">
                   <%= image_tag(product.image_url(:medium), width: '150px', height: '150px') %>
                 </a>
               </li>
               <% product.image_products.each_with_index do |im_prod, i| %>
                 <li class="col-sm-3 col-xs-6">
-                  <a class="thumbnail" id="carousel-selector-<%= im_prod.id %>">
+                  <a class="thumbnail product_image_add" id="carousel-selector-<%= im_prod.id %>">
                     <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
                   </a>
                 </li>

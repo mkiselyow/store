@@ -115,6 +115,18 @@
         <%= form.number_field :product_code, id: :product_product_code, class: 'form-control input-product' %>
         <p>
       </div>
+
+      <div class="field">
+        <%= form.label(:min_age, "Минимальный возраст") %>
+        <%= form.number_field :min_age, id: :min_age, min: 0, class: 'form-control input-product' %>
+        <p>
+      </div>
+
+      <div class="field">
+        <%= form.label(:min_age, "Максимальный возраст") %>
+        <%= form.number_field :max_age, id: :max_age, min: 0, class: 'form-control input-product' %>
+        <p>
+      </div>
     </div>
 
     <div class="col-md-5">
@@ -126,21 +138,8 @@
         <div class="col-md-12 product_form_column">
           <div class="row">
             <h3>Для какого пола предназначена</h3>
-            <div class="col-md-4 col-xs-6">
-              <div class="field">
-                <%= form.label(:boys) do %>
-                  <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', text: 'Мальчики' %>
-                <% end %>
-                <%= form.check_box :boys, id: :product_boys %>
-               </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-              <div class="field">
-                <%= form.label(:girls) do %>
-                  <%= fa_icon 'venus', class: 'fa-2x sex-girls', text: 'Девочки' %>
-                <% end %>
-                <%= form.check_box :girls, id: :product_girls %>
-              </div>
+            <div class="col-md-4 col-xs-4">
+              <%= form.select :sex_id, options_from_collection_for_select(Sex.all, :id, :name), {},  class: 'form-control input-product pull-righ' %>
             </div>
           </div>
           <div class="row">

@@ -1,0 +1,15 @@
+@media (max-width: 768px){
+  .mobile-hidden {
+    display: none;
+  }
+}
+@media (min-width: 769px){
+  .action-dropdown {
+    display: none;
+  }
+}
+.image-product{
+  display: flex;
+  -webkit-box-align: center;
+  justify-content: center;
+}

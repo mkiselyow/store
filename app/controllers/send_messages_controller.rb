@@ -8,9 +8,9 @@ class SendMessagesController < ApplicationController
 
     if @send_message.valid?
       SendMessageMailer.new_send_message(@send_message).deliver
-      redirect_to root_path, notice: 'Your messages has been sent.'
+      redirect_to root_path, notice: 'Выше сообщение успешно отправлено, с вами свяжуться!'
     else
-      flash[:alert] = 'An error occurred while delivering this message.'
+      flash[:alert] = 'Ошибка отправки сообщения!'
       render :new
     end
   end

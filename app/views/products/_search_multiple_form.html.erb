@@ -7,12 +7,7 @@
     <hr>
     <p>Пол</p>
     <div class="col-md-6">
-      <%= check_box_tag :boys, :true, :false, :class => "boys" %>
-      <%= fa_icon 'mars-stroke', class: 'fa-1x sex-boys', text: 'Мальчики' %>
-    </div>
-    <div class="col-md-6">
-      <%= check_box_tag :girls, :true, :false, :class => "girls" %>
-      <%= fa_icon 'mars-stroke', class: 'fa-1x sex-girls', text: 'Девочки' %>
+      <%= select_tag :sex_id, options_from_collection_for_select(Sex.all, :id, :name), prompt: 'Выберите пол',  class: 'form-control input-product' %>
     </div>
   </div>
   <div class="row">
@@ -20,6 +15,15 @@
     <p>Категория</p>
     <div class="col-md-6">
       <%= select_tag :category_id, options_from_collection_for_select(Category.without_parent, :id, :name), prompt: 'Выберите категорию',  class: 'form-control input-product' %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <%= text_field_tag :min_sum, nil, placeholder: "min sum", class: 'form-control search-input' %>
+    </div>
+    <div class="col-md-6">
+      <%= text_field_tag :max_sum, nil, placeholder: "max sum", class: 'form-control search-input' %>
     </div>
   </div>
   <br>

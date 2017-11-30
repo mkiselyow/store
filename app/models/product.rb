@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   has_many :orders, through: :line_items
   has_many :image_products, dependent: :destroy
   belongs_to :category
+  belongs_to :sex
 
   validates :title, presence: true
   validates :category_id, presence: true
@@ -15,10 +16,9 @@ class Product < ApplicationRecord
   include PgSearch
   pg_search_scope :search_by_discount,          against: :discount
   pg_search_scope :search_by_title,             against: :title
-  pg_search_scope :search_by_boys,              against: :boys
-  pg_search_scope :search_by_girls,             against: :girls
   pg_search_scope :search_by_brand,             against: :brand
   pg_search_scope :search_by_category,          against: :category_id
+  pg_search_scope :search_by_sex,               against: :sex_id
   pg_search_scope :search_by_color_white,       against: :color_white
   pg_search_scope :search_by_color_black,       against: :color_black
   pg_search_scope :search_by_color_red,         against: :color_red
@@ -54,15 +54,15 @@ class Product < ApplicationRecord
     end
   end
 
-  def self.search(boys) # , search_girls, search_color_white, search_color_black, search_color_red, search_color_green, search_color_yellow, search_color_violet, search_color_blue, search_material_wooden, search_material_iron, search_material_another, search_material_fabric, search_material_plastic)
-    if boys.present?
-      where(boys: boys != 'false')
-    # elsif search_girls.present?
-    #   where(:girls => search_boys != "false")
-    else
-      where(boys: boys == 'false')
-    end
-  end
+  # def self.search(boys) 
+  #   if boys.present?
+  #     where(boys: boys != 'false')
+  #   # elsif search_girls.present?
+  #   #   where(:girls => search_boys != "false")
+  #   else
+  #     where(boys: boys == 'false')
+  #   end
+  # end
 
   def discount_price
     price - ((price/100) * discount)
@@ -70,6 +70,10 @@ class Product < ApplicationRecord
 
   def self.latest
     Product.order(:updated_at).last
+  end
+
+  def self.title_search(title)
+    where('title LIKE ?', "%#{title}%")
   end
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

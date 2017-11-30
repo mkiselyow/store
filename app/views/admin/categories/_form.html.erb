@@ -1,9 +1,9 @@
 <div class="col-xs-12 col-md-8">
   <div class="well">
     <%= nested_form_for [:admin, @category] do |f| %>
-      <%= f.label :name %>
+      <%= f.label "Название категории:" %>
       <br>
-      <%= f.text_field :name, placeholder: :name, class: 'form-control', required: true %>
+      <%= f.text_field :name, placeholder: "Введите название категории", class: 'form-control', required: true %>
       <h3>Подкатегории</h3>
       <%= f.fields_for :subcategories do |ff| %>
         <div class="row">
@@ -32,7 +32,7 @@
       <% end %>
       <p><%= f.link_to_add "Добавить подкатегорию", :subcategories, class: 'btn btn-primary btn-sm' %></p>
       <br>
-      <%= f.submit class: 'btn btn-success' %>
+      <%= f.submit 'ОК', class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>

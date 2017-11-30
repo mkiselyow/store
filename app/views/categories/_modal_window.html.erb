@@ -10,12 +10,24 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-3">
-            <p>
-              <b>Категория:</b>
-              <%= product.category.name %>
-            </p>
+            <% if product.category.parent.present? %>
+              <p>
+                <b>Категория:</b>
+                <%= product.category.parent.name %>
+              </p>
+              <p>
+                <b>Подкатегория:</b>
+                <%= product.category.name %>
+              </p>
+            <% else %>
+              <p>
+                <b>Категория:</b>
+                <%= product.category.name %>
+              </p>
+            <% end %>
             <p>
               <strong>Пол:</strong>
+              <%= product.sex.name %>
               <% if product.boys %>
                 <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
               <% end %>
@@ -24,6 +36,14 @@
               <% end %>
             </p>
             <p>
+            <p>
+              <strong>Минимальный возраст:</strong>
+              <%= product.min_age %>
+            </p>
+            <p>
+              <strong>Максимальный возраст:</strong>
+              <%= product.max_age %>
+            </p>
               <strong>Бренд:</strong>
               <%= product.brand %>
             </p>
@@ -37,22 +57,15 @@
               <% end %>
             </p>
           </div>
-          <div class="col-md-4" id="slider">
+          <div class="col-md-6" id="slider">
             <div class="col-sm-12" id="image-bounding">
-              <div class="carousel-inner">
-                <div class="active item" data-slide-number="0">
-                  <% if product.image.present? %>
-                    <img id="main_avatar" src="<%= product.image_url(:large) %>" data-zoom-image="<%= product.image_url(:large) %>" class='img-thumbnail image-product-show'/>
-                  <% else %>
-                    <%= image_tag( product.image_url(:large), class: 'image-product-show') %>
-                  <% end %>
-                </div>
-                <% product.image_products.each_with_index do |im_prod, i| %>
-                  <div class="item" data-slide-number="<%= (product.id ) %>"">
-                    <img id="image_<%= im_prod.id %>" src="<%= im_prod.image.url(:large) %>" data-zoom-image="<%= im_prod.image.url(:large) %>", class='img-thumbnail profile-avatar', width='470px', height='480px'/>
+              <center>
+                <div class="product_image_modal">
+                  <div id="main_avatar">
+                    <%= image_tag(product.image_url(:large), width: '250px', height: '350px') %>
                   </div>
-                <% end %>
-              </div>
+                </div>
+              </center>
             </div>
           </div>
           <div class="col-md-3">
@@ -94,14 +107,14 @@
           <div class="col-md-12 col-xs-12" id="slider-thumbs">
             <ul class="hide-bullets">
               <li class="col-md-2 col-sm-3 col-xs-6">
-                <a data-toggle="modal" href="#image_<%= product.id %>" class="thumbnail">
+                <a data-toggle="modal" href="#image_<%= product.id %>" class="thumbnail product_image_add">
                   <%= image_tag(product.image_url(:medium), width: '150px', height: '150px') %>
                 </a>
               </li>
               <% product.image_products.each do |im_prod| %>
                 <%= render 'modal_add_image', im_prod: im_prod, product: product %>
                 <li class="col-md-2 col-sm-3 col-xs-6">
-                  <a class="thumbnail" data-toggle="modal" href="#image_add_<%= im_prod.id %>" class="thumbnail">
+                  <a class="thumbnail product_image_add" data-toggle="modal" href="#image_add_<%= im_prod.id %>" class="thumbnail">
                     <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
                   </a>
                 </li>

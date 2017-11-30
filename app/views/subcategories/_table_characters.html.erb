@@ -5,10 +5,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>Категория</th>
-      <td><%= product.category.name %></td>
-    </tr>
+    <% if product.category.parent.present? %>
+      <tr>
+        <th>Категория:</th>
+        <td><%= product.category.parent.name %>/<td>
+      </tr>
+      <tr>
+        <th>Подкатегория:</th>
+        <td><%= product.category.name %><td>
+      </tr>
+    <% else %>
+      <tr>
+        <b>Категория:</b>
+        <td><%= product.category.name %><td>
+      </tr>
+    <% end %>
     <tr>
       <th>Код</th>
       <td><%= product.product_code %></td>

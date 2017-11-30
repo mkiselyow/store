@@ -16,7 +16,7 @@
           <tr id = <%= "category_#{category.id}" %>>
             <% if category.parent_category_id.blank?  && category.parent_subcategory_id.blank? %>
             <td>
-              <p><%= category.name %></p>
+              <p><%= link_to category.name, category_path(category), target: '_blank' %></p>
             <td>
               <%= render partial: 'subcategory', locals: {subcategories: category.subcategories} if category.subcategories.present? %>
             </td>

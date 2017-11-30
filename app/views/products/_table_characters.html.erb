@@ -55,25 +55,39 @@
       <th>Цвета</th>
       <td>
         <% if @product.color_white? %>
-          <div class="square white-square" title='Белый'></div>
+          <div class="col-md-1">
+            <div class="square white-square" title='Белый'></div>
+          </div>
         <% end %>
         <% if @product.color_black? %>
-          <div class="square black-square" title='Чёрный'></div>
+          <div class="col-md-1">
+            <div class="square black-square" title='Чёрный'></div>
+          </div>
         <% end %>
         <% if @product.color_red? %>
-          <div class="square red-square" title='Красный'></div>
+          <div class="col-md-1">
+            <div class="square red-square" title='Красный'></div>
+          </div>
         <% end %>
         <% if @product.color_yellow? %>
-          <div class="square yellow-square" title='Желтый'></div>
+          <div class="col-md-1">
+            <div class="square yellow-square" title='Желтый'></div>
+          </div>
         <% end %>
         <% if @product.color_green? %>
-          <div class="square green-square" title='Зелёный'></div>
+          <div class="col-md-1">
+            <div class="square green-square" title='Зелёный'></div>
+          </div>
         <% end %>
         <% if @product.color_blue? %>
-          <div class="square blue-square" title='Синий'></div>
+          <div class="col-md-1">
+            <div class="square blue-square" title='Синий'></div>
+          </div>
         <% end %>
         <% if @product.color_violet? %>
-          <div class="square violet-square" title='Фиолетовый'></div>
+          <div class="col-md-1">
+            <div class="square violet-square" title='Фиолетовый'></div>
+          </div>
         <% end %>
       </td>
     </tr>

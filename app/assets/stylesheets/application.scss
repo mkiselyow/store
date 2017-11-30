@@ -339,3 +339,20 @@
   display: inline-block;
   vertical-align: middle;
 }
+a.thumbnail.product_image_add {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.product_image_modal {
+  width: 250px;
+  height: 350px;
+  display: flex;
+  -webkit-box-align: center;
+  justify-content: center;
+}
+#main_avatar{
+  max-height: 100%;
+}
