@@ -49,7 +49,9 @@ Rails.application.routes.draw do
     resources :orders
     resources :useful_articles
     resources :products
-    resources :categories
+    resources :categories do
+      resources :subcategories
+    end
     resources :shares
   end
 end

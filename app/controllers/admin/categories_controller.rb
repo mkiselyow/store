@@ -1,10 +1,11 @@
 class Admin::CategoriesController < AdminsController
 
-  before_action :category_resource, only: [:edit, :update, :destroy]
+  before_action :category_resource, only: [:edit, :update, :destroy, :show]
 
   def index
-    @categories = Category.includes(:subcategories).includes(:subsubcategories).all
-    @category = Category.new
+    # @categories = Category.includes(:subcategories).includes(:subsubcategories).all
+    @categories = Category.where(ancestry: nil)
+    @category = Category.new(parent_id: params[:parent_id])
   end
 
   def create
@@ -14,6 +15,10 @@ class Admin::CategoriesController < AdminsController
     else
       render :new
     end
+  end
+
+  def show
+    @subcategory = Category.new
   end
 
   def update
@@ -31,7 +36,12 @@ class Admin::CategoriesController < AdminsController
   private
 
   def category_params
-    params.require(:category).permit(:name, subcategories_attributes: [:id, :name, :parent_category_id, :_destroy, subsubcategories_attributes: [:id, :name, :parent_category_id, :parent_subcategory_id, :_destroy]])
+    # params.require(:category).permit(:name, subcategories_attributes: [:id, :name, :parent_id, :_destroy])
+    params.require(:category).permit(:name, :parent_id)
+  end
+
+  def subcategory_params
+    params.require(:category).permit(:name, :parent)
   end
 
   def category_resource

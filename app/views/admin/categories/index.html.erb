@@ -16,9 +16,26 @@
           <tr id = <%= "category_#{category.id}" %>>
             <% if category.parent_category_id.blank?  && category.parent_subcategory_id.blank? %>
             <td>
-              <p><%= link_to category.name, category_path(category), target: '_blank' %></p>
+              <p><%= category.name %></p>
             <td>
-              <%= render partial: 'subcategory', locals: {subcategories: category.subcategories} if category.subcategories.present? %>
+              <% category.children.each do |subcategory| %>
+                <p><%= subcategory.name %></p>
+                <ul>
+                  <% subcategory.children.each do |subsubcategory| %>
+                    <li><%= subsubcategory.name %></li>
+                    <ul>
+                      <% subsubcategory.children.each do |subsubsubcategory| %>
+                        <li><%= subsubsubcategory.name %></li>
+                        <ul>
+                          <% subsubsubcategory.children.each do |subsubsubsubcategory| %>
+                            <li><%= subsubsubsubcategory.name %></li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                </ul>
+              <% end %>
             </td>
             </td>
             <td>

@@ -11,19 +11,25 @@
         <%= form.text_field :title, id: :product_title, class: 'form-control input-product', required: true %>
         <p>
       </div>
+      <div class="field">
+        <%= form.label(:general_category, "Категория (Если есть подкатегории, то через чёрточку в этом поле") %>
+        <%= form.text_field :general_category, id: :general_category, class: 'form-control', required: true %>
+        <p>
+      </div>
+      <br>
       <div class="field ">
         <%= form.label(:title, "Категория") %>
         <select name="carlist" id='main_category' class='form-control input-product pull-right'>
           <option>Выберите категорию</option>
-          <% Category.without_parent.each do |category| %>
+          <% Category.where(ancestry: nil).each do |category| %>
             <option value="<%= category.id %>"><%= category.name %></option>
           <% end %>
         </select>
         <p></p>
       </div>
       <div class="field">
-        <% Category.without_parent.each do |category| %>
-          <%= form.select :category_id, options_from_collection_for_select(category.subcategories.all, :id, :name), {},  class: 'form-control input-product subcategories  pull-righ', id: "parent_#{ category.id }" %>
+        <% Category.where(ancestry: nil).each do |category| %>
+          <%= form.select :category_id, options_from_collection_for_select(category.children.all, :id, :name), {},  class: 'form-control input-product subcategories  pull-righ', id: "parent_#{ category.id }" %>
           <script>
             $(document).ready(function() {
               $("#main_category").change(function() {
@@ -36,7 +42,29 @@
             });
           </script>
           <p></p>
-         <% end %>
+          <% category.children.each do |subcategory| %>
+            <%= form.select :category_id, options_from_collection_for_select(subcategory.children.all, :id, :name), {},  class: 'form-control input-product subsub_categories pull-righ', id: "subparent_#{ subcategory.id } sub_category" %>
+            <script>
+              $(document).ready(function() {
+                $("#sub_category").change(function() {
+                  if ($(this).val() === "<%= subcategory.id %>") {
+                    return $("#subparent_<%= subcategory.id %>").show();
+                  }
+                  else
+                    return $("#subparent_<%= subcategory.id %>").remove();
+                });
+              });
+            </script>
+            <p></p>
+            <% subcategory.children.each do |subsubcategory| %>
+              <%= form.select :category_id, options_from_collection_for_select(subsubcategory.children.all, :id, :name), {},  class: 'form-control input-product subsubsub_categories pull-righ', id: "parent_#{ subsubcategory.id }" %>
+              <p></p>
+              <% subsubcategory.children.each do |subsubsubcategory| %>
+                <%= form.select :category_id, options_from_collection_for_select(subsubsubcategory.children.all, :id, :name), {}, class: 'form-control input-product subsubsubsub_categories pull-righ', id: "parent_#{ subsubsubcategory.id }" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
       <div class="field">
         <%= form.label(:size_a, "Длина") %>

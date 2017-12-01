@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130132907) do
+ActiveRecord::Schema.define(version: 20171201173952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20171130132907) do
     t.datetime "updated_at", null: false
     t.integer "parent_category_id"
     t.integer "parent_subcategory_id"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "category_posts", force: :cascade do |t|
@@ -133,12 +135,13 @@ ActiveRecord::Schema.define(version: 20171130132907) do
     t.string "country"
     t.integer "discount", default: 0
     t.integer "product_code"
-    t.integer "times_viewed"
+    t.integer "times_viewed", default: 1
     t.bigint "category_id"
     t.string "other_desc"
     t.integer "min_age"
     t.integer "max_age"
     t.integer "sex_id"
+    t.string "general_category"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
