@@ -22,6 +22,7 @@ Devise.setup do |config|
 
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
+  config.secret_key = '5c81aa7c7e09879e44ecd19feac08105ae820d31917b409ff4d20fa901384e6b530409cae3e67555ffd1a4d1b86b960b2efdd6db6f162a86ee87ede9c2b64282'
 
   config.omniauth :facebook, '1804053019906989', 'be6337a5233bcceedbf7c4ca0681723d', scope: 'email', info_fields: 'email,first_name,last_name'
   config.omniauth :vkontakte, '6260391', 'VsjWOjZPGhACH6LfPwze', scope: 'email'
