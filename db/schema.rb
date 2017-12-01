@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20171130132907) do
     t.string "country"
     t.integer "discount", default: 0
     t.integer "product_code"
-    t.integer "times_viewed", default: 1
+    t.integer "times_viewed"
     t.bigint "category_id"
     t.string "other_desc"
     t.integer "min_age"

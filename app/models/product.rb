@@ -65,7 +65,9 @@ class Product < ApplicationRecord
   # end
 
   def discount_price
-    price - ((price/100) * discount)
+    if price && discount
+      price - ((price/100) * discount)
+    end
   end
 
   def self.latest
