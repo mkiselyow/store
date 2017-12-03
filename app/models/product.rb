@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   belongs_to :sex
 
   validates :title, presence: true
-  validates :category_id, presence: true
+  # validates :category_id, presence: true
   validates :price, presence: true
 
   before_destroy :ensure_not_referenced_by_any_line_item

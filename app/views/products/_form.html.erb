@@ -86,13 +86,13 @@
 
       <div class="field">
         <%= form.label(:purchase_price, "Цена закупки ₴") %>
-        <%= form.number_field :purchase_price, id: 'num1', name: 'num1', :step => 0.01, class: 'form-control input-product input-product-count', min: 0  %>
+        <%= form.number_field :purchase_price, id: 'price_pur', :step => 0.01, class: 'form-control input-product input-product-count', min: 0  %>
         <p>
       </div>
 
       <div class="field">
         <%= form.label(:mark_up, "Наценка %") %>
-        <%= form.number_field :mark_up, id: 'num2', name: 'num2', class: 'form-control input-product input-product-count', min: 0  %>
+        <%= form.number_field :mark_up, id: 'markups', class: 'form-control input-product input-product-count', min: 0  %>
         <p>
       </div>
 
@@ -140,7 +140,7 @@
 
       <div class="field">
         <%= form.label(:product_code, "Код") %>
-        <%= form.number_field :product_code, id: :product_product_code, class: 'form-control input-product' %>
+        <%= form.text_field :product_code, id: :product_product_code, class: 'form-control input-product' %>
         <p>
       </div>
 
@@ -405,13 +405,13 @@
   });
   $(document).ready(function() {
     sum();
-    $("#num1, #num2").on("keydown keyup", function() {
+    $("#price_pur, #markups").on("keydown keyup", function() {
       sum();
     });
     function sum() {
-      var num1 = document.getElementById('num1').value;
-      var num2 = document.getElementById('num2').value;
-      var result = parseFloat(num1) + (parseFloat(num1) * (parseFloat(num2) / 100));
+      var price_pur = document.getElementById('price_pur').value;
+      var markups = document.getElementById('markups').value;
+      var result = parseFloat(price_pur) + (parseFloat(price_pur) * (parseFloat(markups) / 100));
       if (!isNaN(result)) {
         document.getElementById('sum').value = result;
       }
