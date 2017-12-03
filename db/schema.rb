@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20171203092851) do
     t.string "image_id"
     t.string "country"
     t.integer "discount", default: 0
-    t.integer "times_viewed", default: 1
+    t.integer "times_viewed"
     t.bigint "category_id"
     t.string "other_desc"
     t.integer "min_age"
