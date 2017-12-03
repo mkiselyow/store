@@ -17,7 +17,7 @@
         <p>
       </div>
       <br> -->
-      <div class="field ">
+<!--       <div class="field ">
         <%= form.label(:title, "Категория") %>
         <select name="carlist" id='main_category' class='form-control input-product pull-right'>
           <option>Выберите категорию</option>
@@ -26,14 +26,13 @@
           <% end %>
         </select>
         <p></p>
-      </div>
+      </div> -->
 
-      <div class="field ">
+      <div class="field">
         <%= form.label(:title, "Категория") %>
-          <%= form.select :category_id, Category::CATEGORIES_SELECT, {},  class: 'form-control input-product', id: :category_id %>
-        <p></p>
+        <%= form.select :category_id, Category::get_collection_of_categories_ids, {},  class: 'form-control input-product', id: :category_id %>
+        <p>
       </div>
-
 
 <!--       @acc.each {|id| p "#{Category.find(id).name} + #{Category.find(id).ancestor_ids}"} -->
       <!-- <div class="field">

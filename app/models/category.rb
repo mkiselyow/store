@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
-  after_save :get_collection_of_categories_ids
 
   has_ancestry
 
