@@ -54,16 +54,6 @@ class Product < ApplicationRecord
     end
   end
 
-  # def self.search(boys) 
-  #   if boys.present?
-  #     where(boys: boys != 'false')
-  #   # elsif search_girls.present?
-  #   #   where(:girls => search_boys != "false")
-  #   else
-  #     where(boys: boys == 'false')
-  #   end
-  # end
-
   def discount_price
     if price && discount
       price - ((price/100) * discount)
