@@ -10,13 +10,13 @@
         <%= form.label(:title, "Название") %>
         <%= form.text_field :title, id: :product_title, class: 'form-control input-product', required: true %>
         <p>
-      </div>
+      </div><!-- 
       <div class="field">
         <%= form.label(:general_category, "Категория (Если есть подкатегории, то через чёрточку в этом поле") %>
         <%= form.text_field :general_category, id: :general_category, class: 'form-control', required: true %>
         <p>
       </div>
-      <br>
+      <br> -->
       <div class="field ">
         <%= form.label(:title, "Категория") %>
         <select name="carlist" id='main_category' class='form-control input-product pull-right'>
@@ -27,7 +27,16 @@
         </select>
         <p></p>
       </div>
-      <div class="field">
+
+      <div class="field ">
+        <%= form.label(:title, "Категория") %>
+          <%= form.select :category_id, Category::CATEGORIES_SELECT, {},  class: 'form-control input-product', id: :category_id %>
+        <p></p>
+      </div>
+
+
+<!--       @acc.each {|id| p "#{Category.find(id).name} + #{Category.find(id).ancestor_ids}"} -->
+      <!-- <div class="field">
         <% Category.where(ancestry: nil).each do |category| %>
           <%= form.select :category_id, options_from_collection_for_select(category.children.all, :id, :name), {},  class: 'form-control input-product subcategories  pull-righ', id: "parent_#{ category.id }" %>
           <script>
@@ -65,7 +74,7 @@
             <% end %>
           <% end %>
         <% end %>
-      </div>
+      </div> -->
       <div class="field">
         <%= form.label(:size_a, "Длина") %>
         <%= form.number_field :size_a, id: :product_size_a, class: 'form-control input-product', min: 0 %>
