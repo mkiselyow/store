@@ -5,7 +5,7 @@
     </tr>
   </thead>
   <tbody>
-    <% if product.category.parent.present? %>
+    <% if product.category && product.category.parent.present? %>
       <tr>
         <th>Категория:</th>
         <td><%= product.category.parent.name %></td>
@@ -17,7 +17,7 @@
     <% else %>
       <tr>
         <b>Категория:</b>
-        <td><%= product.category.name %><td>
+        <td><%= product.category.name if product.category %><td>
       </tr>
     <% end %>
     <tr>

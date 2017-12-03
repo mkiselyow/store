@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
+  after_save :get_collection_of_categories_ids
 
-  CATEGORIES_SELECT = get_collection_of_categories_ids
   has_ancestry
 
   has_many :products
@@ -20,16 +20,16 @@ class Category < ApplicationRecord
   scope :without_parent, -> { where(parent_category_id: nil).where(parent_subcategory_id: nil) }
   scope :without_subcategory, -> { where('parent_category_id IS NOT NULL') }
 
-  def get_collection_of_categories_ids
-    @categories = Category.where(ancestry: nil)
-    @acc = []
+  def self.get_collection_of_categories_ids
+    @categories = self.where(ancestry: nil)
+    @acc ||= []
     @categories.each  do |category|
       category_children_collecting_ids(category)
     end
-    @acc
+    @acc.map {|id| [self.category_ancestors_names(id), id]}
   end
 
-  def category_children_collecting_ids(category)
+  def self.category_children_collecting_ids(category)
     if category.children
       category.children.each do |child|
         @acc << child.id
@@ -37,4 +37,11 @@ class Category < ApplicationRecord
       end
     end
   end
+
+  def self.category_ancestors_names(category_id)
+    category = self.find(category_id)
+    "#{category.ancestor_ids.map {|id| self.find(id).name}.join(' === ')} === #{category.name}"
+  end
+
+  CATEGORIES_SELECT = get_collection_of_categories_ids
 end

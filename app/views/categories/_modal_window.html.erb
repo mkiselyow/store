@@ -10,7 +10,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-3">
-            <% if product.category.parent.present? %>
+            <% if product.category && product.category.parent.present? %>
               <p>
                 <b>Категория:</b>
                 <%= product.category.parent.name %>
@@ -22,12 +22,12 @@
             <% else %>
               <p>
                 <b>Категория:</b>
-                <%= product.category.name %>
+                <%= product.category.name if product.category  %>
               </p>
             <% end %>
             <p>
               <strong>Пол:</strong>
-              <%= product.sex.name %>
+              <%= product.sex.name if product.sex %>
               <% if product.boys %>
                 <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
               <% end %>
