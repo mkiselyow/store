@@ -1,6 +1,9 @@
 class Admin::CategoriesController < AdminsController
 
   before_action :category_resource, only: [:edit, :update, :destroy, :show]
+  after_action do
+    Category::CATEGORIES_SELECT = Category::get_collection_of_categories_ids
+  end
 
   def index
     # @categories = Category.includes(:subcategories).includes(:subsubcategories).all

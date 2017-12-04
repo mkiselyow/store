@@ -30,7 +30,7 @@
 
       <div class="field">
         <%= form.label(:title, "Категория") %>
-        <%= form.select :category_id, Category::get_collection_of_categories_ids, {},  class: 'form-control input-product', id: :category_id %>
+        <%= form.select :category_id, Category::CATEGORIES_SELECT, {},  class: 'form-control input-product', id: :category_id %>
         <p>
       </div>
 

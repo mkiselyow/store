@@ -21,7 +21,7 @@ class Category < ApplicationRecord
 
   def self.get_collection_of_categories_ids
     @categories = self.where(ancestry: nil)
-    @acc ||= []
+    @acc = []
     @categories.each  do |category|
       category_children_collecting_ids(category)
     end
