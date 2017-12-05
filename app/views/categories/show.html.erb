@@ -1,4 +1,8 @@
-<h1><%= @category.name %></h1>
+<% if @category.parent.present? %>
+  <h1><%= link_to @category.parent.name, category_path(@category.parent) %> / <%= @category.name %></h1>
+<% else %>
+  <h1><%= @category.name %></h1>
+<% end %>
 <div class="col-md-3 category-lists">
   <%= render 'sidebar_category' %>
 </div>

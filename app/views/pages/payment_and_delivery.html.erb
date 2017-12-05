@@ -1,1 +1,38 @@
-<h1>payment_and_delivery</h1>
+<h1>ОПЛАТА И ДОСТАВКА</h1>
+<div class="col-md-10 col-md-offset-1 col-xs-12 delivery">
+  <div class="row">
+    <div class="col-md-12">
+      <p>По оформления Вашего заказа на следующий рабочий день мы передаем посылку компании-перевозчику.  После этого перевозчик информирует Вас о точных сроках и времени прибытия заказа.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Для Вашего удобства мы можем предложить таких перевозчиков:</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-xs-6">
+      <a type="button" data-toggle="modal" data-target="#newPost">
+        <div class="logo-post">
+          <%= image_tag 'new_post_logo.png', class: 'new_post_logo' %>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3 col-xs-6">
+      <a type="button" data-toggle="modal" data-target="#mistExpress">
+        <div class="logo-post">
+          <%= image_tag 'mist_logo.png', class: 'new_post_logo' %>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>3. Маршрутка с Центрального Автовокзала г. Днепр (при полной оплате товара и согласовании).</p>
+      <p>4. Самовывоз с пр-т Гагарина (р-н ТРЦ «МАТЕРИК») г. Днепр – по согласованию.</p>
+      <p>5. Другие перевозчики (Автолюкс, Укрпочта, Интайм) – оговариваются при оформлении заказа. Конечно же, если Вам эти перевозчики удобнее – мы воспользуемся их услугами.</p>
+    </div>
+  </div>
+  <%= render 'new_post_modal' %>
+  <%= render 'mist_modal' %>
+</div>

@@ -16,7 +16,7 @@
     <tbody>
       <% @useful_articles.each_with_index do |u_a, i| %>
         <tr>
-          <td><%= i+1 %></td>
+          <td><%= u_a.id %></td>
           <td><%= link_to u_a.title, useful_article_path(u_a), target: '_blank' %></td>
           <td><%= image_tag u_a.preview_url(:thumbnail), class: 'thumbnail useful_articles_image_index' %></td>
           <td><%= u_a.created_at.strftime("%B %dth, %Y") %></td>

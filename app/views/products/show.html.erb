@@ -75,10 +75,10 @@
         <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <h2>
           <% if @product.discount != 0 %>
-            <s><%= number_to_currency(@product.price, unit: "₴")%></s>
-            <p class='label label-success'><%= number_to_currency(@product.discount_price, unit: "₴")%></p>
+            <s><%= number_to_currency(@product.price, unit: "грн")%></s>
+            <p class='label label-success'><%= number_to_currency(@product.discount_price, unit: "грн")%></p>
           <% else %>
-            <%= number_to_currency(@product.price, unit: "₴")%>
+            <%= number_to_currency(@product.price, unit: "грн")%>
           <% end %>
         </h2>
         <% if @product.discount != 0 %>

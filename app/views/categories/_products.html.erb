@@ -12,7 +12,7 @@
                 <% end %>
               <% end %>
               <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
-              <%= tag.div(number_to_currency(product.price, unit: "₴"), :class => "product_price_text") %>
+              <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "product_price_text") %>
               <%= if product.quantity then tag.div("Остаток #{product.quantity}", :class => "product_quantity_text") else tag.div("Под заказ", :class => "  product_quantity_text") end %>
               <%= tag.div(product.product_code, :class => "product_code_text") %>
             </a>
@@ -39,7 +39,7 @@
                   <% end %>
                 <% end %>
                 <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
-                <%= tag.div(number_to_currency(product.price, unit: "₴"), :class => "product_price_text") %>
+                <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "product_price_text") %>
                 <%= if product.quantity then tag.div("Остаток #{product.quantity}", :class => "product_quantity_text") else tag.div("Под заказ", :class => "  product_quantity_text") end %>
                 <%= tag.div(product.product_code, :class => "product_code_text") %>
               </a>

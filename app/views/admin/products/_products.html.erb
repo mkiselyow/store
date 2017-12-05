@@ -25,7 +25,7 @@
             </ul>
           </div>
         </td>
-        <td class='mobile-hidden image-product'><%= image_tag product.image.url(:thumbnail), width: '50px', height: '50px' %></td>
+        <td class='mobile-hidden image-product'><%= image_tag product.image.url(:thumbnail), width: '50px', height: '50px', class: 'admin-image-product-image' %></td>
         <% if product.category && product.category.parent.present? %>
           <td class="mobile-hidden"><b><%= product.category.parent.name %></b> / <%= product.category.name %></td>
         <% else %>
@@ -33,7 +33,7 @@
         <% end %>
         <td><%= product.brand %></td>
         <td><%= product.product_code %></td>
-        <td><%= number_to_currency(product.price, unit: "₴") %></td>
+        <td><%= number_to_currency(product.price, unit: "грн") %></td>
         <td class="mobile-hidden">
           <div class="dropdown">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Действия

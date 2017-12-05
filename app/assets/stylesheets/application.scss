@@ -104,11 +104,19 @@
 }
 @media (max-width: 768px){
   .leuze{
-    height: 50px;
-    line-height: 40px;
+    height: 22px;
+    line-height: 42px;
+    margin-top: 28px;
   }
   .mapapama_logo{
     height: 48px;
+  }
+}
+@media (min-width: 768px){
+  .leuze{
+    margin-top: 11px;
+    height: 30px;
+    line-height: 40px;
   }
 }
 .preview{
@@ -302,13 +310,23 @@
 .subcategory_name{
   margin-left: 15px;
 }
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+  background-color: #74a037;
+  color: white;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #74a037;
+  color: white;
+}
+
 .subcat{
   display: none;
 }
 /* Social Icons */
 #social_side_links {
   position: fixed;
-  top: 180px;
+  top: 155px;
   right: 9px;
   padding: 0;
   list-style: none;

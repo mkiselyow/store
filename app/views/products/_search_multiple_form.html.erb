@@ -14,7 +14,7 @@
     <hr>
     <p>Категория</p>
     <div class="col-md-6">
-      <%= select_tag :category_id, options_from_collection_for_select(Category.without_parent, :id, :name), prompt: 'Выберите категорию',  class: 'form-control input-product' %>
+      <%= select_tag :category_id, options_from_collection_for_select(Category.only_parent, :id, :name), prompt: 'Выберите категорию',  class: 'form-control input-product' %>
     </div>
   </div>
   <br>

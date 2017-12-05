@@ -7,9 +7,9 @@
         <%= render 'shared/modal_send_form' %>
       </div>
       <div class="header__phone">
-        <%= fa_icon 'phone', text: '095 000 00 00' %>
+        <%= fa_icon 'phone', text: '095-775-16-86' %>
         <p>
-          <%= fa_icon 'phone', text: '068 000 00 00' %>
+          <%= fa_icon 'phone', text: '068-682-99-19' %>
         </p>
       </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="footer__columns">
           <ul class="footer-list">
             <p></p>
-            <% Category.without_parent.limit(8).each do |category| %>
+            <% Category.only_parent.limit(8).each do |category| %>
               <%= link_to category_path(category) do %>
                 <li class="footer-list__item"><%= category.name %></li>
               <% end %>
