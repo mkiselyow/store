@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about'
   get '/competitions' => 'pages#competitions'
   get '/contacts' => 'pages#contacts'
-  get '/payment_and_delivery' => 'pages#payment_and_delivery'
+  get '/delivery' => 'pages#delivery'
+  get '/payment' => 'pages#payment'
   get '/partners' => 'pages#partners'
   get '/main' => 'pages#main'
 

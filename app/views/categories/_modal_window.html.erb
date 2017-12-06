@@ -10,21 +10,23 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-3">
-            <% if product.category && product.category.parent.present? %>
-              <p>
-                <b>Категория:</b>
-                <%= product.category.parent.name %>
-              </p>
-              <p>
-                <b>Подкатегория:</b>
-                <%= product.category.name %>
-              </p>
-            <% else %>
-              <p>
-                <b>Категория:</b>
-                <%= product.category.name if product.category  %>
-              </p>
+            <p>
+            <b>Категория:</b>
+            <p>
+            <%= product.category.name %>
+            <% if product.category.parent.present? %>
+              <%= product.category.parent.name %>
             <% end %>
+            <% if product.category.parent.parent.present? %>
+              <%= product.category.parent.parent.name %>
+              <% if product.category.parent.parent.parent.present? %>
+                <%= product.category.parent.parent.parent.name %>
+                <% if product.category.parent.parent.parent.parent.present? %>
+                  <%= product.category.parent.parent.parent.parent.name %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </p>
             <p>
               <strong>Пол:</strong>
               <%= product.sex.name if product.sex %>
@@ -72,17 +74,17 @@
             <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
             <h2>
               <% if product.discount != 0 %>
-                <s><%= number_to_currency(product.price, unit: "₴")%></s>
-                <p class='label label-success'><%= number_to_currency(product.discount_price, unit: "₴")%></p> 
+                <div class="text-danger" title="<%= product.discount %>%">
+                  <%= number_to_currency(product.price, unit: "грн") %>
+                </div>
               <% else %>
-                <%= number_to_currency(product.price, unit: "₴")%>
+                <%= number_to_currency(product.price, unit: "грн")%>
               <% end %>
             </h2>
             <% if product.discount %>
               <% if product.discount != 0 %>
                 <p>
                   <span class="uk-badge uk-badge-notification uk-badge-danger">
-                    <strong>Скидка</strong>
                     <%= number_to_percentage(product.discount, precision: 0) %>
                   </span>
                 </p>
@@ -142,7 +144,10 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col-md-12">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            <%= button_to product_line_items_path(product.id), class: "btn btn-danger pull-right" do %>
+              <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+            <% end %>
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
           </div>
         </div>
       </div>

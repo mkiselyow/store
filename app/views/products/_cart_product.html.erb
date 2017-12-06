@@ -1,15 +1,15 @@
 <table class="table-hover">
   <thead>
     <tr>
+      <td>Фото</td>
       <td>Товар</td>
-      <td>Цена</td>
-      <td>Кол-во</td>
       <td>Сумма</td>
     </tr>
   </thead>
   <tbody>
     <% @cart.line_items.each do |item| %>
       <tr>
+        <td><%= image_tag item.product.image.url(:thumbnail), width: '20px', height: '20px' %></td>
         <td><%= item.product.title %></td>
         <td><%= number_to_currency(item.product.price, unit: "₴") %></td>
         <td><%= item.quantity %></td>

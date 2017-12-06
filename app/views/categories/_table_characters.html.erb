@@ -8,11 +8,20 @@
     <% if product.category && product.category.parent.present? %>
       <tr>
         <th>Категория:</th>
-        <td><%= product.category.parent.name %></td>
-      </tr>
-      <tr>
-        <th>Подкатегория:</th>
-        <td><%= product.category.name %><td>
+        <td>
+        <% if product.category.parent.present? %>
+          <%= product.category.parent.name %>
+        <% end %>
+        <% if product.category.parent.parent.present? %>
+          <%= product.category.parent.parent.name %>
+          <% if product.category.parent.parent.parent.present? %>
+            <%= product.category.parent.parent.parent.name %>
+            <% if product.category.parent.parent.parent.parent.present? %>
+              <%= product.category.parent.parent.parent.parent.name %>
+            <% end %>
+          <% end %>
+        <% end %>
+        </td>
       </tr>
     <% else %>
       <tr>
@@ -35,18 +44,17 @@
     <tr>
       <th>Габариты</th>
       <td>
-        <i>Длина: </i><%= product.size_a %><p>
-        <i>Ширина: </i><%= product.size_b %><p>
-        <i>Высота: </i><%= product.size_h %><p>
-        <i>Вес: </i><%= product.weight %>
+        <i>Длина: </i><% "#{ product.size_a } (мм)" %><p>
+        <i>Ширина: </i><% "#{ product.size_b } (мм)" %><p>
+        <i>Высота: </i><% "#{ product.size_h } (мм)" %><p>
+        <i>Вес: </i><% "#{ product.weight } (г)" %>
       </td>
     </tr>
     <tr>
       <th>Цена</th>
       <td>
         <% if product.discount != 0 %>
-          <s><%= number_to_currency(product.price, unit: "₴")%></s> 
-          <p class='uk-badge uk-badge-notification uk-badge-success'><%= number_to_currency(product.discount_price, unit: "₴")%></p> 
+          <p class='text-danger'><%= number_to_currency(product.price, unit: "₴")%></p> 
         <% else %>
           <%= number_to_currency(product.price, unit: "₴")%>
         <% end %>

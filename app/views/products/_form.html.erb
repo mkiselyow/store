@@ -19,44 +19,50 @@
       </div>
 
       <div class="field">
-        <%= form.label(:size_a, "Длина") %>
+        <%= form.label(:size_a, "Длина (мм)") %>
         <%= form.number_field :size_a, id: :product_size_a, class: 'form-control input-product', min: 0 %>
         <p>
       </div>
 
       <div class="field">
-        <%= form.label(:size_b, "Ширина") %>
+        <%= form.label(:size_b, "Ширина (мм)") %>
         <%= form.number_field :size_b, id: :product_size_b, class: 'form-control input-product', min: 0  %>
         <p>
       </div>
 
       <div class="field">
-        <%= form.label(:size_h, "Висота") %>
+        <%= form.label(:size_h, "Висота (мм)") %>
         <%= form.number_field :size_h, id: :product_size_h, class: 'form-control input-product', min: 0  %>
         <p>
       </div>
 
       <div class="field">
         <%= form.label(:purchase_price, "Цена закупки ₴") %>
-        <%= form.number_field :purchase_price, id: 'price_pur', :step => 0.01, class: 'form-control input-product input-product-count', min: 0  %>
+        <%= form.text_field :purchase_price, id: 'price_pur', :step => 0.01, class: 'form-control input-product input-product-count', min: 0  %>
         <p>
       </div>
 
       <div class="field">
         <%= form.label(:mark_up, "Наценка %") %>
-        <%= form.number_field :mark_up, id: 'markups', class: 'form-control input-product input-product-count', min: 0  %>
+        <%= form.text_field :mark_up, id: 'markups', class: 'form-control input-product input-product-count', min: 0  %>
+        <p>
+      </div>
+
+      <div class="field">
+        <%= form.label(:discount, "Скидка %") %>
+        <%= form.text_field :discount, id: 'discount', min: 0, class: 'form-control input-product input-product-count' %>
         <p>
       </div>
 
       <div class="field">
         <tr>
-          <td><%= form.label(:price, "Цена ₴", :title => "когда меняем любое из значений: цена закупки наценка скидка то пересчитывает конечную цену вне зависимости от того какая сейчас стоит") %></td>
+          <td><%= form.label(:price, "Цена (грн)", :title => "когда меняем любое из значений: цена закупки наценка скидка то пересчитывает конечную цену вне зависимости от того какая сейчас стоит") %></td>
           <td><%= form.text_field :price, class: 'form-control input-product input-product-count', min: 0, id: "sum"  %></td>
         </tr>
         <p></p>
       </div>
       <div class="field">
-        <%= form.label(:weight, "Вес") %>
+        <%= form.label(:weight, "Вес (г)") %>
         <%= form.number_field :weight, id: :product_weight, :step => 0.01, min: 0, class: 'form-control input-product' %>
         <p>
       </div>
@@ -85,25 +91,19 @@
       </div>
 
       <div class="field">
-        <%= form.label(:discount, "Скидка %") %>
-        <%= form.number_field :discount, id: :product_discount, min: 0, class: 'form-control input-product' %>
-        <p>
-      </div>
-
-      <div class="field">
         <%= form.label(:product_code, "Код") %>
         <%= form.text_field :product_code, id: :product_product_code, class: 'form-control input-product' %>
         <p>
       </div>
 
       <div class="field">
-        <%= form.label(:min_age, "Минимальный возраст") %>
+        <%= form.label(:min_age, "Минимальный возраст (лет)") %>
         <%= form.number_field :min_age, id: :min_age, min: 0, class: 'form-control input-product' %>
         <p>
       </div>
 
       <div class="field">
-        <%= form.label(:min_age, "Максимальный возраст") %>
+        <%= form.label(:min_age, "Максимальный возраст (лет)") %>
         <%= form.number_field :max_age, id: :max_age, min: 0, class: 'form-control input-product' %>
         <p>
       </div>
@@ -357,15 +357,18 @@
   });
   $(document).ready(function() {
     sum();
-    $("#price_pur, #markups").on("keydown keyup", function() {
+    $("#price_pur, #markups, #discount").on("keydown keyup", function() {
       sum();
     });
     function sum() {
       var price_pur = document.getElementById('price_pur').value;
       var markups = document.getElementById('markups').value;
-      var result = parseFloat(price_pur) + (parseFloat(price_pur) * (parseFloat(markups) / 100));
-      if (!isNaN(result)) {
-        document.getElementById('sum').value = result;
+      var discount = document.getElementById('discount').value;
+      var final_price = parseFloat(price_pur) + (parseFloat(price_pur) * (parseFloat(markups) / 100));
+      var price_with_discount = final_price - (final_price * (discount * 0.01));
+
+      if (!isNaN(price_with_discount)) {
+        document.getElementById('sum').value = price_with_discount.toFixed(2);
       }
     }
   });

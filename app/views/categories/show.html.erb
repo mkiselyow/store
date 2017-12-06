@@ -3,8 +3,16 @@
 <% else %>
   <h1><%= @category.name %></h1>
 <% end %>
-<div class="col-md-3 category-lists">
-  <%= render 'sidebar_category' %>
+<div class="col-md-3">
+  <div class="category-lists">
+    <div class="sticky search_multiple_form">
+      <div id="search_multiple_form">
+        <%= render  partial: "products/search_multiple_form" %>
+      </div>
+    </div>
+    <br>
+    <%= render 'sidebar_category' %>
+  </div>
 </div>
 <div class="all_products col-md-9">
   <%= render 'products' %>

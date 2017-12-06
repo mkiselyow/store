@@ -13,6 +13,12 @@
   border: 1px solid #dee7ec;
   border-bottom: 1px solid #dee7ec;
 }
-p {
+li, p {
   text-align: justify;
+}
+.way_item{
+  list-style-type: none;
+}
+.way{
+  color: #f43612;
 }

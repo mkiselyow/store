@@ -1,52 +1,63 @@
-<div class="row">
+<div class='container'>
   <div class="goods">
+    <div class="row">
+      <div class="col-md-12">
+        <h1><%= @product.title %></h1>
+      </div>
+    </div>
     <div class="row equal">
       <div class="col-md-4">
-        <p class="goods_title">
-          <%= @product.title %>
-        </p>
-      </div>
-      <div class="col-md-4 goods_col left">
-        <p>
-          <b>Категория:</b>
-          <%= @product.category.name %>
-        </p>
-        <p>
-          <strong>Пол:</strong>
-          <%= @product.sex.name %>
-          <% if @product.boys %>
-            <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
+        <div class="col-product-left">
+          <p>
+            <b>Категория:</b>
+            <p>
+            <%= @product.category.name %>
+            <% if @product.category.parent.present? %>
+              <%= @product.category.parent.name %>
+            <% end %>
+            <% if @product.category.parent.parent.present? %>
+              <%= @product.category.parent.parent.name %>
+              <% if @product.category.parent.parent.parent.present? %>
+                <%= @product.category.parent.parent.parent.name %>
+                <% if @product.category.parent.parent.parent.parent.present? %>
+                  <%= @product.category.parent.parent.parent.parent.name %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </p>
+          <p>
+            <strong>Пол:</strong>
+            <%= @product.sex.name %>
+            <% if @product.boys %>
+              <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
+            <% end %>
+            <% if @product.girls %>
+              <%= fa_icon 'venus', class: 'fa-2x sex-girls', alt: 'Девочки', title: "Для девочек" %>
+            <% end %>
+          </p>
+          <p>
+            <strong>Бренд:</strong>
+            <%= @product.brand %>
+          </p>
+          <p>
+            <strong>Страна:</strong>
+            <%= @product.country %>
+          </p>
+          <p>
+            <strong>Минимальный возраст:</strong>
+            <% "#{@product.min_age} лет" %>
+          </p>
+          <p>
+            <strong>Максимальный возраст:</strong>
+            <% "#{@product.max_age} лет" %>
+          </p>
+          <% if current_user.try(:admin) %>
+            <%= link_to 'Редактировать', edit_product_path(@product) %> |
           <% end %>
-          <% if @product.girls %>
-            <%= fa_icon 'venus', class: 'fa-2x sex-girls', alt: 'Девочки', title: "Для девочек" %>
-          <% end %>
-        </p>
-        <p>
-          <strong>Категория:</strong>
-          <%= @product.general_category %>
-        </p>
-        <p>
-          <strong>Бренд:</strong>
-          <%= @product.brand %>
-        </p>
-        <p>
-          <strong>Страна:</strong>
-          <%= @product.country %>
-        </p>
-        <p>
-          <strong>Минимальный возраст:</strong>
-          <%= @product.min_age %>
-        </p>
-        <p>
-          <strong>Максимальный возраст:</strong>
-          <%= @product.max_age %>
-        </p>
-        <% if current_user.try(:admin) %>
-          <%= link_to 'Редактировать', edit_product_path(@product) %> |
-        <% end %>
-        <%= link_to 'Назад к списку товаров', products_path %>
+          <%= link_to 'Назад к списку товаров', products_path %>
+        </div>
       </div>
-      <div class="col-md-4 goods_col image">
+      <div class="col-md-4 image">
         <div class="col-md-12" id="slider">
           <div class="row">
             <div class="col-sm-12" id="carousel-bounding-box">
@@ -71,24 +82,15 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 goods_col right">
+      <div class="col-md-4">
         <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <h2>
           <% if @product.discount != 0 %>
-            <s><%= number_to_currency(@product.price, unit: "грн")%></s>
-            <p class='label label-success'><%= number_to_currency(@product.discount_price, unit: "грн")%></p>
+            <p class='text-danger' title="Скидка <%= @product.discount %>%"><%= number_to_currency(@product.price, unit: "грн")%></p>
           <% else %>
             <%= number_to_currency(@product.price, unit: "грн")%>
           <% end %>
         </h2>
-        <% if @product.discount != 0 %>
-          <p>
-            <span class="uk-badge uk-badge-notification uk-badge-danger">
-              <strong>Скидка</strong>
-              <%= number_to_percentage(@product.discount, precision: 0) %>
-            </span>
-          </p>
-        <% end %>
         <p>
           <strong>Осталось на складе:</strong>
           <%= @product.quantity %>
@@ -105,26 +107,25 @@
         </p>
       </div>
     </div>
-  </div>
-
-  <div class="container">
-    <div id="main_area">
-      <div class="row">
-        <div class="col-md-12 col-xs-12" id="slider-thumbs">
-          <ul class="hide-bullets">
-            <li class="col-sm-2 col-xs-6">
-              <a class="thumbnail product_image_add" id="carousel-selector-0">
-                <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
-              </a>
-            </li>
-            <% @product.image_products.each_with_index do |im_prod, i| %>
+    <div class="container">
+      <div id="main_area">
+        <div class="row">
+          <div class="col-md-12 col-xs-12" id="slider-thumbs">
+            <ul class="hide-bullets">
               <li class="col-sm-2 col-xs-6">
-                <a class="thumbnail product_image_add" id="carousel-selector-<%= (i+1) %>">
-                  <%= image_tag(im_prod.image.url(:thumb), width: '150px', height: '150px')%>
+                <a class="thumbnail product_image_add" id="carousel-selector-0">
+                  <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
                 </a>
               </li>
-            <% end %>
-          </ul>
+              <% @product.image_products.each_with_index do |im_prod, i| %>
+                <li class="col-sm-2 col-xs-6">
+                  <a class="thumbnail product_image_add" id="carousel-selector-<%= (i+1) %>">
+                    <%= image_tag(im_prod.image.url(:thumb), width: '150px', height: '150px')%>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -132,7 +133,7 @@
   <br>
   <div class="row">
     <div class="col-md-12">
-      <button id="info-product" class='btn btn-block btn-default'>Больше информации</button>
+      <button id="info-product" class='btn btn-block btn-info'>Больше информации</button>
       <br>
     </div>
   </div>
@@ -143,6 +144,10 @@
     <div class="col-md-6">
       <h2>Описание</h2>
       <%= raw @product.description %>
+      <br>
+      <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
+        <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+      <% end %>
     </div>
   </div>
 </div>

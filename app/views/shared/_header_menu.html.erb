@@ -1,8 +1,8 @@
 <%= tag.div class: 'top_nav sticky' do %>
   <%= link_to "Главная", root_path,                           class: 'top_nav_button' %>
   <%= link_to "Товары", products_path,                        class: 'top_nav_button' %>
-  <%= link_to "Категории", categories_path,                   class: 'top_nav_button' %>
-  <%= link_to "Оплата и доставка", payment_and_delivery_path, class: 'top_nav_button' %>
+  <%= link_to "Оплата", payment_path,                   class: 'top_nav_button' %>
+  <%= link_to "Доставка", delivery_path, class: 'top_nav_button' %>
   <%= link_to "Полезные статьи", useful_articles_path,        class: 'top_nav_button' %> 
   <%= link_to "Акции", shares_path,                           class: 'top_nav_button' %> 
   <%= link_to "Отзывы", comments_path,                        class: 'top_nav_button' %>

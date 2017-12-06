@@ -13,6 +13,9 @@
   height: 350px;
   overflow: hidden;
 }
+.col-product-left{
+  margin-left: 35px;
+}
 @media (min-width: 768px){
   .goods_col.image {
     vertical-align: middle;
@@ -323,7 +326,7 @@ a.top_nav_button:hover {
     width: 100%;
   }
   aside.sticky.fixed {
-    width: 17%;
+    width: 23%;
     top: 50px;
   }
 }
@@ -333,7 +336,7 @@ a.top_nav_button:hover {
 }
 
 aside.sticky {
-  width: 17%;
+  width: 20%;
 }
 
 @media all and (min-width: 768px) {
