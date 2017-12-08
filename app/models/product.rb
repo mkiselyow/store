@@ -54,18 +54,32 @@ class Product < ApplicationRecord
     end
   end
 
+  def old_price
+    if discount != 0
+      price + ((price/100) * discount)
+    end
+  end
+
   def discount_price
     if price && discount
       price - ((price/100) * discount)
     end
   end
 
+  def minimum_age
+    "#{ min_age } лет"
+  end
+
+  def maximum_age
+    "#{ max_age } лет"
+  end
+
   def self.latest
     Product.order(:updated_at).last
   end
 
-  def self.title_search(title)
-    where('title LIKE ?', "%#{title}%")
+  def self.product_code_search(product_code)
+    where('product_code LIKE ?', "%#{product_code}%")
   end
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

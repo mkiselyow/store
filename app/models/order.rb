@@ -2,7 +2,11 @@ class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   belongs_to :user, optional: true
 
-  PAYMENT_TYPES = ['Оплата на Банковскую Карту', 'Оплата при получении']
+  PAYMENT_TYPES = ['Оплата на банковскую Карту', 'Оплата при получении']
+  DELIVERY_TYPES = ['Новая почта', 'Мист-Експресс',
+                    'Маршрутка с Центрального Автовокзала г. Днепр',
+                    'Самовывоз с пр-т Гагарина (р-н ТРЦ «МАТЕРИК») г. Днепр',
+                    'Другие перевозчики (Просьба указать в комментарии)']
   REGIONS = []
   AREAS = []
   Ruuaby.data_path = 'db/'

@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show edit update destroy]
-
   def new
     if @cart.line_items.empty?
       redirect_to root_url, notice: 'Корзина пока пуста'
@@ -30,25 +28,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   private
 
-  def set_order
-    @order = Order.find(params[:id])
-  end
-
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type, :user_id)
+    params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type, :way_delivery, :user_id)
   end
 end

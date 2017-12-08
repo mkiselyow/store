@@ -2,12 +2,13 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :add_times_viewed, only: [:show]
   before_action :only_admin_access, only: [:new, :create, :update, :destroy, :edit]
+  helper_method :sort_column, :sort_direction
 
   def index
     @products_count = Product.count
     @rows_count = (@products_count/4)
     @products =
-      if params.present? # params[:one].present?
+      if params.present?
         puts 'HAVING params[:params.present?] SEARCHED'
         if params[:title]
           # @products = Product.search_by_title(params[:title])
@@ -105,7 +106,7 @@ class ProductsController < ApplicationController
             # else
             #   @products = Product.search_by_material_plastic("false")
           end
-          @products = Product.where(id: @products.map(&:id))
+          @products = Product.order(sort_column + ' ' + sort_direction)
         end
       end
     @products_page = @products.paginate(page: params[:page], per_page: 24)
@@ -199,7 +200,14 @@ class ProductsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  def sort_column
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
+
   def set_product
     @product = Product.find(params[:id])
   end

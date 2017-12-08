@@ -4,62 +4,76 @@
       <%= render 'error', order: order %>
   
       <div class="row">
-        <div class="field col-md-6">
-          <%= form.label :first_name, "Имя получателя" %>
-          <%= form.text_field :first_name, id: :order_first_name,  class: 'form-control', placeholder: 'Введите имя', value: (current_user.first_name if current_user)  %>
-          <%= form.hidden_field :user_id, value: (current_user.id if current_user) %>
+        <div class="field col-md-6 col-xs-6">
+          <p>
+            <%= form.label :first_name, "Имя" %>
+            <%= form.text_field :first_name, id: :order_first_name,  class: 'form-control', placeholder: 'Введите имя', value: (current_user.first_name if current_user)  %>
+            <%= form.hidden_field :user_id, value: (current_user.id if current_user) %>
+          </p>
         </div>
-        <div class="field col-md-6"">
-          <%= form.label :last_name, "Фамилия получателя" %>
-          <%= form.text_field :last_name, id: :order_last_name,  class: 'form-control', placeholder: 'Введите фамилию', value: (current_user.last_name if current_user)  %>
+        <div class="field col-md-6 col-xs-6">
+          <p>
+            <%= form.label :last_name, "Фамилия" %>
+            <%= form.text_field :last_name, id: :order_last_name,  class: 'form-control', placeholder: 'Введите фамилию', value: (current_user.last_name if current_user)  %>
+          </p>
         </div>
       </div>
-      <br>
+      <div class="row">
+        <div class="field col-md-6 col-xs-12">
+          <p>
+            <%= form.label :number, "Контактный номер телефона" %>
+            <%= form.text_field :number, id: :order_number,  class: 'form-control', placeholder: 'Введите номер телефона', value: (current_user.number if current_user)  %>
+          </p>
+        </div>
+        <div class="field col-md-6 col-xs-12">
+          <p>
+            <%= form.label :pay_type, "Способ оплаты" %>
+            <%= form.select :pay_type, options_for_select(Order::PAYMENT_TYPES), { prompt: '--Выберите способ оплаты--' },  class: 'form-control', required: true %>
+          </p>
+        </div>    
+      </div>
       <div class="row">
         <div class="field col-md-6">
-          <%= form.label :number, "Контактный номер телефона" %>
-          <%= form.text_field :number, id: :order_number,  class: 'form-control', placeholder: 'Введите номер телефона', value: (current_user.number if current_user)  %>
+          <p>
+            <%= form.label :city, "Областной центр" %>
+            <%= form.select 'city[area]', options_for_select(Order::AREAS), { prompt: '--Выберите областной центр--' },  class: 'form-control', required: true %>
+          </p>
         </div>
-      
         <div class="field col-md-6">
-          <%= form.label :city, "Областной центр" %>
-          <div class="form-control">
-            <%= form.select 'city[area]', Order::AREAS, prompt: 'Выберите центр', id: :order_city_area, :required => true %>
-          </div>
-        </div>      
+          <p>
+            <%= form.label :city, "Населенный пункт" %>
+            <%= form.text_field 'city[city]', id: :order_city_city,  class: 'form-control' %>
+          </p>
+        </div>
       </div>
-      <br>
       <div class="row">
         <div class="field col-md-6">
-          <%= form.label :city, "Населенный пункт" %>
-          <%= form.text_field 'city[city]', id: :order_city_city,  class: 'form-control' %>
+          <p>
+            <%= form.label :way_delivery, "Способ доставки" %>
+            <%= form.select :way_delivery, options_for_select(Order::DELIVERY_TYPES), { prompt: '--Выберите способ доставки--' },  class: 'form-control', required: true, id: 'select_delivery' %>
+          </p>
         </div>
-        <div class="field col-md-6">
-          <%= form.label :post_office_number, "Номер отделения 'Нова Пошта'" %>
-          <%= form.number_field :post_office_number, id: :order_post_office_number,  class: 'form-control' %>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="field col-md-6">
-          <%= form.label :pay_type, "Способ оплаты" %>
-          <br>
-          <div class="form-control">
-            <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Выберите способ оплаты', id: :order_pay_type, :required => true %>
-          </div>
+        <div class="field col-md-6 number_post_office">
+          <p>
+            <%= form.label :post_office_number, "№ отделения" %>
+            <%= form.number_field :post_office_number, id: :order_post_office_number, min: 0,  class: 'form-control' %>
+          </p>
         </div>
       </div>
-      <br>
       <div class="row">
         <div class="field col-md-12">
-          <%= form.label :comment, "Комментарий" %>
-          <%= form.trix_editor :comment, id: :order_comment %>
+          <p>
+            <%= form.label :comment, "Комментарий" %>
+            <%= form.trix_editor :comment, id: :order_comment %>
+          </p>
         </div>
       </div>
-      <br>
       <div class="row">
         <div class="col-md-12">
-          <%= form.submit "Подтвердить заказ", class: 'btn btn-success' %>
+          <p>
+            <%= form.submit "Подтвердить заказ", class: 'btn btn-success pull-right' %>
+            <%= link_to 'Назад', orders_path, class: 'btn btn-primary pull-left' %>
+          </p>
         </div>
       </div>
     <% end %>

@@ -16,6 +16,15 @@
 .col-product-left{
   margin-left: 35px;
 }
+.discount-price{
+  font-size: 30px;
+  font-weight: bold;
+}
+.discount-price-table{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 @media (min-width: 768px){
   .goods_col.image {
     vertical-align: middle;
@@ -347,4 +356,3 @@ aside.sticky {
 .image_product_index{
   height: 150px;
 }
-

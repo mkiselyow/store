@@ -8,6 +8,15 @@
     <%= render 'categories/sidebar_category' %>
   </aside>
   <article class='article_products'>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Сортировать по:
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= sortable "title", "По названию" %></li>
+        <li><%= sortable "price", "По цене" %></li>
+      </ul>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <h1>Все товары</h1>

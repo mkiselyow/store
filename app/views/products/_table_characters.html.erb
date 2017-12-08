@@ -24,17 +24,18 @@
     <tr>
       <th>Габариты</th>
       <td>
-        <i>Длина: </i><% "#{ @product.size_a } (мм)" %><p>
-        <i>Ширина: </i><% "#{ @product.size_b } (мм)" %><p>
-        <i>Высота: </i><% "#{ @product.size_h } (мм)" %><p>
-        <i>Вес: </i><% "#{ @product.weight } (г)" %>
+        <i>Длина: </i><%= @product.size_a %> мм<p>
+        <i>Ширина: </i><%= @product.size_b %> мм<p>
+        <i>Высота: </i><%= @product.size_h %> мм<p>
+        <i>Вес: </i><%= @product.weight %> г
       </td>
     </tr>
     <tr>
       <th>Цена</th>
       <td>
         <% if @product.discount != 0 %>
-          <p class='text-danger'><%= number_to_currency(@product.price, unit: "₴")%></p> 
+          <s><%= number_to_currency(@product.old_price, unit: "грн")%></s>
+          <p class='text-danger discount-price-table'><%= number_to_currency(@product.price, unit: "₴")%></p>
         <% else %>
           <%= number_to_currency(@product.price, unit: "₴")%>
         <% end %>

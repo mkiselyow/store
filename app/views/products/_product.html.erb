@@ -9,7 +9,8 @@
 
   <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
   <% if product.discount != 0 %>
-    <%= tag.div(number_to_currency(product.discount_price, unit: "грн"), :class => "text-danger product_price_text") %>
+    <s><%= number_to_currency(product.old_price, unit: "грн") %></s>
+    <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "text-danger product_price_text") %>
   <% else %>
     <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "product_price_text") %>
   <% end %>

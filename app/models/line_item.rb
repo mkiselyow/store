@@ -4,14 +4,10 @@ class LineItem < ApplicationRecord
   belongs_to :order, optional: true
 
   def price_discount
-    if product.discount.present?
-      product.price * (1-(product.discount * 0.01))
-    else
-      product.price
-    end
+    product.price
   end
 
   def count_line_item_price
-    price_discount * quantity unless price_discount.nil?
+    price_discount * quantity
   end
 end
