@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
         puts 'HAVING params[:params.present?] SEARCHED'
         if params[:title]
           # @products = Product.search_by_title(params[:title])
-          @products = Product.where('title LIKE ?', "%#{params[:title]}%")
+          @products = Product.where('title @@ :q or product_code @@ :q', q: params[:title])
         else
           @products = Product.all.to_a
           if params[:category_id]

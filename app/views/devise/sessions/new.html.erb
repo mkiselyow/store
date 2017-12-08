@@ -2,7 +2,9 @@
   <div class="row">
     <div class="container">
       <div class="omb_login">
-        <h2 class="omb_authTitle">Войти или <%= link_to "Зарегистрироваться", new_registration_path(resource_name) %></h3>
+        <center>
+          <h2 class="omb_authTitle">Войти или <%= link_to "Зарегистрироваться", new_registration_path(resource_name) %></h2>
+        </center>
           <div class="row">
             <%= render "devise/shared/links" %>
           </div>
@@ -23,7 +25,10 @@
                           
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Ваш пароль"  %>
+                  <%= f.password_field :password, autocomplete: "off", class: 'form-control password-form', placeholder: "Ваш пароль"  %>
+                  <span class="input-group-addon hide-show">
+                    <span class="fa fa-eye"></span>
+                  </span>
                 </div>
                <br>
                <%= f.submit "Войти", class: 'btn btn-lg btn-primary btn-block' %>
