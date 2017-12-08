@@ -2,8 +2,8 @@ class Admin::ProductsController < AdminsController
 
   def index
     @products =
-      if params[:title]
-        Product.title_search(params[:title])
+      if params[:product_code]
+        Product.product_code_search(params[:product_code])
       else
         Product.order(:id)
       end.paginate(page: params[:page], per_page: 50)

@@ -7,10 +7,19 @@
         <%= render 'shared/modal_send_form' %>
       </div>
       <div class="header__phone">
-        <%= fa_icon 'phone', text: '095-775-16-86' %>
-        <p>
-          <%= fa_icon 'phone', text: '068-682-99-19' %>
-        </p>
+        <br>
+        <div class="phone-numbers">
+          <div class="row">
+            <div class="col-xs-2 col-md-2">
+              <%= fa_icon 'phone', class: 'fa-3x phone-icon' %>
+            </div>
+            <div class="col-xs-10 col-md-10">
+              <p class="numbers">095-775-16-86</p>
+              <p class="numbers">068-682-99-19</p>
+              <p class='numbers'><i>с 9:00 - 21:00</i></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer__layout">
@@ -42,10 +51,10 @@
             <%= cl_image_tag("logo.png", :quality=>15, :width=>40, :crop=>"scale") %>
           <% end %>
           <p>
-            <b>Мапапама</b> - подари частичку любви ребенку :-)
+            <b>Мапапама</b> - подари ребёнку радость <%= fa_icon 'check', class: 'fa-x2 check-green' %>
           </p>
         </div>
-        <div class="footer-text">© 2016-2017</div>
+        <div class="footer-text">© 2017</div>
       </div>
     </div>
   </div>

@@ -26,6 +26,10 @@
     <td><%= @order.pay_type %></td>
   </tr>
   <tr>
+    <td>Способ доставки</td>
+    <td><%= @order.way_delivery %></td>
+  </tr>
+  <tr>
     <th>Комментарий</th>
     <td><%= raw @order.comment %></td>
   </tr>
@@ -44,7 +48,7 @@
       <tr>
         <td><%= i+1 %></td>
         <td><%= line_item.product.title %></td>
-        <td><%= line_item.price_discount %></td>
+        <td><%= line_item.product.price %></td>
         <td><%= line_item.quantity %></td>
         <td><%= line_item.count_line_item_price %></td>
       </tr>

@@ -3,11 +3,12 @@
     <td>#</td>
     <td>Имя</td>
     <td>Номер телефона</td>
-    <td>Комментарий</td>
     <td>Город</td>
     <td>Почтовое отделение</td>
+    <td>Способ получения</td>
     <td>Способ оплаты</td>
     <td>Заказы</td>
+    <td>Комментарий</td>
     <td>Действия</td>
   </thead>
   <tbody>
@@ -16,10 +17,11 @@
         <td><%= order.id %></td>
         <td><%= order.full_name %></td>
         <td><%= order.number %></td></td>
-        <td><%= order.comment %></td>
         <td><%= order.city %></td>
         <td><%= order.post_office_number %></td>
+        <td><%= order.way_delivery %></td>
         <td><%= order.pay_type %></td>
+        <td><%= raw order.comment %></td>
         <td>
           <ul>
             <% order.line_items.each do |line_item| %>

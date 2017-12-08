@@ -26,11 +26,18 @@
   margin-top: 35px;
 }
 .phone-numbers{
-  margin-top: 15px;
+  .phone-icon{
+    margin-left: -9px;
+  }
+  .numbers{
+    margin-top: -15px;
+  }
+  margin: 0px 0px -17px 0px;
 }
 @media (max-width: 768px){
   .phone-numbers{
     margin-top: 0px;
+    text-align: center;
   }
 }
 @media (max-width: 768px){
@@ -387,4 +394,7 @@ a.thumbnail.product_image_add {
 }
 #main_avatar{
   max-height: 100%;
+}
+.check-green{
+  color: #8cc63f;
 }

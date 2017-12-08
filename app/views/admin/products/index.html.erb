@@ -6,9 +6,9 @@
   <div class="col-md-6 col-md-offset-2 col-xs-8">
     <%= form_tag(admin_products_path, method: :get) do %>
       <span class="input-group">
-        <%= text_field_tag :title, nil, placeholder: "Название товара", class: 'form-control search-input' %>
+        <%= text_field_tag :product_code, nil, placeholder: "Введите код товара", class: 'form-control search-input' %>
         <span class="input-group-btn">
-          <%= submit_tag 'Искать', title: nil, class: "btn btn-default"  %>
+          <%= submit_tag 'Искать', product_code: nil, class: "btn btn-default"  %>
         </span>
       </span>
     <% end %>
