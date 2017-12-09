@@ -29,7 +29,7 @@
             <p></p>
             <% Category.only_parent.limit(8).each do |category| %>
               <%= link_to category_path(category) do %>
-                <li class="footer-list__item"><%= category.name %></li>
+                <li class="footer-list__item"><%= category.name.truncate(50) %></li>
               <% end %>
             <% end %>
           </ul>

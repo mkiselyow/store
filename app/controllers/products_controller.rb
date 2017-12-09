@@ -28,10 +28,10 @@ class ProductsController < ApplicationController
 
             # puts 'HAVING params[:sex_id] SEARCHED'
           end
-          if params[:brand]
-            @products &= Product.where('brand LIKE ?', "%#{params[:brand]}%")
-            puts 'HAVING params[:brand] SEARCHED'
-          end
+          # if params[:brand]
+          #   @products &= Product.where('brand LIKE ?', "%#{params[:brand]}%")
+          #   puts 'HAVING params[:brand] SEARCHED'
+          # end
           if params[:color_black]
             @products &= Product.search_by_color_black(params[:color_black]).to_a
             puts 'HAVING params[:color_black] SEARCHED'

@@ -2,13 +2,11 @@
   background-color: #d8fffa;
   // text-align: center;
 }
-
 .goods_title {
   font-size: 2em;
   line-height: 2em;
   text-align: center;
 }
-
 .goods_col {
   height: 350px;
   overflow: hidden;
@@ -24,7 +22,6 @@
   font-size: 20px;
   font-weight: bold;
 }
-
 @media (min-width: 768px){
   .goods_col.image {
     vertical-align: middle;
