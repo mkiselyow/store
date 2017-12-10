@@ -12,25 +12,6 @@ class Product < ApplicationRecord
   before_destroy :ensure_not_referenced_by_any_line_item
 
   mount_uploader :image, ImageUploader
-  # extend Textacular
-  include PgSearch
-  pg_search_scope :search_by_discount,          against: :discount
-  pg_search_scope :search_by_title,             against: :title
-  pg_search_scope :search_by_brand,             against: :brand
-  pg_search_scope :search_by_category,          against: :category_id
-  pg_search_scope :search_by_sex,               against: :sex_id
-  pg_search_scope :search_by_color_white,       against: :color_white
-  pg_search_scope :search_by_color_black,       against: :color_black
-  pg_search_scope :search_by_color_red,         against: :color_red
-  pg_search_scope :search_by_color_yellow,      against: :color_yellow
-  pg_search_scope :search_by_color_green,       against: :color_green
-  pg_search_scope :search_by_color_blue,        against: :color_blue
-  pg_search_scope :search_by_color_violet,      against: :color_violet
-  pg_search_scope :search_by_material_another,  against: :material_another
-  pg_search_scope :search_by_material_plastic,  against: :material_plastic
-  pg_search_scope :search_by_material_iron,     against: :material_iron
-  pg_search_scope :search_by_material_wood,     against: :material_wood
-  pg_search_scope :search_by_material_fabric,   against: :material_fabric
 
   accepts_nested_attributes_for :image_products, allow_destroy: true
 
@@ -49,7 +30,6 @@ class Product < ApplicationRecord
     if query.present?
       where('title @@ :q or description @@ :q', q: query)
     else
-      # where(nil)
       unscoped
     end
   end

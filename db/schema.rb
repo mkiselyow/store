@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207123459) do
+ActiveRecord::Schema.define(version: 20171210082900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,32 @@ ActiveRecord::Schema.define(version: 20171207123459) do
     t.string "general_category"
     t.string "product_code"
     t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "title"
+    t.string "product_code"
+    t.integer "category_id"
+    t.integer "min_age"
+    t.integer "max_age"
+    t.integer "sex_id"
+    t.decimal "min_price"
+    t.decimal "max_price"
+    t.string "brand"
+    t.boolean "color_white"
+    t.boolean "color_black"
+    t.boolean "color_red"
+    t.boolean "color_yellow"
+    t.boolean "color_green"
+    t.boolean "color_blue"
+    t.boolean "color_violet"
+    t.boolean "material_plastic"
+    t.boolean "material_iron"
+    t.boolean "material_another"
+    t.boolean "material_wooden"
+    t.boolean "material_fabric"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sexes", force: :cascade do |t|

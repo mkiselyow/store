@@ -1,0 +1,124 @@
+<% if current_user.try(:admin) %>
+  <%= link_to 'Добавить товар', new_product_path %><br>
+<% end %>
+<h3>Подбор по параметрам</h3>
+<hr>
+<%= form_for @search do |f| %>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <p>Пол</p>
+      <p>
+        <%= f.select :sex_id, options_from_collection_for_select(Sex.all, :id, :name), { prompt: 'Выберите пол' },  class: 'form-control' %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <p>Категория</p>
+      <p>
+        <%= f.select :category_id, Category::CATEGORIES_SELECT, { prompt: 'Выберите категорию' },  class: 'form-control' %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>Стоимость</p>
+    <div class="col-md-6 col-xs-6">
+      <p>
+        <%= f.text_field :min_price, placeholder: "min sum", class: 'form-control search-input' %>
+      </p>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <p>
+        <%= f.text_field :max_price, placeholder: "max sum", class: 'form-control search-input' %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>Возраст</p>
+    <div class="col-md-6 col-xs-6">
+      <p>
+        <%= f.number_field :min_age, min: 0, placeholder: "min age", class: 'form-control search-input' %>
+      </p>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <p>
+        <%= f.number_field :max_age, min: 0, placeholder: "max age", class: 'form-control search-input' %>
+      </p>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <a class="btn btn-primary btn-block advanced_search">Дополнительный поиск</a>
+    </div>
+  </div> -->
+  <div class="advanced_search_show">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <p>Бренд</p>
+        <p>
+          <%= f.text_field :brand, placeholder: "Название бренда", class: 'form-control search-input' %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <p>Цвет</p>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_white) do %>
+          <div class="square white-square"></div>
+        <% end %>
+        <%= f.check_box :color_white, id: :product_color_white %>
+      </div>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_black) do %>
+          <div class="square black-square"></div>
+        <% end %>
+        <%= f.check_box :color_black, id: :product_color_black %>
+      </div>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_red) do %>
+          <div class="square red-square"></div>
+        <% end %>
+        <%= f.check_box :color_red, id: :product_color_red %>
+      </div>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_yellow) do %>
+          <div class="square yellow-square"></div>
+        <% end %>
+        <%= f.check_box :color_yellow, id: :product_color_yellow %>
+      </div>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_green) do %>
+          <div class="square green-square"></div>
+        <% end %>
+        <%= f.check_box :color_green, id: :product_color_green %>
+      </div>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_blue) do %>
+          <div class="square blue-square"></div>
+        <% end %>
+        <%= f.check_box :color_blue, id: :product_color_blue %>
+      </div>
+      <div class="field col-md-1 col-xs-1">
+        <%= f.label(:color_violet, "Фиолетовый") do %>
+          <div class="square violet-square"></div>
+        <% end %>
+        <%= f.check_box :color_violet, id: :product_color_violet %>
+      </div>
+    </div>
+    <div class="row">
+      <p>Материал</p>
+      <div class="col-md-6 col-xs-12">
+        <p><%= f.check_box :material_plastic, class: "color_yellow" %>Пластик</p>
+        <p><%= f.check_box :material_wooden, class: "color_yellow" %>Дерево</p>
+        <p><%= f.check_box :material_another, class: "color_yellow" %>Другой</p>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <p><%= f.check_box :material_iron, class: "color_yellow" %>Железо</p>
+        <p><%= f.check_box :material_fabric, class: "color_yellow" %>Ткань</p>
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <%= f.submit'Искать', class: 'btn btn-success btn-block' %>
+</div>
+<% end %>

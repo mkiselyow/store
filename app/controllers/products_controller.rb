@@ -7,108 +7,8 @@ class ProductsController < ApplicationController
   def index
     @products_count = Product.count
     @rows_count = (@products_count/4)
-    @products =
-      if params.present?
-        puts 'HAVING params[:params.present?] SEARCHED'
-        if params[:title]
-          # @products = Product.search_by_title(params[:title])
-          @products = Product.where('title @@ :q or product_code @@ :q', q: params[:title])
-        else
-          @products = Product.all.to_a
-          if params[:category_id]
-            @products = Product.where(category_id: params[:category_id])
-            puts 'HAVING params[:category_id] SEARCHED'
-          end
-          if params[:sex_id]
-            @products = Product.where(sex_id: params[:sex_id])
-            puts 'HAVING params[:sex_id] SEARCHED'
-          end
-          if params[:min_sum] && params[:max_sum]
-            @products = Product.where(price: (params[:min_sum])..(params[:max_sum]))
-
-            # puts 'HAVING params[:sex_id] SEARCHED'
-          end
-          # if params[:brand]
-          #   @products &= Product.where('brand LIKE ?', "%#{params[:brand]}%")
-          #   puts 'HAVING params[:brand] SEARCHED'
-          # end
-          if params[:color_black]
-            @products &= Product.search_by_color_black(params[:color_black]).to_a
-            puts 'HAVING params[:color_black] SEARCHED'
-            # else
-            #   @products = Product.search_by_color_black("false")
-          end
-          if params[:color_white]
-            @products &= Product.search_by_color_white(params[:color_white]).to_a
-            puts 'HAVING params[:color_white] SEARCHED'
-            # else
-            #   @products = Product.search_by_color_white("false")
-          end
-          if params[:color_yellow]
-            @products &= Product.search_by_color_yellow(params[:color_yellow]).to_a
-            puts 'HAVING params[:color_yellow] SEARCHED'
-            puts "color_yellow count #{Product.search_by_color_yellow(params[:color_yellow]).count} #{@products.count}"
-            # else
-            #   @products = Product.search_by_color_yellow("false")
-          end
-          if params[:color_red]
-            @products &= Product.search_by_color_red(params[:color_red]).to_a
-            puts 'HAVING params[:color_red] SEARCHED'
-            # else
-            #   @products = Product.search_by_color_red("false")
-          end
-          if params[:color_green]
-            @products &= Product.search_by_color_green(params[:color_green]).to_a
-            puts 'HAVING params[:color_green] SEARCHED'
-            # else
-            #   @products = Product.search_by_color_green("false")
-          end
-          if params[:color_blue]
-            @products &= Product.search_by_color_blue(params[:color_blue]).to_a
-            puts 'HAVING params[:color_blue] SEARCHED'
-            # else
-            #   @products = Product.search_by_color_blue("false")
-          end
-          if params[:color_violet]
-            @products &= Product.search_by_color_violet(params[:color_violet]).to_a
-            puts 'HAVING params[:color_violet] SEARCHED'
-            # else
-            #   @products = Product.search_by_color_violet("false")
-          end
-          if params[:material_another]
-            @products &= Product.search_by_material_another(params[:material_another]).to_a
-            puts 'HAVING params[:material_another] SEARCHED'
-            # else
-            #   @products = Product.search_by_material_another("false")
-          end
-          if params[:material_wood]
-            @products &= Product.search_by_material_wood(params[:material_wood]).to_a
-            puts 'HAVING params[:material_wood] SEARCHED'
-            # else
-            #   @products = Product.search_by_material_wood("false")
-          end
-          if params[:material_iron]
-            @products &= Product.search_by_material_iron(params[:material_iron]).to_a
-            puts 'HAVING params[:material_iron] SEARCHED'
-            # else
-            #   @products = Product.search_by_material_iron("false")
-          end
-          if params[:material_fabric]
-            @products &= Product.search_by_material_fabric(params[:material_fabric]).to_a
-            puts 'HAVING params[:material_fabric] SEARCHED'
-            # else
-            #   @products = Product.search_by_material_fabric("false")
-          end
-          if params[:material_plastic]
-            @products &= Product.search_by_material_plastic(params[:material_plastic]).to_a
-            puts 'HAVING params[:material_plastic] SEARCHED'
-            puts "material_plastic count #{Product.search_by_material_plastic(params[:material_plastic]).count} #{@products.count}"
-            # else
-            #   @products = Product.search_by_material_plastic("false")
-          end
-          @products = Product.order(sort_column + ' ' + sort_direction)
-        end
-      end
+    @search = Search.new
+    @products = Product.order(sort_column + ' ' + sort_direction)
     @products_page = @products.paginate(page: params[:page], per_page: 24)
     @products_page_mobile = @products.paginate(page: params[:page], per_page: 12)
     @categories = Category.all
@@ -118,17 +18,11 @@ class ProductsController < ApplicationController
     @newest_ten_products = Product.order('created_at DESC').limit(8)
   end
 
-  # GET /products/new
   def new
     @product = Product.new
     @product.image_products.build
   end
 
-  # GET /products/1/edit
-  def edit; end
-
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.create(product_params)
     respond_to do |format|
@@ -142,8 +36,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     @product.price = @product.price_mark_up
     respond_to do |format|
@@ -157,8 +49,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
     respond_to do |format|
@@ -169,7 +59,6 @@ class ProductsController < ApplicationController
 
   def delete_image
     @product = Product.find(params[:id])
-    # @product.image.file.delete
     @product.image = ''
     respond_to do |format|
       format.html { redirect_to @product, notice: 'Изображение было удалено.' }

@@ -2,7 +2,7 @@
 <main>
   <aside class="sticky search_multiple_form">
     <div id="search_multiple_form">
-      <%= render  partial: "products/search_multiple_form" %>
+      <%= render "searches/new" %>
     </div>
     <br>
     <%= render 'categories/sidebar_category' %>
@@ -34,7 +34,7 @@
     <!-- This is the element toggling the dropdown -->
     <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
     <div class="uk-dropdown">
-      <%= render  partial: "products/search_multiple_form" %>
+      <%= render "searches/new" %>
     </div>
   </div>
 

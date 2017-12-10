@@ -11,7 +11,6 @@
 //= require jquery.raty.min
 //= require jquery_nested_form
 //= require nested_form_fields
-//= require nested_form_fields
 //= require ckeditor/init
 //= require_tree .
 jQuery(document).ready(function($){
