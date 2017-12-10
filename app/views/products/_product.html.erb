@@ -1,6 +1,7 @@
 <%= link_to product do %>
-  <%= image_tag product.image.url(:medium), width: '150px', height: '150px', class: 'image_product_index' %>
-
+  <div class="image-product-index-space">
+    <%= image_tag product.image.url(:medium), class: 'image_product_index' %>
+  </div>
   <%= tag.div :class => "product_price_text" do %>
     <% if product.discount != 0 %>
         <%= "Скидка #{number_to_percentage(product.discount, precision: 0)}" %>
