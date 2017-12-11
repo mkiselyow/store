@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row equal">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="col-product-left">
           <p>
             <b>Категория:</b>
@@ -44,32 +44,26 @@
           <%= link_to 'Назад к списку товаров', products_path %>
         </div>
       </div>
-      <div class="col-md-4 image">
-        <div class="col-md-12" id="slider">
-          <div class="row">
-            <div class="col-sm-12" id="carousel-bounding-box">
-              <div class="carousel slide carousel-product" id="myCarousel">
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                  <div class="active item" data-slide-number="0">
-                    <% if @product.image.present? %>
-                      <img id="main_avatar" src="<%= @product.image_url(:large) %>" data-zoom-image="<%= @product.image_url(:large) %>", class='img-thumbnail profile-avatar'/>
-                    <% else %>
-                        <%= image_tag( @product.image_url(:medium), width: '470px', height: '480px') %>
-                    <% end %>
-                  </div>
-                  <% @product.image_products.each_with_index do |im_prod, i| %>
-                    <div class="item" data-slide-number="<%= (i+1) %>"">
-                      <img id="image_<%= im_prod.id %>" src="<%= im_prod.image.url(:large) %>" data-zoom-image="<%= im_prod.image.url(:large) %>", class='img-thumbnail profile-avatar', width='470px', height='480px'/>
-                    </div>
-                  <% end %>
+      <div class="col-md-6 image">
+        <div class="row" id="slider">
+          <div class="col-sm-12" id="carousel-bounding-box">
+            <div class="carousel slide carousel-product" id="myCarousel">
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="active item" data-slide-number="0">
+                  <%= image_tag( @product.image_url(:medium), class: 'image-product-show') %>
                 </div>
+                <% @product.image_products.each_with_index do |im_prod, i| %>
+                  <div class="item" data-slide-number="<%= (i+1) %>"">
+                    <%= image_tag( im_prod.image.url(:medium), id: "image_#{im_prod.id }") %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <% if @product.created_at > 10.days.ago %>
           <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <% end %>
