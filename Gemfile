@@ -92,6 +92,8 @@ gem 'social-share-button'
 
 gem 'pg_search'
 
+gem 'google-analytics-rails', '1.1.1'
+
 #ui kit pach
 gem 'uikit2-rails', '~> 0.1.10'
 

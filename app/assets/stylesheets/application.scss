@@ -268,8 +268,7 @@
   height: 350px;
 }
 .image-product-category-index{
-  height: 160px;
-  width: 150px;
+  height: 150px;
 }
 .badge {
   background-color: #4CAF50;
@@ -386,7 +385,6 @@ a.thumbnail.product_image_add {
   align-items: center;
 }
 .product_image_modal {
-  width: 250px;
   height: 350px;
   display: flex;
   -webkit-box-align: center;
@@ -406,4 +404,14 @@ a.thumbnail.product_image_add {
 }
 .image-product-index-space{
   height: 150px;  
+}
+.glyphicon-remove{
+  color: red;
+  font-size: 24px;
+}
+.modal_image_product{
+  height: 500px;
+}
+.image_preview_modal{
+  height: 300px;
 }

@@ -5,8 +5,8 @@
         <% subcategory.products.each do |product| %>
           <div class="col-md-4 col-xs-12 product_view_class">
             <div class="item-category">
-              <a data-toggle="modal" data-target="#product_view_<%= product.id %>">
-                <%= image_tag product.image.url(:medium), class: 'image-product-category-index' %>
+              <a href="#product_view_<%= product.id  %>" data-toggle="modal" data-target="#product_view_<%= product.id %>">
+                <%= image_tag product.image.url(:thumb), class: 'image-product-category-index' %>
                 <%= tag.div :class => "product_price_text" do %>
                   <% if product.discount != 0 %>
                     <%= "Скидка #{number_to_percentage(product.discount, precision: 0)}" %>

@@ -1,6 +1,6 @@
 class SendMessageMailer < ApplicationMailer
   default from: 'Hello'
-  default to: 'mapapama1994@gmail.com'
+  default to: 'mapapama.com.ua@gmail.com'
 
   def new_send_message(send_message)
     @send_message = send_message

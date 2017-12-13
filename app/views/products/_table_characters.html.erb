@@ -94,21 +94,11 @@
     <tr>
       <th>Материал</th>
       <td>
-        <% if @product.material_plastic? %>
-          Пластик
-        <% end %>
-        <% if @product.material_iron? %>
-          Железо
-        <% end %>
-        <% if @product.material_wooden? %>
-          Дерево
-        <% end %>
-        <% if @product.material_fabric? %>
-          Ткань
-        <% end %>
-        <% if @product.material_another? %>
-          Другой материал
-        <% end %>
+        <%= material_plastic_present %>
+        <%= material_iron_present %>
+        <%= material_wooden_present %>
+        <%= material_fabric_present %>
+        <%= material_another_present %>
       </td>
     </tr>
     <tr>

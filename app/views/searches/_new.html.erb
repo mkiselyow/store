@@ -1,6 +1,8 @@
 <% if current_user.try(:admin) %>
-  <%= link_to 'Добавить товар', new_product_path %><br>
+  <%= link_to 'Добавить товар', new_product_path %>
+  <br>
 <% end %>
+<%= link_to 'Показать все акционные товары', products_with_offers_path, class: 'btn btn-success' %><br>
 <h3>Подбор по параметрам</h3>
 <hr>
 <%= form_for @search do |f| %>

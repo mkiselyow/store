@@ -1,4 +1,4 @@
-<div class="modal fade product_view_<%= product.id  %>" id="product_view_<%= product.id  %>">
+<div class="modal fade product_view_<%= product.id  %>" id="product_view_<%= product.id  %>" tabindex="-1" role="dialog" aria-labelledby="product_view_<%= product.id  %>" aria-hidden="true"">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,27 +7,14 @@
           <%= product.title %>
         </h2>
       </div>
-      <div class="modal-body">
+      <div class="modal-body container">
         <div class="row">
-          <div class="col-md-4">
-            <div class="well col-product-left">
-            <p>
-            <b>Категория:</b>
-            <p>
-              <%= product.category.name %>
-              <% if product.category.parent.present? %>
-                <%= product.category.parent.name %>
-              <% end %>
-              <% if product.category.parent.parent.present? %>
-                <%= product.category.parent.parent.name %>
-                <% if product.category.parent.parent.parent.present? %>
-                  <%= product.category.parent.parent.parent.name %>
-                  <% if product.category.parent.parent.parent.parent.present? %>
-                    <%= product.category.parent.parent.parent.parent.name %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </p>
+          <div class="col-md-3">
+            <div class="well">
+              <p>
+                <b>Категория:</b>
+                <%= product.category.name %>
+              </p>
               <p>
                 <strong>Пол:</strong>
                 <%= product.sex.name if product.sex %>
@@ -38,8 +25,6 @@
                   <%= fa_icon 'venus', class: 'fa-2x sex-girls', alt: 'Девочки', title: "Для девочек" %>
                 <% end %>
               </p>
-              <p>
-              <p>
               <p>
                 <strong>Минимальный возраст:</strong>
                 <%= product.minimum_age %>
@@ -62,13 +47,11 @@
               </p>
             </div>
           </div>
-          <div class="col-md-4" id="slider">
-            <div class="col-sm-12" id="image-bounding">
+          <div class="col-md-6" id="slider">
+            <div class="col-md-12" id="image-bounding">
               <center>
                 <div class="product_image_modal">
-                  <div id="main_avatar">
-                    <%= image_tag(product.image_url(:large), width: '250px', height: '350px') %>
-                  </div>
+                  <%= image_tag(product.image_url(:large), class: 'image_preview_modal') %>
                 </div>
               </center>
             </div>

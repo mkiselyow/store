@@ -40,7 +40,7 @@
     text-decoration: none;
     clear: both;
     font-weight: 400;
-    overflow: hidden;
+    // overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -52,7 +52,7 @@
 }
 .ripple-effect {
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     -webkit-transform: translate3d(0,0,0);
 }
 .sidebar .sidebar-nav li i {
@@ -87,7 +87,7 @@
     text-decoration: none;
     clear: both;
     font-weight: 400;
-    overflow: hidden;
+    // overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;

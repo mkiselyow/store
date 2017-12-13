@@ -13,9 +13,11 @@
         Сортировать по:
       </button>
       <ul class="dropdown-menu">
-        <li><%= sortable "title", "По названию" %></li>
-        <li><%= sortable "price", "По цене" %></li>
-        <li><%= sortable "price", "По дате публикации" %></li>
+        <li><%= link_to "Сначала дешёвые", sort: 'price', order_type: 'ASC' %></li>
+        <li><%= link_to "Сначала дорогие", sort: 'price', order_type: 'DESC' %></li>
+        <li><%= link_to "Сначала новые", sort: 'created_at', order_type: 'ASC' %></li>
+        <li><%= link_to "Сначала давние", sort: 'created_at', order_type: 'DESC' %></li>
+        <li><%= link_to "Сначала по акции", sort: 'discount', order_type: 'DESC' %></li>
       </ul>
     </div>
     <div class="row">

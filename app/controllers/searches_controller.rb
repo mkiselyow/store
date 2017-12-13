@@ -10,6 +10,7 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
+    @products = @search.products.order("#{ params[:sort] } #{ params[:order_type] }")
   end
 
   private

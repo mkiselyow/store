@@ -2,11 +2,13 @@
 	<div class="modal-dialog modal-lg-add-image">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close close_modal_mail_<%= im_prod.id %>" aria-hidden="true">×</button>
+        <button type="button" class="close close_modal_mail_<%= im_prod.id %>" aria-hidden="true">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
         <h4 class="modal-title"><%= product.title %></h4>
-      </div><div class="container"></div>
+      </div>
       <div class="modal-body" align='center'>
-        <%= image_tag im_prod.image.url(:big_large), width: '100%' %>
+        <%= image_tag im_prod.image.url(:big_large), class: 'modal_image_product' %>
       </div>
     </div>
   </div>

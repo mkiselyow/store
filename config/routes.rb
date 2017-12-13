@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :line_items
   end
+  get '/products_with_offers', to: 'products#only_with_discount'
   resources :searches
   resources :shares, only: [:show, :index]
   resources :categories
