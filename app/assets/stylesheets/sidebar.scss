@@ -19,15 +19,13 @@
     padding-bottom: 9px;
     box-shadow: none;
 }
-.sidebar .sidebar-nav {
-    margin: 0;
-    padding: 0;
-    background: #fff;
-}
 .sidebar .sidebar-nav li {
     position: relative;
     list-style-type: none;
     border-bottom: 0;
+}
+.subcategory_name{
+  margin-left: 15px;
 }
 .sidebar .sidebar-nav li a {
     position: relative;
@@ -35,7 +33,7 @@
     user-select: none;
     display: block;
     height: 48px;
-    line-height: 48px;
+    // line-height: 48px;
     padding: 0 56px 0 16px;
     text-decoration: none;
     clear: both;
@@ -43,7 +41,7 @@
     // overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    // white-space: nowrap;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -68,34 +66,12 @@
 }
 .caret {
     position: absolute;
-    right: 37px;
-    top: 23px;
-    
+    right: 10px;
+    top: 10px;
 }
 .strong, b, strong {
     color: #000;
     font-weight: 500;
-}
-.sidebar .sidebar-nav li a {
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    display: block;
-    height: 48px;
-    line-height: 48px;
-    padding: 0 56px 0 16px;
-    text-decoration: none;
-    clear: both;
-    font-weight: 400;
-    // overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    color: inherit;
-    border-bottom: 1px solid #ededed;
 }
 .sidebar .sidebar-nav .dropdown-menu {
     position: relative;

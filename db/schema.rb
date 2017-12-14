@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210082900) do
+ActiveRecord::Schema.define(version: 20171214090414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20171210082900) do
     t.integer "sex_id"
     t.string "general_category"
     t.string "product_code"
+    t.boolean "mixed"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

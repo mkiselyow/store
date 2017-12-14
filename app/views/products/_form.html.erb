@@ -196,8 +196,11 @@
               <%= form.label(:material_fabric, "Ткань") %>
               <%= form.check_box :material_fabric, id: :product_material_fabric %>
             </div>
-
-            <div class="field col-md-4">
+            <div class="field col-md-3">
+              <%= form.label(:mixed, "Смешаный") %>
+              <%= form.check_box :mixed, id: :mixed %>
+            </div>
+            <div class="field col-md-3">
               <%= form.label(:material_another, "Другой материал") %>
               <%= form.check_box :material_another, id: :product_material_another %>
             </div>

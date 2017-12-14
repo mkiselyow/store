@@ -22,7 +22,7 @@ class Admin::ProductsController < AdminsController
                                     :color_white, :color_black, :color_red, :color_yellow,
                                     :color_green, :color_blue, :color_violet, :brand,
                                     :material_plastic, :material_iron, :material_another,
-                                    :material_wooden, :material_fabric, :supplier, :quantity,
+                                    :material_wooden, :material_fabric, :mixed, :supplier, :quantity,
                                     :image, :sex_id, :description, :image_cache,
                                     :image_id, :country, :product_code, :discount,
                                     :times_viewed, :category_id, :other_desc, :general_category, :min_age, :max_age,

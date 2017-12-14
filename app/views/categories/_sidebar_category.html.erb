@@ -12,119 +12,102 @@
           <% if category.children.count == 0 %>
             <li>
               <%= link_to category_path(category) do %>
-                <%= "#{i+1}. #{category.name}" %>
-                <span class="sidebar-badge"><%= category.products.count %></span>
+                <%= "#{i+1}. #{category.name} (#{ category.products.count })" %>
               <% end %>
             </li>
           <% else %>
             <li>
               <a class="ripple-effect dropdown-toggle" class="collapsed" data-toggle="collapse" data-target="#category_<%= category.id %>">
                 <%= "#{i+1}. #{category.name}" %>
-                <span class="sidebar-badge">
-                  <% sum = 0 %>
-                  <% category.subtree.each do |c| %>
-                    <% sum += c.products.count %>
-                  <% end %>
-                  <%= sum %>
-                </span>
+                <% sum = 0 %>
+                <% category.subtree.each do |c| %>
+                  <% sum += c.products.count %>
+                <% end %>
+                (<%= sum %>)
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu collapse" id="category_<%= category.id %>">
                 <% category.children.each_with_index do |subcategory, k| %>
                   <% if subcategory.children.count == 0 %>
-                    <li class="subcategory_name">
+                    <li>
                       <%= link_to category_path(subcategory) do %>
                         <%= "#{i+1}.#{k+1} #{category.name}" %>
-                        <span class="sidebar-badge">
-                          <% sum = 0 %>
-                          <% subcategory.subtree.each do |cc| %>
-                            <% sum += cc.products.count %>
-                          <% end %>
-                          <%= sum %>
-                        </span>
+                        <% sum = 0 %>
+                        <% subcategory.subtree.each do |cc| %>
+                          <% sum += cc.products.count %>
+                        <% end %>
+                        (<%= sum %>)
                       <% end %>
                     </li>
                   <% else %>
-                    <li class="subcategory_name">
+                    <li>
                       <a class="ripple-effect dropdown-toggle" class="collapsed" data-toggle="collapse" data-target="#subcategory_<%= subcategory.id %>">
                         <%= "#{i+1}.#{k+1} #{subcategory.name}" %>
-                        <span class="sidebar-badge">
-                          <% sum = 0 %>
-                          <% subcategory.subtree.each do |cc| %>
-                            <% sum += cc.products.count %>
-                          <% end %>
-                          <%= sum %>
-                        </span>
+                        <% sum = 0 %>
+                        <% subcategory.subtree.each do |cc| %>
+                          <% sum += cc.products.count %>
+                        <% end %>
+                        (<%= sum %>)
                         <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu collapse" id="subcategory_<%= subcategory.id %>">
                         <% subcategory.children.each_with_index do |subsubcategory, l| %>
                           <% if subsubcategory.children.count == 0 %>
-                            <li class="subcategory_name">
+                            <li>
                               <%= link_to category_path(subsubcategory) do %>
                                 <%= "#{i+1}.#{k+1}.#{l+1} #{subsubcategory.name}" %>
-                                <span class="sidebar-badge">
-                                  <% sum = 0 %>
-                                  <% subsubcategory.subtree.each do |ccc| %>
-                                    <% sum += ccc.products.count %>
-                                  <% end %>
-                                  <%= sum %>
-                                </span>
+                                <% sum = 0 %>
+                                <% subsubcategory.subtree.each do |ccc| %>
+                                  <% sum += ccc.products.count %>
+                                <% end %>
+                                (<%= sum %>)
                               <% end %>
                             </li>
                           <% else %>
-                            <li class="subcategory_name">
+                            <li>
                               <a class="ripple-effect dropdown-toggle" class="collapsed" data-toggle="collapse" data-target="#subsubcategory_<%= subsubcategory.id %>">
                                 <%= "#{i+1}.#{k+1}.#{l+1} #{subsubcategory.name}" %>
-                                <span class="sidebar-badge">
-                                  <% sum = 0 %>
-                                  <% subsubcategory.subtree.each do |cccc| %>
-                                    <% sum += cccc.products.count %>
-                                  <% end %>
-                                  <%= sum %>
-                                </span>
+                                <% sum = 0 %>
+                                <% subsubcategory.subtree.each do |cccc| %>
+                                  <% sum += cccc.products.count %>
+                                <% end %>
+                                (<%= sum %>)
                                 <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu collapse" id="subsubcategory_<%= subsubcategory.id %>">
                                 <% subsubcategory.children.each_with_index do |subsubsubcategory, m| %>
                                   <% if subsubsubcategory.children.count == 0 %>
-                                    <li class="subcategory_name">
+                                    <li>
                                       <%= link_to category_path(subsubsubcategory) do %>
                                         <%= "#{i+1}.#{k+1}.#{l+1}.#{m+1} #{subsubsubcategory.name}" %>
-                                        <span class="sidebar-badge">
-                                          <% sum = 0 %>
-                                          <% subsubsubcategory.subtree.each do |cccc| %>
-                                            <% sum += cccc.products.count %>
-                                          <% end %>
-                                          <%= sum %>
-                                        </span>
+                                        <% sum = 0 %>
+                                        <% subsubsubcategory.subtree.each do |cccc| %>
+                                          <% sum += cccc.products.count %>
+                                        <% end %>
+                                        (<%= sum %>)
                                       <% end %>
                                     </li>
                                   <% else %>
-                                    <li class="subcategory_name">
+                                    <li>
                                       <a class="ripple-effect dropdown-toggle" class="collapsed" data-toggle="collapse" data-target="#subsubsubcategory_<%= subsubsubcategory.id  %>">
                                         <%= "#{i+1}.#{k+1}.#{l+1}.#{m+1} #{subsubsubcategory.name}" %>
-                                        <span class="sidebar-badge">
-                                          <% sum = 0 %>
-                                          <% subsubsubcategory.subtree.each do |cccc| %>
-                                            <% sum += cccc.products.count %>
-                                          <% end %>
-                                          <%= sum %>
-                                        </span>
+                                        <% sum = 0 %>
+                                        <% subsubsubcategory.subtree.each do |cccc| %>
+                                          <% sum += cccc.products.count %>
+                                        <% end %>
+                                        (<%= sum %>)
                                         <b class="caret"></b>
                                       </a>
                                       <ul class="dropdown-menu collapse" id="subsubsubcategory_<%= subsubsubcategory.id %>">
                                         <% subsubsubcategory.children.each_with_index do |subsubsubsubcategory, p| %>
-                                          <li class="subcategory_name">
+                                          <li>
                                             <%= link_to category_path(subsubsubsubcategory) do %>
                                               <%= "#{i+1}.#{k+1}.#{l+1}.#{m+1}.#{p+1} #{subsubsubsubcategory.name}" %>
-                                              <span class="sidebar-badge">
-                                                <% sum = 0 %>
-                                                <% subsubsubsubcategory.subtree.each do |cccc| %>
-                                                  <% sum += cccc.products.count %>
-                                                <% end %>
-                                                <%= sum %>
-                                              </span>
+                                              <% sum = 0 %>
+                                              <% subsubsubsubcategory.subtree.each do |cccc| %>
+                                                <% sum += cccc.products.count %>
+                                              <% end %>
+                                              (<%= sum %>)
                                             <% end %>
                                           </li>
                                         <% end %>

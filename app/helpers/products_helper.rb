@@ -18,4 +18,8 @@ module ProductsHelper
   def material_another_present
     content_tag(:li, @product.other_desc) if @product.material_another?
   end
+
+  def material_mixed_present
+    content_tag(:li, 'Смешаный') if @product.mixed?
+  end
 end
