@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
+  root to: "pages#main"
 
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
-    root to: "pages#main"
 
     resources :line_items do
       put 'decrease_quantity'
