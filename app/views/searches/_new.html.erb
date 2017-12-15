@@ -1,69 +1,64 @@
 <% if current_user.try(:admin) %>
-  <%= link_to 'Добавить товар', new_product_path %>
+  <%= link_to t('sidebar_filter.add_product'), new_product_path %>
   <br>
 <% end %>
-<%= link_to 'Показать все акционные товары', products_with_offers_path, class: 'btn btn-success' %><br>
-<h3>Подбор по параметрам</h3>
+<%= link_to t('sidebar_filter.show_all_discount'), products_with_offers_path, class: 'btn btn-success' %><br>
+<h3><%= t 'sidebar_filter.picking' %></h3>
 <hr>
 <%= form_for @search do |f| %>
   <div class="row">
     <div class="col-md-12 col-xs-12">
-      <p>Пол</p>
+      <p><%= t 'sidebar_filter.sex' %></p>
       <p>
-        <%= f.select :sex_id, options_from_collection_for_select(Sex.all, :id, :name), { prompt: 'Выберите пол' },  class: 'form-control' %>
+        <%= f.select :sex_id, options_from_collection_for_select(Sex.all, :id, :name), { prompt: t('sidebar_filter.select_sex') },  class: 'form-control' %>
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 col-xs-12">
-      <p>Категория</p>
+      <p><%= t 'sidebar_filter.category' %></p>
       <p>
-        <%= f.select :category_id, Category::CATEGORIES_SELECT, { prompt: 'Выберите категорию' },  class: 'form-control' %>
+        <%= f.select :category_id, Category::CATEGORIES_SELECT, { prompt: t('sidebar_filter.select_category') },  class: 'form-control' %>
       </p>
     </div>
   </div>
   <div class="row">
-    <p>Стоимость</p>
+    <p><%= t 'sidebar_filter.cost' %></p>
     <div class="col-md-6 col-xs-6">
       <p>
-        <%= f.text_field :min_price, placeholder: "min sum", class: 'form-control search-input' %>
+        <%= f.text_field :min_price, placeholder: t('sidebar_filter.min_sum'), class: 'form-control search-input' %>
       </p>
     </div>
     <div class="col-md-6 col-xs-6">
       <p>
-        <%= f.text_field :max_price, placeholder: "max sum", class: 'form-control search-input' %>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <p>Возраст</p>
-    <div class="col-md-6 col-xs-6">
-      <p>
-        <%= f.number_field :min_age, min: 0, placeholder: "min age", class: 'form-control search-input' %>
-      </p>
-    </div>
-    <div class="col-md-6 col-xs-6">
-      <p>
-        <%= f.number_field :max_age, min: 0, placeholder: "max age", class: 'form-control search-input' %>
+        <%= f.text_field :max_price, placeholder: t('sidebar_filter.max_sum'), class: 'form-control search-input' %>
       </p>
     </div>
   </div>
   <div class="row">
-    <!--<div class="col-md-12 col-xs-12">
-      <a class="btn btn-primary btn-block advanced_search">Дополнительный поиск</a>
-    </div> -->
+    <p><%= t 'sidebar_filter.age' %></p>
+    <div class="col-md-6 col-xs-6">
+      <p>
+        <%= f.number_field :min_age, min: 0, placeholder: t('sidebar_filter.min_age'), class: 'form-control search-input' %>
+      </p>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <p>
+        <%= f.number_field :max_age, min: 0, placeholder: t('sidebar_filter.max_age'), class: 'form-control search-input' %>
+      </p>
+    </div>
   </div>
   <div class="advanced_search_show">
     <div class="row">
       <div class="col-md-12 col-xs-12">
-        <p>Бренд</p>
+        <p><%= t 'sidebar_filter.brand' %></p>
         <p>
-          <%= f.text_field :brand, placeholder: "Название бренда", class: 'form-control search-input' %>
+          <%= f.text_field :brand, placeholder: t('sidebar_filter.brand'), class: 'form-control search-input' %>
         </p>
       </div>
     </div>
     <div class="row">
-      <p>Цвет</p>
+      <p><%= t 'sidebar_filter.color' %></p>
       <div class="field col-md-1 col-xs-1">
         <%= f.label(:color_white) do %>
           <div class="square white-square"></div>
@@ -110,17 +105,17 @@
     <div class="row">
       <p>Материал</p>
       <div class="col-md-6 col-xs-12">
-        <p><%= f.check_box :material_plastic, class: "color_yellow" %>Пластик</p>
-        <p><%= f.check_box :material_wooden, class: "color_yellow" %>Дерево</p>
-        <p><%= f.check_box :material_another, class: "color_yellow" %>Другой</p>
+        <p><%= f.check_box :material_plastic, class: "color_yellow" %><%= t 'sidebar_filter.plastic' %></p>
+        <p><%= f.check_box :material_wooden, class: "color_yellow" %><%= t 'sidebar_filter.wood' %></p>
+        <p><%= f.check_box :material_another, class: "color_yellow" %><%= t 'sidebar_filter.other' %></p>
       </div>
       <div class="col-md-6 col-xs-12">
-        <p><%= f.check_box :material_iron, class: "color_yellow" %>Железо</p>
-        <p><%= f.check_box :material_fabric, class: "color_yellow" %>Ткань</p>
+        <p><%= f.check_box :material_iron, class: "color_yellow" %><%= t 'sidebar_filter.iron' %></p>
+        <p><%= f.check_box :material_fabric, class: "color_yellow" %><%= t 'sidebar_filter.cloth' %></p>
       </div>
     </div>
   </div>
 <div class="row">
-  <%= f.submit'Искать', class: 'btn btn-success btn-block' %>
+  <%= f.submit t('sidebar_filter.search'), class: 'btn btn-success btn-block' %>
 </div>
 <% end %>

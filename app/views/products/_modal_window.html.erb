@@ -85,7 +85,7 @@
             </p>
             <p><%= social_share_button_tag(product.title) %></p>
             <%= button_to product_line_items_path(product.id), class: "btn btn-danger" do %>
-              <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+              <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
             <% end %>
           </div>
         </div>

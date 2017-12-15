@@ -13,22 +13,22 @@
     <br>
     <div class="row">
       <div class="col-md-12">
-        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2,  id_of_this_carousel: "newest_carousel", name_of_carousel: "Новинки"  } %>
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @newest_ten_products, rows_count: 2,  id_of_this_carousel: "newest_carousel", name_of_carousel: t('novelties')  } %>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_wth_special_offers, rows_count:   5, id_of_this_carousel: "offers_carousel", name_of_carousel: "Акции" } %>
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_wth_special_offers, rows_count:   5, id_of_this_carousel: "offers_carousel", name_of_carousel: t('offers') } %>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_most_viewed, rows_count: 5,  id_of_this_carousel: "top_viewed_carousel", name_of_carousel: "Популярные" } %>
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_most_viewed, rows_count: 5,  id_of_this_carousel: "top_viewed_carousel", name_of_carousel: t('populars') } %>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <h1>Все товары</h1>
+        <h1><%= t('all_products') %></h1>
         <div id="products">
           <%= render 'products' %>
         </div>

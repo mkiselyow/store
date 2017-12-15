@@ -2,7 +2,9 @@
   <div class="footer-wrap">
     <div class="footer__subscribe-wrap">
       <div class="footer-subscribe">
-        <button class='btn btn-primary' data-toggle="modal" data-target="#form_send">Связаться с нами!</button>
+        <button class='btn btn-primary' data-toggle="modal" data-target="#form_send">
+          <%= t "contact_form.contact_with_us" %>
+        </button>
         <p></p>
         <%= render 'shared/modal_send_form' %>
       </div>
@@ -34,15 +36,15 @@
             <% end %>
           </ul>
           <ul class="footer-list">
-            <li class="footer-list__item"><%= link_to "Все товары", products_path %></li>
-            <li class="footer-list__item"><%= link_to "Все категории", categories_path %></li>
-            <li class="footer-list__item"><%= link_to "Оплата", payment_path %></li>
-            <li class="footer-list__item"><%= link_to "Доставка", delivery_path %></li>
-            <li class="footer-list__item"><%= link_to "Полезные статьи", useful_articles_path %></li>
-            <li class="footer-list__item"><%= link_to "Акции", shares_path %></li>
-            <li class="footer-list__item"><%= link_to "Отзывы", comments_path %></li>
-            <li class="footer-list__item"><%= link_to "Контакты", contacts_path %></li>
-            <li class="footer-list__item"><%= link_to "Партнерам", partners_path  %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.products"), products_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.payment"), payment_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.delivery"), delivery_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.useful_article"), useful_articles_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.offers"), shares_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.reviews"), comments_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.contact"), contacts_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.about"), about_path %></li>
+            <li class="footer-list__item"><%= link_to t("header_menu.partner"), partners_path %></li>
           </ul>
         </div>
         <div class="footer-copyright">
@@ -51,7 +53,7 @@
             <%= cl_image_tag("logo.png", :quality=>15, :width=>40, :crop=>"scale") %>
           <% end %>
           <p>
-            <b>Мапапама</b> - подари ребёнку радость <%= fa_icon 'check', class: 'fa-x2 check-green' %>
+            <%= raw t "leuze" %><%= fa_icon 'check', class: 'fa-x2 check-green' %>
           </p>
         </div>
         <div class="footer-text">© 2017</div>

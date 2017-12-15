@@ -4,17 +4,18 @@
   </div>
   <%= tag.div :class => "product_price_text" do %>
     <% if product.discount != 0 %>
-        <%= "Скидка #{number_to_percentage(product.discount, precision: 0)}" %>
+        <%= t('products.discount') %>
+        <%= "#{number_to_percentage(product.discount, precision: 0)}" %>
     <% end %>
   <% end %>
 
   <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
   <% if product.discount != 0 %>
-    <s><%= number_to_currency(product.old_price, unit: "грн") %></s>
-    <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "text-danger product_price_text") %>
+    <s><%= number_to_currency(product.old_price, locale: :ru) %></s>
+    <%= tag.div(number_to_currency(product.price, locale: :ru), :class => "text-danger product_price_text") %>
   <% else %>
-    <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "product_price_text") %>
+    <%= tag.div(number_to_currency(product.price, locale: :ru), :class => "product_price_text") %>
   <% end %>
-  <%= if product.quantity then tag.div("Осталось: #{product.quantity}", :class => "product_quantity_text") else tag.div("Под заказ", :class => "  product_quantity_text") end %>
+  <%= if product.quantity then tag.div("#{ t('products.left') }: #{product.quantity}", :class => "product_quantity_text") else tag.div("Под заказ", :class => "  product_quantity_text") end %>
   <%= tag.div(product.product_code, :class => "product_code_text") %>
 <% end %>

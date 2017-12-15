@@ -69,10 +69,10 @@
         <% end %>
         <h2>
           <% if @product.discount != 0 %>
-            <s><%= number_to_currency(@product.old_price, unit: "грн")%></s>
-            <p class='text-danger discount-price' title="Скидка <%= @product.discount %>%"><%= number_to_currency(@product.price, unit: "грн")%></p>
+            <s><%= number_to_currency(@product.old_price, locale: :ru) %></s>
+            <p class='text-danger discount-price' title="Скидка <%= @product.discount %>%"><%= number_to_currency(@product.price, locale: :ru) %></p>
           <% else %>
-            <%= number_to_currency(@product.price, unit: "грн")%>
+            <%= number_to_currency(@product.price, locale: :ru) %>
           <% end %>
         </h2>
         <p>
@@ -86,7 +86,7 @@
         <p><%= social_share_button_tag(@product.title) %></p>
         <p>
           <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
-            <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+            <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
           <% end %>          
         </p>
       </div>

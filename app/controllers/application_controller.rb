@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :banned?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
   def banned?
     return unless current_user.present? && current_user.banned?
@@ -29,5 +30,13 @@ class ApplicationController < ActionController::Base
 
   def only_admin_access
     redirect_to(root_url) unless current_user && current_user.admin?
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] if params[:locale].present?
+  end
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }
   end
 end
