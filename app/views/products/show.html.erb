@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row equal">
-      <div class="col-md-3">
+      <div class="col-md-4 col-xs-12">
         <div class="col-product-left">
           <p>
             <b>Категория:</b>
@@ -44,14 +44,14 @@
           <%= link_to 'Назад к списку товаров', products_path %>
         </div>
       </div>
-      <div class="col-md-6 image">
+      <div class="col-md-5 image col-xs-12">
         <div class="row" id="slider">
           <div class="col-sm-12" id="carousel-bounding-box">
             <div class="carousel slide carousel-product" id="myCarousel">
               <!-- Carousel items -->
               <div class="carousel-inner carousel-inner-product-show">
                 <div class="active item" data-slide-number="0">
-                  <%= image_tag( @product.image_url(:medium), class: 'image-product-show') %>
+                  <%= image_tag( @product.image_url(:medium)) %>
                 </div>
                 <% @product.image_products.each_with_index do |im_prod, i| %>
                   <div class="item" data-slide-number="<%= (i+1) %>"">
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-xs-12">
         <% if @product.created_at > 10.days.ago %>
           <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <% end %>
@@ -91,25 +91,23 @@
         </p>
       </div>
     </div>
-    <div class="container">
-      <div id="main_area">
-        <div class="row">
-          <div class="col-md-12 col-xs-12" id="slider-thumbs">
-            <ul class="hide-bullets">
+    <div id="main_area">
+      <div class="row">
+        <div class="col-md-12 col-xs-12" id="slider-thumbs">
+          <ul class="hide-bullets">
+            <li class="col-sm-2 col-xs-6">
+              <a class="thumbnail product_image_add" id="carousel-selector-0">
+                <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
+              </a>
+            </li>
+            <% @product.image_products.each_with_index do |im_prod, i| %>
               <li class="col-sm-2 col-xs-6">
-                <a class="thumbnail product_image_add" id="carousel-selector-0">
-                  <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
+                <a class="thumbnail product_image_add" id="carousel-selector-<%= (i+1) %>">
+                  <%= image_tag(im_prod.image.url(:thumb), width: '150px', height: '150px')%>
                 </a>
               </li>
-              <% @product.image_products.each_with_index do |im_prod, i| %>
-                <li class="col-sm-2 col-xs-6">
-                  <a class="thumbnail product_image_add" id="carousel-selector-<%= (i+1) %>">
-                    <%= image_tag(im_prod.image.url(:thumb), width: '150px', height: '150px')%>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
@@ -132,6 +130,7 @@
       <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
         <%= fa_icon 'cart-plus', text: 'В Корзину' %>
       <% end %>
+      <br>
     </div>
   </div>
 </div>

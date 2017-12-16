@@ -60,12 +60,12 @@
             <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
             <h2>
               <% if product.discount != 0 %>
-                <s><%= number_to_currency(product.old_price, unit: "грн")%></s>
+                <s><%= number_to_currency(product.old_price, locale: :ru)%></s>
                 <div class="text-danger discount-price" title="<%= product.discount %>%">
-                  <%= number_to_currency(product.price, unit: "грн") %>
+                <%= number_to_currency(product.price, locale: :ru) %>
                 </div>
               <% else %>
-                <%= number_to_currency(product.price, unit: "грн")%>
+                <%= number_to_currency(product.price, locale: :ru)%>
               <% end %>
             </h2>
             <% if product.discount %>

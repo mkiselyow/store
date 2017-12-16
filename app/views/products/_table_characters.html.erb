@@ -34,17 +34,17 @@
       <th>Цена</th>
       <td>
         <% if @product.discount != 0 %>
-          <s><%= number_to_currency(@product.old_price, unit: "грн")%></s>
-          <p class='text-danger discount-price-table'><%= number_to_currency(@product.price, unit: "₴")%></p>
+          <s><%= number_to_currency(@product.old_price, locale: :ru)%></s>
+          <p class='text-danger discount-price-table'><%= number_to_currency(@product.price, locale: :ru)%></p>
         <% else %>
-          <%= number_to_currency(@product.price, unit: "₴")%>
+          <%= number_to_currency(@product.price, locale: :ru)%>
         <% end %>
       </td>
     </tr>
     <% if current_user.try(:admin) %>
       <tr>
         <th>Цена закупки</th>
-        <td><%= number_to_currency(@product.purchase_price, unit: "₴") %></td>
+        <td><%= number_to_currency(@product.purchase_price, locale: :ru) %></td>
       </tr>
       <tr>
         <th>Наценка</th>
