@@ -86,7 +86,7 @@
               <%= product.product_code %>
             </p>
             <p><%= social_share_button_tag(product.title) %></p>
-            <%= button_to product_line_items_path(product.id), class: "btn btn-danger" do %>
+            <%= button_to product_line_items_path(product.id), class: "btn btn-danger", remote: true do %>
               <%= fa_icon 'cart-plus', text: 'В Корзину' %>
             <% end %>
           </div>
@@ -131,7 +131,7 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col-md-12">
-            <%= button_to product_line_items_path(product.id), class: "btn btn-danger pull-right" do %>
+            <%= button_to product_line_items_path(product.id), class: "btn btn-danger pull-right", remote: true  do %>
               <%= fa_icon 'cart-plus', text: 'В Корзину' %>
             <% end %>
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>

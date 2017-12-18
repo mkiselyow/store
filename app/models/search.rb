@@ -30,6 +30,7 @@ class Search < ApplicationRecord
     products = products.where(material_another: material_another) if material_another.present?
     products = products.where(material_iron: material_iron) if material_iron.present?
     products = products.where(material_fabric: material_fabric) if material_fabric.present?
+    products = products.where(material_mixed: mixed) if material_mixed.present?
     products
   end
 end

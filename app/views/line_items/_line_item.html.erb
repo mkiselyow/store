@@ -21,10 +21,10 @@
         </div>
       </div>
     </td>
-    <td data-th="Цена">
+    <td data-th="<%= t('cart.product') %>">
       <%= number_to_currency(line_item.product.price, unit: "₴") %>
     </td>
-    <td data-th="Количество">
+    <td data-th="<%= t('cart.price') %>">
       <div class="count-item">
         <p>
           <%= link_to line_item_increase_quantity_url(line_item), method: :put do %>

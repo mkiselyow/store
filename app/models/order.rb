@@ -18,7 +18,6 @@ class Order < ApplicationRecord
   validates :pay_type, inclusion: { in: PAYMENT_TYPES, message: 'Выберите тип оплаты' }, presence: { message: 'Укажите способ оплаты' }
   validates :city, presence: { message: 'Укажите населенный пункт доставки' }
   validates :post_office_number, presence: { message: 'Укажите номер отделения Новой Почты' }
-  # validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' }, format: { with: /(\A\+3([ -])?8([ -])?0[1-9]{2}([ -])?(\d([ -])?){7}\z)|(\A0([ -])?[1-9]{2}([ -])?(\d([ -])?){7}\z)/x, message: 'Введите номер телефона в формате +380971234567' }
   validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' }
   validates :first_name, presence: { message: 'Укажите Ваше Имя' }
   validates :last_name, presence: { message: 'Укажите Вашу Фамилию' }

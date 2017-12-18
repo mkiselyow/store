@@ -22,6 +22,7 @@ class CreateSearches < ActiveRecord::Migration[5.1]
       t.boolean :material_another
       t.boolean :material_wooden
       t.boolean :material_fabric
+      t.boolean :material_mixed
 
       t.timestamps
     end

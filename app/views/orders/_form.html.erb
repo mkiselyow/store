@@ -6,42 +6,42 @@
       <div class="row">
         <div class="field col-md-6 col-xs-6">
           <p>
-            <%= form.label :first_name, "Имя" %>
-            <%= form.text_field :first_name, id: :order_first_name,  class: 'form-control', placeholder: 'Введите имя', value: (current_user.first_name if current_user)  %>
+            <%= form.label :first_name, "#{ t('order.first_name') }" %>
+            <%= form.text_field :first_name, id: :order_first_name,  class: 'form-control', placeholder: "#{ t('order.first_name') }", value: (current_user.first_name if current_user)  %>
             <%= form.hidden_field :user_id, value: (current_user.id if current_user) %>
           </p>
         </div>
         <div class="field col-md-6 col-xs-6">
           <p>
-            <%= form.label :last_name, "Фамилия" %>
-            <%= form.text_field :last_name, id: :order_last_name,  class: 'form-control', placeholder: 'Введите фамилию', value: (current_user.last_name if current_user)  %>
+            <%= form.label :last_name, "#{ t('order.surname') }" %>
+            <%= form.text_field :last_name, id: :order_last_name,  class: 'form-control', placeholder: "#{ t('order.surname') }", value: (current_user.last_name if current_user)  %>
           </p>
         </div>
       </div>
       <div class="row">
         <div class="field col-md-6 col-xs-12">
           <p>
-            <%= form.label :number, "Контактный номер телефона" %>
-            <%= form.text_field :number, id: :order_number,  class: 'form-control', placeholder: 'Введите номер телефона', value: (current_user.number if current_user)  %>
+            <%= form.label :number, "#{ t('order.number_phone') }" %>
+            <%= form.text_field :number, id: :order_number,  class: 'form-control', placeholder: "#{ t('order.number_phone') }", value: (current_user.number if current_user)  %>
           </p>
         </div>
         <div class="field col-md-6 col-xs-12">
           <p>
-            <%= form.label :pay_type, "Способ оплаты" %>
-            <%= form.select :pay_type, options_for_select(Order::PAYMENT_TYPES), { prompt: '--Выберите способ оплаты--' },  class: 'form-control', required: true %>
+            <%= form.label :pay_type, "#{ t('order.way_payment') }" %>
+            <%= form.select :pay_type, options_for_select(Order::PAYMENT_TYPES), { prompt: "#{ t('order.select_a_way_payment') }" },  class: 'form-control', required: true %>
           </p>
         </div>    
       </div>
       <div class="row">
         <div class="field col-md-6">
           <p>
-            <%= form.label :city, "Областной центр" %>
-            <%= form.select 'city[area]', options_for_select(Order::AREAS), { prompt: '--Выберите областной центр--' },  class: 'form-control', required: true %>
+            <%= form.label :city, "#{ t('order.regional_center') }" %>
+            <%= form.select 'city[area]', options_for_select(Order::AREAS), { prompt: "#{ t('order.select_a_regional_center') }" },  class: 'form-control', required: true %>
           </p>
         </div>
         <div class="field col-md-6">
           <p>
-            <%= form.label :city, "Населенный пункт" %>
+            <%= form.label :city, "#{ t('order.town_name') }" %>
             <%= form.text_field 'city[city]', id: :order_city_city,  class: 'form-control' %>
           </p>
         </div>
@@ -49,13 +49,13 @@
       <div class="row">
         <div class="field col-md-6">
           <p>
-            <%= form.label :way_delivery, "Способ доставки" %>
-            <%= form.select :way_delivery, options_for_select(Order::DELIVERY_TYPES), { prompt: '--Выберите способ доставки--' },  class: 'form-control', required: true, id: 'select_delivery' %>
+            <%= form.label :way_delivery, "#{ t('order.way_delivery') }" %>
+            <%= form.select :way_delivery, options_for_select(Order::DELIVERY_TYPES), { prompt: "#{ t('order.select_a_way_delivery') }" },  class: 'form-control', required: true, id: 'select_delivery' %>
           </p>
         </div>
         <div class="field col-md-6 number_post_office">
           <p>
-            <%= form.label :post_office_number, "№ отделения" %>
+            <%= form.label :post_office_number, "#{ t('order.number_office') }" %>
             <%= form.number_field :post_office_number, id: :order_post_office_number, min: 0,  class: 'form-control' %>
           </p>
         </div>
@@ -63,7 +63,7 @@
       <div class="row">
         <div class="field col-md-12">
           <p>
-            <%= form.label :comment, "Комментарий" %>
+            <%= form.label :comment, "#{ t('order.comment') }" %>
             <%= form.trix_editor :comment, id: :order_comment %>
           </p>
         </div>
@@ -71,8 +71,8 @@
       <div class="row">
         <div class="col-md-12">
           <p>
-            <%= form.submit "Подтвердить заказ", class: 'btn btn-success pull-right' %>
-            <%= link_to 'Назад', orders_path, class: 'btn btn-primary pull-left' %>
+            <%= form.submit "#{ t('order.send_order') }", class: 'btn btn-success pull-right' %>
+            <%= link_to "#{ t('order.back_to_cart') }", cart_path(@cart), class: 'btn btn-primary pull-left' %>
           </p>
         </div>
       </div>

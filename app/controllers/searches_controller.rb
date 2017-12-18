@@ -21,6 +21,6 @@ class SearchesController < ApplicationController
                                     :color_white, :color_black, :color_red, :color_yellow,
                                     :color_green, :color_blue, :color_violet, :brand,
                                     :material_plastic, :material_iron, :material_another,
-                                    :material_wooden, :material_fabric, :sex_id)
+                                    :material_wooden, :material_fabric, :material_mixed, :sex_id)
   end
 end
