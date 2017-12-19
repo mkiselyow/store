@@ -107,7 +107,10 @@ gem 'elevatezoom-rails'
 gem "nested_form"
 gem 'nested_form_fields'
 
+gem 'record_tag_helper', '~> 1.0'
+
 gem 'ancestry'
+gem 'acts_as_list'
 
 # ukrainian regions
 gem 'ruuaby'

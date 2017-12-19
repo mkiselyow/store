@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   root to: "pages#main"
 
-  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+  scope ":locale", locale: /en|ru|ua/ do
 
     resources :line_items do
       put 'decrease_quantity'
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
       resources :useful_articles
       resources :products
       resources :categories do
-        resources :subcategories
+        collection { post :sort }
       end
       resources :shares
     end
