@@ -1,0 +1,68 @@
+<div class="modal fade order_view_<%= order.id %>" id="order_view_<%= order.id %>" tabindex="-1" role="dialog" aria-labelledby="order_view_<%= order.id  %>" aria-hidden="true"">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        <h2 class="modal-title">Заказ №<%= order.id %></h2>
+      </div>
+      <div class="modal-body container">
+        <div class="row">
+          <div class="col-md-9 col-xs-12">
+            <p><b>Имя: </b><%= order.full_name %></p>
+            <p><b>Номер телефона: </b><%= order.number %></p></p>
+            <p><b>Город: </b><%= order.city %></p>
+            <p><b>Способ доставки: </b><%= order.way_delivery %></p>
+            <p><b>Номер почтового отделения: </b><%= order.post_office_number %></p>
+            <p><b>Способ оплаты: </b><%= order.pay_type %></p>
+            <p>
+              <b>Комментарий: </b>
+              <p><%= raw order.comment %></p>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9 col-xs-12">
+            <table class="table-hover table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Наименование</th>
+                  <th>Код</th>
+                  <th>Категория</th>
+                  <th>Цена</th>
+                  <th>Кол-во</th>
+                  <th>Сумма</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% order.line_items.each_with_index do |line_item, i| %>
+                  <tr>
+                    <td><%= i+1 %></p>
+                    <td><%= line_item.product.full_name_product %></p>
+                    <td><%= line_item.product.product_code %></p>
+                    <td><%= line_item.product.category.name %></p>
+                    <td><%= line_item.price_discount %></p>
+                    <td><%= line_item.quantity %></p>
+                    <td><%= line_item.count_line_item_price %></p>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-6">
+            <h2>Сумма покупок: <%= number_to_currency(order.order_total_price, unit: "₴") %></h2>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

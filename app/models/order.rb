@@ -15,9 +15,6 @@ class Order < ApplicationRecord
   REGIONS.each { |region| Ruuaby.countries['Украина'][region].each_key { |key| AREAS << region + ' ' + key.to_s } }
   AREAS.compact.sort!
 
-  validates :pay_type, inclusion: { in: PAYMENT_TYPES, message: 'Выберите тип оплаты' }, presence: { message: 'Укажите способ оплаты' }
-  validates :city, presence: { message: 'Укажите населенный пункт доставки' }
-  validates :post_office_number, presence: { message: 'Укажите номер отделения Новой Почты' }
   validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' }
   validates :first_name, presence: { message: 'Укажите Ваше Имя' }
   validates :last_name, presence: { message: 'Укажите Вашу Фамилию' }

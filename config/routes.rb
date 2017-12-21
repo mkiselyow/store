@@ -49,7 +49,9 @@ Rails.application.routes.draw do
         put :banned_user, on: :member
         put :change_permission, on: :member
       end
-      resources :orders
+      resources :orders do
+        put :order_delivered, on: :member
+      end
       resources :useful_articles
       resources :products
       resources :categories do

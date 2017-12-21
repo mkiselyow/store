@@ -21,6 +21,14 @@
       <div class="row">
         <div class="field col-md-6 col-xs-12">
           <p>
+            <%= form.label :email, 'E-mail' %>
+            <%= form.text_field :email, id: :order_email,  class: 'form-control', placeholder: "email", value: (current_user.email if current_user)  %>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field col-md-6 col-xs-12">
+          <p>
             <%= form.label :number, "#{ t('order.number_phone') }" %>
             <%= form.text_field :number, id: :order_number,  class: 'form-control', placeholder: "#{ t('order.number_phone') }", value: (current_user.number if current_user)  %>
           </p>
@@ -36,7 +44,7 @@
         <div class="field col-md-6">
           <p>
             <%= form.label :city, "#{ t('order.regional_center') }" %>
-            <%= form.select 'city[area]', options_for_select(Order::AREAS), { prompt: "#{ t('order.select_a_regional_center') }" },  class: 'form-control', required: true %>
+            <%= form.select 'city[area]', options_for_select(Order::AREAS), { prompt: "#{ t('order.select_a_regional_center') }" },  class: 'form-control' %>
           </p>
         </div>
         <div class="field col-md-6">
@@ -50,7 +58,7 @@
         <div class="field col-md-6">
           <p>
             <%= form.label :way_delivery, "#{ t('order.way_delivery') }" %>
-            <%= form.select :way_delivery, options_for_select(Order::DELIVERY_TYPES), { prompt: "#{ t('order.select_a_way_delivery') }" },  class: 'form-control', required: true, id: 'select_delivery' %>
+            <%= form.select :way_delivery, options_for_select(Order::DELIVERY_TYPES), { prompt: "#{ t('order.select_a_way_delivery') }" },  class: 'form-control', id: 'select_delivery' %>
           </p>
         </div>
         <div class="field col-md-6 number_post_office">

@@ -7,4 +7,10 @@ class OrderNotifierMailer < ApplicationMailer
 
     mail to: 'mapapama.com.ua@gmail.com', subject: 'Получен заказ "Мапапама"'
   end
+
+  def user_order_recieved(order)
+    @order = order
+
+    mail(to: order.email, subject: 'Вы сделали заказ на mapapama.com')
+  end
 end

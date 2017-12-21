@@ -55,6 +55,10 @@ class Product < ApplicationRecord
     "#{ max_age } лет"
   end
 
+  def full_name_product
+    "#{title} - #{brand}"
+  end
+
   def self.latest
     Product.order(:updated_at).last
   end
