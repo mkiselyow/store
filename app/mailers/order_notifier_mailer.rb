@@ -1,5 +1,5 @@
 class OrderNotifierMailer < ApplicationMailer
-  default from: 'Мапапама <mapapama.com.ua@example.com>'
+  default from: 'Мапапама <mapapama.com.ua@gmail.com>'
   default to: 'mapapama.com.ua@gmail.com'
 
   def recieved(order)

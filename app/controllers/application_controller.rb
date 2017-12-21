@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :banned?
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :set_tags
 
   def banned?
     return unless current_user.present? && current_user.banned?
@@ -38,5 +39,19 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     { locale: I18n.locale }
+  end
+
+  def set_tags
+    set_meta_tags title: 'Мапапама - Подари ребёнку радость :)',
+                  description: 'Интернет магазин детских игрушек Мапапама',
+                  keywords: 'мапапама уа, мапапама купить украина, мапапама юа интернет магазин, 
+                         мапапама магазин, мапапама купить, Мапапама, Mapapama, 
+                         мапапама интернет магазин, мапапама игрушки, ьфзфзфьф,
+                        мапапама ком юа, vfgfgfvf rjv .f, mapapama.com.ua, мама папа,
+                        папа мама, мапапама.ком.юа, мамапапа ком юа, мама папа ком,
+                        mapapama.com, мапапама ком, мапапама.ком, mapapama.ua,
+                        мапапама юа,www.mapapama.com.ua, www.mapapama.com,
+                        www.mapapama.ua, Игрушки, Игрушки купить, Игрушки заказать,
+                        Детские игрушки, Детские игрушки купить'
   end
 end

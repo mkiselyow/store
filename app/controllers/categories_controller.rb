@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :count_products
 
   def show
-    @products = @category.products.paginate(page: params[:page], per_page: 18)
+    @products = @category.products
     @subcategory_product = @category.subtree
   end
 

@@ -83,6 +83,8 @@ gem 'omniauth-instagram'
 # paginate pages
 gem 'will_paginate-bootstrap'
 
+gem 'globalize', github: 'globalize/globalize'
+
 # images cloud-based service that provides an end-to-end image and video management solution
 gem 'carrierwave'
 gem 'cloudinary'
@@ -111,6 +113,8 @@ gem 'record_tag_helper', '~> 1.0'
 
 gem 'ancestry'
 gem 'acts_as_list'
+
+gem 'meta-tags'
 
 # ukrainian regions
 gem 'ruuaby'

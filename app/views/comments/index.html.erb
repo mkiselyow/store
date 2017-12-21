@@ -7,7 +7,7 @@
   <div class="row comment-success-alert">
     <div class="col-md-6">
       <div class="alert alert-success">
-        <strong>Поздравляем!</strong> ваш отзыв успешно добавлен!
+        <%= raw t('reviews.success_message') %>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
       <%= render 'form' %>
     <% else %>
       <div class="col-md-6 alert alert-warning">
-        <p>Для того, чтобы оставить отзыв необходимо <%= link_to 'войти в систему', new_user_session_path %></p>
+        <p><%= t('reviews.warning_message') %> <%= link_to t('reviews.log_in'), new_user_session_path %></p>
       </div>
     <% end %>
   </div>

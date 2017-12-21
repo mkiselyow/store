@@ -1,6 +1,6 @@
 <div class="col-md-6 col-xs 12">
   <%= form_for @comment, remote: true do |f| %>
-    <%= f.label "Ваш коментарий" %>
+    <%= f.label t('reviews.your_comment') %>
     <br>
     <%= f.trix_editor :body, class: 'comment-form' %>
     <br>
@@ -10,10 +10,10 @@
     <%= fa_icon 'star', class: 'star_id_4 fa-2x' %>
     <%= fa_icon 'star', class: 'star_id_5 fa-2x' %>
     <p>
-    <%= f.label "Ваша оценка (от 1 до 5-ти)" %>
+    <%= f.label t('reviews.your_mark') %>
     <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]), {}, class: 'form-control', id: 'select_rating' %>
     <br>
-    <%= f.submit 'Добавить отзыв', class: 'btn btn-success', id: 'btnSubmit' %>
+    <%= f.submit t('reviews.add_a_review'), class: 'btn btn-success', id: 'btnSubmit' %>
     <br>
   <% end %>
 </div>
