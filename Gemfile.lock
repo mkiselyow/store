@@ -651,6 +651,8 @@ GEM
     elevatezoom-rails (1.0.0)
     erubi (1.7.0)
     execjs (2.7.0)
+    fancybox-rails (0.3.1)
+      railties (>= 3.1.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
@@ -894,6 +896,7 @@ DEPENDENCIES
   devise
   elevatezoom-rails
   faker!
+  fancybox-rails
   figaro
   font-awesome-rails
   globalize!

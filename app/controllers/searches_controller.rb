@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  before_action :search_resources, only: [:show, :update]
+
   def new
     @search = Search.new
   end
@@ -9,11 +11,19 @@ class SearchesController < ApplicationController
   end
 
   def show
-    @search = Search.find(params[:id])
     @products = @search.products.order("#{ params[:sort] } #{ params[:order_type] }")
   end
 
+  def update
+    @search.update(product_params)
+    redirect_back(fallback_location: search_path(@search))
+  end
+
   private
+
+  def search_resources
+    @search = Search.find(params[:id])
+  end
 
   def product_params
     params.require(:search).permit(:title, :price, :product_code, :min_price, :max_price,

@@ -92,18 +92,16 @@
           </div>
         </div>
         <div class="row">
-          <%= render 'modal_image', product: product %>
           <div class="col-md-12 col-xs-12" id="slider-thumbs">
             <ul class="hide-bullets">
               <li class="col-md-2 col-sm-3 col-xs-6">
-                <a data-toggle="modal" href="#image_<%= product.id %>" class="thumbnail product_image_add">
+                <a data-fancybox="gallery_<%= product.id %>" href="<%= product.image_url(:large) %>">
                   <%= image_tag(product.image_url(:medium), width: '150px', height: '150px') %>
                 </a>
               </li>
               <% product.image_products.each do |im_prod| %>
-                <%= render 'modal_add_image', im_prod: im_prod, product: product %>
                 <li class="col-md-2 col-sm-3 col-xs-6">
-                  <a class="thumbnail product_image_add" data-toggle="modal" href="#image_add_<%= im_prod.id %>" class="thumbnail">
+                  <a data-fancybox="gallery_<%= product.id %>" href="<%= im_prod.image_url(:large) %>">
                     <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
                   </a>
                 </li>
