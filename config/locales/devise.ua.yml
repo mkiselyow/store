@@ -12,6 +12,7 @@ ua:
     sign_up: 'Регістрація'
     ua: 'Укранська'
     ru: 'Російська'
+    en: 'Англійська'
     search: 'Знайти'
     search_placeholder: 'Введіть назву або код товару'
   header_menu:

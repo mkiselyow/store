@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  after_action do
+    Category::CATEGORIES_SELECT = Category::get_collection_of_categories_ids
+  end
+
   def main
     @products_count = Product.count
     @rows_count = (@products_count/4)
