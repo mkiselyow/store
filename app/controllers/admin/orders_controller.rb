@@ -7,12 +7,10 @@ class Admin::OrdersController < AdminsController
 
   def destroy
     @order.destroy!
-    redirect_back(fallback_location: admin_root_path, notice: 'Заказ удалён')
   end
 
   def order_delivered
     @order.update(delivered: !@order.delivered)
-    redirect_back(fallback_location: admin_orders_path, notice: 'Статус заказа был успешно изменён')
   end
 
   private

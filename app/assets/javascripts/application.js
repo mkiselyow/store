@@ -21,6 +21,6 @@ jQuery(document).ready(function($){
   });
   $('.comment_rating').raty();
   $(function(){
-    $('.pagination a').attr('data-remote', 'true')
+    $('.pagination a').attr('data-remote', 'false')
   });
 });

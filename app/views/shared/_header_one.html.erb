@@ -1,17 +1,20 @@
-<div class="col-lg-6 col-md-6 col-xs-12 top_container_left">
+<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 top_container_left">
   <div class="row">
-    <div class="col-md-5 col-lg-5 col-xs-9 mapapama_logo">
+    <div class="col-md-5 col-lg-5 col-xs-9 col-sm-5 mapapama_logo">
       <%= link_to root_path do %>
         <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
       <% end %>
     </div>
-    <div class="col-md-2 col-lg-2 col-xs-3 mapapama_logo">
+    <div class="col-md-2 col-lg-2 col-xs-3 col-sm-2 mapapama_logo">
       <%= link_to root_path do %>
         <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
       <% end %>
     </div>
-    <div class="col-md-5 col-lg-5 col-xs-12 leuze">
-      <%= raw t "leuze" %><%= fa_icon 'check', class: 'fa-x2 check-green' %>
+    <div class="col-md-5 col-lg-5 col-xs-12 col-sm-5 leuze">
+      <%= raw t "leuze" %>
+      <% 3.times do %>
+        <%= fa_icon 'check', class: 'fa-x2 check-green' %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -70,9 +73,9 @@
     <div class="col-xs-12 col-md-12 col-lg-12">
       <%= form_tag(products_path, method: :get) do %>
         <span class="input-group">
-          <%= text_field_tag :title, nil, placeholder: t("header_one.search_placeholder"), required: true, class: 'form-control search-input' %>
+          <%= text_field_tag :query, nil, placeholder: t("header_one.search_placeholder"), required: true, class: 'form-control search-input' %>
           <span class="input-group-btn">
-            <%= submit_tag t("header_one.search"), title: nil, class: "btn btn-default"  %>
+            <%= submit_tag t("header_one.search"), query: nil, class: "btn btn-default"  %>
           </span>
         </span>
       <% end %>

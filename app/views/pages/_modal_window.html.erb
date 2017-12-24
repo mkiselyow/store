@@ -1,4 +1,4 @@
-<div class="modal fade product_view_<%= product.id  %>" id="product_view_<%= product.id  %>">
+<div class="modal fade product_view_<%= product.id  %>" id="product_view_<%= product.id  %>" tabindex="-1" role="dialog" aria-labelledby="product_view_<%= product.id  %>" aria-hidden="true"">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,69 +7,71 @@
           <%= product.title %>
         </h2>
       </div>
-      <div class="modal-body">
+      <div class="modal-body container">
         <div class="row">
-          <div class="col-md-3">
-            <p>
-              <b>Категория:</b>
-              <%= product.category.name %>
-            </p>
-            <p>
-              <strong>Пол:</strong>
-              <% if product.boys %>
-                <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
-              <% end %>
-              <% if product.girls %>
-                <%= fa_icon 'venus', class: 'fa-2x sex-girls', alt: 'Девочки', title: "Для девочек" %>
-              <% end %>
-            </p>
-            <p>
-              <strong>Бренд:</strong>
-              <%= product.brand %>
-            </p>
-            <p>
-              <strong>Страна:</strong>
-              <%= product.country %>
-            </p>
-            <p>
-              <% if current_user.try(:admin) %>
-                <%= link_to 'Редактировать', edit_product_path(product) %>
-              <% end %>
-            </p>
-          </div>
-          <div class="col-md-6" id="slider">
-            <div class="col-sm-12" id="carousel-bounding-box">
-              <div class="carousel-inner">
-                <div class="active item" data-slide-number="0">
-                  <% if product.image.present? %>
-                    <img id="main_avatar" src="<%= product.image_url(:large) %>" data-zoom-image="<%= product.image_url(:large) %>", class='img-thumbnail profile-avatar'/>
-                  <% else %>
-                    <%= image_tag( product.image_url(:large), width: '470px', height: '480px') %>
-                  <% end %>
-                </div>
-                <% product.image_products.each_with_index do |im_prod, i| %>
-                  <div class="item" data-slide-number="<%= (product.id ) %>"">
-                    <img id="image_<%= im_prod.id %>" src="<%= im_prod.image.url(:large) %>" data-zoom-image="<%= im_prod.image.url(:large) %>", class='img-thumbnail profile-avatar', width='470px', height='480px'/>
-                  </div>
+          <div class="col-md-3 col-xs-12">
+            <div class="well">
+              <p>
+                <b>Категория:</b>
+                <%= product.category.name %>
+              </p>
+              <p>
+                <strong>Пол:</strong>
+                <%= product.sex.name if product.sex %>
+                <% if product.boys %>
+                  <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
                 <% end %>
-              </div>
+                <% if product.girls %>
+                  <%= fa_icon 'venus', class: 'fa-2x sex-girls', alt: 'Девочки', title: "Для девочек" %>
+                <% end %>
+              </p>
+              <p>
+                <strong>Минимальный возраст:</strong>
+                <%= product.minimum_age %>
+              </p>
+              <p>
+                <strong>Максимальный возраст:</strong>
+                <%= product.maximum_age %>
+              </p>
+                <strong>Бренд:</strong>
+                <%= product.brand %>
+              </p>
+              <p>
+                <strong>Страна:</strong>
+                <%= product.country %>
+              </p>
+              <p>
+                <% if current_user.try(:admin) %>
+                  <%= link_to 'Редактировать', edit_product_path(product) %>
+                <% end %>
+              </p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6 col-xs-12" id="slider">
+            <div class="col-md-12 col-xs-12" id="image-bounding">
+              <center>
+                <div class="product_image_modal">
+                  <%= image_tag(product.image_url(:large), class: 'image_preview_modal') %>
+                </div>
+              </center>
+            </div>
+          </div>
+          <div class="col-md-3 well col-xs-12">
             <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
             <h2>
               <% if product.discount != 0 %>
-                <s><%= number_to_currency(product.price, unit: "₴")%></s>
-                <p class='label label-success'><%= number_to_currency(product.discount_price, unit: "₴")%></p> 
+                <s><%= number_to_currency(product.old_price, locale: :ru)%></s>
+                <div class="text-danger discount-price" title="<%= product.discount %>%">
+                <%= number_to_currency(product.price, locale: :ru) %>
+                </div>
               <% else %>
-                <%= number_to_currency(product.price, unit: "₴")%>
+                <%= number_to_currency(product.price, locale: :ru)%>
               <% end %>
             </h2>
             <% if product.discount %>
               <% if product.discount != 0 %>
                 <p>
                   <span class="uk-badge uk-badge-notification uk-badge-danger">
-                    <strong>Скидка</strong>
                     <%= number_to_percentage(product.discount, precision: 0) %>
                   </span>
                 </p>
@@ -84,24 +86,22 @@
               <%= product.product_code %>
             </p>
             <p><%= social_share_button_tag(product.title) %></p>
-            <%= button_to product_line_items_path(product.id), class: "btn btn-danger" do %>
+            <%= button_to product_line_items_path(product.id), class: "btn btn-danger", remote: true do %>
               <%= fa_icon 'cart-plus', text: 'В Корзину' %>
             <% end %>
           </div>
         </div>
         <div class="row">
-          <%= render 'modal_image', product: product %>
           <div class="col-md-12 col-xs-12" id="slider-thumbs">
             <ul class="hide-bullets">
               <li class="col-md-2 col-sm-3 col-xs-6">
-                <a data-toggle="modal" href="#image_<%= product.id %>" class="thumbnail">
+                <a data-fancybox="gallery_<%= product.id %>" href="<%= product.image_url(:large) %>">
                   <%= image_tag(product.image_url(:medium), width: '150px', height: '150px') %>
                 </a>
               </li>
               <% product.image_products.each do |im_prod| %>
-                <%= render 'modal_add_image', im_prod: im_prod, product: product %>
                 <li class="col-md-2 col-sm-3 col-xs-6">
-                  <a class="thumbnail" data-toggle="modal" href="#image_add_<%= im_prod.id %>" class="thumbnail">
+                  <a data-fancybox="gallery_<%= product.id %>" href="<%= im_prod.image_url(:large) %>">
                     <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
                   </a>
                 </li>
@@ -109,16 +109,10 @@
             </ul>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <br>
-            <button id="info-product_<%= product.id  %>" class='btn btn-primary btn-block'>Больше информации</button>
-          </div>
-        </div>
-        <div class="row info-about-product_<%= product.id  %> info-about-product">
+        <div class="row info-about-product_<%= product.id  %>">
           <br>
           <div class="col-md-6">
-            <%= render 'table_characters', product: product %>
+            <%= render 'table_products', product: product %>
           </div>
           <div class="col-md-6">
             <h2>Описание</h2>
@@ -129,7 +123,10 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col-md-12">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            <%= button_to product_line_items_path(product.id), class: "btn btn-danger pull-right", remote: true  do %>
+              <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+            <% end %>
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
           </div>
         </div>
       </div>
@@ -137,6 +134,25 @@
   </div>
 </div>
 <script>
+  $(document).ready(function(){
+     $(window.location.hash).modal('show');
+     $('a[data-toggle="modal"]').click(function(){
+        window.location.hash = $(this).attr('href');
+     });
+  });
+  $(window.location.hash).modal('show');
+  $('a[data-toggle="modal"]').click(function(){
+      window.location.hash = $(this).attr('href');
+  });
+
+  function revertToOriginalURL() {
+      var original = window.location.href.substr(0, window.location.href.indexOf('#'))
+      history.replaceState({}, document.title, original);
+  }
+
+  $('.modal').on('hidden.bs.modal', function () {
+      revertToOriginalURL();
+  });
   $(document).ready(function(){
     $("#info-product_<%= product.id  %>").click(function(){
       $(".info-about-product_<%= product.id  %>").toggle();

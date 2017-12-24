@@ -11,7 +11,7 @@ class SendMessagesController < ApplicationController
       SendMessageMailer.answer_to_user(@send_message).deliver
       redirect_to root_path, notice: t('contact_form.send_success')
     else
-      redirect_back(fallback_location: root_path, error: t('contact_form.send_error'))
+      redirect_back(fallback_location: root_path, notice: t('contact_form.send_error'))
     end
   end
 

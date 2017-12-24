@@ -5,5 +5,5 @@ class SendMessage
 
   attr_accessor :name, :email, :content
 
-  validates :content, presence: true
+  validates :name, :email, :content, presence: true
 end

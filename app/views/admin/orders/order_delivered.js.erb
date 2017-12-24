@@ -1,0 +1,4 @@
+$('#order_<%= @order.id %>').toggleClass('bg-success');
+$("#delivered_<%= @order.id %>").text(function(i, text){
+  return text === "Подтвердить успешный заказ" ? "Отменить подтверждение заказа": "Подтвердить успешный заказ";
+})
