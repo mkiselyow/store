@@ -4,4 +4,6 @@ class SendMessage
   include ActiveModel::Validations
 
   attr_accessor :name, :email, :content
+
+  validates :content, presence: true
 end
