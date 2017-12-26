@@ -47,12 +47,8 @@ class Product < ApplicationRecord
     end
   end
 
-  def minimum_age
-    "#{ min_age } лет"
-  end
-
-  def maximum_age
-    "#{ max_age } лет"
+  def from_min_and_max
+    "от #{ min_age } до #{ max_age } лет"
   end
 
   def full_name_product

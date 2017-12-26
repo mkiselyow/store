@@ -1,0 +1,106 @@
+<div class='well'>
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-xs-10">
+        <h2>
+          <%= @product.title %>
+          <% if current_user.try(:admin) %>
+            <%= link_to edit_product_path(@product) do %>
+              <%= fa_icon 'pencil' %>
+            <% end %>
+          <% end %>
+        </h2>
+      </div>
+      <div class="col-xs-2">
+        <%= link_to products_path, class: 'btn btn-primary' do %>
+          <%= fa_icon 'share' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row equal">
+      <div class="col-md-5 image col-xs-12">
+        <center>
+          <div id="carousel-bounding-box">
+            <div class="carousel slide carousel-product" id="myCarousel">
+              <div class="carousel-inner carousel-inner-product-show">    
+                <div class="active item">
+                  <%= image_tag( @product.image_url(:medium), crop: "scale", class: 'main-image-mobile') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </center>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-7">
+        <h2>
+          <% if @product.discount != 0 %>
+            <s><%= number_to_currency(@product.old_price, locale: :ru) %></s>
+            <p class='text-danger discount-price' title="Скидка <%= @product.discount %>%"><%= number_to_currency(@product.price, locale: :ru) %></p>
+          <% else %>
+            <%= number_to_currency(@product.price, locale: :ru) %>
+          <% end %>
+        </h2>
+        <p>
+          <strong>Осталось:</strong>
+          <%= @product.quantity %>
+        </p>
+      </div>
+      <div class="col-xs-5">
+        <% if @product.created_at > 7.days.ago %>
+          <span class="uk-badge uk-badge-success">НОВИНКА!</span>
+        <% end %>
+        <p>
+          <strong>Код:</strong>
+          <%= @product.product_code %>
+        </p>
+        <p>
+          <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger", remote: true  do %>
+            <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
+          <% end %>          
+        </p>
+        <p><%= social_share_button_tag(@product.title) %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" id="slider-thumbs">
+        <ul class="hide-bullets">
+          <li class="col-xs-6 add_image_mobile">
+            <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= @product.image_url(:large) %>">
+              <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
+            </a>
+          </li>
+          <% @product.image_products.each do |im_prod| %>
+            <li class="col-xs-6">
+              <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= im_prod.image_url(:large) %>">
+                <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button id="info-product-mobile" class='btn btn-block btn-info'>Больше информации</button>
+        <br>
+      </div>
+    </div>
+    <div class="row col-md-12 info-about-product-mobile">
+      <div class="col-md-6">
+        <%= render 'table_characters_mobile' %>
+      </div>
+      <div class="col-md-6">
+        <h2>Описание</h2>
+        <%= raw @product.description %>
+        <br>
+        <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
+          <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+        <% end %>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@
     </div>
   </div>
 </div>
-<div class="col-lg-2 col-md-2 col-xs-9 top_container_center">
+<div class="col-lg-2 col-md-2 col-xs-12 top_container_center">
   <div class="row">
     <div class="phone-numbers">
       <div class="row">
@@ -37,7 +37,7 @@
 <div class="col-lg-4 col-md-4 col-xs-12 top_container_right">
   <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-      <div class="col-md-8 col-xs-7">
+      <div class="col-md-8 col-xs-8">
         <% if user_signed_in? %>
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.full_name %> <%= image_tag current_user.avatar_url(:small),   class: 'img-circle header-avatar' %>
@@ -57,7 +57,7 @@
           <%= link_to t("header_one.log_in"), new_user_session_path %>
         <% end %>
       </div>
-      <div class="col-md-4 col-xs-5">
+      <div class="col-md-4 col-xs-4">
         <div class="btn-group">
           <%= link_to cart_path(@cart.id), class: "btn btn-success" do %>
             <%= fa_icon 'shopping-basket' %>

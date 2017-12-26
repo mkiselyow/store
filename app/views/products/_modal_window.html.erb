@@ -7,9 +7,9 @@
           <%= product.title %>
         </h2>
       </div>
-      <div class="modal-body container">
+      <div class="modal-body">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="well">
               <p>
                 <b>Категория:</b>
@@ -26,12 +26,8 @@
                 <% end %>
               </p>
               <p>
-                <strong>Минимальный возраст:</strong>
-                <%= product.minimum_age %>
-              </p>
-              <p>
-                <strong>Максимальный возраст:</strong>
-                <%= product.maximum_age %>
+                <strong>Возраст:</strong>
+                <%= product.from_min_and_max %>
               </p>
                 <strong>Бренд:</strong>
                 <%= product.brand %>
@@ -47,16 +43,17 @@
               </p>
             </div>
           </div>
-          <div class="col-md-6" id="slider">
-            <div class="col-md-12" id="image-bounding">
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div id="image-bounding">
               <center>
                 <div class="product_image_modal">
-                  <%= image_tag(product.image_url(:large), class: 'image_preview_modal') %>
+                  <%= image_tag(product.image_url(:large)) %>
                 </div>
               </center>
             </div>
           </div>
-          <div class="col-md-3 well">
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="well">
             <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
             <h2>
               <% if product.discount != 0 %>
@@ -90,9 +87,10 @@
               <%= fa_icon 'cart-plus', text: 'В Корзину' %>
             <% end %>
           </div>
+          </div>
         </div>
         <div class="row">
-          <div class="col-md-12 col-xs-12" id="slider-thumbs">
+          <div class="col-md-12 col-xs-12 col-sm-12 col-xs-12" id="slider-thumbs">
             <ul class="hide-bullets">
               <li class="col-md-2 col-sm-3 col-xs-6">
                 <a data-fancybox="gallery_<%= product.id %>" href="<%= product.image_url(:large) %>">
@@ -110,24 +108,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <br>
             <button id="info-product_<%= product.id  %>" class='btn btn-primary btn-block'>Больше информации</button>
-            <script>
-              $(document).ready(function(){
-                $("#info-product_<%= product.id  %>").click(function(){
-                  $(".info-about-product_<%= product.id  %>").toggle();
-                });
-              });
-            </script>
           </div>
         </div>
         <div class="row info-about-product_<%= product.id  %> info-about-product">
           <br>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
             <%= render 'table_products', product: product %>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12 col-xs-12">
             <h2>Описание</h2>
             <%= raw product.description %>
           </div>
@@ -135,7 +126,7 @@
       </div>
       <div class="modal-footer">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <%= button_to product_line_items_path(product.id), class: "btn btn-danger pull-right", remote: true  do %>
               <%= fa_icon 'cart-plus', text: 'В Корзину' %>
             <% end %>
@@ -148,22 +139,8 @@
 </div>
 <script>
   $(document).ready(function(){
-     $(window.location.hash).modal('show');
-     $('a[data-toggle="modal"]').click(function(){
-        window.location.hash = $(this).attr('href');
-     });
-  });
-  $(window.location.hash).modal('show');
-  $('a[data-toggle="modal"]').click(function(){
-      window.location.hash = $(this).attr('href');
-  });
-
-  function revertToOriginalURL() {
-      var original = window.location.href.substr(0, window.location.href.indexOf('#'))
-      history.replaceState({}, document.title, original);
-  }
-
-  $('.modal').on('hidden.bs.modal', function () {
-      revertToOriginalURL();
+    $("#info-product_<%= product.id  %>").click(function(){
+      $(".info-about-product_<%= product.id  %>").toggle();
+    });
   });
 </script>
