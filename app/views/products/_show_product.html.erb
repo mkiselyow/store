@@ -1,8 +1,20 @@
 <div class='container'>
-  <div class="goods">
+  <div class="well">
     <div class="row">
-      <div class="col-md-12">
-        <h1><%= @product.title %></h1>
+      <div class="col-md-11">
+        <h2>
+          <%= @product.title %>
+          <% if current_user.try(:admin) %>
+            <%= link_to edit_product_path(@product) do %>
+              <%= fa_icon 'pencil' %>
+            <% end %>
+          <% end %>
+        </h2>
+      </div>
+      <div class="col-md-1">
+        <a onclick="javascript:history.back(); return false;">
+          <span class="glyphicon glyphicon-remove">
+        </a>
       </div>
     </div>
     <div class="row equal">
@@ -34,10 +46,6 @@
             <strong>Возраст:</strong>
             <%= @product.from_min_and_max %>
           </p>
-          <% if current_user.try(:admin) %>
-            <%= link_to 'Редактировать', edit_product_path(@product) %> |
-          <% end %>
-          <%= link_to 'Назад к списку товаров', products_path %>
         </div>
       </div>
       <div class="col-md-5 image col-xs-12">
@@ -116,11 +124,11 @@
     <div class="col-md-6">
       <h2>Описание</h2>
       <%= raw @product.description %>
-      <br>
-      <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
-        <%= fa_icon 'cart-plus', text: 'В Корзину' %>
-      <% end %>
-      <br>
+      <p>
+        <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
+          <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+        <% end %>
+      </p>
     </div>
   </div>
 </div>
