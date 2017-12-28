@@ -1,10 +1,9 @@
 <div class="row">
   <% @products.each do |product| %>
-    <div class="col-sm-3 col-xs-3 product_view_class product_view_class_all">
+    <div class="col-sm-3 product_view_class product_view_class_all">
       <%= render  partial: "products/product", locals: { product: product } %>
       <%= button_to 'В Корзину', product_line_items_path(product.id), :class => "buttom_add_to_cart", remote: true  %>
     </div>
-    <%= render 'modal_window', product: product %>
   <% end %>
 </div>
 <div class="row">

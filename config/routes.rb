@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   root to: "pages#main"
@@ -51,6 +53,7 @@ Rails.application.routes.draw do
       put :change_permission, on: :member
     end
     resources :orders do
+      get :all_orders_delivered, on: :collection
       put :order_delivered, on: :member
     end
     resources :useful_articles

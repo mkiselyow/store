@@ -85,6 +85,9 @@ gem 'omniauth-instagram'
 gem 'will_paginate-bootstrap'
 
 gem 'globalize', github: 'globalize/globalize'
+gem 'redis'
+gem 'sidekiq'
+gem 'i18n-active_record'
 
 # images cloud-based service that provides an end-to-end image and video management solution
 gem 'carrierwave'

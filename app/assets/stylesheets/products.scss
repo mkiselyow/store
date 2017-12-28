@@ -362,3 +362,8 @@ aside.sticky {
 .add_image_mobile{
   // margin: 5px;
 }
+@media (max-width: 767px) and (min-width: 1px){
+  body article, body .mobile {
+    width: 100%;
+  }
+}

@@ -13,6 +13,11 @@ class Admin::OrdersController < AdminsController
     @order.update(delivered: !@order.delivered)
   end
 
+  def all_orders_delivered
+    Order.all.update_all(delivered: true)
+    redirect_back(fallback_location: admin_orders_path)
+  end
+
   private
 
   def order_resourses

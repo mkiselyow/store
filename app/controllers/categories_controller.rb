@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
   def show
     @products = @category.products
     @subcategory_product = @category.subtree
+    # binding.pry
+    # @products = @category.subtree.each do |category|
+    #   category.products
+    # end
   end
 
   def index
