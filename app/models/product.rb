@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_many :orders, through: :line_items
   has_many :image_products, dependent: :destroy
+  has_many :user_views, dependent: :destroy
   belongs_to :category
   belongs_to :sex
 

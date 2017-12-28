@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :add_times_viewed, only: [:show]
+  before_action :product_views_inc, only: [:show]
   before_action :only_admin_access, only: [:new, :create, :update, :destroy, :edit]
   before_action :search_form, only: [:index, :only_with_discount]
 
@@ -89,6 +90,17 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def product_views_inc
+    if user_signed_in?
+      @userview = UserView.where(product_id: @product.id).where(user_id: current_user.id)
+      unless @userview.present?
+        @product.user_views.create(user_id: current_user.id)
+      else
+        @userview.update(updated_at: Time.now)
+      end
+    end
+  end
 
   def set_product
     @product = Product.find(params[:id])

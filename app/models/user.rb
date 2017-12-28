@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :comment_posts, dependent: :destroy
   has_many :userful_articles, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :user_views, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
   # omniauth
