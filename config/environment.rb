@@ -15,8 +15,8 @@ Store::Application.configure do
       port:                 587,
       domain:               "max-X751SJ",#"domain.of.sender.net",
       authentication:       "plain",
-      user_name:            "mapapama.com.ua@gmail.com",
-      password:             "16121991nld",
+      user_name:            ENV["email_admin"],
+      password:             ENV["password_admin"],
       enable_starttls_auto: true 
   }
 end
