@@ -1,1 +1,3 @@
 $("#comment_<%= @comment.id %>").remove();
+$('.comment-alert').show();
+$('.alert').addClass('alert-danger').append("<%= raw t('reviews.remove_message') %>");

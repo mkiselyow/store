@@ -4,10 +4,9 @@
   <div class="all_comments">
     <%= render @comments %>
   </div>
-  <div class="row comment-success-alert">
+  <div class="row comment-alert">
     <div class="col-md-6">
-      <div class="alert alert-success">
-        <%= raw t('reviews.success_message') %>
+      <div class="alert">
       </div>
     </div>
   </div>
@@ -21,10 +20,3 @@
     <% end %>
   </div>
 </div>
-<script>
-  $(function() {
-    setTimeout(function(){ 
-      $('.comment-success-alert').hide('fade');
-    }, 5000);
-  });
-</script>

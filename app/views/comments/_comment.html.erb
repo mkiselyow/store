@@ -8,7 +8,7 @@
     <% end %>
     <% if current_user.try(:admin) %>
       <p>
-        <%= link_to 'Удалить коммент', comment_path(comment), method: :delete, remote: true, data: { confirm: 'Вы действительно желаете удалить этот отзыв?' } %>
+        <%= link_to t('reviews.remove_a_review'), comment_path(comment), method: :delete, remote: true, data: { confirm: t('reviews.remove_confirm') } %>
       </p>
     <% end %>
   </div>

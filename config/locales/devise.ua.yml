@@ -29,11 +29,13 @@ ua:
   reviews:
     warning_message: 'Для того щоб залишити відгук, необхідно'
     log_in: 'увійти до системи'
-    success_message: "<strong>Вітаємо!</strong> ваш відгук був успішно опублікований"
+    success_message: "<b>Вітаємо!</b> ваш відгук був успішно опублікований"
     your_comment: 'Ваш відгук'
     your_mark: 'Ваша оцінка (від 1-го до 5-ти)'
     add_a_review: 'Додати відгук'
     remove_a_review: 'Видалити відгук'
+    remove_confirm: 'Ви дійсно бажаєте видалити відгук?'
+    remove_message: 'Ваш відгук був успішно видалений'
   sidebar_filter:
     add_product: 'Додати товар'
     show_all_discount: 'Показати усі акційні товари'
@@ -80,6 +82,17 @@ ua:
       first_new: 'Спочатку нові'
       first_old: 'Спочатку давні'
       first_with_offer: 'Спочатку зі знижками'
+  # profile:
+  #   email: ''
+  #   number_phone: ''
+  #   role: ''
+  #   admin: ''
+  #   user: ''
+  #   you_watched: ''
+  #   your_orders: ''
+  #     number: ''
+  #     total_sum: ''
+  #     status: ''
   number:
     currency:
        format:

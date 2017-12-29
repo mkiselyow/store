@@ -29,11 +29,13 @@ ru:
   reviews:
     warning_message: 'Для того, чтобы оставить отзыв необходимо'
     log_in: 'войти в систему'
-    success_message: "<strong>Поздравляем!</strong> ваш отзыв успешно опубликован!"
+    success_message: "<b>Поздравляем!</b> ваш отзыв успешно опубликован!"
     your_comment: 'Ваш отзыв'
     your_mark: 'Ваша оценка (от 1-го до 5-ти)'
     add_a_review: 'Добавить отзыв'
     remove_a_review: 'Удалить отзыв'
+    remove_confirm: 'Вы действительно желаете удалить отзыв?'
+    remove_message: 'Ваш отзыв был успешно удалён'
   sidebar_filter:
     add_product: 'Добавить товар'
     show_all_discount: 'Показать все акционные товары'
@@ -80,6 +82,17 @@ ru:
       first_new: 'Сначала новые'
       first_old: 'Сначала давние'
       first_with_offer: 'Сначала по акции'
+  # profile:
+  #   email: ''
+  #   number_phone: ''
+  #   role: ''
+  #   admin: ''
+  #   user: ''
+  #   you_watched: ''
+  #   your_orders: ''
+  #     number: ''
+  #     total_sum: ''
+  #     status: ''
   number:
     currency:
        format:

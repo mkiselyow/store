@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user_views = @user.user_views.last_six_views
+    @user_olders = @user.orders.order('created_at DESC').limit(5)
+  end
+
   def create
     @user = User.new(user_params)
 

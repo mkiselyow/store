@@ -1,13 +1,11 @@
 class User < ApplicationRecord
   validates :number, uniqueness: { message: 'Такой номер уже зарегестрирован' }
   validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' }, format: { with: /(\A\+3([ -])?8([ -])?0[1-9]{2}([ -])?(\d([ -])?){7}\z)|(\A0([ -])?[1-9]{2}([ -])?(\d([ -])?){7}\z)/x, message: 'Введите номер телефона в формате +380971234567' }
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: %i[vkontakte facebook instagram]
 
-  # avatar
   has_many :comments, dependent: :destroy
   has_many :comment_posts, dependent: :destroy
   has_many :userful_articles, dependent: :destroy

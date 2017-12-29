@@ -29,11 +29,13 @@ en:
   reviews:
     warning_message: 'In order to leave review, is necessary'
     log_in: 'log in'
-    success_message: "<strong>Congratulations!</strong> your review was published!"
+    success_message: "<b>Congratulations!</b> your review was published!"
     your_comment: 'Your review'
     your_mark: 'Your rating(from 1 to 5)'
     add_a_review: 'Add a review'
     remove_a_review: 'Remove a review'
+    remove_confirm: 'Will you really want to delete this review?'
+    remove_message: 'Your review had been deleted succesufall'
   sidebar_filter:
     add_product: 'Add a product'
     show_all_discount: 'Show all products with discount'
@@ -80,6 +82,17 @@ en:
       first_new: 'First new'
       first_old: 'First old'
       first_with_offer: 'First with discount'
+  # profile:
+  #   email: ''
+  #   number_phone: ''
+  #   role: ''
+  #   admin: ''
+  #   user: ''
+  #   you_watched: ''
+  #   your_orders: ''
+  #     number: ''
+  #     total_sum: ''
+  #     status: ''
   number:
     currency:
        format:

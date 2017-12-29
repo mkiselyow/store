@@ -8,7 +8,8 @@ class AdminsController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[email first_name last_name email number admin avatar username banned])
+    keys = %i[email first_name last_name email number admin avatar username banned]
+    devise_parameter_sanitizer.permit(:account_update, keys: keys)
   end
 
   private

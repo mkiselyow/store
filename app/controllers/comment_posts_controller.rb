@@ -6,12 +6,12 @@ class CommentPostsController < ApplicationController
     @comment_post = @useful_article.comment_posts.create(comment_params)
     @comment_post.user_id = current_user.id
     @comment_post.save
-    redirect_to useful_article_path(@useful_article), notice: 'Комментарий был опубликован'
+    redirect_back(fallback_location: useful_article_path(@useful_article), notice: 'Комментарий был опубликован')
   end
 
   def destroy
     @comment_post.destroy!
-    redirect_to useful_article_path(@useful_article), notice: 'Комментарий был удалён'
+    redirect_back(fallback_location: useful_article_path(@useful_article), notice: 'Комментарий был удалён')
   end
 
   private
