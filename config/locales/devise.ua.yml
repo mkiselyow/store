@@ -69,6 +69,7 @@ ua:
     message: 'Ваше повідомлення'
     close: 'Закрити'
     with_us: 'Відправити'
+    empty_lines: 'Заповніть усі необхідні поля!'
     send_success: 'Ваше повідомлення відправлено успішно! З вами зв’яжуться наші адміністратори'
     send_error: 'Помилка під час відправлення повідомлення'
   products:
@@ -82,17 +83,23 @@ ua:
       first_new: 'Спочатку нові'
       first_old: 'Спочатку давні'
       first_with_offer: 'Спочатку зі знижками'
-  # profile:
-  #   email: ''
-  #   number_phone: ''
-  #   role: ''
-  #   admin: ''
-  #   user: ''
-  #   you_watched: ''
-  #   your_orders: ''
-  #     number: ''
-  #     total_sum: ''
-  #     status: ''
+  profile:
+    email: 'Електрона адреса:'
+    number_phone: 'Номер телефону:'
+    role: 'Роль:'
+    admin: 'Адміністратор'
+    user: 'Користувач'
+    you_watched: 'Ваші остані перегляди'
+    edit_profile: 'Редагувати профіль'
+    your_orders:
+      title: 'Ваші замовлення'
+      number: '№ замовлення'
+      order: 'Замовлення №'
+      total_sum: 'Загальна сума'
+      stat: 'Статус замовлення'
+      status:
+        success: 'Замовлення виконано успішно!'
+        expect: 'На даний момент знаходиться в обробці! Очікуйте підтвердження замовлення'
   number:
     currency:
        format:

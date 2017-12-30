@@ -4,14 +4,10 @@ class SendMessagesController < ApplicationController
   end
 
   def create
-    @send_message = SendMessage.new(message_params)
-
     if @send_message.valid?
+      @send_message = SendMessage.new(message_params)
       SendMessageMailer.new_send_message(@send_message).deliver
       SendMessageMailer.answer_to_user(@send_message).deliver
-      redirect_to root_path, notice: t('contact_form.send_success')
-    else
-      redirect_back(fallback_location: root_path, notice: t('contact_form.send_error'))
     end
   end
 

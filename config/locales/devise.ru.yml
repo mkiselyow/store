@@ -70,6 +70,7 @@ ru:
     close: 'Закрыть'
     with_us: 'Отправить'
     send_success: 'Ваше сообщение успешно отправлено, с вами свяжуться наши администраторы!'
+    empty_lines: 'Заполните все необходимые поля!'
     send_error: 'Ошибка отправки сообщения!'
   products:
     add_to_cart: 'В корзину'
@@ -82,17 +83,23 @@ ru:
       first_new: 'Сначала новые'
       first_old: 'Сначала давние'
       first_with_offer: 'Сначала по акции'
-  # profile:
-  #   email: ''
-  #   number_phone: ''
-  #   role: ''
-  #   admin: ''
-  #   user: ''
-  #   you_watched: ''
-  #   your_orders: ''
-  #     number: ''
-  #     total_sum: ''
-  #     status: ''
+  profile:
+    email: 'Электроная почта:'
+    number_phone: 'Номер телефона:'
+    role: 'Роль:'
+    admin: 'Администратор'
+    user: 'Пользователь'
+    you_watched: 'Ваши последние просмотры'
+    edit_profile: 'Редактировать профиль'
+    your_orders:
+      title: 'Ваши заказы'
+      number: '№ заказа'
+      order: "Заказ №"
+      total_sum: 'Общая сумма'
+      stat: 'Статус заказа'
+      status:
+        success: 'Заказ выполнен успешно'
+        expect: 'На даний момент находится на обработке. Ожидайте подтверждения заказа'
   number:
     currency:
        format:

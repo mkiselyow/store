@@ -69,6 +69,7 @@ en:
     message: 'Your message'
     close: 'Close'
     with_us: 'Send'
+    empty_lines: 'Fill all necessary lines!'
     send_success: 'Your message was sent succesifull. Our administations are going to contact you!'
     send_error: 'Error of sending a message!'
   products:
@@ -82,17 +83,23 @@ en:
       first_new: 'First new'
       first_old: 'First old'
       first_with_offer: 'First with discount'
-  # profile:
-  #   email: ''
-  #   number_phone: ''
-  #   role: ''
-  #   admin: ''
-  #   user: ''
-  #   you_watched: ''
-  #   your_orders: ''
-  #     number: ''
-  #     total_sum: ''
-  #     status: ''
+  profile:
+    email: 'E-mail:'
+    number_phone: 'Phone number:'
+    role: 'Role:'
+    admin: 'Admin'
+    user: 'User'
+    you_watched: 'Your last views'
+    edit_profile: 'Edit profile'
+    your_orders:
+      title: 'Your orders'
+      number: '№ order'
+      order: 'Order №'
+      total_sum: 'Total sum'
+      stat: 'Status'
+      status:
+        success: 'The order had been succesifull complete!'
+        expect: 'In current time your order is treatment! Expect the confirmation of order'
   number:
     currency:
        format:
