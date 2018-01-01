@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   validates :number, uniqueness: { message: 'Такой номер уже зарегестрирован' }
-  validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' }, format: { with: /(\A\+3([ -])?8([ -])?0[1-9]{2}([ -])?(\d([ -])?){7}\z)|(\A0([ -])?[1-9]{2}([ -])?(\d([ -])?){7}\z)/x, message: 'Введите номер телефона в формате +380971234567' }
+  validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' },
+                     format: { with: /(\A\+3([ -])?8([ -])?0[1-9]{2}([ -])?(\d([ -])?){7}\z)|(\A0([ -])?[1-9]{2}([ -])?(\d([ -])?){7}\z)/x,
+                     message: 'Введите номер телефона в формате +380971234567' }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -13,7 +15,7 @@ class User < ApplicationRecord
   has_many :user_views, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
-  # omniauth
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

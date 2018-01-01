@@ -19,6 +19,8 @@ class Product < ApplicationRecord
 
   after_save :count_price, if: proc { |u| u.mark_up_changed? || u.discount_changed? || u.purchase_price_changed? }
 
+  scope :with_special_offers, -> { where('discount != 0') }
+
   def count_price
     price = (purchase_price * mark_up / 100 + purchase_price) * (100 - discount) / 100
     update_column(:price, price)
@@ -37,19 +39,15 @@ class Product < ApplicationRecord
   end
 
   def old_price
-    if discount != 0
-      price + ((price/100) * discount)
-    end
+    price + ((price / 100) * discount) if discount != 0
   end
 
   def discount_price
-    if price && discount
-      price - ((price/100) * discount)
-    end
+    price - ((price / 100) * discount) if price && discount
   end
 
   def from_min_and_max
-    "от #{ min_age } до #{ max_age } лет"
+    "от #{min_age} до #{max_age} лет"
   end
 
   def full_name_product

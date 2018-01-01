@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
   def index
-    @shares = Share.order('id DESC').limit(5)
+    @shares = Share.last_five_offers
   end
 
   def show

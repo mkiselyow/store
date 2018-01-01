@@ -4,6 +4,7 @@ ua:
   offers: 'Акції'
   populars: 'Популярні'
   all_products: 'Всі продукти'
+  show_all_products: 'Показати усі товари'
   header_one:
     my_profile: 'Мій профіль'
     admin_panel: 'Панель адміністратора'
@@ -107,6 +108,7 @@ ua:
          delimiter: ','
          separator: '.'
          precision: 2
+  you_banned: 'Ваш обліковий запис заблоковано!'
   devise:
     user:
       name: "Ім'я: "

@@ -21,6 +21,6 @@ class Admin::UsersController < AdminsController
   end
 
   def user_resource
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 end

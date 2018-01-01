@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_wth_special_offers, rows_count: 5, id_of_this_carousel: "offers_carousel", name_of_carousel: t('offers') } %>
+        <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_with_special_offers, rows_count: 5, id_of_this_carousel: "offers_carousel", name_of_carousel: t('offers') } %>
       </div>
     </div>
     <div class="row">
@@ -46,25 +46,21 @@
       <%= render  partial: "searches/new" %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <h1>Все товары</h1>
-      <div id="products_mobile">
-        <%= render 'products_mobile' %>
-      </div>
-    </div>
-  </div>
-  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4,  id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: "Новинки"  } %>
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4,  id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: t('novelties')  } %>
 
   <!-- special offers carousel -->
-  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_wth_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: "Акции" } %>
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_with_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: t('offers') } %>
   
   <!-- top viewed carousel -->
 
-  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4,  id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: "Популярные" } %>
+  <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4,  id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: t('populars') } %>
 
-<!--   <button href='#all_products_list' data-toggle="collapse" class='btn btn-info btn-block'>Показать все товары</button> -->
-<!--   <div id="all_products_list" class="collapse"> -->
+  <div class="row">
+    <div class="col-xs-12">
+      <%= link_to t('show_all_products'), products_path, class: 'btn btn-info btn-block' %>
+      <br>
+    </div>
+  </div>
 </div>
 <br>
 <a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>

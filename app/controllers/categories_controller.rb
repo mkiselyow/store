@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :category_resource, only: [:show]
-  before_action :search_form, only: [:show, :index]
+  before_action :search_form, only: %i[show index]
   before_action :count_products
   after_action do
-    Category::CATEGORIES_SELECT = Category::get_collection_of_categories_ids
+    Category::CATEGORIES_SELECT = Category.get_collection_of_categories_ids
   end
 
   def show

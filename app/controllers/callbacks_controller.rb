@@ -1,15 +1,15 @@
 class CallbacksController < Devise::OmniauthCallbacksController
-  def facebook
-    @user = User.from_omniauth(request.env['omniauth.auth'])
-    sign_in_and_redirect @user
-  end
+  before_action :user_resource, only: %i[facebook instagram vk]
 
-  def instagram
-    @user = User.from_omniauth(request.env['omniauth.auth'])
-    sign_in_and_redirect @user
-  end
+  def facebook; end
 
-  def vk
+  def instagram; end
+
+  def vk; end
+
+  private
+
+  def user_resource
     @user = User.from_omniauth(request.env['omniauth.auth'])
     sign_in_and_redirect @user
   end

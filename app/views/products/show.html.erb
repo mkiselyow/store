@@ -4,17 +4,3 @@
 <div class="show_mobile">
   <%= render 'show_product_mobile' %>
 </div>
-<script>
-  $("#info-product").click(function(){
-    $(".info-about-product").toggle();
-    $("#info-product").text(function(i, text){
-      return text === "Больше информации" ? "Спрятать информацию": "Больше информации";
-    })
-  });
-  $("#info-product-mobile").click(function(){
-    $(".info-about-product-mobile").toggle();
-    $("#info-product-mobile").text(function(i, text){
-      return text === "Больше информации" ? "Спрятать информацию": "Больше информации";
-    })
-  });
-</script>

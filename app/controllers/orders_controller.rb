@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     address_array = params[:order][:city]
-    address_string = address_array[:area] +  ', ' + address_array[:city]
+    address_string = address_array[:area] + ', ' + address_array[:city]
     params[:order][:city] = address_string
     @order = Order.new(order_params)
 

@@ -4,6 +4,7 @@ en:
   offers: 'Offers'
   populars: 'Populars'
   all_products: 'All produtcs'
+  show_all_products: 'Show all products'
   header_one:
     my_profile: 'My profile'
     admin_panel: 'Admin`s panel'
@@ -107,6 +108,7 @@ en:
          delimiter: ','
          separator: '.'
          precision: 2
+  you_banned: 'Your account had been banned!'
   payment:
     payment: 'Payment'
     intro: 'We are very young and developing: for you we will make all possible payment methods. For today, we offer three payment methods:'

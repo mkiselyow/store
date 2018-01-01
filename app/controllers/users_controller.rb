@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user_views = @user.user_views.last_six_views
-    @user_olders = @user.orders.order('created_at DESC').limit(5)
+    @user_olders = @user.orders.last_five_orders
   end
 
   def create

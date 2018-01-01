@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = Comment.order(:id).paginate(page: params[:page], per_page: 10)
   end
 
   def create

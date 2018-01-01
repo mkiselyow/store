@@ -2,23 +2,23 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :add_times_viewed, only: [:show]
   before_action :product_views_inc, only: [:show]
-  before_action :only_admin_access, only: [:new, :create, :update, :destroy, :edit]
-  before_action :search_form, only: [:index, :only_with_discount]
+  before_action :only_admin_access, only: %i[new create update destroy edit]
+  before_action :search_form, only: %i[index only_with_discount]
 
   def index
     @products_count = Product.count
-    if params[:query]
-      @products = Product.where(title: params[:query]).order("#{ params[:sort] } #{ params[:order_type] }")
-    else
-      @products = Product.order("#{ params[:sort] } #{ params[:order_type] }")
-    end
+    @products = if params[:query]
+                  Product.where(title: params[:query]).order("#{params[:sort]} #{params[:order_type]}")
+                else
+                  Product.order("#{params[:sort]} #{params[:order_type]}")
+                end
     @products_page = @products.paginate(page: params[:page], per_page: 24)
     @products_page_mobile = @products.paginate(page: params[:page], per_page: 12)
     @categories = Category.all
   end
 
   def only_with_discount
-    @products_with_special_offers = Product.where('discount != 0')
+    @products_with_special_offers = Product.with_special_offers.paginate(page: params[:page], per_page: 20)
   end
 
   def new
@@ -94,10 +94,10 @@ class ProductsController < ApplicationController
   def product_views_inc
     if user_signed_in?
       @userview = UserView.where(product_id: @product.id).where(user_id: current_user.id)
-      unless @userview.present?
-        @product.user_views.create(user_id: current_user.id)
-      else
+      if @userview.present?
         @userview.update(updated_at: Time.now)
+      else
+        @product.user_views.create(user_id: current_user.id)
       end
     end
   end
@@ -120,6 +120,6 @@ class ProductsController < ApplicationController
                                     :image, :sex_id, :description, :image_cache,
                                     :image_id, :country, :product_code, :discount,
                                     :times_viewed, :category_id, :general_category, :other_desc, :min_age, :max_age,
-                                    image_products_attributes: [:id, :image, :product_id, :_destroy])
+                                    image_products_attributes: %i[id image product_id _destroy])
   end
 end

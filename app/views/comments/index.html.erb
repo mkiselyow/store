@@ -4,10 +4,16 @@
   <div class="all_comments">
     <%= render @comments %>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <center>
+        <%= will_paginate @comments, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+      </center>
+    </div>
+  </div>
   <div class="row comment-alert">
     <div class="col-md-6">
-      <div class="alert">
-      </div>
+      <div class="alert"></div>
     </div>
   </div>
   <div class="row">

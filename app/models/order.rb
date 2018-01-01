@@ -19,6 +19,8 @@ class Order < ApplicationRecord
   validates :first_name, presence: { message: 'Укажите Ваше Имя' }
   validates :last_name, presence: { message: 'Укажите Вашу Фамилию' }
 
+  scope :last_five_orders, -> { order('created_at DESC').limit(5) }
+
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
       item.cart_id = nil

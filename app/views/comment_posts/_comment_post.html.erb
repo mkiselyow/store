@@ -1,0 +1,33 @@
+<div class="row" id="comment_post_<%= comment_post.id %>">
+  <div class="col-sm-12">
+    <div class="panel panel-white post panel-shadow">
+      <div class="post-heading">
+        <div class="pull-left image">
+          <%= image_tag comment_post.user.avatar_url(:small), class: "img-circle avatar" %>
+        </div>
+        <div class="pull-left meta">
+          <div class="title h5">
+            <b><%= link_to comment_post.user.full_name, user_path(comment_post.user) %></b>
+          </div>
+          <h6 class="text-muted time">
+            <%= time_ago_in_words(comment_post.created_at) %>
+          </h6>
+        </div>
+        <div class="pull-right">
+          <% if current_user %>
+            <% if current_user.id == comment_post.user_id %>
+              <div class="stats">
+                <%= link_to useful_article_comment_post_path(comment_post.useful_article, comment_post), method:  :delete, remote: true, data: { confirm: 'Вы действительно хотите удалить этот комментарий?' } do %>
+                  <%= fa_icon 'times', class: 'fa-2x text-danger', title: 'Удалить комментарий' %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div> 
+      <div class="post-description"> 
+        <p><%= raw comment_post.body %></p>
+      </div>
+    </div>
+  </div>
+</div>

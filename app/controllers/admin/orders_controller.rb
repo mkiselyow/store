@@ -1,5 +1,5 @@
 class Admin::OrdersController < AdminsController
-  before_action :order_resourses, only: [:destroy, :order_delivered]
+  before_action :order_resourses, only: %i[destroy order_delivered]
 
   def index
     @orders = Order.order(:id)
