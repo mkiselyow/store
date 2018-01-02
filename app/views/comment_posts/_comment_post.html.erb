@@ -10,23 +10,33 @@
             <b><%= link_to comment_post.user.full_name, user_path(comment_post.user) %></b>
           </div>
           <h6 class="text-muted time">
-            <%= time_ago_in_words(comment_post.created_at) %>
+            <%= comment_post.created_at %>
           </h6>
         </div>
         <div class="pull-right">
           <% if current_user %>
             <% if current_user.id == comment_post.user_id %>
               <div class="stats">
-                <%= link_to useful_article_comment_post_path(comment_post.useful_article, comment_post), method:  :delete, remote: true, data: { confirm: 'Вы действительно хотите удалить этот комментарий?' } do %>
-                  <%= fa_icon 'times', class: 'fa-2x text-danger', title: 'Удалить комментарий' %>
-                <% end %>
+                <div class="dropdown comment_<%= comment_post.id %>">
+                  <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <%= fa_icon 'ellipsis-v', class: 'fa-2x ellipsis-button' %>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+<!--                     <li>
+                      <%= link_to 'Изменить', edit_useful_article_comment_post_path(comment_post.useful_article, comment_post), remote: true, id: 'edit_comment_post' %>
+                    </li>  -->
+                    <li>
+                      <%= link_to t('reviews.remove_a_review'), useful_article_comment_post_path(comment_post.useful_article, comment_post), method: :delete, remote: true, data: { confirm: 'Вы действительно  хотите удалить этот комментарий?' } %>
+                    </li>
+                  </ul>
+                </div>
               </div>
             <% end %>
           <% end %>
         </div>
       </div> 
-      <div class="post-description"> 
-        <p><%= raw comment_post.body %></p>
+      <div class="post-description" id="comment_text_<%= comment_post.id %>"> 
+        <%= render 'comment_posts/comment_post_row', comment_post: comment_post %>
       </div>
     </div>
   </div>

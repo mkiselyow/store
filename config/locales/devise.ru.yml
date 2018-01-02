@@ -31,9 +31,11 @@ ru:
     warning_message: 'Для того, чтобы оставить отзыв необходимо'
     log_in: 'войти в систему'
     success_message: "<b>Поздравляем!</b> ваш отзыв успешно опубликован!"
+    comment_had_been_changed: 'Ваш отзыв изменён!'
     your_comment: 'Ваш отзыв'
     your_mark: 'Ваша оценка (от 1-го до 5-ти)'
     add_a_review: 'Добавить отзыв'
+    change_review: 'Изменить отзыв'
     remove_a_review: 'Удалить отзыв'
     remove_confirm: 'Вы действительно желаете удалить отзыв?'
     remove_message: 'Ваш отзыв был успешно удалён'

@@ -1,22 +1,20 @@
-<div class="col-md-6 col-xs 12">
-  <%= form_for @comment, remote: true do |f| %>
-    <%= f.label t('reviews.your_comment') %>
-    <br>
-    <%= f.trix_editor :body, class: 'comment-form' %>
-    <br>
-    <%= fa_icon 'star', class: 'star_id_1 fa-2x star_class' %>
-    <%= fa_icon 'star', class: 'star_id_2 fa-2x star_class' %>
-    <%= fa_icon 'star', class: 'star_id_3 fa-2x star_class' %>
-    <%= fa_icon 'star', class: 'star_id_4 fa-2x star_class' %>
-    <%= fa_icon 'star', class: 'star_id_5 fa-2x star_class' %>
-    <p>
-    <%= f.label t('reviews.your_mark') %>
-    <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]), {}, class: 'form-control', id: 'select_rating' %>
-    <br>
-    <%= f.submit t('reviews.add_a_review'), class: 'btn btn-success', id: 'btnSubmit' %>
-    <br>
-  <% end %>
-</div>
+<%= form_for @comment, remote: true do |f| %>
+  <%= f.label t('reviews.your_comment') %>
+  <br>
+  <%= f.trix_editor :body, class: 'comment-form' %>
+  <br>
+  <%= fa_icon 'star', class: 'star_id_1 fa-2x star_class' %>
+  <%= fa_icon 'star', class: 'star_id_2 fa-2x star_class' %>
+  <%= fa_icon 'star', class: 'star_id_3 fa-2x star_class' %>
+  <%= fa_icon 'star', class: 'star_id_4 fa-2x star_class' %>
+  <%= fa_icon 'star', class: 'star_id_5 fa-2x star_class' %>
+  <p>
+  <%= f.label t('reviews.your_mark') %>
+  <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]), {}, class: 'form-control', id: 'select_rating' %>
+  <br>
+  <%= f.submit t('reviews.add_a_review'), class: 'btn btn-success', id: 'btnSubmit' %>
+  <br>
+<% end %>
 <style>
   .star_class{
     display: none;

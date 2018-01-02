@@ -1,11 +1,23 @@
 class CommentPostsController < ApplicationController
   before_action :articles_resource
-  before_action :comment_resource, only: :destroy
+  before_action :comment_resource, only: [:edit, :update, :destroy]
+
+  def new
+    @comment_post = CommentPost.new
+  end
 
   def create
     @comment_post = @useful_article.comment_posts.create(comment_params)
     @comment_post.user_id = current_user.id
     @comment_post.save
+  end
+
+  def edit
+    binding.pry
+  end
+
+  def update
+    @comment_post.update(comment_params)
   end
 
   def destroy

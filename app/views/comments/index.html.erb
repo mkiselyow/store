@@ -18,7 +18,9 @@
   </div>
   <div class="row">
     <% if current_user %>
-      <%= render 'form' %>
+      <div class="col-md-6 col-xs-12">
+        <%= render 'form' %>
+      </div>
     <% else %>
       <div class="col-md-6 alert alert-warning">
         <p><%= t('reviews.warning_message') %> <%= link_to t('reviews.log_in'), new_user_session_path %></p>

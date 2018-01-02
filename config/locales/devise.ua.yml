@@ -31,9 +31,11 @@ ua:
     warning_message: 'Для того щоб залишити відгук, необхідно'
     log_in: 'увійти до системи'
     success_message: "<b>Вітаємо!</b> ваш відгук був успішно опублікований"
+    comment_had_been_changed: 'Ваш відгук змінено!'
     your_comment: 'Ваш відгук'
     your_mark: 'Ваша оцінка (від 1-го до 5-ти)'
     add_a_review: 'Додати відгук'
+    change_review: 'Змінити відгук'
     remove_a_review: 'Видалити відгук'
     remove_confirm: 'Ви дійсно бажаєте видалити відгук?'
     remove_message: 'Ваш відгук був успішно видалений'

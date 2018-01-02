@@ -48,6 +48,9 @@
 .login-reg-menu{
   margin-top: 15px;
 }
+.review-alert{
+  display: none;
+}
 .input-product{
   width: 175px;
 }
@@ -108,6 +111,12 @@
 }
 .subsubc{
   margin-left: 10px;
+}
+.ellipsis-button{
+  color: #c2c2c2;
+}
+.ellipsis-button:hover{
+  color: #797575;
 }
 @media (max-width: 768px){
   .leuze{
@@ -407,6 +416,21 @@ a.thumbnail.product_image_add {
 .image_preview_modal{
   height: 300px;
 }
-.header_one{
-  background-image: url("snow.gif");
+@media (max-width: 768px){
+  .header_one{
+    background-image: url("snow.gif");
+    height: 140px;
+  }
+}
+@media (min-width: 768px){
+  .header_one{
+    background-image: url("snow.gif");
+    height: 160px;
+  }
+
+}
+@media (max-width: 768px){
+  .top_container_center{
+    height: 80px;
+  }
 }

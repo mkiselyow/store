@@ -31,9 +31,11 @@ en:
     warning_message: 'In order to leave review, is necessary'
     log_in: 'log in'
     success_message: "<b>Congratulations!</b> your review was published!"
+    comment_had_been_changed: 'Your review changed'
     your_comment: 'Your review'
     your_mark: 'Your rating(from 1 to 5)'
     add_a_review: 'Add a review'
+    change_review: 'Change a review'
     remove_a_review: 'Remove a review'
     remove_confirm: 'Will you really want to delete this review?'
     remove_message: 'Your review had been deleted succesufall'
