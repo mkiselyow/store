@@ -1,0 +1,14 @@
+var count_item = $('#count_item_<%= @line_item.id %>');
+var mobile_count_item = $('#count_item_mobile_<%= @line_item.id %>');
+var sum_item = $('#sum_item_<%= @line_item.id %>');
+var price_item = parseFloat($("#price_item_<%= @line_item.id %>").html());
+var line_item = $('#line_<%= @line_item.id %>');
+
+if(parseInt(count_item.html()) > 1){
+  sum_item.html(function(i, val) { return (val*1 - price_item).toFixed(2) });
+  count_item.html(function(i, val) { return val*1-1 });
+  mobile_count_item.html(function(i, val) { return val*1-1 });
+}
+else{
+  line_item.remove();
+}

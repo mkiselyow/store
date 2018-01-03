@@ -145,7 +145,11 @@
   margin-left: -40px;
   margin-top:20px;
 }
-
+.footer__columns-wrap, .footer__subscribe-wrap, .layout {
+  max-width: 1600px;
+  margin: auto;
+  padding: 14px 23px;
+}
 .thumbnail {
   padding: 0;
 }
