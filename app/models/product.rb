@@ -111,11 +111,11 @@ class Product < ApplicationRecord
           #supplier:
           #quantity:              row.to_hash["Количество"],
           sex_id:              (if row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/мальчик/i)
-                                  5 #1
+                                  1# 5 #1
                                 elsif row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/девочка/i)
-                                  3 #2
+                                  2# 3 #2
                                 else
-                                  4 #3
+                                  3# 4 #3
                                 end),
           #description:
           #image_cache:
