@@ -29,9 +29,18 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <h3><%= count_comments %></h3>
-        <%= render 'comment_posts/comment' %>
+        <div id="counter_comments_<%= @useful_article.id %>">
+          <h3><%= count_comments %></h3>
+        </div>
+        <div id="comments_all">
+          <%= render @comment_posts %>
+        </div>
       </div> 
+    </div>
+    <div class="row comment-alert">
+      <div class="col-md-8">
+        <div class="alert"></div>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-8">

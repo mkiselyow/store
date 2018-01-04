@@ -1,14 +1,14 @@
 <% unless @cart.line_items.empty? %>
-  <h1>Корзина</h1>
+  <h1><%= t('cart.title') %></h1>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <div class="container">
     <table id="cart" class="table table-hover table-condensed">
       <thead>
         <tr>
-          <th style="width:50%">Продукт</th>
-          <th style="width:10%">Цена</th>
-          <th style="width:8%">Кол-во</th>
-          <th style="width:12%" class="text-center">Сумма</th>
+          <th style="width:50%"><%= t('cart.product') %></th>
+          <th style="width:10%"><%= t('cart.price') %></th>
+          <th style="width:8%"><%= t('cart.quantity') %></th>
+          <th style="width:12%" class="text-center"><%= t('cart.amount') %></th>
           <th style="width:10%"></th>
         </tr>
       </thead>
@@ -19,14 +19,14 @@
         </tr>
         <tr>
           <td>
-            <%= link_to 'Назад в магазин', root_path, class: "btn btn-warning" %>
+            <%= link_to "#{ t('cart.back_to_store') }", root_path, class: "btn btn-warning" %>
           </td>
           <td colspan="2" class="hidden-xs"></td>
           <td class="hidden-xs text-center">
             <h2><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></h2>
           </td>
           <td>
-            <%= button_to "Подтвердить", new_order_path, method: :get, class: "btn btn-success btn-block" %>
+            <%= button_to "#{ t('cart.confirm_order') }", new_order_path, method: :get, class: "btn btn-success btn-block" %>
           </td>
         </tr>
       </tfoot>

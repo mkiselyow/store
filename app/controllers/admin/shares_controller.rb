@@ -1,5 +1,5 @@
 class Admin::SharesController < AdminsController
-  before_action :share_resource, only: [:edit, :update, :destroy]
+  before_action :share_resource, only: %i[edit update destroy]
 
   def index
     @shares = Share.all

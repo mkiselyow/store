@@ -11,12 +11,12 @@ Store::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.smtp_settings = {
-      address:              "smtp.i.ua",
+      address:              "smtp.gmail.com",
       port:                 587,
-      domain:               "http://www.mapapama.com.ua",#"domain.of.sender.net",
+      domain:               "max-X751SJ",#"domain.of.sender.net",
       authentication:       "plain",
-      user_name:            "mapapama.com.ua@gmail.com",
-      password:             "16121991nld",
+      user_name:            ENV["email_admin"],
+      password:             ENV["password_admin"],
       enable_starttls_auto: true 
   }
 end

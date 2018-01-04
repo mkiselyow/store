@@ -1,43 +1,38 @@
-<table class="table">
-  <thead>
-    <td>#</td>
-    <td>Имя</td>
-    <td>Номер телефона</td>
-    <td>Город</td>
-    <td>Почтовое отделение</td>
-    <td>Способ получения</td>
-    <td>Способ оплаты</td>
-    <td>Заказы</td>
-    <td>Комментарий</td>
-    <td>Действия</td>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.full_name %></td>
-        <td><%= order.number %></td></td>
-        <td><%= order.city %></td>
-        <td><%= order.post_office_number %></td>
-        <td><%= order.way_delivery %></td>
-        <td><%= order.pay_type %></td>
-        <td><%= raw order.comment %></td>
-        <td>
-          <ul>
-            <% order.line_items.each do |line_item| %>
-              <li>
-                <%= line_item.product.title %>
-                <%= line_item.price_discount %>
-                <%= line_item.quantity %>
-                <%= line_item.count_line_item_price %>
-              </li>
-            <% end %>
-          </ul>
-        </td>
-        <td>
-          <%= link_to 'Удалить', admin_order_path(order), method: :delete, data: { confirm: "Вы действительно хотите удалить этот заказ?" }, class: 'btn btn-sm btn-danger'%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to "Подтвердить все заказы", all_orders_delivered_admin_orders_path, class: 'btn btn-sm btn-primary pull-right' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <td>#</td>
+        <td>Имя</td>
+        <td>Номер телефона</td>
+        <td>Город</td>
+        <td>Способ получения</td>
+        <td>Способ оплаты</td>
+        <td>Действия</td>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr id="order_<%= order.id %>" class="<%= 'bg-success' if order.delivered %>">
+            <td><%= order.id %></td>
+            <td><%= order.full_name %></td>
+            <td><%= order.number %></td></td>
+            <td><%= order.city %></td>
+            <td><%= order.way_delivery %></td>
+            <td><%= order.pay_type %></td>
+            <td>
+              <a href="#order_view_<%= order.id  %>" class='btn btn-sm btn-info' data-toggle="modal" data-target="#order_view_<%= order.id %>">Просмотр</a>
+              <%= link_to "#{ order.delivered ? 'Отменить подтверждение заказа' : 'Подтвердить успешный заказ' }", order_delivered_admin_order_path(order), remote: true, data: { url: admin_orders_path(id: order.id), method: :put }, class: 'btn btn-sm btn-primary', id: "delivered_#{order.id}" %>
+              <%= link_to 'Удалить', admin_order_path(order), method: :delete, remote: true, data: { confirm: "Вы действительно хотите  удалить  этот заказ?" }, class: 'btn btn-sm btn-danger'%>
+              <%= render 'order_show', order: order %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

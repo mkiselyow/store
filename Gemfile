@@ -17,6 +17,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'mini_magick'
+gem 'fancybox-rails'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
@@ -83,6 +84,11 @@ gem 'omniauth-instagram'
 # paginate pages
 gem 'will_paginate-bootstrap'
 
+gem 'globalize', github: 'globalize/globalize'
+gem 'redis'
+gem 'sidekiq'
+gem 'i18n-active_record'
+
 # images cloud-based service that provides an end-to-end image and video management solution
 gem 'carrierwave'
 gem 'cloudinary'
@@ -107,7 +113,12 @@ gem 'elevatezoom-rails'
 gem "nested_form"
 gem 'nested_form_fields'
 
+gem 'record_tag_helper', '~> 1.0'
+
 gem 'ancestry'
+gem 'acts_as_list'
+
+gem 'meta-tags'
 
 # ukrainian regions
 gem 'ruuaby'

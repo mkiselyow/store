@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     address_array = params[:order][:city]
-    address_string = address_array[:area] +  ', ' + address_array[:city]
+    address_string = address_array[:area] + ', ' + address_array[:city]
     params[:order][:city] = address_string
     @order = Order.new(order_params)
 
@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderNotifierMailer.recieved(@order).deliver
+        OrderNotifierMailer.user_order_recieved(@order).deliver
         format.html { redirect_to root_url, notice: 'Ваш заказ отправлен в обработку' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -31,6 +32,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :number, :comment, :city, :post_office_number, :pay_type, :way_delivery, :user_id)
+    params.require(:order).permit(:first_name, :last_name, :email, :number, :comment, :city,
+                                  :post_office_number, :pay_type, :way_delivery, :user_id)
   end
 end

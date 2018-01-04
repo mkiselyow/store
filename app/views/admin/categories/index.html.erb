@@ -4,49 +4,92 @@
     <%= render 'form' %>
   </div>
   <div class="row">
-    <div class="col-md-8 col-xs-12">
-      <br>
-      <table class="table">
-        <thead>
-          <th>Категория</th>
-          <th>Подкатегории</th>
-          <th>Действия</th>
-        </thead>
-        <% @categories.each do |category| %>
-          <tr id = <%= "category_#{category.id}" %>>
-            <% if category.parent_category_id.blank?  && category.parent_subcategory_id.blank? %>
-            <td>
-              <p><%= category.name %></p>
-            <td>
-              <% category.children.each do |subcategory| %>
-                <p><%= subcategory.name %></p>
-                <ul>
-                  <% subcategory.children.each do |subsubcategory| %>
-                    <li><%= subsubcategory.name %></li>
-                    <ul>
-                      <% subsubcategory.children.each do |subsubsubcategory| %>
-                        <li><%= subsubsubcategory.name %></li>
-                        <ul>
-                          <% subsubsubcategory.children.each do |subsubsubsubcategory| %>
-                            <li><%= subsubsubsubcategory.name %></li>
-                          <% end %>
-                        </ul>
-                      <% end %>
-                    </ul>
-                  <% end %>
-                </ul>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">Все категории и подкатегории</a></li>
+      <li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">Только основные категориии</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="tab-content">
+      <div id="tab-1" role="tabpanel" class="tab-pane active">
+        <div class="col-md-12 col-xs-12">
+          <br>
+          <table class="table">
+            <thead>
+              <th width="20%">Категория</th>
+              <th width="62%">Подкатегории</th>
+              <th width="18%">Действия</th>
+            </thead>
+            <tbody>
+              <% @categories.each do |category| %>
+                <%= content_tag_for :tr, category do %>
+                  <td>
+                    <p><%= h(category.name) %></p>
+                  </td>
+                  <td>
+                    <% category.children.each do |subcategory| %>
+                      <p><%= subcategory.name %></p>
+                      <ul>
+                        <% subcategory.children.each do |subsubcategory| %>
+                          <li><%= subsubcategory.name %></li>
+                          <ul>
+                            <% subsubcategory.children.each do |subsubsubcategory| %>
+                              <li><%= subsubsubcategory.name %></li>
+                              <ul>
+                                <% subsubsubcategory.children.each do |subsubsubsubcategory| %>
+                                  <li><%= subsubsubsubcategory.name %></li>
+                                <% end %>
+                              </ul>
+                            <% end %>
+                          </ul>
+                        <% end %>
+                      </ul>
+                    <% end %>
+                  </td>
+                  <td>
+                    <div class="btn btn-group">
+                      <%= link_to 'Изменить', edit_admin_category_path(category), class: 'btn btn-warning btn-sm' %>
+                      <%= link_to 'Удалить', admin_category_path(category), method: :delete, remote: true, class: 'btn btn-danger  btn-sm', data: { confirm: "Действительно вы  хотите удалить категорию #{ category.name }"} %>
+                    </div>
+                  </td>
+                <% end %>
               <% end %>
-            </td>
-            </td>
-            <td>
-              <p><%= link_to 'Изменить', edit_admin_category_path(category), class: 'btn btn-warning btn-sm' %> | 
-              <%= link_to 'Удалить', admin_category_path(category), method: :delete, remote: true, class: 'btn btn-danger btn-sm', data: { confirm: "Действительно вы хотите удалить категорию #{ category.name }"} %>
-              </p>
-            </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="tab-2" role="tabpanel" class="tab-pane">
+        <div class="row">
+          <div class="col-md-3 col-xs-12">
+            <br>
+            <table class="table sort-categories">
+              <thead>
+                <th>Позиция</th>
+                <th>Категория</th>
+              </thead>
+              <tbody data-update-url="<%= sort_admin_categories_url %>">
+                <% @categories.each do |category| %>
+                  <%= content_tag_for :tr, category do %>
+                    <td>
+                      <p><%= category.position %></p>
+                    </td>
+                    <td>
+                      <p><%= h(category.name) %></p>
+                    </td>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <br>
+            <div class="alert alert-info">
+              <h4><b>Подсказка!</b></h4>
+              <p>Чтобы изменить позицию основной категории, нажмите и удерживайте поле её и перетащите вверх или вниз</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

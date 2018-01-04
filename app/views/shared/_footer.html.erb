@@ -53,7 +53,10 @@
             <%= cl_image_tag("logo.png", :quality=>15, :width=>40, :crop=>"scale") %>
           <% end %>
           <p>
-            <%= raw t "leuze" %><%= fa_icon 'check', class: 'fa-x2 check-green' %>
+            <%= raw t "leuze" %>
+            <% 3.times do %>
+              <%= fa_icon 'check', class: 'fa-x2 check-green' %>
+            <% end %>
           </p>
         </div>
         <div class="footer-text">© 2017</div>

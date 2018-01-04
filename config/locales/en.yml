@@ -1,33 +1,174 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  leuze: "<b>Mapapama</b> - give your child a joy"
+  novelties: 'Novelties'
+  offers: 'Offers'
+  populars: 'Populars'
+  all_products: 'All produtcs'
+  show_all_products: 'Show all products'
+  header_one:
+    my_profile: 'My profile'
+    admin_panel: 'Admin`s panel'
+    log_in: 'Log in'
+    log_out: 'Log out'
+    sign_up: 'Sign up'
+    ua: 'Ukrainian'
+    ru: 'Russian'
+    en: 'English'
+    search: 'Search'
+    search_placeholder: 'Enter a title or a code of product'
+  header_menu:
+    main: 'Main'
+    products: 'Products'
+    payment: 'Payment'
+    delivery: 'Delivery'
+    useful_article: 'Useful article'
+    offers: 'Offers'
+    reviews: 'Reviews'
+    contact: 'Contacts'
+    about: 'About us'
+    partner: 'For partners'
+  reviews:
+    warning_message: 'In order to leave review, is necessary'
+    log_in: 'log in'
+    success_message: "<b>Congratulations!</b> your review was published!"
+    comment_had_been_changed: 'Your review changed'
+    your_comment: 'Your review'
+    your_mark: 'Your rating(from 1 to 5)'
+    add_a_review: 'Add a review'
+    change_review: 'Change a review'
+    remove_a_review: 'Remove a review'
+    remove_confirm: 'Will you really want to delete this review?'
+    remove_message: 'Your review had been deleted succesufall'
+  sidebar_filter:
+    add_product: 'Add a product'
+    show_all_discount: 'Show all products with discount'
+    picking: 'Selection by params'
+    sex: 'Sex'
+    select_sex: 'Select a sex'
+    category: 'Category'
+    select_category: 'Select a category'
+    cost: 'Cost'
+    age: 'Age'
+    brand: 'Brand'
+    color: 'Color'
+    material: 'Material'
+    plastic: 'Plastic'
+    wood: 'Wood'
+    iron: 'Iron'
+    cloth: 'Cloth'
+    other_material: 'Another'
+    mixed: 'Mixed'
+    search: 'Search'
+    min_age: 'Min'
+    max_age: 'Max'
+    min_sum: 'Min'
+    max_sum: 'Max'
+  categories_list:
+    all_categories: 'All categories'
+  contact_form:
+    contact_with_us: 'Contact with us'
+    name: 'Full name'
+    email: 'e-mail'
+    message: 'Your message'
+    close: 'Close'
+    with_us: 'Send'
+    empty_lines: 'Fill all necessary lines!'
+    send_success: 'Your message was sent succesifull. Our administations are going to contact you!'
+    send_error: 'Error of sending a message!'
+  products:
+    add_to_cart: 'Add to cart'
+    left: 'Left'
+    discount: 'Discount'
+    sort:
+      sort_by: 'Sort by'
+      first_cheap: 'First cheap'
+      first_expensive: 'First expensive'
+      first_new: 'First new'
+      first_old: 'First old'
+      first_with_offer: 'First with discount'
+  profile:
+    email: 'E-mail:'
+    number_phone: 'Phone number:'
+    role: 'Role:'
+    admin: 'Admin'
+    user: 'User'
+    you_watched: 'Your last views'
+    edit_profile: 'Edit profile'
+    your_orders:
+      title: 'Your orders'
+      number: '№ order'
+      order: 'Order №'
+      total_sum: 'Total sum'
+      stat: 'Status'
+      status:
+        success: 'The order had been succesifull complete!'
+        expect: 'In current time your order is treatment! Expect the confirmation of order'
+  number:
+    currency:
+       format:
+         unit: 'UAH'
+         delimiter: ','
+         separator: '.'
+         precision: 2
+  you_banned: 'Your account had been banned!'
+  payment:
+    payment: 'Payment'
+    intro: 'We are very young and developing: for you we will make all possible payment methods. For today, we offer three payment methods:'
+    way1_item: 'WAY 1:'
+    way2_item: 'WAY 2:'
+    way3_item: 'WAY 3:'
+    way1: "<li>upon the fact of the order of the goods you pay the full cost of the order for our PAT 'PrivatBank' card: <b class='text-success'>5169 3305 0985 3641</b>, EI Denis Tarasenko (point the older number of the order in purpose of payment);</li>
+           <li>upon confirmation of payment, our managers send your order to your chosen delivery method;</li>
+           <li>when you receive the goods through the delivery service, you pay for delivery services.</li>"
+    way2: "<li>on the fact of the order of the goods you pay 26% of the order value on our PAT 'PrivatBank' card: <b class='text-success'>5169 3305 0985 3641</b>, EI Denis Tarasenko (point the older number of the order in purpose of payment);</li>
+           <li>upon confirmation of payment, our managers send your order to your chosen delivery method;</li>
+           <li>when you receive the goods through the delivery service, you pay for shipping services + 74% of the cost of the order by cash on delivery +% from the cash on delivery shipping service + cash on delivery.</li>
+           <p><b class='text-danger'>INPORTANT!</b> Additional expenses (for payment of cash on delivery and / or delivery) we will always notify you upon the fact of sending the order to the delivery service. You will be informed: how much in addition to the cost of the order you will be shipping. </ P>
+            <p> In the development plans, we will consider the possibility of free delivery or compensation for its value, as well as other methods of payment.</p>"
+    way3: "A convenient way for you in self-delivery."
+  cart:
+    title: 'Your cart'
+    product: 'Name of products'
+    price: 'Price'
+    quantity: 'Quantity'
+    amount: 'Amount'
+    description: 'Description'
+    confirm_order: 'Confirm the order'
+    back_to_store: 'Back to store'
+  order:
+    title: 'Confirming of order'
+    first_name: 'First name'
+    surname: 'Surname'
+    number_phone: 'Number phone'
+    way_payment: 'Way of payment'
+    select_a_way_payment: 'Select a way of payment'
+    regional_center: 'Regional center'
+    select_a_regional_center: 'Select a regional center'
+    town_name: 'Town name'
+    way_delivery: 'Way of delivery'
+    select_a_way_delivery: 'Select a way of delivery'
+    number_office: 'Office nubmer'
+    comment: 'Comment'
+    back_to_cart: 'Back to cart'
+    send_order: 'Send order'
+  about:
+    r1: 'it is not just a name. At the root of this name are the two most important words for the child - Mom and Dad! These people give their children love, happiness and joy.'
+    r2: 'We created the online-store "Mapapama" in order to give joy. When a child smiles, it brings joy to us.'
+    r3: 'We have collected a variety of goods in a large assortment. Do not forget about the quality and affordability of the price. We want you to be comfortable on one site to find everything you need for the joy of the child.'
+    r4: 'Our customers choose the goods for themselves. We are all children no matter what age. Yes, we just opened. But!'
+    r5: 'Yes, we develop and we constantly learn. And we are open to your suggestions, comments and wishes. We try every day to become more convenient for you.'
+    r6: 'What words to describe here! Tell me what you want! And we will exceed your expectations :)'
+    items: "<li> we offer the best assortment; </li> <li> we are constantly looking for quality products; </li> <li> we made affordable prices for you </ li> <li> we will help in choosing the right product; </li>"
+  delivery_page:
+    title: 'Delivery'
+    r1: 'Upon processing your order for the next business day, we will forward the parcel to the carrier company. After that, the carrier informs you about the exact time and time of arrival of the order.'
+    r2: 'For your convenience, we can offer such carriers:'
+    r3: '3. Marshrutka from the Central Bus Station of the Dnieper (with full payment of the goods and approval).'
+    r4: '4. Pickup from Gagarin Ave. (district mall "Materik"), the city of Dnepr - as agreed.'
+    r5: '5. Other carriers (Autolux, Ukrposhta, Intime) - specified when ordering. Of course, if you are more comfortable with these carriers, we will use their services.'
+    new_post: 'New post'
+    mist_express: 'Mist Express'
+  partners:
+    title: 'For partners'
+    r1: 'Online-store "Mapapama.com.ua"'
+    r2: 'This 25 000 items of childs products: toys, for school and creativity, clothes and shoeseshygiene and care, for sports and recreation, furniture for childrens and baby carriages. And a lot more!! Delivery all over Ukraine!'

@@ -1,0 +1,4 @@
+$("#comment_post_<%= @comment_post.id %>").remove();
+$('.comment-alert').show();
+$('.alert').removeClass('alert-success').empty();
+$('.alert').addClass('alert-danger').append("<%= raw t('reviews.remove_message') %>");

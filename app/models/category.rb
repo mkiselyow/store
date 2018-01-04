@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
-
   has_ancestry
 
   has_many :products
@@ -11,32 +10,29 @@ class Category < ApplicationRecord
                    primary_key: :parent_id, foreign_key: :id
 
   accepts_nested_attributes_for :subcategories, allow_destroy: true
-  # accepts_nested_attributes_for :subsubcategories, allow_destroy: true
 
   scope :only_parent, -> { where(ancestry: nil) }
   scope :without_subcategory, -> { where('parent_category_id IS NOT NULL') }
 
   def self.get_collection_of_categories_ids
-    @categories = self.where(ancestry: nil)
+    @categories = where(ancestry: nil)
     @acc = []
-    @categories.each  do |category|
+    @categories.each do |category|
       category_children_collecting_ids(category)
     end
-    @acc.map {|id| [self.category_ancestors_names(id), id]}
+    @acc.map { |id| [category_ancestors_names(id), id] }
   end
 
   def self.category_children_collecting_ids(category)
-    if category.children
-      category.children.each do |child|
-        @acc << child.id
-        category_children_collecting_ids(child)
-      end
+    category.children&.each do |child|
+      @acc << child.id
+      category_children_collecting_ids(child)
     end
   end
 
   def self.category_ancestors_names(category_id)
-    category = self.find(category_id)
-    "#{category.ancestor_ids.map {|id| self.find(id).name}.join(' === ')} === #{category.name}"
+    category = find(category_id)
+    "#{category.ancestor_ids.map { |id| find(id).name }.join(' === ')} === #{category.name}"
   end
 
   CATEGORIES_SELECT = get_collection_of_categories_ids

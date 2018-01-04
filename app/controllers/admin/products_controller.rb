@@ -1,5 +1,4 @@
 class Admin::ProductsController < AdminsController
-
   def index
     @products =
       if params[:product_code]
@@ -31,6 +30,6 @@ class Admin::ProductsController < AdminsController
                                     :image, :sex_id, :description, :image_cache,
                                     :image_id, :country, :product_code, :discount,
                                     :times_viewed, :category_id, :other_desc, :general_category, :min_age, :max_age,
-                                    image_products_attributes: [:id, :image, :product_id, :_destroy])
+                                    image_products_attributes: %i[id image product_id _destroy])
   end
 end

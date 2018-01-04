@@ -1,48 +1,52 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :omniauth_callbacks => "callbacks" }
   root to: "pages#main"
+  resources :products
 
-  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+  # scope ":locale", locale: /en|ru|ua/, defaults: {locale: 'ru'} do
 
-    resources :line_items do
-      put 'decrease_quantity'
-      put 'increase_quantity'
-    end
+  resources :line_items do
+    put 'decrease_quantity'
+    put 'increase_quantity'
+  end
   
-    resources :carts
-    resources :orders
-    resources :products do
-      resources :line_items
-    end
-    get '/products_with_offers', to: 'products#only_with_discount'
-    resources :searches
-    resources :shares, only: [:show, :index]
-    resources :categories
-    resources :users
-    resources :comments
-    resources :ratings, only: :update
-    resources :useful_articles, only: [:show, :index] do
-      resources :comment_posts
-    end
+  resources :carts
+  resources :orders
+  resources :products do
+    resources :line_items
+  end
+  get '/products_with_offers', to: 'products#only_with_discount'
+  resources :searches
+  resources :shares, only: [:show, :index]
+  resources :categories
+  resources :users
+  resources :comments
+  resources :ratings, only: :update
+  resources :useful_articles, only: [:show, :index] do
+    resources :comment_posts
+  end
   
-    resource :send_message, only: [:new, :create]
+  resource :send_message, only: [:new, :create]
   
-    get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
+  get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
   
-    get '/about' => 'pages#about'
-    get '/competitions' => 'pages#competitions'
-    get '/contacts' => 'pages#contacts'
-    get '/delivery' => 'pages#delivery'
-    get '/payment' => 'pages#payment'
-    get '/partners' => 'pages#partners'
-    get '/main' => 'pages#main'
+  get '/about' => 'pages#about'
+  get '/competitions' => 'pages#competitions'
+  get '/contacts' => 'pages#contacts'
+  get '/delivery' => 'pages#delivery'
+  get '/payment' => 'pages#payment'
+  get '/partners' => 'pages#partners'
+  get '/main' => 'pages#main'
   
-    resources :products do
-      get :who_bought, on: :member
-    end
+  resources :products do
+    get :who_bought, on: :member
+  end
   
+<<<<<<< HEAD
     namespace :admin do
       root to: 'users#index'
       resources :users do
@@ -58,6 +62,23 @@ Rails.application.routes.draw do
         resources :subcategories
       end
       resources :shares
+=======
+  namespace :admin do
+    root to: 'users#index'
+    resources :users do
+      get :banned_user, on: :member
+      put :change_permission, on: :member
     end
+    resources :orders do
+      get :all_orders_delivered, on: :collection
+      put :order_delivered, on: :member
+    end
+    resources :useful_articles
+    resources :products
+    resources :categories do
+      collection { post :sort }
+>>>>>>> 2b62d04fb8f223336e936e2ac965fbf412877421
+    end
+    resources :shares
   end
 end

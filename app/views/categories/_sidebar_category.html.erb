@@ -8,7 +8,7 @@
             <span class="sidebar-badge"><%= @products_count %></span>
           <% end %>
         </li>
-        <% Category.only_parent.each_with_index do |category, i| %>
+        <% Category.only_parent.order(:position).each_with_index do |category, i| %>
           <% if category.children.count == 0 %>
             <li>
               <%= link_to category_path(category) do %>
@@ -31,7 +31,7 @@
                   <% if subcategory.children.count == 0 %>
                     <li>
                       <%= link_to category_path(subcategory) do %>
-                        <%= "#{i+1}.#{k+1} #{category.name}" %>
+                        <%= "#{i+1}.#{k+1} #{subcategory.name}" %>
                         <% sum = 0 %>
                         <% subcategory.subtree.each do |cc| %>
                           <% sum += cc.products.count %>
@@ -101,7 +101,7 @@
                                       <ul class="dropdown-menu collapse" id="subsubsubcategory_<%= subsubsubcategory.id %>">
                                         <% subsubsubcategory.children.each_with_index do |subsubsubsubcategory, p| %>
                                           <li>
-                                            <%= link_to category_path(subsubsubsubcategory) do %>
+                                            <%= link_to category_path(subsubsubsubcategory), class: 'dropdown-category' do %>
                                               <%= "#{i+1}.#{k+1}.#{l+1}.#{m+1}.#{p+1} #{subsubsubsubcategory.name}" %>
                                               <% sum = 0 %>
                                               <% subsubsubsubcategory.subtree.each do |cccc| %>

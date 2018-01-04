@@ -1,0 +1,6 @@
+<p><%= raw comment.body %></p>
+<p>
+  <% "#{comment.rating}".to_i.times do %>
+    <%= fa_icon 'star', class: 'fa-1x text-success' %>
+  <% end %>
+</p>

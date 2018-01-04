@@ -1,7 +1,19 @@
-<%= form_for SendMessage.new, url: send_message_url do |f| %>
+<%= form_for SendMessage.new, url: send_message_url, remote: true do |f| %>
   <div class="modal-body">
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <div class="alert-send-message">
+          <div class="alert alert-success success_message">
+            <%= fa_icon 'check-square', text: t('contact_form.send_success') %>
+          </div>
+          <div class="alert alert-danger fail_message">
+            <%= fa_icon 'exclamation-triangle', text: t('contact_form.empty_lines') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div class="form-group">
           <%= f.label t('contact_form.name') %>
           <div class="input-group">
@@ -14,7 +26,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-12">
         <div class="form-group">
           <%= f.label t('contact_form.email') %>
           <div class="input-group">
@@ -27,20 +39,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-12">
         <div class="form-group">
           <%= f.label t('contact_form.message') %>
-          <%= f.trix_editor :content, placeholder: t('contact_form.message'), required: true %>
+          <%= f.trix_editor :content, placeholder: t('contact_form.message'), class: 'comment-form' %>
         </div>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <div class="col-md-11">
+    <div class="col-md-12">
       <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
         <%= t('contact_form.close') %>
       </button>
-      <%= f.submit t('contact_form.with_us'), class: 'btn btn-success pull-right' %>
+      <%= f.submit t('contact_form.with_us'), class: 'btn btn-success pull-right', id: 'SendFormSubmit' %>
     </div>
   </div>
 <% end %>

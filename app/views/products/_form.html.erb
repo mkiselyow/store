@@ -176,31 +176,31 @@
           
           <div class="row">
             <h3>Материал</h3>
-            <div class="field col-md-3">
+            <div class="field col-md-4">
               <%= form.label(:material_plastic, "Пластик") %>
               <%= form.check_box :material_plastic, id: :product_material_plastic %>
             </div>
   
-            <div class="field col-md-3">
+            <div class="field col-md-4">
               <%= form.label(:material_iron, "Железо") %>
               <%= form.check_box :material_iron, id: :product_material_iron %>
             </div>
   
-            <div class="field col-md-3">
+            <div class="field col-md-4">
               <%= form.label(:material_wooden, "Дерево") %>
               <%= form.check_box :material_wooden, id: :product_material_wooden %>
             </div>
           </div>
           <div class="row">
-            <div class="field col-md-3">
+            <div class="field col-md-4">
               <%= form.label(:material_fabric, "Ткань") %>
               <%= form.check_box :material_fabric, id: :product_material_fabric %>
             </div>
-            <div class="field col-md-3">
+            <div class="field col-md-4">
               <%= form.label(:mixed, "Смешаный") %>
               <%= form.check_box :mixed, id: :mixed %>
             </div>
-            <div class="field col-md-3">
+            <div class="field col-md-4">
               <%= form.label(:material_another, "Другой материал") %>
               <%= form.check_box :material_another, id: :product_material_another %>
             </div>
@@ -333,25 +333,6 @@
           .append($("<table>").append(rows)));
     }
     $('.cloudinary-fileupload').bind('fileuploadchange', function() { $(this).hide()})
-
-  $(document).on('ready page:load', function () {
-    $(".image_product_upload_previewimg").hide();
-    var preview = $(".image_product_upload_preview img");
-  
-    $(".image_product_upload").change(function(event){
-      var input = $(event.currentTarget);
-      var profile_upload = input[0].files[0];
-      var reader = new FileReader();
-      reader.onload = function(e){
-        image_base64 = e.target.result;
-        preview.show();
-        preview.attr("src", image_base64);
-      };
-      reader.readAsDataURL(profile_upload);
-    });
-  });
-  // Auto count finish price
-  $(document).ready(function() {
     sum();
     $("#price_pur, #markups, #discount").on("keydown keyup", function() {
       sum();
@@ -362,20 +343,8 @@
       var discount = document.getElementById('discount').value;
       var final_price = parseFloat(price_pur) + (parseFloat(price_pur) * (parseFloat(markups) / 100));
       var price_with_discount = final_price - (final_price * (discount * 0.01));
-  
       if (!isNaN(price_with_discount)) {
         document.getElementById('sum').value = price_with_discount.toFixed(2);
       }
     }
-  });
-  // If user checked item 'another material', the input 'another material`s name' become enable
-  $(function(){
-    $("#product_material_another").change(function(){
-      if($("#product_material_another").prop("checked") == true){
-        $("#other_desc").prop("disabled", false);
-      }else{
-        $("#other_desc").prop("disabled", true);
-      }
-    });
-  });
 </script>

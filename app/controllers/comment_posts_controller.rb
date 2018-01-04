@@ -1,17 +1,27 @@
 class CommentPostsController < ApplicationController
   before_action :articles_resource
-  before_action :comment_resource, only: :destroy
+  before_action :comment_resource, only: [:edit, :update, :destroy]
+
+  def new
+    @comment_post = CommentPost.new
+  end
 
   def create
     @comment_post = @useful_article.comment_posts.create(comment_params)
     @comment_post.user_id = current_user.id
     @comment_post.save
-    redirect_to useful_article_path(@useful_article), notice: 'Комментарий был опубликован'
+  end
+
+  def edit
+    binding.pry
+  end
+
+  def update
+    @comment_post.update(comment_params)
   end
 
   def destroy
     @comment_post.destroy!
-    redirect_to useful_article_path(@useful_article), notice: 'Комментарий был удалён'
   end
 
   private

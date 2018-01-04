@@ -5,6 +5,12 @@ class SendMessageMailer < ApplicationMailer
   def new_send_message(send_message)
     @send_message = send_message
 
-    mail subject: "Message from #{send_message.name}, #{send_message.email}"
+    mail subject: "Пользователь #{send_message.email} оставил сообщение для вас"
+  end
+
+  def answer_to_user(send_message)
+    @send_message = send_message
+
+    mail(to: send_message.email, subject: 'Обратная связь с Mapapama.com')
   end
 end

@@ -3,12 +3,16 @@ class Product < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_many :orders, through: :line_items
   has_many :image_products, dependent: :destroy
+  has_many :user_views, dependent: :destroy
   belongs_to :category
   belongs_to :sex
 
-  # validates :title, presence: true
   # validates :category_id, presence: true
-  # validates :price, presence: true
+
+  translates :title, :description, :brand, :country
+
+  validates :title, presence: true
+  validates :price, presence: true
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -17,6 +21,8 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :image_products, allow_destroy: true
 
   after_save :count_price, if: proc { |u| u.mark_up_changed? || u.discount_changed? || u.purchase_price_changed? }
+
+  scope :with_special_offers, -> { where('discount != 0') }
 
   def count_price
     price = (purchase_price * mark_up / 100 + purchase_price) * (100 - discount) / 100
@@ -42,17 +48,15 @@ class Product < ApplicationRecord
   end
 
   def discount_price
-    if price && discount
-      price - ((price/100) * discount)
-    end
+    price - ((price / 100) * discount) if price && discount
   end
 
-  def minimum_age
-    "#{ min_age } лет"
+  def from_min_and_max
+    "от #{min_age} до #{max_age} лет"
   end
 
-  def maximum_age
-    "#{ max_age } лет"
+  def full_name_product
+    "#{title} - #{brand}"
   end
 
   def self.latest

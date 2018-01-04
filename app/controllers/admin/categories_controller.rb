@@ -1,13 +1,11 @@
 class Admin::CategoriesController < AdminsController
-
-  before_action :category_resource, only: [:edit, :update, :destroy, :show]
+  before_action :category_resource, only: %i[edit update destroy show]
   after_action do
-    Category::CATEGORIES_SELECT = Category::get_collection_of_categories_ids
+    Category::CATEGORIES_SELECT = Category.get_collection_of_categories_ids
   end
 
   def index
-    # @categories = Category.includes(:subcategories).includes(:subsubcategories).all
-    @categories = Category.where(ancestry: nil)
+    @categories = Category.where(ancestry: nil).order(:position)
     @category = Category.new(parent_id: params[:parent_id])
   end
 
@@ -36,15 +34,16 @@ class Admin::CategoriesController < AdminsController
     @category.destroy!
   end
 
+  def sort
+    params[:category].each_with_index do |id, index|
+      Category.find_by_id(id).update(position: index + 1)
+    end
+  end
+
   private
 
   def category_params
-    # params.require(:category).permit(:name, subcategories_attributes: [:id, :name, :parent_id, :_destroy])
-    params.require(:category).permit(:name, :parent_id)
-  end
-
-  def subcategory_params
-    params.require(:category).permit(:name, :parent)
+    params.require(:category).permit(:name, :parent_id, :position)
   end
 
   def category_resource

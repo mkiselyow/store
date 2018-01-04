@@ -1,4 +1,4 @@
-<p>Ув.Администратор, Получен заказ:</p>
+<p>Ув.Администратор, Получен заказ # <%= @order.id %>:</p>
 
 <table border="1">
   <tr>
@@ -10,6 +10,10 @@
     <td><%= @order.full_name %></td>
   </tr>
   <tr>
+    <th>E-mail</th>
+    <td><%= @order.email %></td>
+  </tr>
+  <tr>
     <th>Номер телефона</th>
     <td><%= @order.number %></td>
   </tr>
@@ -18,16 +22,16 @@
     <td><%= @order.city %></td>
   </tr>
   <tr>
-    <th>Номер отделения новой почты</th>
-    <td><%= @order.post_office_number %></td>
-  </tr>
-  <tr>
     <th>Способ оплаты</th>
     <td><%= @order.pay_type %></td>
   </tr>
   <tr>
     <td>Способ доставки</td>
     <td><%= @order.way_delivery %></td>
+  </tr>
+  <tr>
+    <th>Номер отделения новой почты</th>
+    <td><%= @order.post_office_number %></td>
   </tr>
   <tr>
     <th>Комментарий</th>
@@ -39,6 +43,8 @@
   <thead>
     <th>#</th>
     <th>Название</th>
+    <th>Категория</th>
+    <th>Код товара</th>
     <th>Цена</th>
     <th>Количество</th>
     <th>Сумма</th>
@@ -47,7 +53,9 @@
     <% @order.line_items.each_with_index do |line_item, i| %>
       <tr>
         <td><%= i+1 %></td>
-        <td><%= line_item.product.title %></td>
+        <td><%= line_item.product.full_name_product %></td>
+        <td><%= line_item.product.category.name %></td>
+        <td><%= line_item.product.product_code %></td>
         <td><%= line_item.product.price %></td>
         <td><%= line_item.quantity %></td>
         <td><%= line_item.count_line_item_price %></td>

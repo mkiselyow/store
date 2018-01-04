@@ -294,9 +294,9 @@ a.top_nav_button:hover {
     position: static;
   }
 }
-
-
-
+.main-image-mobile{
+  width: 100%;
+}
 @media all and (min-width: 1px) and (max-width: 767px) {
   a.top_nav_button {
     width: 49%;
@@ -348,4 +348,22 @@ aside.sticky {
 }
 .product-image-place{
   height: 480px;
+}
+@media (min-width: 768px){
+  .show_mobile{
+    display: none;
+  }
+}
+@media (max-width: 767px){
+  .show_desctop{
+    display: none;
+  }
+}
+.add_image_mobile{
+  // margin: 5px;
+}
+@media (max-width: 767px) and (min-width: 1px){
+  body article, body .mobile {
+    width: 100%;
+  }
 }

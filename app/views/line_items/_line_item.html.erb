@@ -21,40 +21,46 @@
         </div>
       </div>
     </td>
-    <td data-th="Цена">
-      <%= number_to_currency(line_item.product.price, unit: "₴") %>
+    <td data-th="<%= t('cart.product') %>">
+      <div id="price_item_<%= line_item.id %>">
+        <%= line_item.product.price %>
+      </div>
     </td>
-    <td data-th="Количество">
+    <td data-th="<%= t('cart.price') %>">
       <div class="count-item">
         <p>
-          <%= link_to line_item_increase_quantity_url(line_item), method: :put do %>
+          <%= link_to line_item_increase_quantity_url(line_item), method: :put, remote: true do %>
             <%= fa_icon 'caret-square-o-up', class: 'fa-1x' %>
-          <% end %>        
+          <% end %>
         </p>
-        <p><%= line_item.quantity %></p>
+        <p id="count_item_<%= line_item.id %>"><%= line_item.quantity %></p>
         <p>
-          <%= link_to line_item_decrease_quantity_url(line_item), method: :put do %>
+          <%= link_to line_item_decrease_quantity_url(line_item), method: :put, remote: true do %>
             <%= fa_icon 'caret-square-o-down', class: 'fa-1x' %>
           <% end %>        
         </p>
       </div>
       <div class="count-item-mobile">
-        <%= link_to line_item_decrease_quantity_url(line_item), method: :put do %>
+        <%= link_to line_item_decrease_quantity_url(line_item), method: :put, remote: true do %>
           <%= fa_icon 'caret-square-o-left', class: 'fa-1x' %>
         <% end %>     
-        <%= line_item.quantity %>  
-        <%= link_to line_item_increase_quantity_url(line_item), method: :put do %>
+        <span id="count_item_mobile_<%= line_item.id %>">
+          <%= line_item.quantity %>
+        </span>
+        <%= link_to line_item_increase_quantity_url(line_item), method: :put, remote: true do %>
           <%= fa_icon 'caret-square-o-right', class: 'fa-1x' %>
-        <% end %>         
+        <% end %>
       </div>
     </td>
     <td data-th="Сумма" class="text-center">
-      <%= number_to_currency(line_item.count_line_item_price, unit: "₴") %>
+      <div id="sum_item_<%= line_item.id %>">
+        <%= line_item.count_line_item_price %>
+      </div>
     </td>
     <td class="actions" data-th="">
-      <%= link_to line_item, method: :delete, class: "btn btn-danger btn-sm" do %>
+      <%= link_to line_item, method: :delete, class: "btn btn-danger btn-sm", remote: true do %>
         <%= fa_icon 'trash-o', class: 'fa-2x' %>
-      <% end %>               
+      <% end %>
     </td>
   </tr>
 </tbody>

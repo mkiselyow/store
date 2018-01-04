@@ -1,6 +1,5 @@
 $('#notice').hide();
-
-$('#my_cart').html("<%= escape_javascript render(@cart) %>");
+alert("Товар <%= @line_item.product.title %> был успешно добавлен в корзину");
 
 if ($('#my_cart ul').length == 1) { $('#my_cart').show('blind', 1000); }
 

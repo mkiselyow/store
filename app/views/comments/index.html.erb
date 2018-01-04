@@ -1,29 +1,30 @@
+<% title t("header_menu.reviews") %>
 <h1><%= t("header_menu.reviews") %></h1>
 <div class="container">
   <div class="all_comments">
     <%= render @comments %>
   </div>
-  <div class="row comment-success-alert">
+  <div class="row">
     <div class="col-md-6">
-      <div class="alert alert-success">
-        <strong>Поздравляем!</strong> ваш отзыв успешно добавлен!
-      </div>
+      <center>
+        <%= will_paginate @comments, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+      </center>
+    </div>
+  </div>
+  <div class="row comment-alert">
+    <div class="col-md-6">
+      <div class="alert"></div>
     </div>
   </div>
   <div class="row">
     <% if current_user %>
-      <%= render 'form' %>
+      <div class="col-md-6 col-xs-12">
+        <%= render 'form' %>
+      </div>
     <% else %>
       <div class="col-md-6 alert alert-warning">
-        <p>Для того, чтобы оставить отзыв необходимо <%= link_to 'войти в систему', new_user_session_path %></p>
+        <p><%= t('reviews.warning_message') %> <%= link_to t('reviews.log_in'), new_user_session_path %></p>
       </div>
     <% end %>
   </div>
 </div>
-<script>
-  $(function() {
-    setTimeout(function(){ 
-      $('.comment-success-alert').hide('fade');
-    }, 5000);
-  });
-</script>

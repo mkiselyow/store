@@ -1,13 +1,22 @@
 $(document).ready(function(){
-  $( ".hide_side_nav_button" ).click(function() {
-    $(".cart_sidebar").toggle(function() { 
-      if ($( '.cart_sidebar' ).is(':visible')){
-        $('#search_multiple_form').hide();
-        $( '.hide_side_nav_button' ).text('Спрятать корзину');
-      }
-      else if ($(( '.cart_sidebar' )).is(':hidden')) {
-        $( '.hide_side_nav_button' ).text('Показать корзину');
-        $('#search_multiple_form').show();
+  $("#info-product").click(function(){
+    $(".info-about-product").toggle();
+    $("#info-product").text(function(i, text){
+      return text === "Больше информации" ? "Спрятать информацию": "Больше информации";
+    })
+  });
+  $("#info-product-mobile").click(function(){
+    $(".info-about-product-mobile").toggle();
+    $("#info-product-mobile").text(function(i, text){
+      return text === "Больше информации" ? "Спрятать информацию": "Больше информации";
+    })
+  });
+  $(function(){
+    $("#product_material_another").change(function(){
+      if($("#product_material_another").prop("checked") == true){
+        $("#other_desc").prop("disabled", false);
+      }else{
+        $("#other_desc").prop("disabled", true);
       }
     });
   });

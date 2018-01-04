@@ -1,41 +1,75 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
-  <div class="col-md-2 col-md-offset-2 col-xs-4">
-    <% if @user.avatar.present? %>
-      <img id="zoom_02" src="<%= @user.avatar_url(:medium) %>" data-zoom-image="<%= @user.avatar_url(:large) %>", class='img-thumbnail profile-avatar'/>
-    <% else %>
-      <%= image_tag @user.avatar_url(:medium), class: 'img-thumbnail profile-avatar' %>
-    <% end %>
+  <div class="col-md-2 col-xs-5 col-sm-3">
+    <%= image_tag @user.avatar_url(:medium), class: 'img-thumbnail profile-avatar' %>
   </div>
-  <div class="col-md-6 col-xs-8">
+  <div class="col-md-5 col-xs-7 col-sm-9">
     <div class="well">
       <h2>
         <%= @user.full_name %>
         <% if current_user.id == @user.id %>
           <%= link_to edit_user_registration_path(@user) do %>
-            <%= fa_icon 'pencil', title: 'Изменить профиль' %>
+            <%= fa_icon 'pencil', title: t('profile.edit_profile') %>
           <% end %>
         <% end %>
       </h1>
       <p>
-        <strong>Эл. почта:</strong>
+        <strong><%= t('profile.email') %></strong>
         <%= @user.email %>
       </p>
       <p>
-        <strong>Номер телефона:</strong>
+        <strong><%= t('profile.number_phone') %></strong>
         <%= @user.number %>
       </p>
       <p>
-        <strong>Роль:</strong>
+        <strong><%= t('profile.role') %></strong>
         <% if @user.admin? %>
-          <span class="label label-danger">Администратор</span>
+          <span class="label label-danger"><%= t('profile.admin') %></span>
         <% else %>
-          <span class="label label-primary">Пользователь</span>
+          <span class="label label-primary"><%= t('profile.user') %></span>
         <% end %>
       </p>
     </div>
   </div>
+  <% if current_user.id == @user.id %>
+    <div class="col-md-5 col-xs-12 col-sm-12">
+      <div class="well">
+        <h2><%= t('profile.your_orders.title') %></h2>
+        <table class='table'>
+          <thead>
+            <th><%= t('profile.your_orders.number') %></th>
+            <th><%= t('profile.your_orders.total_sum') %></th>
+            <th><center><%= t('profile.your_orders.stat') %></center></th>
+          </thead>
+          <tbody>
+            <% @user_olders.each do |user_older| %>
+              <tr>
+                <td><%= t('profile.your_orders.order') %><%= user_older.id %></td>
+                <td><%= number_to_currency(user_older.order_total_price, locale: :ru) %></td>
+                <td>
+                  <center>
+                    <%= fa_icon "#{ user_older.delivered ? 'check' : 'minus' }-square-o", class: "text-#{user_older.delivered ? 'success' : 'warning' } fa-2x", title: "#{ user_older.delivered ? t('profile.your_orders.status.success') : t('profile.your_orders.status.expect') }" %>
+                  </center>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
 </div>
-<script>
-  $("#zoom_02").elevateZoom({tint:true, tintColour:'#F90', tintOpacity:0.5});
-</script>
+<% if current_user.id == @user.id %>
+  <% if @user_views != 0 %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1><%= t('profile.you_watched') %></h1>
+        <% @user_views.each do |view| %>
+          <div class="col-md-2 col-sm-3 col-xs-6 product_view_class product_view_class_all">
+            <%= render  partial: "products/product", locals: { product: view.product } %>
+            <%= button_to t('products.add_to_cart'), product_line_items_path(view.product.id), class: "buttom_add_to_cart", remote: true %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,8 +1,9 @@
+<% title t("header_menu.useful_article") %>
 <h1><%= t("header_menu.useful_article") %></h1>
 <% @useful_articles.each do |u_a| %>
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-8 well">
+      <div class="col-md-10 well">
          <div class="row">
            <div class="col-md-8">
              <h3><strong><%= link_to u_a.title, useful_article_path(u_a) %></strong></h3>
@@ -12,9 +13,9 @@
           <div class="col-md-3">
             <%= image_tag u_a.preview_url(:medium), class: 'thumbnail' %>
           </div>
-          <div class="col-md-7">      
+          <div class="col-md-9">      
             <p>
-              <%= raw u_a.body.truncate(220) %>
+              <%= raw u_a.body.truncate(300) %>
             </p>
             <p><%= link_to 'Читать далее', useful_article_path(u_a), class: "btn btn-default" %>
           </div>
@@ -28,7 +29,7 @@
               <% end %>
               | <%= fa_icon 'calendar', text: "#{ u_a.created_at.strftime("%B %dth, %Y") }" %>
               | <%= fa_icon 'comment', text: "#{ u_a.comment_posts.count } комментариев"  %>
-              | <%= social_share_button_tag(u_a.title) %>
+               <%= social_share_button_tag(u_a.title) %>
             </p>
           </div>
         </div>

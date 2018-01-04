@@ -3,14 +3,6 @@ class LineItemsController < ApplicationController
 
   before_action :set_line_item, only: %i[show edit update destroy]
 
-  def index
-    @line_items = LineItem.order(:id)
-  end
-
-  def new
-    @line_item = LineItem.new
-  end
-
   def create
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
@@ -40,11 +32,7 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to @line_item.cart, notice: 'Товар был успешно убран из корзины' }
-      format.json { head :no_content }
-    end
+    @line_item.destroy!
   end
 
   def decrease_quantity
@@ -52,16 +40,8 @@ class LineItemsController < ApplicationController
     if @line_item.quantity >= 2
       decreased_quantity = @line_item.quantity - 1
       @line_item.update(quantity: decreased_quantity)
-      respond_to do |format|
-        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно уменьшено' }
-        format.json { head :no_content }
-      end
     else
-      @line_item.destroy
-      respond_to do |format|
-        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Товар был успешно убран из корзины' }
-        format.json { head :no_content }
-      end
+      @line_item.destroy!
     end
   end
 
@@ -70,10 +50,6 @@ class LineItemsController < ApplicationController
     if @line_item
       increased_quantity = @line_item.quantity + 1
       @line_item.update(quantity: increased_quantity)
-      respond_to do |format|
-        format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Количество было успешно увеличено' }
-        format.json { head :no_content }
-      end
     else
       format.html { redirect_to cart_path(@line_item.cart_id), notice: 'Неизвестная ошибка' }
     end

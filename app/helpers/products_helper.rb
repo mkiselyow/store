@@ -1,18 +1,18 @@
 module ProductsHelper
   def material_plastic_present
-    content_tag(:li, 'Пластик') if @product.material_plastic?
+    content_tag(:li, t('.plastic')) if @product.material_plastic?
   end
 
   def material_iron_present
-    content_tag(:li, 'Железо') if @product.material_iron?
+    content_tag(:li, t('.iron')) if @product.material_iron?
   end
 
   def material_wooden_present
-    content_tag(:li, 'Дерево') if @product.material_wooden?
+    content_tag(:li, t('.wood')) if @product.material_wooden?
   end
 
   def material_fabric_present
-    content_tag(:li, 'Ткань') if @product.material_fabric?
+    content_tag(:li, t('.cloth')) if @product.material_fabric?
   end
 
   def material_another_present
@@ -20,6 +20,6 @@ module ProductsHelper
   end
 
   def material_mixed_present
-    content_tag(:li, 'Смешаный') if @product.mixed?
+    content_tag(:li, t('.mixed')) if @product.mixed?
   end
 end
