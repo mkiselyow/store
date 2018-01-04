@@ -51,7 +51,9 @@ Rails.application.routes.draw do
       end
       resources :orders
       resources :useful_articles
-      resources :products
+      resources :products do
+        collection { post :import }
+      end
       resources :categories do
         resources :subcategories
       end

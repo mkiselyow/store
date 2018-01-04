@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Вы создали продукт.' }
+        format.html { redirect_to @product, notice: 'Вы добавили продукт.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
