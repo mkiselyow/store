@@ -46,23 +46,6 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
   
-<<<<<<< HEAD
-    namespace :admin do
-      root to: 'users#index'
-      resources :users do
-        put :banned_user, on: :member
-        put :change_permission, on: :member
-      end
-      resources :orders
-      resources :useful_articles
-      resources :products do
-        collection { post :import }
-      end
-      resources :categories do
-        resources :subcategories
-      end
-      resources :shares
-=======
   namespace :admin do
     root to: 'users#index'
     resources :users do
@@ -74,10 +57,11 @@ Rails.application.routes.draw do
       put :order_delivered, on: :member
     end
     resources :useful_articles
-    resources :products
+    resources :products do
+      collection { post :import }
+    end
     resources :categories do
       collection { post :sort }
->>>>>>> 2b62d04fb8f223336e936e2ac965fbf412877421
     end
     resources :shares
   end
