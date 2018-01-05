@@ -79,11 +79,18 @@
           </span>
         </span>
       <% end %>
-      <p>
-        <%= link_to_unless_current t("header_one.ru"), locale: 'ru' %> |
-        <%= link_to_unless_current t("header_one.ua"), locale: 'ua' %> |
-        <%= link_to_unless_current t("header_one.en"), locale: 'en' %>
-      </p>
+      <div class="row">
+        <div class="col-md-8 col-xs-7">
+          <%= link_to_unless_current 'RU', locale: 'ru' %> |
+          <%= link_to_unless_current 'UA', locale: 'ua' %> |
+          <%= link_to_unless_current 'EN', locale: 'en' %>
+        </div>
+        <div class="social-button col-md-4 col-xs-5">
+          <a href="#" class="fa fa-icons fa-facebook"></a>
+          <a href="#" class="fa fa-icons fa-google"></a>
+          <a href="#" class="fa fa-icons fa-vk"></a>
+        </div>        
+      </div>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@
 @import "uikit";
 @import 'carousel_product_show';
 @import 'session_form';
+@import 'social';
 
 .facebook-icon{
   color: #4267b2;
@@ -141,14 +142,14 @@
 }
 
 .hide-bullets {
-  list-style:none;
+  list-style: none;
   margin-left: -40px;
-  margin-top:20px;
+  margin-top: 20px;
 }
 .footer__columns-wrap, .footer__subscribe-wrap, .layout {
   max-width: 1600px;
   margin: auto;
-  padding: 14px 23px;
+  padding: 0px 23px;
 }
 .thumbnail {
   padding: 0;

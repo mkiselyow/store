@@ -16,7 +16,9 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         @order.add_line_items_from_cart(@cart)
-        Cart.destroy(session[:cart_id])
+        @order.line_items.each do |line_item|
+          line_item.update(cart_id: @cart.id)
+        end
         session[:cart_id] = nil
         OrderNotifierMailer.recieved(@order).deliver
         OrderNotifierMailer.user_order_recieved(@order).deliver

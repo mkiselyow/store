@@ -87,6 +87,7 @@ gem 'will_paginate-bootstrap'
 # gem 'globalize', github: 'globalize/globalize'
 gem 'redis'
 gem 'sidekiq'
+gem 'whenever', require: false
 gem 'i18n-active_record'
 gem "i18n-js"
 
