@@ -87,6 +87,9 @@
             <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
           <% end %>          
         </p>
+        <p class='text-success'>
+          <span id="product_show_<%= @product.id %>"></span>
+        </p>
       </div>
     </div>
     <div id="main_area">
@@ -109,26 +112,48 @@
         </div>
       </div>
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <button id="info-product" class='btn btn-block btn-info'>Больше информации</button>
-      <br>
+    <div class="row">
+      <div class="col-md-12">
+        <button id="info-product" class='btn btn-block btn-info'>
+          <%= t('products.show_info') %>
+        </button>
+        <br>
+      </div>
     </div>
-  </div>
-  <div class="row col-md-12 info-about-product">
-    <div class="col-md-6">
-      <%= render 'table_characters' %>
+    <div class="row col-md-12 info-about-product">
+      <div class="col-md-6">
+        <%= render 'table_characters' %>
+      </div>
+      <div class="col-md-6">
+        <h2>Описание</h2>
+        <%= raw @product.description %>
+        <p>
+          <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger", remote: true  do %>
+            <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
+          <% end %>    
+        </p>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h2>Описание</h2>
-      <%= raw @product.description %>
-      <p>
-        <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger" do %>
-          <%= fa_icon 'cart-plus', text: 'В Корзину' %>
+    <div class="row">
+      <div class="col-md-12">
+        <% if current_user.present? %>
+          <% if @user_views != 0 %>
+            <div class="row">
+              <div class="col-md-12">
+                <h1><%= t('profile.you_watched') %></h1>
+                <% @user_views.each do |view| %>
+                  <div class="col-md-2 col-sm-3 col-xs-6 product_view_class product_view_class_all">
+                    <%= render  partial: "products/product", locals: { product: view.product } %>
+                    <%= button_to product_line_items_path(view.product.id), class: "buttom_add_to_cart btn-block", remote: true do %>
+                      <%= fa_icon 'cart-plus', text: t('products.add_to_cart'), remote: true %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      </p>
+      </div>
     </div>
   </div>
 </div>

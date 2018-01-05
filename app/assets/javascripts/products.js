@@ -1,14 +1,14 @@
 $(document).ready(function(){
   $("#info-product").click(function(){
-    $(".info-about-product").toggle();
+    $(".info-about-product").slideToggle( "slow" );
     $("#info-product").text(function(i, text){
-      return text === "Больше информации" ? "Спрятать информацию": "Больше информации";
+      return text === 'Показать информацию' ? "Спрятать информацию": 'Показать информацию';
     })
   });
   $("#info-product-mobile").click(function(){
-    $(".info-about-product-mobile").toggle();
+    $(".info-about-product-mobile").slideToggle( "slow" );
     $("#info-product-mobile").text(function(i, text){
-      return text === "Больше информации" ? "Спрятать информацию": "Больше информации";
+      return text === 'Показать информацию' ? "Спрятать информацию": 'Показать информацию';
     })
   });
   $(function(){

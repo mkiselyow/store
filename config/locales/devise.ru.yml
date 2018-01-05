@@ -27,6 +27,9 @@ ru:
     contact: 'Контакты'
     about: 'О нас'
     partner: 'Партнёрам'
+  products:
+    show_info: 'Показать больше информации'
+    hide_info: 'Скрыть информацию'
   reviews:
     warning_message: 'Для того, чтобы оставить отзыв необходимо'
     log_in: 'войти в систему'

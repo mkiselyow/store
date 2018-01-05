@@ -27,6 +27,9 @@ en:
     contact: 'Contacts'
     about: 'About us'
     partner: 'For partners'
+  products:
+    show_info: 'Show more info'
+    hide_info: 'Hide info'
   reviews:
     warning_message: 'In order to leave review, is necessary'
     log_in: 'log in'

@@ -27,6 +27,9 @@ ua:
     contact: 'Контакти'
     about: 'Про нас'
     partner: 'Партнерам'
+  products:
+    show_info: 'Показати більше інформації'
+    hide_info: 'Приховати інформацію'
   reviews:
     warning_message: 'Для того щоб залишити відгук, необхідно'
     log_in: 'увійти до системи'

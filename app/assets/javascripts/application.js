@@ -11,6 +11,8 @@
 //= require jquery.raty.min
 //= require jquery_nested_form
 //= require nested_form_fields
+//= require i18n
+//= require i18n/translations
 //= require ckeditor/init
 //= require_tree .
 jQuery(document).ready(function($){

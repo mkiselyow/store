@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :sex
 
-  translates :title, :description, :brand, :country
+  # translates :title, :description, :brand, :country
 
   validates :title, presence: true
   validates :price, presence: true

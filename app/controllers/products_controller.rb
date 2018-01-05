@@ -25,6 +25,10 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def show
+    @user_views = current_user.user_views.last_six_views if current_user
+  end
+
   def create
     @product = Product.create(product_params)
     respond_to do |format|
