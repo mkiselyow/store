@@ -57,7 +57,9 @@ Rails.application.routes.draw do
       put :order_delivered, on: :member
     end
     resources :useful_articles
-    resources :products
+    resources :products do
+      collection { post :import }
+    end
     resources :categories do
       collection { post :sort }
     end

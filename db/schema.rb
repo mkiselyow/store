@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228135630) do
+ActiveRecord::Schema.define(version: 20180105083237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20171228135630) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "parent_category_id"
+    t.integer "parent_subcategory_id"
     t.string "ancestry"
     t.integer "position"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
@@ -101,19 +103,6 @@ ActiveRecord::Schema.define(version: 20171228135630) do
     t.string "email"
     t.boolean "delivered", default: false
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "product_translations", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "title"
-    t.text "description"
-    t.string "brand"
-    t.string "country"
-    t.index ["locale"], name: "index_product_translations_on_locale"
-    t.index ["product_id"], name: "index_product_translations_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|

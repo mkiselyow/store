@@ -13,6 +13,11 @@ class Admin::ProductsController < AdminsController
     @product.destroy!
   end
 
+  def import
+    Product.import(params[:file])
+    redirect_to admin_products_url#, notice: "Товары добавлены"
+  end
+
   private
 
   def product_params

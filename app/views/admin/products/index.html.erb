@@ -1,9 +1,21 @@
 <h1>Продукты</h1>
 <div class="row">
-  <div class="col-md-4 col-xs-4">
+  <div class="col-md-2 col-xs-2">
     <%= link_to 'Добавить товар', new_product_path, target: '_blank', class: 'btn btn-success' %>
   </div>
-  <div class="col-md-6 col-md-offset-2 col-xs-8">
+
+  <div class="col-md-2 col-xs-2">
+    <%= link_to 'Товары с CSV', new_product_path, target: '_blank', class: 'btn btn-primary' %>
+  </div>
+
+  <div class="col-md-2 col-xs-2">
+    <%= form_tag import_admin_products_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Загрузить" %>
+    <% end %>
+  </div>
+
+  <div class="col-md-6 col-xs-6">
     <%= form_tag(admin_products_path, method: :get) do %>
       <span class="input-group">
         <%= text_field_tag :product_code, nil, placeholder: "Введите код товара", class: 'form-control search-input' %>
