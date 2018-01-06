@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = Search.create!(product_params)
+    @search = Search.create(product_params)
     redirect_to @search, notice: "Найдено #{@search.products.count} товаров"
   end
 

@@ -1,25 +1,24 @@
-<h2>Смена пароля</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "Новый пароль" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> знаков минимум)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Подтвердите новый пароль" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Поменять пароль" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="col-md-6 col-md-offset-3 col-xs-12 well">
+  <center>
+    <h2>Смена пароля</h2>
+  </center>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :reset_password_token %>
+    <div class="field">
+      <%= f.label :password, "Новый пароль" %><br />
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> знаков минимум)</em><br />
+      <% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control', required: true %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :password_confirmation, "Подтвердите новый пароль" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', required: true %>
+    </div>
+    <br>
+    <%= f.submit "Поменять пароль", class: 'btn btn-warning button_change_password' %>
+  <% end %>
+  <br>
+</div>

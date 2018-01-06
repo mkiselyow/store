@@ -3,6 +3,7 @@
   *= require_tree .
   *= require_self
   *= require font-awesome
+  *= require bootstrap-social
   *= require trix
  */
 @import "bootstrap-sprockets";
@@ -437,5 +438,10 @@ a.thumbnail.product_image_add {
 @media (max-width: 768px){
   .top_container_center{
     height: 80px;
+  }
+}
+@media (max-width: 768px){
+  .button_change_password{
+    width: 100%;
   }
 }

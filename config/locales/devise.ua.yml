@@ -114,6 +114,17 @@ ua:
          separator: '.'
          precision: 2
   you_banned: 'Ваш обліковий запис заблоковано!'
+  session:
+    log_in: 'Увійти'
+    sign_up: 'зареєструватися'
+    email: 'Ваш email'
+    password: 'Ваш пароль'
+    remember_me: "Запам\'ятати мене"
+    forgot_password: 'Забули пароль?'
+    if_not_autorise: 'Якщо ви не зареєстровані в системі, у вас є можливість'
+    sign_in_with_vk: 'Увійти через Вконтакте'
+    sign_in_with_facebook: 'Увійти через Facebook'
+    send: 'Вислати інструкції'
   devise:
     user:
       name: "Ім'я: "
