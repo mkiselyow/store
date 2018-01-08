@@ -120,9 +120,9 @@ class Product < ApplicationRecord
           product_code:          row.to_hash["Артикул"],
           #discount:             row.to_hash["Скидка"],
           category_id: (row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.find_by(name: row.to_hash["Категория"]).id : 169) : 169),
-          other_desc:
-          general_category:
-          max_age:
+          # other_desc:
+          # general_category:
+          # max_age:
           min_age:              row.to_hash["Возраст"] )
       if row.to_hash["Изображение"]
         product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
