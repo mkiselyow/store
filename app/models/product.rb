@@ -119,7 +119,7 @@ class Product < ApplicationRecord
       #     #country:
       #     product_code:          row.to_hash["Артикул"],
       #     #discount:             row.to_hash["Скидка"],
-      p    "=========================================================================== =========================================================================== ========================================================================== #{(row.to_hash["Категория"].split(", ").last ? (Category.all.map {|cat| cat.name }.include?(row.to_hash["Категория"].split(", ").last) ? Category.where(name: row.to_hash["Категория"].split(", ").last).first.id : 1) : 1)}"
+      p    "=========================================================================== =========================================================================== ========================================================================== #{(row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.where(name: row.to_hash["Категория"].split(", ").last).first.id : 1) : 1)}"
       #     #other_desc:
       #     #general_category:
       #     #max_age:
