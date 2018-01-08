@@ -127,7 +127,7 @@ class Product < ApplicationRecord
       # if row.to_hash["Изображение"]
       #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
       # end
-    # end
+    end
   end
 
   # file = File.open('/home/max/Рабочий стол/new.csv')
