@@ -119,10 +119,7 @@ class Product < ApplicationRecord
       #     #country:
       #     product_code:          row.to_hash["Артикул"],
       #     #discount:             row.to_hash["Скидка"],
-      p    "===========================================================================
-      ===========================================================================
-      ===========================================================================
-      #{category_id:           (row.to_hash["Категория"].split(", ").last ? (Category.all.map {|cat| cat.name }.include?(row.to_hash["Категория"].split(", ").last) ? Category.where(name: row.to_hash["Категория"].split(", ").last) : 1) : 1)}"
+      p    "=========================================================================== =========================================================================== ========================================================================== #{category_id:           (row.to_hash["Категория"].split(", ").last ? (Category.all.map {|cat| cat.name }.include?(row.to_hash["Категория"].split(", ").last) ? Category.where(name: row.to_hash["Категория"].split(", ").last) : 1) : 1)}"
       #     #other_desc:
       #     #general_category:
       #     #max_age:
@@ -130,7 +127,7 @@ class Product < ApplicationRecord
       # if row.to_hash["Изображение"]
       #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
       # end
-    end
+    # end
   end
 
   # file = File.open('/home/max/Рабочий стол/new.csv')
