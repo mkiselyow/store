@@ -15,6 +15,8 @@ class SearchesController < ApplicationController
   end
 
   def update
+    @search.update(title: nil, product_code: nil, min_price: nil, max_price: nil, brand: nil,
+                   min_age: nil, max_age: nil, sex_id: nil, category_id: nil)
     @search.update(product_params)
     redirect_back(fallback_location: search_path(@search))
   end
@@ -31,6 +33,6 @@ class SearchesController < ApplicationController
                                    :color_white, :color_black, :color_red, :color_yellow,
                                    :color_green, :color_blue, :color_violet, :brand,
                                    :material_plastic, :material_iron, :material_another,
-                                   :material_wooden, :material_fabric, :material_mixed, :sex_id)
+                                   :material_wooden, :material_fabric, :material_mixed, :sex_id, :category_id)
   end
 end

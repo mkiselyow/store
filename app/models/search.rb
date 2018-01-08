@@ -1,4 +1,5 @@
 class Search < ApplicationRecord
+
   def products
     @products ||= find_products
   end
@@ -7,7 +8,7 @@ class Search < ApplicationRecord
 
   def find_products
     products = Product.order(:id)
-    products = products.where('brand like ?', brand) if brand.present?
+    products = products.where(brand: brand) if brand.present?
 
     products = products.where(category_id: category_id) if category_id.present?
     products = products.where(sex_id: sex_id) if sex_id.present?
