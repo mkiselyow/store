@@ -69,64 +69,64 @@ class Product < ApplicationRecord
     # CSV.foreach(file, options) do |row|
     CSV.foreach(file.path, options) do |row|
       # # unless Product.find_by(product_code: row.to_hash["Артикул"])
-      #   product = Product.create!(
-      #     title:                row.to_hash["Название на русском"],
-      #     size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i*10 : nil),
-      #     size_b:               (row.to_hash["Ширина см."] ? row.to_hash["Ширина см."].to_i*10 : nil),
-      #     size_h:               (row.to_hash["Высота см."] ? row.to_hash["Высота см."].to_i*10 : nil),
-      #     purchase_price:       (row.to_hash["Цена грн."] ? row.to_hash["Цена грн."].to_f : nil),
-      #     mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_f : 100),
-      #     # price:                (row.to_hash["Цена грн."]*row.to_hash["Наценка"]||100),
-      #     weight:               (row.to_hash["Вес г."] ? row.to_hash["Вес г."].to_f : nil),
-      #     #color_white:
-      #     #color_black:
-      #     #color_red:
-      #     #color_yellow:
-      #     #color_green:
-      #     #color_blue:
-      #     #color_violet:
-      #     brand:                row.to_hash["Торговая марка"],
-      #     material_plastic: (if row.to_hash["Материал"]
-      #                         row.to_hash["Материал"].match(%r/пластик|полимерные/i) ? true : false
-      #                       end),
-      #     material_iron:    (if row.to_hash["Материал"]
-      #                         row.to_hash["Материал"].match(%r/металл/i) ? true : false
-      #                       end),
-      #     material_another: (if row.to_hash["Материал"]
-      #                         row.to_hash["Материал"].match(%r/картон|винил|резина|летекс|ФОМ|гипс|бумага/i) ? true : false
-      #                       end),
-      #     material_wooden:  (if row.to_hash["Материал"]
-      #                         row.to_hash["Материал"].match(%r/дерево/i) ? true : false
-      #                       end),
-      #     material_fabric:  (if row.to_hash["Материал"]
-      #                         row.to_hash["Материал"].match(%r/ткань|плюш/i) ? true : false
-      #                       end),
-      #     mixed:            (if row.to_hash["Материал"]
-      #                         row.to_hash["Материал"].match(%r/смешанный/i) ? true : false
-      #                       end),
-      #     #supplier:
-      #     #quantity:              row.to_hash["Количество"],
-      #     sex_id:              (if row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/мальчик/i)
-      #                             1# 1# 5 #1
-      #                           elsif row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/девочка/i)
-      #                             2# 2# 3 #2
-      #                           else
-      #                             3# 3# 4 #3
-      #                           end),
-      #     #description:
-      #     #image_cache:
-      #     #image_id:
-      #     #country:
-      #     product_code:          row.to_hash["Артикул"],
-      #     #discount:             row.to_hash["Скидка"],
-      p    "=========================================================================== =========================================================================== ========================================================================== #{(row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.where(name: row.to_hash["Категория"].split(", ").last).first.id : 1) : 1)}"
-      #     #other_desc:
-      #     #general_category:
-      #     #max_age:
-      #     min_age:              row.to_hash["Возраст"] )
-      # if row.to_hash["Изображение"]
-      #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
-      # end
+        product = Product.create!(
+          title:                row.to_hash["Название на русском"],
+          size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i*10 : nil),
+          size_b:               (row.to_hash["Ширина см."] ? row.to_hash["Ширина см."].to_i*10 : nil),
+          size_h:               (row.to_hash["Высота см."] ? row.to_hash["Высота см."].to_i*10 : nil),
+          purchase_price:       (row.to_hash["Цена грн."] ? row.to_hash["Цена грн."].to_f : nil),
+          mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_f : 100),
+          # price:                (row.to_hash["Цена грн."]*row.to_hash["Наценка"]||100),
+          weight:               (row.to_hash["Вес г."] ? row.to_hash["Вес г."].to_f : nil),
+          #color_white:
+          #color_black:
+          #color_red:
+          #color_yellow:
+          #color_green:
+          #color_blue:
+          #color_violet:
+          brand:                row.to_hash["Торговая марка"],
+          material_plastic: (if row.to_hash["Материал"]
+                              row.to_hash["Материал"].match(%r/пластик|полимерные/i) ? true : false
+                            end),
+          material_iron:    (if row.to_hash["Материал"]
+                              row.to_hash["Материал"].match(%r/металл/i) ? true : false
+                            end),
+          material_another: (if row.to_hash["Материал"]
+                              row.to_hash["Материал"].match(%r/картон|винил|резина|летекс|ФОМ|гипс|бумага/i) ? true : false
+                            end),
+          material_wooden:  (if row.to_hash["Материал"]
+                              row.to_hash["Материал"].match(%r/дерево/i) ? true : false
+                            end),
+          material_fabric:  (if row.to_hash["Материал"]
+                              row.to_hash["Материал"].match(%r/ткань|плюш/i) ? true : false
+                            end),
+          mixed:            (if row.to_hash["Материал"]
+                              row.to_hash["Материал"].match(%r/смешанный/i) ? true : false
+                            end),
+          #supplier:
+          #quantity:              row.to_hash["Количество"],
+          sex_id:              (if row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/мальчик/i)
+                                  1# 1# 5 #1
+                                elsif row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/девочка/i)
+                                  2# 2# 3 #2
+                                else
+                                  3# 3# 4 #3
+                                end),
+          #description:
+          #image_cache:
+          #image_id:
+          #country:
+          product_code:          row.to_hash["Артикул"],
+          #discount:             row.to_hash["Скидка"],
+          category_id: (row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.find_by(name: row.to_hash["Категория"]).id : 169) : 169),
+          other_desc:
+          general_category:
+          max_age:
+          min_age:              row.to_hash["Возраст"] )
+      if row.to_hash["Изображение"]
+        product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
+      end
     end
   end
 
