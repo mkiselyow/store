@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20171228135630) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "parent_category_id"
+    t.integer "parent_subcategory_id"
     t.string "ancestry"
     t.integer "position"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
@@ -183,7 +185,6 @@ ActiveRecord::Schema.define(version: 20171228135630) do
     t.boolean "material_another"
     t.boolean "material_wooden"
     t.boolean "material_fabric"
-    t.boolean "material_mixed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

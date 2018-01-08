@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   translates :title, :description, :brand, :country
 
   validates :title, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, unless: :purchase_price && :mark_up
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -111,11 +111,11 @@ class Product < ApplicationRecord
           #supplier:
           #quantity:              row.to_hash["Количество"],
           sex_id:              (if row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/мальчик/i)
-                                  1# 5 #1
+                                  1# 1# 5 #1
                                 elsif row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/девочка/i)
-                                  2# 3 #2
+                                  2# 2# 3 #2
                                 else
-                                  3# 4 #3
+                                  3# 3# 4 #3
                                 end),
           #description:
           #image_cache:
