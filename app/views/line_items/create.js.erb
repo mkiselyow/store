@@ -1,7 +1,6 @@
 $('#notice').hide();
-alert("Товар <%= @line_item.product.title %> был успешно добавлен в корзину");
-
-if ($('#my_cart ul').length == 1) { $('#my_cart').show('blind', 1000); }
-
-$('#current_item').css({'background-color':'#88ff88'}).
-animate({'background-color':'#fff'}, 1000);
+// alert("Товар <%= @line_item.product.title %> был успешно добавлен в корзину");
+$('.product_<%= @line_item.product.id %>').css({'background-color':'#88ff88'}).animate({'background-color':'#fff'}, 1000);
+$('.comment-alert').show();
+$('#product_show_<%= @line_item.product.id %>').text('Товар был успешно добавлен в корзину');
+$('#product_show_mobile_<%= @line_item.product.id %>').text('Товар был успешно добавлен в корзину');

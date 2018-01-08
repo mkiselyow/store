@@ -37,7 +37,7 @@
         <%= render 'shared/header_menu' %>
       </div>
       <div class="row">
-        <div class='col-md-4 col-md-offset-8'>
+        <div class='col-md-4 col-xs-12 col-md-offset-8'>
           <br>
           <%- flash.each do |name, msg|%>
             <%= content_tag :div, msg, id: "flash_#{name}", class: 'alert alert-info message' %>
@@ -46,7 +46,6 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <%= render 'shared/social_link' %>
           <%= yield %>
         </div>
       </div>

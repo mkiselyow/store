@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228135630) do
+ActiveRecord::Schema.define(version: 20180105083237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,19 +105,6 @@ ActiveRecord::Schema.define(version: 20171228135630) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "product_translations", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "title"
-    t.text "description"
-    t.string "brand"
-    t.string "country"
-    t.index ["locale"], name: "index_product_translations_on_locale"
-    t.index ["product_id"], name: "index_product_translations_on_product_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.integer "size_a"
@@ -151,7 +138,7 @@ ActiveRecord::Schema.define(version: 20171228135630) do
     t.string "image_id"
     t.string "country"
     t.integer "discount", default: 0
-    t.integer "times_viewed"
+    t.integer "times_viewed", default: 1
     t.bigint "category_id"
     t.string "other_desc"
     t.integer "min_age"

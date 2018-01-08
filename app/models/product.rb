@@ -7,10 +7,6 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :sex
 
-  # validates :category_id, presence: true
-
-  translates :title, :description, :brand, :country
-
   validates :title, presence: true
   validates :price, presence: true, unless: :purchase_price && :mark_up
 
@@ -82,7 +78,7 @@ class Product < ApplicationRecord
           mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_f : 100),
           # price:                (row.to_hash["Цена грн."]*row.to_hash["Наценка"]||100),
           weight:               (row.to_hash["Вес г."] ? row.to_hash["Вес г."].to_f : nil),
-          #color_white:          
+          #color_white:
           #color_black:
           #color_red:
           #color_yellow:

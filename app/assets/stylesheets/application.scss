@@ -3,6 +3,7 @@
   *= require_tree .
   *= require_self
   *= require font-awesome
+  *= require bootstrap-social
   *= require trix
  */
 @import "bootstrap-sprockets";
@@ -11,6 +12,7 @@
 @import "uikit";
 @import 'carousel_product_show';
 @import 'session_form';
+@import 'social';
 
 .facebook-icon{
   color: #4267b2;
@@ -141,14 +143,14 @@
 }
 
 .hide-bullets {
-  list-style:none;
+  list-style: none;
   margin-left: -40px;
-  margin-top:20px;
+  margin-top: 20px;
 }
 .footer__columns-wrap, .footer__subscribe-wrap, .layout {
   max-width: 1600px;
   margin: auto;
-  padding: 14px 23px;
+  padding: 0px 23px;
 }
 .thumbnail {
   padding: 0;
@@ -256,7 +258,7 @@
       padding: 5px;
       box-sizing: border-box;
       margin-top: 10px;
-      width: 50%;
+      width: 100%;
       // font-family: "SF Pro Text",sans-serif;
       font-size: 14px;
       min-height: 42px;
@@ -298,7 +300,7 @@
     padding: 5px;
     box-sizing: border-box;
     margin-top: 10px;
-    width: 50%;
+    width: 100%;
     // font-family: "SF Pro Text",sans-serif;
     font-size: 14px;
     min-height: 42px;
@@ -436,5 +438,10 @@ a.thumbnail.product_image_add {
 @media (max-width: 768px){
   .top_container_center{
     height: 80px;
+  }
+}
+@media (max-width: 768px){
+  .button_change_password{
+    width: 100%;
   }
 }

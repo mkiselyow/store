@@ -27,6 +27,9 @@ ru:
     contact: 'Контакты'
     about: 'О нас'
     partner: 'Партнёрам'
+  products:
+    show_info: 'Показать больше информации'
+    hide_info: 'Скрыть информацию'
   reviews:
     warning_message: 'Для того, чтобы оставить отзыв необходимо'
     log_in: 'войти в систему'
@@ -111,6 +114,17 @@ ru:
          delimiter: ','
          separator: '.'
          precision: 2
+  session:
+    log_in: 'Войти'
+    sign_up: 'зарегистрироваться'
+    remember_me: 'Запомнить меня'
+    forgot_password: 'Забыли пароль?'
+    email: 'Ваш еmail'
+    password: 'Ваш пароль'
+    if_not_autorise: 'Если вы не авторизированы в нашей системе, вы можете'
+    sign_in_with_vk: 'Войти через ВКонтакте'
+    sign_in_with_facebook: 'Войти через Facebook'
+    send: 'Выслать инструкции'
   devise:
     confirmations:
       confirmed: "Ваша учётная запись подтверждена. Теперь вы вошли в систему."

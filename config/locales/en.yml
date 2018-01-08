@@ -27,6 +27,20 @@ en:
     contact: 'Contacts'
     about: 'About us'
     partner: 'For partners'
+  session:
+    log_in: 'Login'
+    sign_up: 'sign up'
+    email: 'Your email'
+    password: 'Your password'
+    remember_me: 'Remember me'
+    forgot_password: 'Forgot password?'
+    if_not_autorise: 'If you do not authorize in our system, you may to'
+    sign_in_with_vk: 'Sign in with VK'
+    sign_in_with_facebook: 'Sign in with Facebook'
+    send: 'Send manual'
+  products:
+    show_info: 'Show more info'
+    hide_info: 'Hide info'
   reviews:
     warning_message: 'In order to leave review, is necessary'
     log_in: 'log in'
