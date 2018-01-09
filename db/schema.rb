@@ -172,7 +172,6 @@ ActiveRecord::Schema.define(version: 20180105083237) do
     t.boolean "material_another"
     t.boolean "material_wooden"
     t.boolean "material_fabric"
-    t.boolean "material_mixed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
