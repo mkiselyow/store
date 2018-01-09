@@ -19,7 +19,7 @@ class Admin::ProductsController < AdminsController
   end
 
   def delete_products_created_today
-    Product.products_created_today.each(:&destroy)
+    Product.products_created_today.each(&:destroy)
     redirect_to admin_products_url, notice: "Товары удалены"
   end
 
