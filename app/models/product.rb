@@ -131,6 +131,10 @@ class Product < ApplicationRecord
     end
   end
 
+  def self.products_created_today
+    self.where("created_at >= ?", Time.zone.now.beginning_of_day) .each(&:destroy)
+  end
+
   # file = File.open('/home/max/Рабочий стол/new.csv')
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
