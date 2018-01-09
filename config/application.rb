@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'csv'
 require 'rails/all'
+require 'charlock_holmes'
 
 Bundler.require(*Rails.groups)
 

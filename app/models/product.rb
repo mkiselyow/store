@@ -64,11 +64,12 @@ class Product < ApplicationRecord
   end
 
   def self.import(file)
+    file_encoding = CharlockHolmes::EncodingDetector.detect(file.read)[:encoding]
     #options = { headers: true, encoding:'windows-1251:utf-8', :row_sep => "\r\n", :col_sep => ";", :skip_blanks => true} #, :row_sep => "\r\n"
-    options = { headers: true, encoding: file.read.encoding, :row_sep => :auto, :col_sep => "\t", :skip_blanks => true}
+    options = { headers: true, encoding: file_encoding, :row_sep => :auto, :col_sep => "\t", :skip_blanks => true}
     # CSV.foreach(file, options) do |row|
     p "======================================="
-    p file.read.encoding
+    p file_encoding
     p file
     p "======================================="
     CSV.foreach(file.path, options) do |row|

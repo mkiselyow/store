@@ -611,6 +611,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    charlock_holmes (0.7.5)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -898,6 +899,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave
+  charlock_holmes
   ckeditor
   cloudinary
   coffee-rails (~> 4.2)

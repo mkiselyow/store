@@ -113,3 +113,6 @@ gem 'ruuaby'
 
 gem 'figaro'
 gem 'russian'
+
+# encoding defining
+gem 'charlock_holmes'
