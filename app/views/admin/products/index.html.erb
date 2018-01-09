@@ -5,13 +5,13 @@
   </div>
 
   <div class="col-md-2 col-xs-2">
-    <%= link_to 'Товары с CSV', new_product_path, target: '_blank', class: 'btn btn-primary' %>
+    <%= link_to 'удалить товары добавленные сегодня', admin_products_delete_products_created_today_path, class: 'btn btn-danger' %>
   </div>
 
   <div class="col-md-2 col-xs-2">
     <%= form_tag import_admin_products_path, multipart: true do %>
       <%= file_field_tag :file %>
-      <%= submit_tag "Загрузить" %>
+      <%= submit_tag "Загрузить", class: 'btn btn-primary' %>
     <% end %>
   </div>
 
