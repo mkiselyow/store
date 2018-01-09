@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     resources :useful_articles
     resources :products do
       collection { post :import }
-      delete '/admin/products' => 'admin_products#delete_products_created_today'
+      delete :delete_products_created_today, on: :collection
     end
     resources :categories do
       collection { post :sort }
