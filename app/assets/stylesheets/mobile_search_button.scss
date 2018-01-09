@@ -11,3 +11,14 @@
 
   z-index: 1021;
 }
+.mobile_category_button {
+  @extend .cd-top;
+
+  bottom: 160px;
+  background-color: blue;
+
+  visibility: visible;
+  opacity: 0.5;
+
+  z-index: 1021;
+}

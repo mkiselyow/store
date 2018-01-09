@@ -1,56 +1,64 @@
 <main>
-  <div class="row">
-    <aside class="sticky search_multiple_form">
-      <div id="search_multiple_form">
-        <%= render "searches/new" %>
+  <aside class="sticky search_multiple_form">
+    <div id="search_multiple_form">
+      <%= render "searches/new" %>
+    </div>
+    <br>
+    <div class="category-lists">
+      <%= render 'categories/sidebar_category' %>
+    </div>
+  </aside>
+  <article class='article_products'>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        <%= t('products.sort.sort_by') %>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to t('products.sort.first_cheap'), sort: 'price', order_type: 'ASC' %></li>
+        <li><%= link_to t('products.sort.first_expensive'), sort: 'price', order_type: 'DESC' %></li>
+        <li><%= link_to t('products.sort.first_new'), sort: 'created_at', order_type: 'ASC' %></li>
+        <li><%= link_to t('products.sort.first_old'), sort: 'created_at', order_type: 'DESC' %></li>
+        <li><%= link_to t('products.sort.first_with_offer'), sort: 'discount', order_type: 'DESC' %></li>
+      </ul>
+    </div>
+    <h1>Найдено <%= @products.count %> товаров</h1>
+    <% @products.each do |product| %>
+      <div class="col-md-3 col-sm-6 product_view_class product_view_class_all">
+        <%= render  partial: "products/product", locals: { product: product } %>
+        <%= button_to t('products.add_to_cart'), product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
       </div>
-      <br>
-      <div class="category-lists">
-        <%= render 'categories/sidebar_category' %>
-      </div>
-    </aside>
-    <article class='article_products'>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-          <%= t('products.sort.sort_by') %>
-        </button>
-        <ul class="dropdown-menu">
-          <li><%= link_to t('products.sort.first_cheap'), sort: 'price', order_type: 'ASC' %></li>
-          <li><%= link_to t('products.sort.first_expensive'), sort: 'price', order_type: 'DESC' %></li>
-          <li><%= link_to t('products.sort.first_new'), sort: 'created_at', order_type: 'ASC' %></li>
-          <li><%= link_to t('products.sort.first_old'), sort: 'created_at', order_type: 'DESC' %></li>
-          <li><%= link_to t('products.sort.first_with_offer'), sort: 'discount', order_type: 'DESC' %></li>
-        </ul>
-      </div>
-      <h1>Найдено <%= @products.count %> товаров</h1>
-      <% @products.each do |product| %>
-        <div class="col-md-3 col-sm-6 product_view_class product_view_class_all">
-          <%= render  partial: "products/product", locals: { product: product } %>
-          <%= button_to 'В Корзину', product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
-        </div>
-      <% end %>
-    </article>
-  </div>
+    <% end %>
+    <center>
+      <%= will_paginate @products, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+    </center>
+  </article>
 </main>
 <div class="mobile" name="top">
-  <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
-    <!-- This is the dropdown -->
-    <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-    <div class="uk-dropdown">
-      <%= render  partial: "searches/new" %>
+  <%= render 'shared/button_mobile' %>
+  <div class="row">
+    <div class="col-xs-10">
+      <h3>Найдено <%= @products.count %> товаров</h3>
+    </div>
+    <div class="col-xs-2">
+      <a onclick="javascript:history.back(); return false;">
+        <%= fa_icon 'share', class: 'fa-2x' %>
+      </a>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <h2>Найдено <%= @products.count %> товаров</h2>
-      <% @products.each do |product| %>
+      <% @products_mobile.each do |product| %>
         <div class="col-xs-12 product_view_class">
           <%= render  partial: "products/product", locals: { product: product } %>
-          <%= button_to 'В Корзину', product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
+          <%= button_to t('products.add_to_cart'), product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
         </div>
       <% end %>
     </div>
   </div>
-  <br>
+  <div class="row">
+    <center>
+      <%= will_paginate @products, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+    </center>
+  </div>
 </div>
 <a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>

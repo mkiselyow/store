@@ -1,0 +1,13 @@
+<!-- This is the container enabling the JavaScript -->
+<div class="uk-button-dropdown searsces" data-uk-dropdown="{justify:'.mobile'}">
+  <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+  <div class="uk-dropdown searsces">
+    <%= render "searches/new" %>
+  </div>
+</div>
+<div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
+  <button class="mobile_category_button categories"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>
+  <div class="uk-dropdown categories">
+    <%= render "categories/sidebar_category_mobile" %>
+  </div>
+</div>
