@@ -67,8 +67,16 @@ class Product < ApplicationRecord
     #options = { headers: true, encoding:'windows-1251:utf-8', :row_sep => "\r\n", :col_sep => ";", :skip_blanks => true} #, :row_sep => "\r\n"
     options = { headers: true, encoding: file.read.encoding, :row_sep => :auto, :col_sep => "\t", :skip_blanks => true}
     # CSV.foreach(file, options) do |row|
+    p "======================================="
+    p file.read.encoding
+    p file
+    p "======================================="
     CSV.foreach(file.path, options) do |row|
       # # unless Product.find_by(product_code: row.to_hash["Артикул"])
+      p "======================================="
+      p row
+      p row.to_hash
+      p "======================================="
         params  = {
           title:                row.to_hash["Название на русском"],
           size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i*10 : nil),
@@ -118,7 +126,9 @@ class Product < ApplicationRecord
           # max_age:
           min_age:              row.to_hash["Возраст"] 
         }
+        p "======================================="
         p params
+        p "======================================="
         product = Product.create!(params)
       # if row.to_hash["Изображение"]
       #   Cloudinary::Uploader.upload(File.join(File.expand_path(row.to_hash["Изображение"]))["secure_url"]
