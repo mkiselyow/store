@@ -69,7 +69,7 @@ class Product < ApplicationRecord
     # CSV.foreach(file, options) do |row|
     CSV.foreach(file.path, options) do |row|
       # # unless Product.find_by(product_code: row.to_hash["Артикул"])
-        product = Product.create!(
+        params  = {
           title:                row.to_hash["Название на русском"],
           size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i*10 : nil),
           size_b:               (row.to_hash["Ширина см."] ? row.to_hash["Ширина см."].to_i*10 : nil),
@@ -116,7 +116,10 @@ class Product < ApplicationRecord
           # other_desc:
           # general_category:
           # max_age:
-          min_age:              row.to_hash["Возраст"] )
+          min_age:              row.to_hash["Возраст"] 
+        }
+        p params
+        product = Product.create!(params)
       # if row.to_hash["Изображение"]
       #   Cloudinary::Uploader.upload(File.join(File.expand_path(row.to_hash["Изображение"]))["secure_url"]
       #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
