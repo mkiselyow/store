@@ -65,7 +65,7 @@ class Product < ApplicationRecord
 
   def self.import(file)
     #options = { headers: true, encoding:'windows-1251:utf-8', :row_sep => "\r\n", :col_sep => ";", :skip_blanks => true} #, :row_sep => "\r\n"
-    options = { headers: true, encoding: "UTF-8", :row_sep => :auto, :col_sep => "\t", :skip_blanks => true}
+    options = { headers: true, encoding: file.read.encoding, :row_sep => :auto, :col_sep => "\t", :skip_blanks => true}
     # CSV.foreach(file, options) do |row|
     CSV.foreach(file.path, options) do |row|
       # # unless Product.find_by(product_code: row.to_hash["Артикул"])

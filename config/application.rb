@@ -10,6 +10,7 @@ module Store
     config.load_defaults 5.1
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
     config.i18n.default_locale = :ru
+    config.encoding = "utf-8"
     # config.i18n.fallbacks = true
     config.active_job.queue_adapter = Rails.env.production? ? :sidekiq : :async
   end
