@@ -139,7 +139,7 @@ class Product < ApplicationRecord
   end
 
   def self.products_created_today
-    self.where("created_at >= ?", Time.zone.now.beginning_of_day) .each(&:destroy)
+    self.where("created_at >= ?", Time.zone.now.beginning_of_day)
   end
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
