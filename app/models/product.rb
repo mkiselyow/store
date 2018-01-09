@@ -124,9 +124,10 @@ class Product < ApplicationRecord
           # general_category:
           # max_age:
           min_age:              row.to_hash["Возраст"] )
-      if row.to_hash["Изображение"]
-        product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
-      end
+      # if row.to_hash["Изображение"]
+      #   Cloudinary::Uploader.upload(File.join(File.expand_path(row.to_hash["Изображение"]))["secure_url"]
+      #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
+      # end
     end
   end
 
