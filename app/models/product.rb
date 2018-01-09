@@ -78,13 +78,6 @@ class Product < ApplicationRecord
           mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_f : 100),
           # price:                (row.to_hash["Цена грн."]*row.to_hash["Наценка"]||100),
           weight:               (row.to_hash["Вес г."] ? row.to_hash["Вес г."].to_f : nil),
-          #color_white:
-          #color_black:
-          #color_red:
-          #color_yellow:
-          #color_green:
-          #color_blue:
-          #color_violet:
           brand:                row.to_hash["Торговая марка"],
           material_plastic: (if row.to_hash["Материал"]
                               row.to_hash["Материал"].match(%r/пластик|полимерные/i) ? true : false
@@ -134,8 +127,6 @@ class Product < ApplicationRecord
   def self.products_created_today
     self.where("created_at >= ?", Time.zone.now.beginning_of_day) .each(&:destroy)
   end
-
-  # file = File.open('/home/max/Рабочий стол/new.csv')
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
   def ensure_not_referenced_by_any_line_item
