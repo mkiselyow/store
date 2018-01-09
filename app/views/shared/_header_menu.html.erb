@@ -1,12 +1,23 @@
-<%= tag.div class: 'top_nav sticky' do %>
-  <%= link_to t("header_menu.main"), root_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.products"), products_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.payment"), payment_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.delivery"), delivery_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.useful_article"), useful_articles_path, class: 'top_nav_button' %> 
-  <%= link_to t("header_menu.offers"), shares_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.reviews"), comments_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.contact"), contacts_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.about"), about_path, class: 'top_nav_button' %>
-  <%= link_to t("header_menu.partner"), partners_path, class: 'top_nav_button' %>
-<% end %>
+<div class="row header-menu-button-xs">
+  <div class="col-xs-12 col-md-12">
+    <button id="header-menu-button-toggle" class='btn btn-default pull-right'>
+      <%= fa_icon 'bars', class: 'fa-2x button-toggle-menu' %>
+    </button>
+  </div>
+</div>
+<div class="row header-menu-items">
+  <div class="col-md-12 col-xs-12">
+    <%= tag.div class: 'top_nav sticky' do %>
+      <%= link_to t("header_menu.main"), root_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.products"), products_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.payment"), payment_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.delivery"), delivery_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.useful_article"), useful_articles_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.offers"), shares_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.reviews"), comments_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.contact"), contacts_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.about"), about_path, class: 'top_nav_button' %>
+      <%= link_to t("header_menu.partner"), partners_path, class: 'top_nav_button' %>
+    <% end %>
+  </div>
+</div>

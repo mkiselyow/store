@@ -445,3 +445,31 @@ a.thumbnail.product_image_add {
     width: 100%;
   }
 }
+.searches_form_mobile{
+  display: none;
+}
+.categories_form_mobile{
+  display: none;
+}
+@media (max-width: 768px){
+  .header-menu-items-mobile{
+    display: none;
+  }
+  .header-menu-items{
+    display: none;
+  }
+}
+@media (min-width: 768px){
+  .header-menu-button-xs{
+    display: none;
+  }
+  .header-menu-items-mobile{
+    display: none;
+  }
+}
+.button-toggle-menu{
+  color: #f43612;
+}
+.button-toggle-menu:hover{
+  color: #ffb0a1;
+}

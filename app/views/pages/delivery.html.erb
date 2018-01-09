@@ -11,18 +11,22 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3 col-xs-6">
+    <div class="col-md-3 col-xs-10 col-xs-offset-2">
       <a type="button" data-toggle="modal" data-target="#newPost">
         <div class="logo-post">
-          <%= image_tag 'new_post_logo.png', class: 'new_post_logo' %>
+          <p>
+            <%= image_tag 'new_post_logo.png', class: 'new_post_logo', crop: 'scale' %>
+          </p>
         </div>
       </a>
     </div>
-    <div class="col-md-3 col-xs-6">
+    <div class="col-md-3 col-xs-10 col-xs-offset-2">
       <a type="button" data-toggle="modal" data-target="#mistExpress">
-        <div class="logo-post">
-          <%= image_tag 'mist_logo.png', class: 'new_post_logo' %>
-        </div>
+        <p>
+          <div class="logo-post">
+            <%= image_tag 'mist_logo.png', class: 'new_post_logo', crop: 'scale' %>
+          </div>
+        </p>
       </a>
     </div>
   </div>

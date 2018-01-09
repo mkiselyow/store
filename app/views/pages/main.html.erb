@@ -1,4 +1,3 @@
-<h1></h1>
 <main>
   <aside class="sticky search_multiple_form">
     <div id="search_multiple_form">
@@ -39,22 +38,12 @@
 
 <div class="mobile" name="top">
   <!-- This is the container enabling the JavaScript -->
-  <div class="uk-button-dropdown" data-uk-dropdown="{justify:'.mobile'}">
-    <!-- This is the dropdown -->
-    <button class="mobile_search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-    <div class="uk-dropdown">
-      <%= render  partial: "searches/new" %>
-    </div>
-  </div>
+  <%= render 'shared/button_mobile' %>
   <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @newest_ten_products, rows_count: 2*4,  id_of_this_carousel: "newest_mobile_carousel", name_of_carousel: t('novelties')  } %>
 
-  <!-- special offers carousel -->
   <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_with_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: t('offers') } %>
-  
-  <!-- top viewed carousel -->
 
   <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4,  id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: t('populars') } %>
-
   <div class="row">
     <div class="col-xs-12">
       <%= link_to t('show_all_products'), products_path, class: 'btn btn-info btn-block' %>
