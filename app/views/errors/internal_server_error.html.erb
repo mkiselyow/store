@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
+    <center>
+      <%= cl_image_tag('мапапама_nb3pbw.png', quality: 15, height: 100, crop: 'scale') %>
+      <br>
+      <%= image_tag '500.png', height: '120px', crop: 'scale' %>
+    </center>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
+    <p class='text-danger'>
+      <%= t('page_500.sorry') %>
+      <a onclick="javascript:history.back(); return false;"><%= t('page_500.come_back') %> </a><%= t('page_500.or') %> <a data-toggle="modal" data-target="#form_send"><%= t("contact_form.contact_with_us") %></a>, <%= t('page_500.what_report') %>
+    </p>
+  </div>
+</div>

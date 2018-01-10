@@ -11,8 +11,8 @@ class SearchesController < ApplicationController
   end
 
   def show
-    @products = @search.products.paginate(page: params[:page], per_page: 20)
-    @products_mobile = @search.products.paginate(page: params[:page], per_page: 12)
+    @products = @search.products.order("#{params[:sort]} #{params[:order_type]}").paginate(page: params[:page], per_page: 20)
+    @products_mobile = @search.products.order("#{params[:sort]} #{params[:order_type]}").paginate(page: params[:page], per_page: 12)
   end
 
   def update

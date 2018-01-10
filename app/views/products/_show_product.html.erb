@@ -1,7 +1,7 @@
 <div class='container'>
-  <div class="well">
+  <div class="well col-md-12 col-sm-12">
     <div class="row">
-      <div class="col-md-11">
+      <div class="col-md-11 col-sm-10">
         <h2>
           <%= @product.title %>
           <% if current_user.try(:admin) %>
@@ -11,14 +11,14 @@
           <% end %>
         </h2>
       </div>
-      <div class="col-md-1">
-        <a onclick="javascript:history.back(); return false;">
+      <div class="col-md-1 col-sm-2">
+        <a class='pull-right' onclick="javascript:history.back(); return false;">
           <span class="glyphicon glyphicon-remove">
         </a>
       </div>
     </div>
     <div class="row equal">
-      <div class="col-md-4 col-xs-12">
+      <div class="col-md-4 col-xs-12 col-sm-4">
         <div class="col-product-left">
           <p>
             <b>Категория:</b>
@@ -48,7 +48,7 @@
           </p>
         </div>
       </div>
-      <div class="col-md-5 image col-xs-12">
+      <div class="col-md-5 image col-xs-12 col-sm-5">
         <div class="row" id="slider">
           <div class="col-sm-12" id="carousel-bounding-box">
             <div class="carousel slide carousel-product" id="myCarousel">
@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-xs-12">
+      <div class="col-md-3 col-xs-12 col-sm-3">
         <% if @product.created_at > 10.days.ago %>
           <p><span class="uk-badge uk-badge-success">НОВИНКА!</span></p>
         <% end %>

@@ -25,7 +25,7 @@
           </div>
           <div class="row">
             <center>
-              <%= will_paginate @products_with_special_offers.paginate(page: params[:page], per_page: 12), renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+              <%= will_paginate @products_with_special_offers, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
             </center>
           </div>
         </div>

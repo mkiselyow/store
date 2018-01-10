@@ -20,17 +20,17 @@
     </div>
     <div class="row equal">
       <div class="col-md-5 image col-xs-12">
-        <center>
-          <div id="carousel-bounding-box">
-            <div class="carousel slide carousel-product" id="myCarousel">
+        <div id="carousel-bounding-box">
+          <center>
+            <div class="carousel slide carousel-product">
               <div class="carousel-inner carousel-inner-product-show">    
                 <div class="active item">
                   <%= image_tag( @product.image_url(:medium), crop: "scale", class: 'main-image-mobile') %>
                 </div>
               </div>
             </div>
-          </div>
-        </center>
+          </center>
+        </div>
       </div>
     </div>
     <div class="row comment-alert text-success">
@@ -72,17 +72,21 @@
     <div class="row">
       <div class="col-xs-12" id="slider-thumbs">
         <ul class="hide-bullets">
-          <li class="col-xs-6 add_image_mobile">
-            <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= @product.image_url(:large) %>">
-              <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
-            </a>
-          </li>
-          <% @product.image_products.each do |im_prod| %>
-            <li class="col-xs-6">
-              <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= im_prod.image_url(:large) %>">
-                <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
+          <center>
+            <li class="col-xs-12 col-sm-6 add_image_mobile">
+              <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= @product.image_url(:large) %>">
+                <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
               </a>
             </li>
+          </center>
+          <% @product.image_products.each do |im_prod| %>
+            <center>
+              <li class="col-xs-12 col-sm-6 add_image_mobile">
+                <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%=im_prod.image_url(:large) %>">
+                  <%= image_tag(im_prod.image.url(:medium), width: '150px', height: '150px')%>
+                </a>
+              </li>
+            </center>
           <% end %>
         </ul>
       </div>

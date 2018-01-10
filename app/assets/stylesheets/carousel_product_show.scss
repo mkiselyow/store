@@ -38,10 +38,16 @@
     height: 300px;
   }
 }
+@media (max-width: 990px){
+  .carousel-product {
+    width: 220px;
+    height: 300px;
+  }
+}
 @media (max-width: 768px){
   .carousel-product {
     width: 300px;
-    height: 230px;
+    height: 185px;
   }
 }
 .main-picture-product{
