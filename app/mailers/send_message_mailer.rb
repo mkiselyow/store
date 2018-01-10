@@ -11,6 +11,6 @@ class SendMessageMailer < ApplicationMailer
   def answer_to_user(send_message)
     @send_message = send_message
 
-    mail(to: send_message.email, subject: 'Обратная связь с Mapapama.com')
+    mail(to: send_message.email, subject: 'Обратная связь с mapapama.com.ua')
   end
 end

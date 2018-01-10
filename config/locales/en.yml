@@ -186,3 +186,11 @@ en:
     title: 'For partners'
     r1: 'Online-store "Mapapama.com.ua"'
     r2: 'This 25 000 items of childs products: toys, for school and creativity, clothes and shoeseshygiene and care, for sports and recreation, furniture for childrens and baby carriages. And a lot more!! Delivery all over Ukraine!'
+  page_404:
+    sorry: 'Excuse me, but your request did not give a result'
+    come_back: 'Come back'
+  page_500:
+    sorry: 'Sorry, but something went wrong! You can'
+    come_back: 'come back to last page'
+    or: 'or'
+    what_report: 'to report this error'
