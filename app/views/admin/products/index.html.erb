@@ -9,7 +9,7 @@
   </div>
 
   <div class="col-md-3 col-xs-3">
-    <%= form_tag import_admin_products_path, class: 'form_admin_products', multipart: true do %>
+    <%= form_tag import_admin_products_path, multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag "Загрузить", class: 'btn btn-primary' %>
     <% end %>
