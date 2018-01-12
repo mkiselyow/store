@@ -65,19 +65,10 @@ class Product < ApplicationRecord
 
   def self.import(file)
     file_encoding = CharlockHolmes::EncodingDetector.detect(file.read)[:encoding]
-    #options = { headers: true, encoding:'windows-1251:utf-8', :row_sep => "\r\n", :col_sep => ";", :skip_blanks => true} #, :row_sep => "\r\n"
-    options = { headers: true, encoding: "#{file_encoding}:iso-8", :row_sep => :auto, :col_sep => "\t", :skip_blanks => true}
-    # CSV.foreach(file, options) do |row|
-    p "======================================="
-    p file_encoding
-    p file
-    p "======================================="
+    #options = { headers: true, encoding:'windows-1251:utf-8', :row_sep => "\r\n", :col_sep => "\t", :skip_blanks => true} #, :row_sep => "\r\n"
+    options = { headers: true, encoding: file_encoding, :row_sep => :auto, :col_sep => ";", :skip_blanks => true}
     CSV.foreach(file.path, options) do |row|
-      # # unless Product.find_by(product_code: row.to_hash["Артикул"])
-      p "======================================="
-      p row
-      p row.to_hash
-      p "======================================="
+      unless Product.find_by(product_code: row.to_hash["Артикул"])
         params  = {
           title:                row.to_hash["Название на русском"],
           size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i*10 : nil),
@@ -127,10 +118,8 @@ class Product < ApplicationRecord
           # max_age:
           min_age:              row.to_hash["Возраст"] 
         }
-        p "======================================="
-        p params
-        p "======================================="
         product = Product.create!(params)
+      end
       # if row.to_hash["Изображение"]
       #   Cloudinary::Uploader.upload(File.join(File.expand_path(row.to_hash["Изображение"]))["secure_url"]
       #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
