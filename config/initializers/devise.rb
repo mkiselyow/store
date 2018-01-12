@@ -27,4 +27,5 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['fb_key'], ENV['fb_secret'], scope: 'email', info_fields: 'email,first_name,last_name'
   config.omniauth :vkontakte, ENV['vk_key'], ENV['vk_secret'], scope: 'email'
   config.omniauth :instagram, ENV['inst_key'], ENV['inst_secret'], scope: 'basic public_content'
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], scope: 'email'
 end

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: %i[vkontakte facebook instagram]
+         :omniauthable, omniauth_providers: %i[vkontakte facebook instagram google_oauth2]
 
   has_many :comments, dependent: :destroy
   has_many :comment_posts, dependent: :destroy

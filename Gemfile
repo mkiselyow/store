@@ -55,6 +55,8 @@ gem 'therubyracer'
 gem 'font-awesome-rails'
 # vk omniauth
 gem 'omniauth-vkontakte'
+# google omniauth
+gem 'omniauth-google-oauth2'
 
 # paperclip+heroku images
 gem 'aws-sdk'

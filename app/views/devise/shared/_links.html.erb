@@ -21,4 +21,11 @@
       <% end %>
     </p>
   </div>
+  <div class="col-md-12 col-xs-12">
+    <p>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-block btn-social btn-google" do %>
+        <%= fa_icon "google", class: "fa-2x", text: "Sign in with Google"  %>
+      <% end %>
+    </p>
+  </div>
 <% end -%>
