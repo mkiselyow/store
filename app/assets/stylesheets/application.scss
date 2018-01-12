@@ -130,6 +130,21 @@
     height: 48px;
   }
 }
+@media (max-width: 334px){
+  .leuze {
+    height: 12px;
+    line-height: 26px;
+    margin-top: 11px;
+  }
+  .full-name-header{
+    display: none;
+  }
+}
+@media (min-width: 988px){
+  .header_one {
+    height: 114px;
+  }
+}
 @media (min-width: 768px){
   .leuze{
     margin-top: 11px;

@@ -1,17 +1,21 @@
 <h1>Продукты</h1>
 <div class="row">
-  <div class="col-md-3 col-xs-2">
+  <div class="col-md-2 col-xs-6">
     <%= link_to 'Добавить товар', new_product_path, target: '_blank', class: 'btn btn-success' %>
   </div>
 
-  <div class="col-md-2 col-xs-2">
+  <div class="col-md-4 col-xs-6">
     <%= link_to "удалить товары добавленные сегодня (#{Product.products_created_today.count})", delete_products_created_today_admin_products_path, class: 'btn btn-danger', method: :delete %>
   </div>
 
-  <div class="col-md-6 col-xs-2">
+  <div class="col-md-6 col-xs-12">
     <%= form_tag import_admin_products_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "Загрузить", class: 'btn btn-primary' %>
+      <div class="col-md-6">
+        <%= file_field_tag :file %>
+      </div>
+      <div class="col-md-6">
+        <%= submit_tag "Загрузить", class: 'btn btn-primary' %>
+      </div>
     <% end %>
   </div>
 </div>
