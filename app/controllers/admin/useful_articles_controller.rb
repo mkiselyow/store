@@ -38,6 +38,6 @@ class Admin::UsefulArticlesController < AdminsController
   end
 
   def articles_params
-    params.require(:useful_article).permit(:title, :body, :preview, :user_id, :published, :category_id)
+    params.require(:useful_article).permit(:title, :body, :preview, :user_id, :published, :category_post_id)
   end
 end

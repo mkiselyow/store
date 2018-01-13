@@ -257,3 +257,5 @@ ru:
     come_back: 'вернутся назад'
     or: 'или'
     what_report: 'дабы сообщить о текущей проблеме'
+  search:
+    result: "Найдено %{products_count} товаров."

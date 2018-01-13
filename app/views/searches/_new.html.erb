@@ -1,10 +1,16 @@
-<% if current_user.try(:admin) %>
-  <%= link_to t('sidebar_filter.add_product'), new_product_path %>
-  <br>
-<% end %>
-<%= link_to t('sidebar_filter.show_all_discount'), products_with_offers_path, class: 'btn btn-success' %><br>
-<h3><%= t 'sidebar_filter.picking' %></h3>
-<hr>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <%= link_to t('sidebar_filter.show_all_discount'), products_with_offers_path, class: 'btn btn-all-offers btn-block' %><br>
+    <% if current_user.try(:admin) %>
+      <%= link_to t('sidebar_filter.add_product'), new_product_path %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <h3><u><%= t 'sidebar_filter.picking' %></u></h3>
+  </div>
+</div>
 <%= form_for @search do |f| %>
   <div class="row">
     <div class="col-md-12 col-xs-12">
@@ -14,7 +20,7 @@
       </p>
     </div>
   </div>
-  <div class="row">
+  <div class="row categories-raw">
     <div class="col-md-12 col-xs-12">
       <p><%= t 'sidebar_filter.category' %></p>
       <p>
@@ -28,12 +34,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-xs-6">
+    <div class="col-md-6 col-xs-6 col-sm-12">
       <p>
         <%= f.text_field :min_price, placeholder: t('sidebar_filter.min_sum'), class: 'form-control search-input' %>
       </p>
     </div>
-    <div class="col-md-6 col-xs-6">
+    <div class="col-md-6 col-xs-6 col-sm-12">
       <p>
         <%= f.text_field :max_price, placeholder: t('sidebar_filter.max_sum'), class: 'form-control search-input' %>
       </p>
@@ -45,12 +51,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-xs-6">
+    <div class="col-md-6 col-xs-6 col-sm-12">
       <p>
         <%= f.number_field :min_age, min: 0, placeholder: t('sidebar_filter.min_age'), class: 'form-control search-input' %>
       </p>
     </div>
-    <div class="col-md-6 col-xs-6">
+    <div class="col-md-6 col-xs-6 col-sm-12">
       <p>
         <%= f.number_field :max_age, min: 0, placeholder: t('sidebar_filter.max_age'), class: 'form-control search-input' %>
       </p>
@@ -136,6 +142,8 @@
     </div>
   </div>
 <div class="row">
-  <%= f.submit t('sidebar_filter.search'), class: 'btn btn-success btn-block' %>
+  <div class="col-md-12 col-xs-12">
+    <%= f.submit t('sidebar_filter.search'), class: 'btn btn-success btn-block' %>
+  </div>
 </div>
 <% end %>

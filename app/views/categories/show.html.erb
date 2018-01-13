@@ -11,26 +11,11 @@
     </div>
   </aside>
   <article class='article_products'>
-    <div class="row">
-      <div class="col-md-10 col-sm-10">
-        <h2>
-          <% @category.path.each do |c| %>
-            | <%= link_to c.name, category_path(c) %>
-          <% end %>
-        </h2>
-      </div>
-      <div class="col-md-1 col-sm-2">
-        <a class='pull-right' onclick="javascript:history.back(); return false;">
-          <%= fa_icon 'share', class: 'fa-2x' %>
-        </a>
-      </div>
-    </div>
     <div id="products">
       <%= render 'products' %>
     </div>
   </article>
 </main>
-
 <div class="mobile" name="top">
   <%= render 'shared/button_mobile' %>
   <div class="row">

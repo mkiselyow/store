@@ -194,3 +194,5 @@ en:
     come_back: 'come back to last page'
     or: 'or'
     what_report: 'to report this error'
+  search:
+    result: "Found %{products_count} products"

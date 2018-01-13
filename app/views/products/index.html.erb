@@ -9,15 +9,11 @@
   </aside>
   <article class='article_products'>
     <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+      <button class="btn btn-sorting dropdown-toggle" type="button" data-toggle="dropdown">
         <%= t('products.sort.sort_by') %>
       </button>
       <ul class="dropdown-menu">
-        <li><%= link_to t('products.sort.first_cheap'), sort: 'price', order_type: 'ASC' %></li>
-        <li><%= link_to t('products.sort.first_expensive'), sort: 'price', order_type: 'DESC' %></li>
-        <li><%= link_to t('products.sort.first_new'), sort: 'created_at', order_type: 'ASC' %></li>
-        <li><%= link_to t('products.sort.first_old'), sort: 'created_at', order_type: 'DESC' %></li>
-        <li><%= link_to t('products.sort.first_with_offer'), sort: 'discount', order_type: 'DESC' %></li>
+        <%= render 'shared/sorting_parametrs' %>
       </ul>
     </div>
     <div class="row">

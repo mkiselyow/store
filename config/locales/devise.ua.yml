@@ -266,3 +266,5 @@ ua:
     come_back: 'повернутися назад'
     or: 'або'
     what_report: 'для повідомлення про дану помилку'
+  search:
+    result: "Знайдено %{products_count} товарів"

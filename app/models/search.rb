@@ -7,11 +7,16 @@ class Search < ApplicationRecord
   private
 
   def find_products
-    products = Product.order(:id)
+    products = Product.all
     products = products.where(brand: brand) if brand.present?
 
     products = products.where(category_id: category_id) if category_id.present?
-    products = products.where(sex_id: sex_id) if sex_id.present?
+
+    if sex_id.present?
+      products = products.where(sex_id: [1, 3]) if sex_id == 1
+      products = products.where(sex_id: [2, 3]) if sex_id == 2
+      products = products.where(sex_id: [1, 2, 3]) if sex_id == 3
+    end
 
     products = products.where('price >= ?', min_price) if min_price.present?
     products = products.where('price <= ?', max_price) if max_price.present?
