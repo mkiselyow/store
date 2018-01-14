@@ -1,16 +1,11 @@
 class User < ApplicationRecord
-  validates :number, uniqueness: { message: 'Такой номер уже зарегестрирован' }
-  validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' },
-                     format: { with: /(\A\+3([ -])?8([ -])?0[1-9]{2}([ -])?(\d([ -])?){7}\z)|(\A0([ -])?[1-9]{2}([ -])?(\d([ -])?){7}\z)/x,
-                     message: 'Введите номер телефона в формате +380971234567' }
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: %i[vkontakte facebook instagram google_oauth2]
 
   has_many :comments, dependent: :destroy
   has_many :comment_posts, dependent: :destroy
-  has_many :userful_articles, dependent: :destroy
+  has_many :useful_articles, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :user_views, dependent: :destroy
 
@@ -24,6 +19,8 @@ class User < ApplicationRecord
       user.last_name = auth.info.last_name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
+      user.remote_avatar_url = auth.info.image
+      user.save!
     end
   end
 

@@ -1,6 +1,6 @@
 class UsefulArticle < ApplicationRecord
   belongs_to :category_post
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :comment_posts, dependent: :destroy
 
   mount_uploader :preview, PreviewUploader

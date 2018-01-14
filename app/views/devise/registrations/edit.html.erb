@@ -32,17 +32,6 @@
       </div>
       <p>
       <div class="row">
-        <div class="field col-md-4">
-          <%= f.label(:avatar, "Аватар" ) %><br />
-          <%= f.file_field :avatar, class: 'profile_upload' %>
-          <%= f.hidden_field(:avatar_cache) %>
-        </div>
-        <div class="col-md-6 upload-preview">
-          <img class="upload_avatar edit_upload_avatar" />
-        </div>
-      </div>
-      <p>
-      <div class="row">
         <div class="col-md-4">
           <a class="btn btn-info" id='changePasswordForm'>Изменить пароль</a>
         </div>
@@ -63,10 +52,13 @@
       </div>
       <p>
       <div class="row">
-        <p>
         <div class="field col-md-4">
-          <%= f.label(:current_password, "Пароль" ) %> <i>(введите текущий пароль чтобы подтвердить изменения)</i><br />
-          <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+          <%= f.label(:avatar, "Аватар" ) %><br />
+          <%= f.file_field :avatar, class: 'profile_upload' %>
+          <%= f.hidden_field(:avatar_cache) %>
+        </div>
+        <div class="col-md-6 upload-preview">
+          <img class="upload_avatar edit_upload_avatar" />
         </div>
       </div>
       <p></p>
@@ -90,8 +82,8 @@
 </div>
 <script>
   var ch_password = $("#changePasswordForm");
-  ch_password .click(function(){
-    $( ".change-password" ).show();
+  ch_password.click(function(){
+    $(".change-password" ).show();
     ch_password.hide();
   });
 </script>

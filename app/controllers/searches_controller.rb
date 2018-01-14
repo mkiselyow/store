@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   before_action :search_resources, only: %i[show update]
+  before_action :annulment, only: %i[update]
 
   def new
     @search = Search.new
@@ -16,15 +17,17 @@ class SearchesController < ApplicationController
   end
 
   def update
-    @search.update(title: nil, product_code: nil, min_price: nil,
-                   max_price: nil, brand: nil, min_age: nil,
-                   max_age: nil, sex_id: nil, category_id: nil)
     @search.update(product_params)
-    redirect_back(fallback_location: search_path(@search),
-                  notice: t('search.result', products_count: @search.products.count))
+    redirect_to search_path(@search), notice: t('search.result', products_count: @search.products.count)
   end
 
   private
+
+  def annulment
+    @search.update(title: nil, product_code: nil, min_price: nil,
+                   max_price: nil, brand: nil, min_age: nil,
+                   max_age: nil, sex_id: nil, category_id: nil)
+  end
 
   def search_resources
     @search = Search.find(params[:id])

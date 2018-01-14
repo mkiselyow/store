@@ -2,7 +2,10 @@
   <div class="col-md-10 col-sm-10">
     <h2>
       <% @category.path.each do |c| %>
-        | <%= link_to c.name, category_path(c) %>
+        <% unless c.ancestry == nil %>
+          <%= fa_icon 'angle-double-right' %>
+        <% end %>
+        <%= link_to c.name, category_path(c) %>
       <% end %>
     </h2>
   </div>
