@@ -101,6 +101,9 @@
     height: 100%;
   }
 }
+.btn-danger{
+  background: #ff3801;
+}
 .header-avatar{
   width: 30px;
   height: 30px;
@@ -478,7 +481,6 @@ a.thumbnail.product_image_add {
     background-image: url("snow.gif");
     height: 160px;
   }
-
 }
 @media (max-width: 768px){
   .top_container_center{
@@ -497,18 +499,12 @@ a.thumbnail.product_image_add {
   display: none;
 }
 @media (max-width: 768px){
-  .header-menu-items-mobile{
-    display: none;
-  }
   .header-menu-items{
     display: none;
   }
 }
 @media (min-width: 768px){
   .header-menu-button-xs{
-    display: none;
-  }
-  .header-menu-items-mobile{
     display: none;
   }
 }

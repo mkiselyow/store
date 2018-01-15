@@ -22,7 +22,7 @@
             <%= link_to "#{ t('cart.back_to_store') }", root_path, class: "btn btn-warning" %>
           </td>
           <td colspan="2" class="hidden-xs"></td>
-          <td class="hidden-xs text-center">
+          <td class="hidden-xs text-center cart_total_sum">
             <h2><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></h2>
           </td>
           <td>

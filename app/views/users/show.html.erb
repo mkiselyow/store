@@ -36,14 +36,14 @@
         <h2><%= t('profile.your_orders.title') %></h2>
         <table class='table'>
           <thead>
-            <th><%= t('profile.your_orders.number') %></th>
+            <th>#</th>
             <th><%= t('profile.your_orders.total_sum') %></th>
             <th><center><%= t('profile.your_orders.stat') %></center></th>
           </thead>
           <tbody>
-            <% @user_olders.each do |user_older| %>
+            <% @user_olders.each_with_index do |user_older, i| %>
               <tr>
-                <td><%= t('profile.your_orders.order') %><%= user_older.id %></td>
+                <td><%= i+1 %></td>
                 <td><%= number_to_currency(user_older.order_total_price, locale: :ru) %></td>
                 <td>
                   <center>

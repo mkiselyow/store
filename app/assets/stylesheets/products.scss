@@ -299,7 +299,7 @@ a.top_nav_button:hover {
 }
 @media all and (min-width: 1px) and (max-width: 767px) {
   a.top_nav_button {
-    width: 49%;
+    width: 100%;
   }
   body article {
     display: none;
@@ -358,9 +358,6 @@ aside.sticky {
   .show_desctop{
     display: none;
   }
-}
-.add_image_mobile{
-  // margin: 5px;
 }
 @media (max-width: 767px) and (min-width: 1px){
   body article, body .mobile {

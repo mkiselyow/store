@@ -21,7 +21,7 @@
         </div>
       </div>
     </td>
-    <td data-th="<%= t('cart.product') %>">
+    <td>
       <div id="price_item_<%= line_item.id %>">
         <%= line_item.product.price %>
       </div>
@@ -53,7 +53,7 @@
       </div>
     </td>
     <td data-th="Сумма" class="text-center">
-      <div id="sum_item_<%= line_item.id %>">
+      <div id="sum_item_<%= line_item.id %>" class='price'>
         <%= line_item.count_line_item_price %>
       </div>
     </td>

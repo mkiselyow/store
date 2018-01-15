@@ -21,11 +21,11 @@
       <div class="col-md-4 col-xs-12 col-sm-4">
         <div class="col-product-left">
           <p>
-            <b>Категория:</b>
+            <b><%= t('sidebar_filter.category') %>:</b>
             <%= @product.category.name %>
           </p>
           <p>
-            <strong>Пол:</strong>
+            <strong><%= t('sidebar_filter.sex') %>:</strong>
             <%= @product.sex.name %>
             <% if @product.boys %>
               <%= fa_icon 'mars-stroke', class: 'fa-2x sex-boys', alt: 'Мальчики', title: "Для мальчиков" %>
@@ -35,7 +35,7 @@
             <% end %>
           </p>
           <p>
-            <strong>Бренд:</strong>
+            <strong><%= t('sidebar_filter.brand') %>:</strong>
             <%= @product.brand %>
           </p>
           <p>
@@ -43,7 +43,7 @@
             <%= @product.country %>
           </p>
           <p>
-            <strong>Возраст:</strong>
+            <strong><%= t('sidebar_filter.age') %>:</strong>
             <%= @product.from_min_and_max %>
           </p>
         </div>
@@ -83,7 +83,7 @@
         </p>
         <p><%= social_share_button_tag(@product.title) %></p>
         <p>
-          <%= button_to product_line_items_path(@product.id), :class => "btn btn-danger", remote: true  do %>
+          <%= button_to product_line_items_path(@product.id), class: "btn btn-danger", remote: true  do %>
             <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
           <% end %>          
         </p>
@@ -114,9 +114,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <button id="info-product" class='btn btn-block btn-info'>
-          <%= t('products.show_info') %>
-        </button>
+        <button id="info-product" class='btn btn-block btn-info'>Показать информацию</button>
         <br>
       </div>
     </div>

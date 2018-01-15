@@ -16,7 +16,7 @@ module ProductsHelper
   end
 
   def material_another_present
-    content_tag(:li, @product.other_desc) if @product.material_another?
+    content_tag(:li, @product.other_desc) if @product.other_desc?
   end
 
   def material_mixed_present

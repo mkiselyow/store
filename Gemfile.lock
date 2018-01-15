@@ -642,11 +642,17 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.3)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     elevatezoom-rails (1.0.0)
     erubi (1.7.0)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     fancybox-rails (0.3.1)
       railties (>= 3.1.0)
     faraday (0.12.2)
@@ -807,6 +813,23 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.6.0)
+    rspec-mocks (3.6.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.6.0)
+    rspec-rails (3.6.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
     rubocop (0.52.0)
       parallel (~> 1.10)
       parser (>= 2.4.0.2, < 3.0)
@@ -835,6 +858,8 @@ GEM
     selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     sidekiq (5.0.5)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -911,6 +936,7 @@ DEPENDENCIES
   curb
   devise
   elevatezoom-rails
+  factory_girl_rails
   faker!
   fancybox-rails
   figaro
@@ -940,11 +966,13 @@ DEPENDENCIES
   rails_12factor
   record_tag_helper (~> 1.0)
   redis
+  rspec-rails
   rubocop
   russian
   ruuaby
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers
   sidekiq
   social-share-button
   spring

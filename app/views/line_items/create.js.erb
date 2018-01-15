@@ -1,5 +1,4 @@
 $('#notice').hide();
-// alert("Товар <%= @line_item.product.title %> был успешно добавлен в корзину");
 $('.product_<%= @line_item.product.id %>').css({'background-color':'#88ff88'}).animate({'background-color':'#fff'}, 1000);
 $('.comment-alert').show();
 $('#product_show_<%= @line_item.product.id %>').text('Товар был успешно добавлен в корзину');
