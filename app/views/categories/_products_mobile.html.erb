@@ -1,10 +1,34 @@
-<h3>
-  <% @category.path.each do |c| %>
-    <%= link_to c.name, category_path(c) %> |
-  <% end %>
-</h3>
 <div class="row">
-  <% @products.paginate(page: params[:page], per_page: 12).each do |product| %>
+  <div class="col-xs-10">
+    <h3>
+      <% @category.path.each do |c| %>
+        <% unless c.ancestry == nil %>
+          <%= fa_icon 'angle-double-right' %>
+        <% end %>
+        <%= link_to c.name, category_path(c) %>
+      <% end %>
+    </h3>
+  </div>
+  <div class="col-xs-2">
+    <a class='pull-right' onclick="javascript:history.back(); return false;">
+      <%= fa_icon 'share', class: 'fa-2x' %>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="dropdown">
+      <button class="btn btn-sorting dropdown-toggle btn-block" type="button" data-toggle="dropdown">
+        <%= t('products.sort.sort_by') %>
+      </button>
+      <ul class="dropdown-menu btn-block">
+        <%= render 'shared/sorting_parametrs' %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <% @products_mobile.each do |product| %>
     <div class="col-xs-10 col-xs-offset-1  product_view_class product_<%= product.id %>">
       <%= render  partial: "products/product", locals: { product: product } %>
       <%= button_to product_line_items_path(product.id), class: "buttom_add_to_cart", remote: true do %>
@@ -12,4 +36,9 @@
       <% end %>
     </div>
   <% end %>
+</div>
+<div class="row">
+  <center>
+    <%= will_paginate @products_mobile, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
 </div>

@@ -2,7 +2,7 @@ class Admin::OrdersController < AdminsController
   before_action :order_resourses, only: %i[destroy order_delivered]
 
   def index
-    @orders = Order.order(:id)
+    @orders = Order.order(:id).paginate(page: params[:page], per_page: 50)
   end
 
   def destroy

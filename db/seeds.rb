@@ -5,6 +5,8 @@ Sex.create(name: 'Унисекс')
 Category.create(name: 'Одежда')
 Category.create(name: 'Игрушки')
 
+CategoryPost.create(name: 'Блог')
+
 image_collection_for_faker = []
 image_collection_for_faker << "image/upload/v1506689043/zabavka-treugolnik-s-kolechkami-masik-20170419211156-s_gl7w6w.jpg"
 image_collection_for_faker << "image/upload/v1506689043/vedro-dlja-peska-zamok-sinee-tigres-20170418115907-s_duzjxg.jpg"

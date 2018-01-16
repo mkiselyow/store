@@ -48,7 +48,15 @@ class Product < ApplicationRecord
   end
 
   def from_min_and_max
-    "от #{min_age} до #{max_age} лет"
+    "#{minim_age} #{maxim_age} лет"
+  end
+
+  def minim_age
+    "от #{min_age} " if min_age.present?
+  end
+
+  def maxim_age
+    "до #{max_age} " if max_age.present?
   end
 
   def full_name_product
@@ -65,7 +73,6 @@ class Product < ApplicationRecord
 
   def self.import(file)
     file_encoding = CharlockHolmes::EncodingDetector.detect(file.read)[:encoding]
-    #options = { headers: true, encoding:'windows-1251:utf-8', :row_sep => "\r\n", :col_sep => "\t", :skip_blanks => true} #, :row_sep => "\r\n"
     options = { headers: true, encoding: file_encoding, :row_sep => :auto, :col_sep => ";", :skip_blanks => true}
     CSV.foreach(file.path, options) do |row|
       unless Product.find_by(product_code: row.to_hash["Артикул"])
@@ -97,15 +104,13 @@ class Product < ApplicationRecord
           mixed:            (if row.to_hash["Материал"]
                               row.to_hash["Материал"].match(%r/смешанный/i) ? true : false
                             end),
-          #supplier:
-          #quantity:              row.to_hash["Количество"],
-          sex_id:              (if row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/мальчик/i)
-                                  1# 1# 5 #1
-                                elsif row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/девочка/i)
-                                  2# 2# 3 #2
-                                else
-                                  3# 3# 4 #3
-                                end),
+          sex_id:           (if row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/мальчик/i)
+                               1# 1# 5 #1
+                             elsif row.to_hash["Пол"] && row.to_hash["Пол"].match(%r/девочка/i)
+                               2# 2# 3 #2
+                             else
+                               3# 3# 4 #3
+                             end),
           #description:
           #image_cache:
           #image_id:

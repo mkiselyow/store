@@ -1,34 +1,46 @@
 <div class="row">
-  <div class="col-sm-12 col-xs-12">
-    <div class="all_products_div">
-      <% @subcategory_product.each do |subcategory, i| %>
-        <% subcategory.products.each do |product| %>
-          <div class="col-md-4 col-sm-6 col-xs-12 product_view_class">
-            <div class="item-category">
-              <%= link_to product_path(product) do %>
-                <%= image_tag product.image.url(:thumb), class: 'image_product_index' %>
-                <%= tag.div :class => "product_price_text" do %>
-                  <% if product.discount != 0 %>
-                    <%= "Скидка #{number_to_percentage(product.discount, precision: 0)}" %>
-                  <% end %>
-                <% end %>
-                <%= tag.div(product.title.mb_chars.capitalize.to_s, :class => "product_title_text") %>
-                <%= tag.div(number_to_currency(product.price, unit: "грн"), :class => "product_price_text") %>
-                <%= if product.quantity then tag.div("Остаток #{product.quantity}", :class => "product_quantity_text") else tag.div("Под заказ", :class => "  product_quantity_text") end %>
-                <%= tag.div(product.product_code, :class => "product_code_text") %>
-              <% end %>
-              <%= button_to 'В корзину', product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
-            </div>
-          </div>
-          <%= render 'modal_window', product: product %>
+  <div class="col-md-10 col-sm-10">
+    <h2>
+      <% @category.path.each do |c| %>
+        <% unless c.ancestry == nil %>
+          <%= fa_icon 'angle-double-right' %>
         <% end %>
+        <%= link_to c.name, category_path(c) %>
       <% end %>
-<!--       <div class="row">
-        <center>
-          <%= will_paginate @subcategory_product.paginate(page: params[:page], per_page: 18), renderer: BootstrapPagination::Rails %>
-        </center>
-      </div> -->
+    </h2>
+  </div>
+  <div class="col-md-1 col-sm-2">
+    <a class='pull-right' onclick="javascript:history.back(); return false;">
+      <%= fa_icon 'share', class: 'fa-2x' %>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <div class="dropdown">
+      <button class="btn btn-sorting dropdown-toggle pull-left" type="button" data-toggle="dropdown">
+        <%= t('products.sort.sort_by') %>
+      </button>
+      <ul class="dropdown-menu">
+        <%= render 'shared/sorting_parametrs' %>
+      </ul>
     </div>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-sm-12 col-xs-12">
+    <% @products.each do |product| %>
+      <div class="col-md-3 col-sm-6 col-xs-12 product_view_class product_view_class_all">
+        <div class="item-category">
+          <%= render  partial: "products/product", locals: { product: product } %>
+          <%= button_to t('products.add_to_cart'), product_line_items_path(product.id), class: "buttom_add_to_cart" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <center>
+    <%= will_paginate @products, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>

@@ -1,7 +1,7 @@
 <table class="table-striped table products-parametrs">
   <thead>
     <tr>
-      <th><h2><%= @product.title %></h2></th>
+      <td colspan="2"><h3><%= @product.title %></h3></td>
     </tr>
   </thead>
   <tbody>
@@ -9,25 +9,39 @@
       <th style="width:15%">Категория</th>
       <td><%= @product.category.name %></td>
     </tr>
-    <tr>
-      <th>Код</th>
-      <td><%= @product.product_code %></td>
-    </tr>
-    <tr>
-      <th>Бренд:</th>
-      <td><%= @product.brand %></td>
-    </tr>
-    <tr>
-      <th>Поставщик</th>
-      <td><%= @product.supplier %></td>
-    </tr>
+    <% if @product.product_code.present? %>
+      <tr>
+        <th>Код</th>
+        <td><%= @product.product_code %></td>
+      </tr>
+    <% end %>
+    <% if @product.brand.present? %>
+      <tr>
+        <th>Бренд:</th>
+        <td><%= @product.brand %></td>
+      </tr>
+    <% end %>
+    <% if @product.supplier.present? %>
+      <tr>
+        <th>Поставщик</th>
+        <td><%= @product.supplier %></td>
+      </tr>
+    <% end %>
     <tr>
       <th>Габариты</th>
       <td>
-        <i>Длина: </i><%= @product.size_a %> мм<p>
-        <i>Ширина: </i><%= @product.size_b %> мм<p>
-        <i>Высота: </i><%= @product.size_h %> мм<p>
-        <i>Вес: </i><%= @product.weight %> г
+        <% if @product.size_a.present? %>
+          <i>Длина: </i><%= @product.size_a %> мм<p>
+        <% end %>
+        <% if @product.size_b.present? %>
+          <i>Ширина: </i><%= @product.size_b %> мм<p>
+        <% end %>
+        <% if @product.size_h.present? %>
+          <i>Высота: </i><%= @product.size_h %> мм<p>
+        <% end %>
+        <% if @product.weight.present? %>
+          <i>Вес: </i><%= @product.weight %> г
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -102,9 +116,11 @@
         <%= material_another_present %>
       </td>
     </tr>
-    <tr>
-      <th>Количество</th>
-      <td><%= @product.quantity %></td>
-    </tr>
+    <% if @product.quantity.present? %>
+      <tr>
+        <th>Количество</th>
+        <td><%= @product.quantity %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

@@ -1,29 +1,32 @@
 class User < ApplicationRecord
-  validates :number, uniqueness: { message: 'Такой номер уже зарегестрирован' }
-  validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' },
-                     format: { with: /(\A\+3([ -])?8([ -])?0[1-9]{2}([ -])?(\d([ -])?){7}\z)|(\A0([ -])?[1-9]{2}([ -])?(\d([ -])?){7}\z)/x,
-                     message: 'Введите номер телефона в формате +380971234567' }
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: %i[vkontakte facebook instagram]
+         :omniauthable, omniauth_providers: %i[vkontakte facebook instagram google_oauth2]
 
   has_many :comments, dependent: :destroy
   has_many :comment_posts, dependent: :destroy
-  has_many :userful_articles, dependent: :destroy
+  has_many :useful_articles, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :user_views, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
+  self.per_page = 40
+
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
+    if self.where(email: auth.info.email).exists?
+      user = self.where(email: auth.info.email).first
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0, 20]
+        user.remote_avatar_url = auth.info.image
+        user.save!
+      end
     end
   end
 

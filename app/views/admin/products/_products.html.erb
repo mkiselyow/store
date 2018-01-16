@@ -10,9 +10,9 @@
     <th class="mobile-hidden">Действия</th>
   </thead>
   <tbody>
-    <% @products.each_with_index do |product, i| %>
+    <% @products.each do |product| %>
       <tr id = <%= "product_#{product.id}" %>>
-        <td><%= i+1 %></td>
+        <td><%= product.id %></td>
         <td>
           <%= link_to product.title, product_path(product), target: '_blank' %>
           <div class="dropdown action-dropdown">

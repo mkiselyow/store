@@ -27,7 +27,10 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -55,6 +58,8 @@ gem 'therubyracer'
 gem 'font-awesome-rails'
 # vk omniauth
 gem 'omniauth-vkontakte'
+# google omniauth
+gem 'omniauth-google-oauth2'
 
 # paperclip+heroku images
 gem 'aws-sdk'
@@ -69,7 +74,6 @@ gem 'omniauth-instagram'
 # paginate pages
 gem 'will_paginate-bootstrap'
 
-# gem 'globalize', github: 'globalize/globalize'
 gem 'i18n-active_record'
 gem 'i18n-js'
 gem 'redis'

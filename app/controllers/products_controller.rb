@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
   def index
     @products_count = Product.count
     @products = if params[:query]
-                  Product.where(title: params[:query]).order("#{params[:sort]} #{params[:order_type]}")
+                  Product.where(title: params[:query]).order(sorting)
                 else
-                  Product.order("#{params[:sort]} #{params[:order_type]}")
+                  Product.order(sorting)
                 end
     @products_page = @products.paginate(page: params[:page], per_page: 24)
     @products_page_mobile = @products.paginate(page: params[:page], per_page: 12)
@@ -94,6 +94,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def sorting
+    "#{params[:sort]} #{params[:order_type]}"
+  end
 
   def product_views_inc
     if user_signed_in?

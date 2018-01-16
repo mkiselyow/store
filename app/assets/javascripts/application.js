@@ -25,13 +25,19 @@ jQuery(document).ready(function($){
   $(function(){
     $('.pagination a').attr('data-remote', 'false')
   });
+  $(window).resize(function(){
+    if ($(window).width() >= 768){
+      $(".header-menu-items").show();
+    } else {
+      $(".header-menu-items").hide();
+    }
+  });
   $("#header-menu-button-toggle").click(function(){
     $(".header-menu-items").slideToggle("slow");
-    // if ($('.header-menu-items').is(":visible"))
-    // {
-    //   $(".header-menu-items").show();
-    // } else{
-    //   $(".header-menu-items").hide();
-    // }
+  });
+  var ch_password = $("#changePasswordForm");
+  ch_password.click(function(){
+    $(".change-password" ).show();
+    ch_password.hide();
   });
 });

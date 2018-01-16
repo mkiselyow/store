@@ -1,22 +1,12 @@
 class CategoriesController < ApplicationController
-  before_action :category_resource, only: [:show]
-  before_action :search_form, only: %i[show index]
+  before_action :category_resource, only: %i[show]
+  before_action :search_form, only: %i[show]
   before_action :count_products
-  after_action do
-    Category::CATEGORIES_SELECT = Category.get_collection_of_categories_ids
-  end
 
   def show
-    @products = @category.products
-    @subcategory_product = @category.subtree
-    # binding.pry
-    # @products = @category.subtree.each do |category|
-    #   category.products
-    # end
-  end
-
-  def index
-    @products = Product.order(:id).paginate(page: params[:page], per_page: 18)
+    @product_list = Product.order(sorting).where(category_id: @category.subtree_ids)
+    @products = @product_list.paginate(page: params[:page], per_page: 16)
+    @products_mobile = @product_list.paginate(page: params[:page], per_page: 12)
   end
 
   private
@@ -31,5 +21,9 @@ class CategoriesController < ApplicationController
 
   def search_form
     @search = Search.new
+  end
+
+  def sorting
+    "#{params[:sort]} #{params[:order_type]}"
   end
 end

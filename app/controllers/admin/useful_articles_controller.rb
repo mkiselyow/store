@@ -2,7 +2,7 @@ class Admin::UsefulArticlesController < AdminsController
   before_action :article_resource, only: %i[edit update destroy]
 
   def index
-    @useful_articles = UsefulArticle.all
+    @useful_articles = UsefulArticle.order(:id).paginate(page: params[:page], per_page: 20)
   end
 
   def new
@@ -38,6 +38,6 @@ class Admin::UsefulArticlesController < AdminsController
   end
 
   def articles_params
-    params.require(:useful_article).permit(:title, :body, :preview, :user_id, :published, :category_id)
+    params.require(:useful_article).permit(:title, :body, :preview, :user_id, :published, :category_post_id)
   end
 end

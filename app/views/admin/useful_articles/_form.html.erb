@@ -3,7 +3,7 @@
   <br>
   <%= f.text_field :title, placeholder: "Введите заголовок", class: 'form-control', required: true %>
   <br>
-  <%= f.select :category_id, options_from_collection_for_select(CategoryPost.all, :id, :name), {}, class: 'form-control' %>
+  <%= f.select :category_post_id, options_from_collection_for_select(CategoryPost.all, :id, :name), {}, class: 'form-control' %>
   <br>
     <%= f.label(:published, "Публикация") %>
     <%= f.check_box :published %>

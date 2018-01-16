@@ -23,7 +23,7 @@
             <% end %>
             <div class="carousel-caption">
               <h2 class='share-h2-slider'><%= share.title %></h2>
-              <p><%= share.body.truncate(100) %></p>
+              <p><%= raw share.body.truncate(100) %></p>
             </div>
           </div>
         <% end %>

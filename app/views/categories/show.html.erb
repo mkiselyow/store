@@ -11,17 +11,11 @@
     </div>
   </aside>
   <article class='article_products'>
-    <h2>
-      <% @category.path.each do |c| %>
-        <%= link_to c.name, category_path(c) %> |
-      <% end %>
-    </h2>
     <div id="products">
       <%= render 'products' %>
     </div>
   </article>
 </main>
-
 <div class="mobile" name="top">
   <%= render 'shared/button_mobile' %>
   <div class="row">
@@ -32,4 +26,3 @@
     </div>
   </div>
 </div>
-<a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>

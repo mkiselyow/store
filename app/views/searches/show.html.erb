@@ -10,27 +10,27 @@
   </aside>
   <article class='article_products'>
     <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+      <button class="btn btn-sorting dropdown-toggle" type="button" data-toggle="dropdown">
         <%= t('products.sort.sort_by') %>
       </button>
       <ul class="dropdown-menu">
-        <li><%= link_to t('products.sort.first_cheap'), sort: 'price', order_type: 'ASC' %></li>
-        <li><%= link_to t('products.sort.first_expensive'), sort: 'price', order_type: 'DESC' %></li>
-        <li><%= link_to t('products.sort.first_new'), sort: 'created_at', order_type: 'ASC' %></li>
-        <li><%= link_to t('products.sort.first_old'), sort: 'created_at', order_type: 'DESC' %></li>
-        <li><%= link_to t('products.sort.first_with_offer'), sort: 'discount', order_type: 'DESC' %></li>
+        <%= render 'shared/sorting_parametrs' %>
       </ul>
     </div>
     <h1>Найдено <%= @products.count %> товаров</h1>
-    <% @products.each do |product| %>
-      <div class="col-md-3 col-sm-6 product_view_class product_view_class_all">
-        <%= render  partial: "products/product", locals: { product: product } %>
-        <%= button_to t('products.add_to_cart'), product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
-      </div>
-    <% end %>
-    <center>
-      <%= will_paginate @products, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
-    </center>
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-md-3 col-sm-6 product_view_class product_view_class_all">
+          <%= render  partial: "products/product", locals: { product: product } %>
+          <%= button_to t('products.add_to_cart'), product_line_items_path(product.id), :class => "buttom_add_to_cart" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <center>
+        <%= will_paginate @products, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+      </center>
+    </div>
   </article>
 </main>
 <div class="mobile" name="top">
@@ -43,6 +43,18 @@
       <a onclick="javascript:history.back(); return false;">
         <%= fa_icon 'share', class: 'fa-2x' %>
       </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="dropdown">
+        <button class="btn btn-sorting dropdown-toggle btn-block" type="button" data-toggle="dropdown">
+          <%= t('products.sort.sort_by') %>
+        </button>
+        <ul class="dropdown-menu btn-block">
+          <%= render 'shared/sorting_parametrs' %>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="row">

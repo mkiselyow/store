@@ -22,7 +22,6 @@
 }
 .upload_avatar{
   height: 50px;
-  width: 50px;
 }
 .tagline{
   margin-top: 35px;
@@ -101,6 +100,9 @@
     height: 100%;
   }
 }
+.btn-danger{
+  background: #ff3801;
+}
 .header-avatar{
   width: 30px;
   height: 30px;
@@ -128,6 +130,39 @@
   }
   .mapapama_logo{
     height: 48px;
+  }
+}
+.btn-sorting {
+  background-color: #9C27B0;
+  color: white;
+}
+.btn-sorting:hover {
+  background-color: #ed81ff;
+  color: white;
+}
+.btn-all-offers {
+  color: #fff;
+  background-color: #ef813e;
+  border-color: #e63629;
+}
+.btn-all-offers:hover  {
+  color: #fff;
+  background-color: #ad4506;
+  border-color: #e63629;
+}
+@media (max-width: 334px){
+  .leuze {
+    height: 12px;
+    line-height: 26px;
+    margin-top: 11px;
+  }
+  .full-name-header{
+    display: none;
+  }
+}
+@media (min-width: 988px){
+  .header_one {
+    height: 114px;
   }
 }
 @media (min-width: 768px){
@@ -415,9 +450,6 @@ a.thumbnail.product_image_add {
 .check-green{
   color: #8cc63f;
 }
-// #advanced_search_show{
-//   display: none;
-// }
 .product_view_class_all{
   height: 370px;
 }
@@ -445,7 +477,6 @@ a.thumbnail.product_image_add {
     background-image: url("snow.gif");
     height: 160px;
   }
-
 }
 @media (max-width: 768px){
   .top_container_center{
@@ -464,9 +495,6 @@ a.thumbnail.product_image_add {
   display: none;
 }
 @media (max-width: 768px){
-  .header-menu-items-mobile{
-    display: none;
-  }
   .header-menu-items{
     display: none;
   }
@@ -475,13 +503,27 @@ a.thumbnail.product_image_add {
   .header-menu-button-xs{
     display: none;
   }
-  .header-menu-items-mobile{
-    display: none;
-  }
 }
 .button-toggle-menu{
   color: #f43612;
 }
 .button-toggle-menu:hover{
   color: #ffb0a1;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #f43612;
+  border-color: #f43612;
+  cursor: default;
+}
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+  z-index: 2;
+  color: #f43612;
+  background-color: #eeeeee;
+  border-color: #ddd;
+}
+.pagination > li > a, .pagination > li > a:focus, .pagination > li > span, .pagination > li > span {
+  z-index: 2;
+  color: #f43612;
 }

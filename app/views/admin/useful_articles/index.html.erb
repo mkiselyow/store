@@ -1,5 +1,5 @@
 <h1>Полезные статьи</h1>
-<div class="col-md-10 col-xs-12">
+<div class="col-md-12 col-xs-12">
   <%= link_to 'Новая статья', new_admin_useful_article_path %>
   <br>
   <table class="table table-hover">
@@ -9,6 +9,7 @@
         <td width="35%">Заголовок</td>
         <td width="60px">Изображение</td>
         <td width="200px">Дата публикации</td>
+        <td>Категория</td>
         <td>Опубликовано</td>
         <td>Действия</td>
       </tr>
@@ -20,6 +21,7 @@
           <td><%= link_to u_a.title, useful_article_path(u_a), target: '_blank' %></td>
           <td><%= image_tag u_a.preview_url(:thumbnail), class: 'thumbnail useful_articles_image_index' %></td>
           <td><%= u_a.created_at.strftime("%B %dth, %Y") %></td>
+          <td><%= u_a.category_post.name %></td>
           <td>
             <% if u_a.published %>
               <%= fa_icon 'check-square-o', class: 'text-success fa-2x' %>
@@ -33,4 +35,9 @@
       <% end %>
     </tbody>
   </table>
+</div>
+<div class="row">
+  <center>
+    <%= will_paginate @useful_articles, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
 </div>

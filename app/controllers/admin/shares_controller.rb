@@ -2,7 +2,7 @@ class Admin::SharesController < AdminsController
   before_action :share_resource, only: %i[edit update destroy]
 
   def index
-    @shares = Share.all
+    @shares = Share.order(:id).paginate(page: params[:page], per_page: 20)
   end
 
   def new

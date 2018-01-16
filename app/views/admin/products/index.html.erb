@@ -5,11 +5,11 @@
   </div>
 
   <div class="col-md-2 col-xs-2">
-    <%= link_to "удалить последние (#{Product.products_created_today.count})", delete_products_created_today_admin_products_path, class: 'btn btn-danger', method: :delete %>
+    <%= link_to "удалить последние (#{Product.products_created_today.count})", delete_products_created_today_admin_products_path, class: 'btn btn-danger', method: :delete, title: 'товары добавленные сегодня' %>
   </div>
 
   <div class="col-md-3 col-xs-3">
-    <%= form_tag import_admin_products_path, multipart: true do %>
+    <%= form_tag import_admin_products_path, class: 'form_admin_products', multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag "Загрузить", class: 'btn btn-primary' %>
     <% end %>

@@ -3,7 +3,7 @@
 <% @useful_articles.each do |u_a| %>
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-10 well">
+      <div class="col-md-10 col-md-offset-1 well">
          <div class="row">
            <div class="col-md-8">
              <h3><strong><%= link_to u_a.title, useful_article_path(u_a) %></strong></h3>
@@ -22,11 +22,11 @@
         </div>
         <div class="row">
           <div class="col-md-8">
-            <p></p>
             <p>
               <%= link_to user_path(u_a.user) do %>
                 <%= fa_icon 'user', text: "#{ u_a.user.full_name}" %>
               <% end %>
+              | <span class="label label-danger"><%= u_a.category_post.name %></span>
               | <%= fa_icon 'calendar', text: "#{ u_a.created_at.strftime("%B %dth, %Y") }" %>
               | <%= fa_icon 'comment', text: "#{ u_a.comment_posts.count } комментариев"  %>
                <%= social_share_button_tag(u_a.title) %>
@@ -37,3 +37,8 @@
     </div>
   </div>
 <% end %>
+<div class="row">
+  <center>
+    <%= will_paginate @useful_articles, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>
