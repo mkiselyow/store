@@ -1,89 +1,104 @@
-<h1>Редактировать профиль </h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2 col-xs-10">
+    <h2>Редактировать профиль</h2>
+  </div>
+  <div class="col-md-2 col-xs-2">
+    <%= link_to :back, class: 'pull-right' do %>
+      <span class="glyphicon glyphicon-remove">
+    <% end %>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
       <div class="row">
-        <div class="field col-md-4">
-          <%= f.label(:first_name, "Имя" ) %><br />
-          <%= f.text_field :first_name, id: :user_first_name, class: 'form-control' %>
+        <div class="field col-md-5 col-xs-12">
+          <p>
+            <%= f.label(:first_name, "Имя" ) %><br>
+            <%= f.text_field :first_name, id: :user_first_name, class: 'form-control' %>
+          </p>
         </div>
-        <div class="field col-md-4">
-          <%= f.label(:last_name, "Фамилия" ) %><br />
-          <%= f.text_field :last_name, id: :user_last_name, class: 'form-control' %>
+        <div class="field col-md-5 col-xs-12">
+          <p>
+            <%= f.label(:last_name, "Фамилия" ) %><br>
+            <%= f.text_field :last_name, id: :user_last_name, class: 'form-control' %>
+          </p>
         </div>
       </div>
-      <p></p>
       <div class="row">
-        <div class="field col-md-4">
-          <%= f.label(:email, "Эл. почта" ) %><br />
-          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+        <div class="field col-md-5 col-xs-12">
+          <p>
+            <%= f.label(:email, "Эл. почта" ) %><br>
+            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          </p>
         </div>
-        <div class="field col-md-4">
-          <%= f.label(:number, "Номер телефона" ) %><br />
-          <%= f.text_field :number, id: :user_number, :required => true, :placeholder => "Обязательное поле", class: 'form-control' %>
+        <div class="field col-md-5 col-xs-12">
+          <p>
+            <%= f.label(:number, "Номер телефона" ) %><br>
+            <%= f.text_field :number, id: :user_number, :placeholder => "Обязательное поле", class: 'form-control' %>
+          </p>
         </div>
       </div>
-      <p>
       <div class="row">
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Ожидаем подтверждения : <%= resource.unconfirmed_email %></div>
         <% end %>
       </div>
-      <p>
       <div class="row">
         <div class="col-md-4">
-          <a class="btn btn-info" id='changePasswordForm'>Изменить пароль</a>
+          <p>
+            <a class="btn btn-info" id='changePasswordForm'>Изменить пароль</a>
+          </p>
         </div>
       </div>
       <div class="row change-password">
-        <div class="field col-md-4">
-          <%= f.label(:password, "Новый пароль" ) %><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-          <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> знаков минимум</em>
-          <% end %>
+        <div class="field col-md-5 col-xs-12">
+          <p>
+            <%= f.label(:password, "Новый пароль" ) %><br>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+            <% if @minimum_password_length %>
+              <br>
+              <em><%= @minimum_password_length %> знаков минимум</em>
+            <% end %>
+          </p>
         </div>
-        <div class="field col-md-4">
-          <%= f.label(:password_confirmation, "Подтверждения пароля" ) %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        <div class="field col-md-5 col-xs-12">
+          <p>
+            <%= f.label(:password_confirmation, "Подтверждения пароля" ) %><br>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+          </p>
         </div>
       </div>
-      <p>
       <div class="row">
-        <div class="field col-md-4">
-          <%= f.label(:avatar, "Аватар" ) %><br />
-          <%= f.file_field :avatar, class: 'profile_upload' %>
-          <%= f.hidden_field(:avatar_cache) %>
+        <div class="field col-md-5 col-xs-9">
+          <p>
+            <%= f.label(:avatar, "Аватар" ) %><br>
+            <%= f.file_field :avatar, class: 'profile_upload' %>
+            <%= f.hidden_field(:avatar_cache) %>
+          </p>
         </div>
-        <div class="col-md-6 upload-preview">
-          <img class="upload_avatar edit_upload_avatar" />
+        <div class="col-md-6 upload-preview col-xs-3">
+          <p><img class="upload_avatar edit_upload_avatar" /></p>
         </div>
       </div>
-      <p></p>
-      <div class="actions">
-        <%= f.submit "Отправить изменения", class: 'btn btn-warning' %>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="panel panel-danger">
+            <div class="panel-heading">Удалить аккаунт</div>
+            <div class="panel-body">
+              <p>
+                Если вы хотите анулировать свой аккаунт, вы можете <%= link_to "перейти по этой ссылке", registration_path(resource_name), data: { confirm: "Вы действительно хотите удалить свой аккаунт? Все ваши данные удалятся" }, method: :delete %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <p><%= f.submit "Отправить изменения", class: 'btn btn-warning' %></p>
+        </div>
       </div>
     <% end %>
-    <p></p>
-    <div class="well col-md-8">
-      <center>
-        <h3>Удалить аккаунт</h3>
-        <p>Не нравится? <%= button_to "Удалить мой аккаунт", registration_path(resource_name), data: { confirm: "Вы действительно хотите удалить свой аккаунт?   Все ваши данные удалятся" }, method: :delete, class: 'btn btn-danger' %></p>
-      </center>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <%= link_to "Назад", :back %>
-      </div>
-    </div>
   </div>
 </div>
-<script>
-  var ch_password = $("#changePasswordForm");
-  ch_password.click(function(){
-    $(".change-password" ).show();
-    ch_password.hide();
-  });
-</script>

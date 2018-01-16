@@ -36,3 +36,8 @@
     </table>
   </div>
 </div>
+<div class="row">
+  <center>
+    <%= will_paginate @orders, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>

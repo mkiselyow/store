@@ -12,9 +12,6 @@ class CommentPostsController < ApplicationController
     @comment_post.save
   end
 
-  def edit
-  end
-
   def update
     @comment_post.update(comment_params)
   end

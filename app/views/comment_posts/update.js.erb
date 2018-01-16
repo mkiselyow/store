@@ -1,1 +1,2 @@
-$("#edit_comment_post_<%= @comment_post.id %>").html("#comment_text_<%= @comment_post.id %>");
+$("#edit_comment_post_<%= @comment_post.id %>").hide();
+$("#comment_text_<%= @comment_post.id %>").show().html("<%= j(render 'comment_post_row', comment_post: @comment_post) %>");

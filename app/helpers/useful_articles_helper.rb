@@ -6,7 +6,7 @@ module UsefulArticlesHelper
       "#{comment_count} комментарий"
     elsif last_int >= 2 && last_int <= 4
       "#{comment_count} комментария"
-    elsif last_int == 0
+    elsif comment_count == 0
       'На данный момент отсутствуют комментарии для этого поста'
     else
       "#{comment_count} комментариев"

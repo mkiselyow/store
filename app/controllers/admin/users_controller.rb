@@ -2,7 +2,7 @@ class Admin::UsersController < AdminsController
   before_action :user_resource, only: %i[banned_user change_permission destroy]
 
   def index
-    @users = User.order(:id)
+    @users = User.order(:id).page(params[:page])
   end
 
   def banned_user

@@ -1,6 +1,2 @@
-$("#edit_comment_<%= @comment.id %>").html("<%= j(render 'comment_row', comment: @comment) %>");
-$('.comment-alert-<%= @comment.id %>').show();
-$('.alert-warning').append("<%= t('reviews.comment_had_been_changed') %>");
-setTimeout(function(){ 
-  $('.comment-alert-<%= @comment.id %>').hide('fade');
-}, 5000);
+$("#edit_comment_<%= @comment.id %>").hide();
+$("#comment_text_<%= @comment.id %>").show().html("<%= j(render 'comment_row', comment: @comment) %>");

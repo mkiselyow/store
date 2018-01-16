@@ -6,4 +6,6 @@ class UsefulArticle < ApplicationRecord
   mount_uploader :preview, PreviewUploader
 
   scope :only_published, -> { where(published: true) }
+
+  self.per_page = 10
 end

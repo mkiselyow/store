@@ -3,7 +3,7 @@
 <% @useful_articles.each do |u_a| %>
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-10 well">
+      <div class="col-md-10 col-md-offset-1 well">
          <div class="row">
            <div class="col-md-8">
              <h3><strong><%= link_to u_a.title, useful_article_path(u_a) %></strong></h3>
@@ -37,3 +37,8 @@
     </div>
   </div>
 <% end %>
+<div class="row">
+  <center>
+    <%= will_paginate @useful_articles, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>

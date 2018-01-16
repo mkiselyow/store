@@ -44,7 +44,22 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <%= render 'comment_posts/form' %>
+        <% if current_user %>
+          <div class="col-md-12 col-xs-12">
+            <%= render 'comment_posts/form' %>
+          </div>
+        <% else %>
+          <div class="alert alert-warning">
+            <p><%= t('reviews.warning_message') %> <%= link_to t('reviews.log_in'), new_user_session_path %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <center>
+          <%= will_paginate @comment_posts, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+        </center>
       </div>
     </div>
   </div>

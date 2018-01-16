@@ -35,4 +35,9 @@ jQuery(document).ready(function($){
   $("#header-menu-button-toggle").click(function(){
     $(".header-menu-items").slideToggle("slow");
   });
+  var ch_password = $("#changePasswordForm");
+  ch_password.click(function(){
+    $(".change-password" ).show();
+    ch_password.hide();
+  });
 });

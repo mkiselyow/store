@@ -1,1 +1,6 @@
-<%= render 'form' %>
+<%= form_for([@useful_article, @comment_post], remote: true) do |f| %>
+  <br>
+  <%= f.trix_editor :body, class: 'comment-form' %>
+  <br>
+  <%= f.submit 'OK', class: 'btn btn-success', id: 'add_comment_for_post' %>
+<% end %>

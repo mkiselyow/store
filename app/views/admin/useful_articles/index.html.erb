@@ -36,3 +36,8 @@
     </tbody>
   </table>
 </div>
+<div class="row">
+  <center>
+    <%= will_paginate @useful_articles, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
+  </center>
+</div>

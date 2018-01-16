@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
   has_ancestry
 
-  has_many :products
+  has_many :products, dependent: :destroy
   has_many :subcategories, class_name: 'Category',
                            foreign_key: :parent,
                            dependent: :destroy

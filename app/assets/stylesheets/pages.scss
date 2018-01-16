@@ -25,3 +25,19 @@ li, p {
 .way{
   color: #f43612;
 }
+.conditions_of_use{
+  div.scroll {
+    width: 100%;
+    height: 400px;
+    overflow: scroll;
+  }
+  ol {
+    list-style: none; 
+    counter-reset: li;
+    padding-left: 20px;
+  }
+  ol li:before {
+    counter-increment: li; 
+    content: counters(li,".") ". "; 
+  }
+}
