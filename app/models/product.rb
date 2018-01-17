@@ -39,7 +39,7 @@ class Product < ApplicationRecord
 
   def old_price
     if price && discount != 0 && discount != nil
-      price + ((price/100) * discount)
+      price + ((price/100) * mark_up)
     end
   end
 
@@ -91,7 +91,7 @@ class Product < ApplicationRecord
           size_b:               (row.to_hash["Ширина см."] ? row.to_hash["Ширина см."].to_i*10 : nil),
           size_h:               (row.to_hash["Высота см."] ? row.to_hash["Высота см."].to_i*10 : nil),
           purchase_price:       (row.to_hash["Цена грн."] ? row.to_hash["Цена грн."].to_f : nil),
-          mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_f : 100),
+          mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_i : 100),
           # price:                (row.to_hash["Цена грн."]*row.to_hash["Наценка"]||100),
           weight:               (row.to_hash["Вес г."] ? row.to_hash["Вес г."].to_f : nil),
           brand:                row.to_hash["Торговая марка"],
@@ -125,13 +125,14 @@ class Product < ApplicationRecord
           #image_id:
           #country:
           product_code:          row.to_hash["Артикул"],
-          discount:              row.to_hash["Скидка"].nil? ? 0 : row.to_hash["Скидка"],
+          discount:              row.to_hash["Скидка"].nil? ? 0 : row.to_hash["Скидка"].to_i,
           category_id: (row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.find_by(name: row.to_hash["Категория"]).id : 169) : 169),
           # other_desc:
           # general_category:
           # max_age:
           min_age:              row.to_hash["Возраст"] 
         }
+        p params
         product = Product.create!(params)
       end
       # if row.to_hash["Изображение"]
