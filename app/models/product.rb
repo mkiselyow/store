@@ -38,8 +38,8 @@ class Product < ApplicationRecord
   end
 
   def old_price
-    if price && discount != 0 && discount != nil
-      price + ((price/100) * mark_up)
+    if purchase_price && discount
+      purchase_price + ((purchase_price/100) * mark_up)
     end
   end
 
