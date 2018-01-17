@@ -73,7 +73,16 @@ class Product < ApplicationRecord
 
   def self.import(file)
     file_encoding = CharlockHolmes::EncodingDetector.detect(file.read)[:encoding]
-    options = { headers: true, encoding: file_encoding, :row_sep => :auto, :col_sep => ";", :skip_blanks => true}
+    count_tabs = CSV.read(file.path, "r:#{file_encoding}").join.scan("\t").count
+    count_semicolon = CSV.read(file.path, "r:#{file_encoding}").join.scan(";").count
+    if count_tabs > count_semicolon
+      current_col_sep = "\t"
+    elsif count_tabs < count_semicolon
+      current_col_sep = ";"
+    else
+      raise ArgumentError.new("CSV FILE IS NOT DEFINED")
+    end
+    options = { headers: true, encoding: file_encoding, :row_sep => :auto, :col_sep => current_col_sep, :skip_blanks => true}
     CSV.foreach(file.path, options) do |row|
       unless Product.find_by(product_code: row.to_hash["Артикул"])
         params  = {
@@ -116,7 +125,7 @@ class Product < ApplicationRecord
           #image_id:
           #country:
           product_code:          row.to_hash["Артикул"],
-          #discount:             row.to_hash["Скидка"],
+          discount:              row.to_hash["Скидка"].nil? ? 0 : row.to_hash["Скидка"],
           category_id: (row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.find_by(name: row.to_hash["Категория"]).id : 169) : 169),
           # other_desc:
           # general_category:
