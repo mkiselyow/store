@@ -196,3 +196,6 @@ en:
     what_report: 'to report this error'
   search:
     result: "Found %{products_count} products"
+  message:
+    order_in_treatment: 'Your order was delivered in the treatment'
+    your_cart_empty: 'Your cart empty for now!'

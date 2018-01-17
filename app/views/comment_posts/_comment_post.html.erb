@@ -1,6 +1,6 @@
 <div class="row" id="comment_post_<%= comment_post.id %>">
   <div class="col-md-12">
-    <div class="panel panel-white post panel-shadow">
+    <div class="panel panel-white post panel-shadow comment_body_<%= comment_post.id %>">
       <div class="post-heading">
         <div class="pull-left image">
           <%= image_tag comment_post.user.avatar_url(:thumb), class: "img-circle avatar" %>

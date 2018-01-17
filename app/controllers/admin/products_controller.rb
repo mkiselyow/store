@@ -15,12 +15,12 @@ class Admin::ProductsController < AdminsController
 
   def import
     Product.import(params[:file])
-    redirect_to admin_products_url, notice: "Товары добавлены"
+    redirect_to admin_products_url, notice: 'Товары добавлены'
   end
 
   def delete_products_created_today
     Product.products_created_today.each(&:destroy)
-    redirect_to admin_products_url, notice: "Товары удалены"
+    redirect_to admin_products_url, notice: 'Товары удалены'
   end
 
   private

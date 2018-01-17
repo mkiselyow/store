@@ -19,6 +19,8 @@ class Product < ApplicationRecord
   after_save :count_price, if: proc { |u| u.mark_up_changed? || u.discount_changed? || u.purchase_price_changed? }
 
   scope :with_special_offers, -> { where('discount != 0') }
+  scope :twenty_most_views, -> { where('times_viewed >= 0').order('times_viewed DESC').limit(20) }
+  scope :newest_products, -> { order('created_at DESC').limit(12) }
 
   def count_price
     price = (purchase_price * mark_up / 100 + purchase_price) * (100 - discount) / 100

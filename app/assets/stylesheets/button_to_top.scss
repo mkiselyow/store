@@ -2,7 +2,6 @@
 
 .cd-top {
   @extend a.top_nav_button;
-  // display: inline-block;
   height: 40px;
   width: 40px;    
   text-align: center;
@@ -18,12 +17,12 @@
   visibility: hidden;
   opacity: 0;
 
-  &.cd-is-visible { /* the button becomes visible */
+  &.cd-is-visible {
     visibility: visible;
     opacity: 1;
   }
 
-  &.cd-fade-out { /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  &.cd-fade-out {
     opacity: .5;
   }
 

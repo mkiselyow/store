@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def new
     if @cart.line_items.empty?
-      redirect_to root_url, notice: 'Корзина пока пуста'
+      redirect_to root_url, notice: t('message.your_cart_empty')
       return
     end
     @order = Order.new
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
         OrderNotifierMailer.recieved(@order).deliver
         OrderNotifierMailer.user_order_recieved(@order).deliver
-        format.html { redirect_to root_url, notice: 'Ваш заказ отправлен в обработку' }
+        format.html { redirect_to root_url, notice: t('message.order_in_treatment') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

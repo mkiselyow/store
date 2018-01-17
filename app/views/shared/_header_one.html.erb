@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-5 col-lg-5 col-xs-9 col-sm-4 mapapama_logo">
       <%= link_to root_path do %>
-        <%= cl_image_tag("мапапама_nb3pbw.png", :quality=>15, :height=>100, :crop=>"scale") %>
+        <%= cl_image_tag("мапапама_nb3pbw.png", quality: 15, height: 100, crop: "scale") %>
       <% end %>
     </div>
     <div class="col-md-2 col-lg-2 col-xs-3 col-sm-2 mapapama_logo">
       <%= link_to root_path do %>
-        <%= cl_image_tag("logo.png", :quality=>15, :width=>84, :crop=>"scale") %>
+        <%= cl_image_tag("logo.png", quality: 15, width: 84, crop: "scale") %>
       <% end %>
     </div>
     <div class="col-md-5 col-lg-5 col-xs-12 col-sm-6 leuze">
       <%= raw t "leuze" %>
-      <% 3.times do %>
+      <% 1.times do %>
         <%= fa_icon 'check', class: 'fa-1x check-green' %>
       <% end %>
     </div>
@@ -22,9 +22,8 @@
   <div class="row">
     <div class="phone-numbers">
       <div class="row">
-        <div class="col-xs-12 col-md-12">
-          <p class="numbers col-xs-6 col-md-12 col-sm-4"><%= fa_icon 'phone', class: 'fa-1x phone-icon', text: '095-775-16-86' %></p>
-          <p class="numbers col-xs-6 col-md-12 col-sm-4"><%= fa_icon 'phone', class: 'fa-1x phone-icon', text: '068-682-99-19' %></p>
+        <div class="col-xs-12 col-md-10 col-sm-12">
+          <p class="numbers col-xs-12 col-md-12 col-sm-8"><%= fa_icon 'phone', class: 'fa-1x phone-icon', text: '095-775-16-86; 068-682-99-19' %></p>
           <p class='numbers col-xs-12 col-md-12 col-sm-4'><i>с 9:00 - 21:00</i></p>
         </div>
       </div>
