@@ -4,7 +4,7 @@ class Admin::ProductsController < AdminsController
       if params[:product_code]
         Product.product_code_search(params[:product_code])
       else
-        Product.order(:id)
+        Product.order('created_at DESC')
       end.paginate(page: params[:page], per_page: 50)
   end
 
