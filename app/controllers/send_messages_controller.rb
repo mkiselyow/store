@@ -4,8 +4,8 @@ class SendMessagesController < ApplicationController
   end
 
   def create
+    @send_message = SendMessage.new(message_params)
     if @send_message.valid?
-      @send_message = SendMessage.new(message_params)
       SendMessageMailer.new_send_message(@send_message).deliver
       SendMessageMailer.answer_to_user(@send_message).deliver
     end
