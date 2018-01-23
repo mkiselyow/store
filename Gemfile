@@ -76,7 +76,7 @@ gem 'will_paginate-bootstrap'
 
 gem 'i18n-active_record'
 gem 'i18n-js'
-gem 'redis'
+# gem 'redis'
 gem 'sidekiq'
 gem 'whenever', require: false
 

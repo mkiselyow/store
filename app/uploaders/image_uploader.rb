@@ -1,9 +1,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
-  # include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
-  # process convert: 'png'
-  # process tags: ['post_picture']
   storage :file
 
   def store_dir
@@ -37,4 +34,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :big_large do
     resize_to_fit(1280, 720)
   end
+
+  version :gray do
+    process resize_to_fill: [100, 150, :north]
+  end
 end
+

@@ -12,7 +12,10 @@ Rails.application.configure do
 
   config.assets.js_compressor = :uglifier
 
+  config.serve_static_assets = true
   config.assets.compile = true
+  config.assets.digest = true
+  config.assets.version = '1.0' 
 
   config.log_level = :debug
 
@@ -44,8 +47,10 @@ Rails.application.configure do
       port:                 587,
       domain:               "max-X751SJ",#"domain.of.sender.net",
       authentication:       "plain",
-      user_name:            ENV["email_admin"],
-      password:             ENV["password_admin"],
+      # user_name:            ENV["email_admin"],
+      # password:             ENV["password_admin"],
+      user_name:            'mapapama.com.ua@gmail.com',
+      password:             '16121991nld',
       enable_starttls_auto: true 
   }
   end
