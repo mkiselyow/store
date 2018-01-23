@@ -4,7 +4,7 @@ require 'mini_magick'
 class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
 
-  include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
 
   storage :file
 
