@@ -25,6 +25,11 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    @image_products = @product.image_products
+  end
+
   def show
     @user_views = current_user.user_views.last_six_views if current_user
   end

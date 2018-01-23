@@ -193,9 +193,6 @@
         <%= form.nested_fields_for :image_products do |form_image| %>
           <div class="col-md-9 col-xs-9">
             <%= form_image.file_field :image, class: 'image_product_upload' %>
-            <div class="col-md-6 image_product_upload_preview">
-              <img class="product_upload_image" />
-            </div>
           </div>
           <div class="col-md-3 col-xs-3">
             <%= form_image.remove_nested_fields_link class: 'btn btn-danger' do %>
@@ -208,25 +205,31 @@
         <% end %>
         <p>
       </div>
+      <div class="col-md-12 col-xs-12">
+        <% @image_products.each do |image_prod| %>
+          <% if image_prod.present? %>
+            <div class="col-md-2 col-xs-2">
+              <%= image_tag image_prod.image.url(:thumbnail) %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <br>
     <div class="col-md-3 col-xs-12">
       <div id="direct_upload" class="basic_form">
       <h2>Прикрепить фото</h2>
         <div class="form_line">
-          <%= form.label :image, "Image:" %>
+          <%= form.label :image, "Главная картинка:" %>
           <div class="form_controls">
             <div class="upload_button_holder">
+              <% if @product.image.present? %>
+                <%= image_tag @product.image.url(:thumbnail) %><br/>
+              <% end %>
               <%= form.file_field(:image) %>
             </div>
           </div>
         </div>
-        <div class="form_line">
-          <div class="form_controls">
-            <div class="preview"></div>
-          </div>
-        </div>
-        <br>
       </div>
     </div>
   </div>
@@ -237,27 +240,6 @@
         <%= form.submit("Завершить", class: 'btn btn-success')%>
         <%= link_to 'Назад', products_path, class: 'pull-right btn btn-primary' %>
       </div>
-      <%= form.hidden_field :bytes %>
-      <%= hidden_field_tag :direct, params[:direct] %>
     </div>
   </div>
 <% end %>
-
-
-<script>
-  $(document).ready(function() {
-    sum();
-    $("#price_pur, #markups, #discount").on("keydown keyup", function() {
-      sum();
-    });
-    function sum() {
-      var price_pur = document.getElementById('price_pur').value;
-      var markups = document.getElementById('markups').value;
-      var discount = document.getElementById('discount').value;
-      var final_price = parseFloat(price_pur) + (parseFloat(price_pur) * (parseFloat(markups) / 100));
-      var price_with_discount = final_price - (final_price * (discount * 0.01));
-      if (!isNaN(price_with_discount)) {
-        document.getElementById('sum').value = price_with_discount.toFixed(2);
-      }
-    }
-</script>

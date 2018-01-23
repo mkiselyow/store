@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
         @order.add_line_items_from_cart(@cart)
         @order.line_items.each do |line_item|
           line_item.update(cart_id: @cart.id)
+          line_item.product.update(quantity: line_item.product.quantity - line_item.quantity)
         end
         session[:cart_id] = nil
         OrderNotifierMailer.recieved(@order).deliver
