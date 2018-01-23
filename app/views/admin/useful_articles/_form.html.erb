@@ -14,7 +14,6 @@
   <%= f.cktext_area :body, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' }, placeholder: "Введите заголовок", required: true %>
   <br>
   <%= f.file_field :preview %>
-  <%= f.hidden_field(:preview_cache) %>
   <br>
   <%= f.submit class: 'btn btn-success pull-left' %>
   <%= link_to 'Назад к статьям', admin_useful_articles_path, class: 'btn btn-primary pull-right' %>
