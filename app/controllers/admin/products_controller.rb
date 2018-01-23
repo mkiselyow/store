@@ -4,7 +4,7 @@ class Admin::ProductsController < AdminsController
       if params[:product_code]
         Product.product_code_search(params[:product_code])
       else
-        Product.order(:id)
+        Product.order('created_at DESC')
       end.paginate(page: params[:page], per_page: 50)
   end
 
@@ -15,12 +15,12 @@ class Admin::ProductsController < AdminsController
 
   def import
     Product.import(params[:file])
-    redirect_to admin_products_url, notice: "Товары добавлены"
+    redirect_to admin_products_url, notice: 'Товары добавлены'
   end
 
   def delete_products_created_today
     Product.products_created_today.each(&:destroy)
-    redirect_to admin_products_url, notice: "Товары удалены"
+    redirect_to admin_products_url, notice: 'Товары удалены'
   end
 
   private

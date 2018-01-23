@@ -259,3 +259,7 @@ ru:
     what_report: 'дабы сообщить о текущей проблеме'
   search:
     result: "Найдено %{products_count} товаров."
+  message:
+    order_in_treatment: 'Ваш заказ был отправлен на обработку'
+    your_cart_empty: 'Ваша корзина пока пуста!'
+    come_back: 'Вернутся назад!'

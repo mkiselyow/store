@@ -12,7 +12,10 @@ Rails.application.configure do
 
   config.assets.js_compressor = :uglifier
 
+  config.serve_static_assets = true
   config.assets.compile = true
+  config.assets.digest = true
+  config.assets.version = '1.0' 
 
   config.log_level = :debug
 

@@ -11,9 +11,7 @@ class Admin::OrdersController < AdminsController
 
   def order_delivered
     @order.update(delivered: !@order.delivered)
-    if @order.delivered
-      OrderNotifierMailer.complete_order(@order).deliver
-    end
+    OrderNotifierMailer.complete_order(@order).deliver if @order.delivered
   end
 
   def all_orders_delivered

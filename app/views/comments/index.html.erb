@@ -5,14 +5,14 @@
     <%= render @comments %>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8 col-xs-12">
       <center>
         <%= will_paginate @comments, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
       </center>
     </div>
   </div>
   <div class="row comment-alert">
-    <div class="col-md-6">
+    <div class="col-md-8 col-xs-12">
       <div class="alert"></div>
     </div>
   </div>

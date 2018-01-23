@@ -23,7 +23,7 @@
           </td>
           <td colspan="2" class="hidden-xs"></td>
           <td class="hidden-xs text-center cart_total_sum">
-            <h2><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></h2>
+            <h2><%= number_to_currency(@cart.cart_total_price, locale: :ru) %></h2>
           </td>
           <td>
             <%= button_to "#{ t('cart.confirm_order') }", new_order_path, method: :get, class: "btn btn-success btn-block" %>
@@ -32,5 +32,16 @@
       </tfoot>
     </table>
     <br>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-4 col-xs-8">
+      <h2><%= t('message.your_cart_empty') %></h2>
+    </div>
+    <div class="col-md-2 col-xs-4">
+      <%= link_to :back, class: 'pull-right' do %>
+        <%= fa_icon 'share', class: 'fa-2x', text: t('message.come_back') %>
+      <% end %>
+    </div>
   </div>
 <% end %>

@@ -1,0 +1,27 @@
+<% if current_user.id == @user.id %>
+  <div class="col-md-5 col-xs-12 col-sm-12">
+    <div class="well">
+      <h2><%= t('profile.your_orders.title') %></h2>
+      <table class='table'>
+        <thead>
+          <th>#</th>
+          <th><%= t('profile.your_orders.total_sum') %></th>
+          <th><center><%= t('profile.your_orders.stat') %></center></th>
+        </thead>
+        <tbody>
+          <% @user_olders.each_with_index do |user_older, i| %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= number_to_currency(user_older.order_total_price, locale: :ru) %></td>
+              <td>
+                <center>
+                  <%= fa_icon "#{ user_older.delivered ? 'check' : 'minus' }-square-o", class: "text-#{user_older.delivered ? 'success' : 'warning' } fa-2x", title: "#{ user_older.delivered ? t('profile.your_orders.status.success') : t('profile.your_orders.status.expect') }" %>
+                </center>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

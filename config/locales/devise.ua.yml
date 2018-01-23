@@ -268,3 +268,7 @@ ua:
     what_report: 'для повідомлення про дану помилку'
   search:
     result: "Знайдено %{products_count} товарів"
+  message:
+    order_in_treatment: 'Ваше замовлення було відправленно на обробку'
+    your_cart_empty: 'Ваш кошик поки порожній'
+    come_back: 'Повернутися назад!'

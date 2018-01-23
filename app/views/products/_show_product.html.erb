@@ -54,7 +54,7 @@
             <div class="carousel slide carousel-product" id="myCarousel">
               <div class="carousel-inner carousel-inner-product-show">    
                 <div class="active item">
-                  <%= image_tag( @product.image_url(:medium)) %>
+                  <%= image_tag( @product.image.url(:medium)) %>
                 </div>
               </div>
             </div>
@@ -97,8 +97,8 @@
         <div class="col-md-12 col-xs-12" id="slider-thumbs">
           <ul class="hide-bullets">
             <li class="col-md-2 col-sm-3 col-xs-6">
-              <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= @product.image_url(:large) %>">
-                <%= image_tag(@product.image_url(:medium), width: '150px', height: '150px') %>
+              <a class="thumbnail product_image_add" data-fancybox="gallery_<%= @product.id %>" href="<%= @product.image.url(:large) %>">
+                <%= image_tag(@product.image.url(:medium), width: '150px', height: '150px') %>
               </a>
             </li>
             <% @product.image_products.each do |im_prod| %>

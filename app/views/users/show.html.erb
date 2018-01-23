@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="col-md-2 col-xs-5 col-sm-3">
+  <div class="col-md-2 col-xs-4 col-sm-3">
     <%= image_tag @user.avatar_url(:medium), class: 'img-thumbnail profile-avatar' %>
   </div>
-  <div class="col-md-5 col-xs-7 col-sm-9">
+  <div class="col-md-5 col-xs-8 col-sm-9">
     <div class="well">
-      <h2>
+      <h3>
         <%= @user.full_name %>
         <% if current_user.id == @user.id %>
           <%= link_to edit_user_registration_path(@user) do %>
             <%= fa_icon 'pencil', title: t('profile.edit_profile') %>
           <% end %>
         <% end %>
-      </h1>
+      </h3>
       <p>
         <strong><%= t('profile.email') %></strong>
         <%= @user.email %>
@@ -30,46 +30,6 @@
       </p>
     </div>
   </div>
-  <% if current_user.id == @user.id %>
-    <div class="col-md-5 col-xs-12 col-sm-12">
-      <div class="well">
-        <h2><%= t('profile.your_orders.title') %></h2>
-        <table class='table'>
-          <thead>
-            <th>#</th>
-            <th><%= t('profile.your_orders.total_sum') %></th>
-            <th><center><%= t('profile.your_orders.stat') %></center></th>
-          </thead>
-          <tbody>
-            <% @user_olders.each_with_index do |user_older, i| %>
-              <tr>
-                <td><%= i+1 %></td>
-                <td><%= number_to_currency(user_older.order_total_price, locale: :ru) %></td>
-                <td>
-                  <center>
-                    <%= fa_icon "#{ user_older.delivered ? 'check' : 'minus' }-square-o", class: "text-#{user_older.delivered ? 'success' : 'warning' } fa-2x", title: "#{ user_older.delivered ? t('profile.your_orders.status.success') : t('profile.your_orders.status.expect') }" %>
-                  </center>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'order_list' %>
 </div>
-<% if current_user.id == @user.id %>
-  <% if @user_views != 0 %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1><%= t('profile.you_watched') %></h1>
-        <% @user_views.each do |view| %>
-          <div class="col-md-2 col-sm-3 col-xs-6 product_view_class product_view_class_all">
-            <%= render  partial: "products/product", locals: { product: view.product } %>
-            <%= button_to t('products.add_to_cart'), product_line_items_path(view.product.id), class: "buttom_add_to_cart", remote: true %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+<%= render 'last_views' %>

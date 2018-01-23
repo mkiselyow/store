@@ -13,8 +13,9 @@ test:
 
 production:
   <<: *default
-  database: store_production
-  username: store
-  password: <%= ENV['STORE_DATABASE_PASSWORD'] %>
-  login: danil
-  password: danil
+  host: localhost
+  database: mapapama
+  username: dan
+  password: dan
+  #  login: root
+  # password: mapapama

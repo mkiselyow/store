@@ -1,6 +1,6 @@
 class CommentPostsController < ApplicationController
   before_action :articles_resource
-  before_action :comment_resource, only: [:edit, :update, :destroy]
+  before_action :comment_resource, only: %i[edit update destroy]
 
   def new
     @comment_post = CommentPost.new
