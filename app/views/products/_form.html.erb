@@ -193,7 +193,6 @@
         <%= form.nested_fields_for :image_products do |form_image| %>
           <div class="col-md-9 col-xs-9">
             <%= form_image.file_field :image, class: 'image_product_upload' %>
-            <%= form_image.hidden_field(:image_cache) %>
             <div class="col-md-6 image_product_upload_preview">
               <img class="product_upload_image" />
             </div>
@@ -218,13 +217,8 @@
           <%= form.label :image, "Image:" %>
           <div class="form_controls">
             <div class="upload_button_holder">
-              <% if @unsigned %>
-                <%= form.cl_unsigned_image_upload(:image, @preset_name) %>
-              <% else %>
-                <%= form.cl_image_upload(:image, return_delete_token: true) %>
-              <% end %>
+              <%= form.file_field(:image) %>
             </div>
-            <span class="status"></span>
           </div>
         </div>
         <div class="form_line">
@@ -249,69 +243,9 @@
   </div>
 <% end %>
 
-<!-- Configure Cloudinary jQuery plugin -->
-<%= cloudinary_js_config %>
 
 <script>
   $(document).ready(function() {
-    $(".cloudinary-fileupload")
-      .cloudinary_fileupload({
-        dropZone: "#direct_upload",
-        start: function (e) {
-          $(".status").text("Starting upload...");
-        },
-        progress: function (e, data) {
-          $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
-        },
-        fail: function (e, data) {
-          $(".status").text("Upload failed");
-        }
-      })
-      .off("cloudinarydone").on("cloudinarydone", function (e, data) {
-        $("#photo_bytes").val(data.result.bytes);
-        $(".status").text("");
-        var preview = $(".preview").html('');
-        $.cloudinary.image(data.result.public_id, {
-          format: data.result.format, width: 200, height: 200, crop: "fit"
-        }).appendTo(preview);
-
-        $('<a/>').
-          addClass('delete_by_token').
-          attr({href: '#'}).
-          data({delete_token: data.result.delete_token}).
-          html('&times;').
-          appendTo(preview).
-          click(function(e) {
-            e.preventDefault();
-            $.cloudinary.delete_by_token($(this).data('delete_token')).done(function(){
-              $('.preview').html('');
-              $('#info').html('');
-              $("#photo_bytes").val('');
-              $('input[name="photo[image]"]').remove();
-              $('.cloudinary-fileupload').show();
-            }).fail(function() {
-              $('.status').text("Cannot delete image");
-          });
-        });
-        view_upload_details(data.result);
-      });
-    });
-
-    function view_upload_details(upload) {
-      // Build an html table out of the upload object
-      var rows = [];
-      $.each(upload, function(k,v){
-        rows.push(
-          $("<tr>")
-            .append($("<td>").text(k))
-            .append($("<td>").text(JSON.stringify(v))));
-      });
-      $("#info").html(
-        $("<div class=\"upload_details\">")
-          .append("<h2>Upload metadata:</h2>")
-          .append($("<table>").append(rows)));
-    }
-    $('.cloudinary-fileupload').bind('fileuploadchange', function() { $(this).hide()})
     sum();
     $("#price_pur, #markups, #discount").on("keydown keyup", function() {
       sum();
