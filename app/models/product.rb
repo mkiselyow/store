@@ -89,9 +89,9 @@ class Product < ApplicationRecord
       unless Product.find_by(product_code: row.to_hash["Артикул"])
         params  = {
           title:                row.to_hash["Название на русском"],
-          size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i*10 : nil),
-          size_b:               (row.to_hash["Ширина см."] ? row.to_hash["Ширина см."].to_i*10 : nil),
-          size_h:               (row.to_hash["Высота см."] ? row.to_hash["Высота см."].to_i*10 : nil),
+          size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i : nil),
+          size_b:               (row.to_hash["Ширина см."] ? row.to_hash["Ширина см."].to_i : nil),
+          size_h:               (row.to_hash["Высота см."] ? row.to_hash["Высота см."].to_i : nil),
           purchase_price:       (row.to_hash["Цена грн."] ? row.to_hash["Цена грн."].to_f : nil),
           mark_up:              (row.to_hash["Наценка"] ? row.to_hash["Наценка"].to_i : 100),
           # price:                (row.to_hash["Цена грн."]*row.to_hash["Наценка"]||100),
@@ -132,6 +132,7 @@ class Product < ApplicationRecord
           # other_desc:
           # general_category:
           # max_age:
+          quantity:             (row.to_hash["Количество"] ? row.to_hash["Количество"].to_i : nil),
           min_age:              row.to_hash["Возраст"] 
         }
         p params
@@ -145,7 +146,7 @@ class Product < ApplicationRecord
   end
 
   def self.products_created_today
-    self.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    self.where("created_at >= ?", 20.minutes.ago)
   end
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
