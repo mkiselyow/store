@@ -28,16 +28,32 @@
                   </td>
                   <td>
                     <% category.children.each do |subcategory| %>
-                      <p><%= subcategory.name %></p>
+                      <p>
+                        <%= subcategory.name %>
+                        <%= link_to '(Изменить)', edit_admin_category_path(subcategory) %>
+                        <%= link_to '(Удалить)', admin_category_path(subcategory), method: :delete, remote: true, data: { confirm: "Действительно вы  хотите удалить категорию #{ subcategory.name }"} %>
+                      </p>
                       <ul>
                         <% subcategory.children.each do |subsubcategory| %>
-                          <li><%= subsubcategory.name %></li>
+                          <li>
+                            <%= subsubcategory.name %>
+                            <%= link_to '(Изменить)', edit_admin_category_path(subsubcategory) %>
+                            <%= link_to '(Удалить)', admin_category_path(subsubcategory), method: :delete, remote: true, data: { confirm: "Действительно вы  хотите удалить категорию #{ subsubcategory.name }"} %>
+                          </li>
                           <ul>
                             <% subsubcategory.children.each do |subsubsubcategory| %>
-                              <li><%= subsubsubcategory.name %></li>
+                              <li>
+                                <%= subsubsubcategory.name %>
+                                <%= link_to '(Изменить)', edit_admin_category_path(subsubsubcategory) %>
+                                <%= link_to '(Удалить)', admin_category_path(subsubsubcategory), method: :delete, remote: true, data: { confirm: "Действительно вы  хотите удалить категорию #{ subsubsubcategory.name }"} %>
+                              </li>
                               <ul>
                                 <% subsubsubcategory.children.each do |subsubsubsubcategory| %>
-                                  <li><%= subsubsubsubcategory.name %></li>
+                                  <li>
+                                    <%= subsubsubsubcategory.name %>
+                                    <%= link_to '(Изменить)', edit_admin_category_path(subsubsubsubcategory) %>
+                                    <%= link_to '(Удалить)', admin_category_path(subsubsubsubcategory), method: :delete, remote: true, data: { confirm: "Действительно вы  хотите удалить категорию #{ subsubsubsubcategory.name }"} %>
+                                  </li>
                                 <% end %>
                               </ul>
                             <% end %>
