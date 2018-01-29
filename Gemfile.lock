@@ -656,11 +656,6 @@ GEM
     elevatezoom-rails (1.0.0)
     erubi (1.7.0)
     execjs (2.7.0)
-    factory_girl (4.9.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
-      railties (>= 3.0.0)
     fancybox-rails (0.3.1)
       railties (>= 3.1.0)
     faraday (0.12.2)
@@ -714,6 +709,15 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.1)
+    monetize (1.7.0)
+      money (~> 6.9)
+    money (6.10.1)
+      i18n (>= 0.6.4, < 1.0)
+    money-rails (1.10.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.7.0)
+      money (~> 6.10.0)
+      railties (>= 3.0)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -944,7 +948,6 @@ DEPENDENCIES
   curb
   devise
   elevatezoom-rails
-  factory_girl_rails
   faker!
   fancybox-rails
   figaro
@@ -959,6 +962,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   meta-tags
   mini_magick
+  money-rails (~> 1)
   nested_form
   nested_form_fields
   omniauth-facebook
