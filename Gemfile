@@ -27,7 +27,6 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
-  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
@@ -53,6 +52,7 @@ gem 'paperclip'
 
 # fb omniauth
 gem 'omniauth-facebook'
+
 gem 'therubyracer'
 
 gem 'font-awesome-rails'
@@ -110,6 +110,7 @@ gem 'acts_as_list'
 gem 'ancestry'
 
 gem 'meta-tags'
+gem 'money-rails', '~>1'
 
 # ukrainian regions
 gem 'curb'
