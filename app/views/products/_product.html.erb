@@ -8,7 +8,6 @@
         <%= "#{number_to_percentage(product.discount, precision: 0)}" %>
     <% end %>
   <% end %>
-
   <%= tag.div(product.title.mb_chars.capitalize.to_s, class: "product_title_text") %>
   <% if product.discount != 0 %>
     <s><%= number_to_currency(product.old_price, locale: :ru) %></s>

@@ -49,6 +49,10 @@
           <% end %>
         </h2>
         <p>
+          <b>Категория: </b>
+          <%= link_to @product.category.name, category_path(@product.category) %>
+        </p>
+        <p>
           <strong>Осталось:</strong>
           <%= @product.quantity %>
         </p>

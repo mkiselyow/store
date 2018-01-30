@@ -31,9 +31,5 @@ atom_feed do |feed|
         xml.tr "Способ опл. #{order.pay_type}"
       end
     end
-    # entry.author do |author|
-    #   author.name order.name
-    #   author.email order.email
-    # end
   end
 end

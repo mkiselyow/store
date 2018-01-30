@@ -15,7 +15,7 @@ ua:
     ru: 'Російська'
     en: 'Англійська'
     search: 'Знайти'
-    search_placeholder: 'Введіть назву або код товару'
+    search_placeholder: 'Введіть назву товару'
   header_menu:
     main: 'Головна'
     products: 'Товари'

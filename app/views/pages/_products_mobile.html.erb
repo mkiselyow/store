@@ -3,7 +3,6 @@
     <%= will_paginate @products_mobile, renderer: BootstrapPagination::Rails, previous_label: '<=', next_label:'=>' %>
   </center>
 </div>
-
 <div class="row">
   <% @products_mobile.each do |product| %>
     <div class="col-xs-10 col-xs-offset-1 product_view_class product_<%= product.id %>">
