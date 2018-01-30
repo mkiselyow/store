@@ -40,7 +40,6 @@ Rails.application.routes.draw do
   get '/products/:id/delete_image', to: 'products#delete_image', as: 'delete_image'
 
   get '/about' => 'pages#about'
-  get '/competitions' => 'pages#competitions'
   get '/contacts' => 'pages#contacts'
   get '/delivery' => 'pages#delivery'
   get '/payment' => 'pages#payment'

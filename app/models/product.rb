@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-
   has_many :line_items, dependent: :destroy
   has_many :orders, through: :line_items
   has_many :image_products, dependent: :destroy
@@ -122,26 +121,15 @@ class Product < ApplicationRecord
                              else
                                3# 3# 4 #3
                              end),
-          #description:
-          #image_cache:
-          #image_id:
-          #country:
           product_code:          row.to_hash["Артикул"],
           discount:              row.to_hash["Скидка"].nil? ? 0 : row.to_hash["Скидка"].to_i,
           category_id: (row.to_hash["Категория"] ? (Category.all.map {|cat| cat.name}.include?(row.to_hash["Категория"]) ? Category.find_by(name: row.to_hash["Категория"]).id : 169) : 169),
-          # other_desc:
-          # general_category:
-          # max_age:
           quantity:             (row.to_hash["Количество"] ? row.to_hash["Количество"].to_i : nil),
           min_age:              row.to_hash["Возраст"] 
         }
         p params
         product = Product.create!(params)
       end
-      # if row.to_hash["Изображение"]
-      #   Cloudinary::Uploader.upload(File.join(File.expand_path(row.to_hash["Изображение"]))["secure_url"]
-      #   product.update_column(:image, "#{Cloudinary::Uploader.upload(row.to_hash["Изображение"])["secure_url"]}")
-      # end
     end
   end
 
@@ -149,7 +137,6 @@ class Product < ApplicationRecord
     self.where("created_at >= ?", 20.minutes.ago)
   end
 
-  # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
       true

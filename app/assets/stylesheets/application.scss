@@ -368,6 +368,22 @@
   background-color: #74a037;
   color: white;
 }
+.dropdown-subcategory > li > a:hover{
+  background-color: yellow;
+  color: black;
+}
+.dropdown-subsubcategory > li > a:hover{
+  background-color: red;
+  color: white;
+}
+.dropdown-subsubsubcategory > li > a:hover{
+  background-color: blue;
+  color: white;
+}
+.dropdown-subsubsubsubcategory > li > a:hover{
+  background-color: purple;
+  color: white;
+}
 .nav > li > a:hover, .nav > li > a:focus {
   text-decoration: none;
   background-color: #74a037;
@@ -401,11 +417,6 @@
 
 #social_side_links li a:hover img {background: rgba(0, 0, 0, .2);}
 
-// @media (min-width: 992px){
-//   .modal-lg {
-//     width: 1200px;
-//   }
-// }
 @media (max-width: 768px){
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     heigth: 100%;

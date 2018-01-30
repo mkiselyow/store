@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 col-xs-12">
-    <%= link_to t('sidebar_filter.show_all_discount'), products_with_offers_path, class: 'btn btn-all-offers btn-block' %><br>
+    <%= link_to t('sidebar_filter.show_all_discount'), products_with_offers_path, class: 'btn btn-success btn-block' %><br>
     <% if current_user.try(:admin) %>
       <%= link_to t('sidebar_filter.add_product'), new_product_path %>
     <% end %>
@@ -8,7 +8,7 @@
 </div>
 <div class="row">
   <div class="col-md-12 col-xs-12">
-    <h3><u><%= t 'sidebar_filter.picking' %></u></h3>
+    <h3 class='text-success'><i><%= t 'sidebar_filter.picking' %></i></h3>
   </div>
 </div>
 <%= form_for @search do |f| %>
