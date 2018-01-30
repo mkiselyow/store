@@ -26,7 +26,7 @@
                 (<%= sum %>)
                 <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu collapse" id="category_mobile_<%= category.id %>">
+              <ul class="dropdown-menu collapse dropdown-subcategory" id="category_mobile_<%= category.id %>">
                 <% category.children.each_with_index do |subcategory, k| %>
                   <% if subcategory.children.count == 0 %>
                     <li>
@@ -50,7 +50,7 @@
                         (<%= sum %>)
                         <b class="caret"></b>
                       </a>
-                      <ul class="dropdown-menu collapse" id="subcategory_mobile_<%= subcategory.id %>">
+                      <ul class="dropdown-menu collapse dropdown-subsubcategory" id="subcategory_mobile_<%= subcategory.id %>">
                         <% subcategory.children.each_with_index do |subsubcategory, l| %>
                           <% if subsubcategory.children.count == 0 %>
                             <li>
@@ -74,7 +74,7 @@
                                 (<%= sum %>)
                                 <b class="caret"></b>
                               </a>
-                              <ul class="dropdown-menu collapse" id="subsubcategory_<%= subsubcategory.id %>">
+                              <ul class="dropdown-menu collapse dropdown-subsubsubcategory" id="subsubcategory_mobile_<%= subsubcategory.id %>">
                                 <% subsubcategory.children.each_with_index do |subsubsubcategory, m| %>
                                   <% if subsubsubcategory.children.count == 0 %>
                                     <li>
@@ -98,7 +98,7 @@
                                         (<%= sum %>)
                                         <b class="caret"></b>
                                       </a>
-                                      <ul class="dropdown-menu collapse" id="subsubsubcategory_mobile_<%= subsubsubcategory.id %>">
+                                      <ul class="dropdown-menu collapse dropdown-subsubsubsubcategory" id="subsubsubcategory_mobile_<%= subsubsubcategory.id %>">
                                         <% subsubsubcategory.children.each_with_index do |subsubsubsubcategory, p| %>
                                           <li>
                                             <%= link_to category_path(subsubsubsubcategory), class: 'dropdown-category' do %>
