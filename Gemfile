@@ -54,6 +54,7 @@ gem 'paperclip'
 gem 'omniauth-facebook'
 
 gem 'therubyracer'
+gem 'sitemap_generator'
 
 gem 'font-awesome-rails'
 # vk omniauth
