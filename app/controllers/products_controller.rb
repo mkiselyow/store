@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def index
     @products_count = Product.count
     @products = if params[:query]
-                  Product.where(title: params[:query]).order(sorting)
+                  Product.text_search(params[:query]).order(sorting)
                 else
                   Product.order(sorting)
                 end
