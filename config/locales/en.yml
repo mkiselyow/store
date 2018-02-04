@@ -15,7 +15,7 @@ en:
     ru: 'Russian'
     en: 'English'
     search: 'Search'
-    search_placeholder: 'Enter a title of product'
+    search_placeholder: 'Enter a title or code of product'
   header_menu:
     main: 'Main'
     products: 'Products'

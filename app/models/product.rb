@@ -32,7 +32,7 @@ class Product < ApplicationRecord
 
   def self.text_search(query)
     if query.present?
-      where('title @@ :q or description @@ :q', q: query)
+      where('title @@ :q or product_code @@ :q', q: query)
     else
       unscoped
     end
