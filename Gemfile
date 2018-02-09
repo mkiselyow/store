@@ -63,7 +63,7 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 
 # paperclip+heroku images
-gem 'aws-sdk'
+# gem 'aws-sdk'
 
 # add WYSAWYG text-creator
 gem 'ckeditor'
