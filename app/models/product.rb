@@ -126,10 +126,11 @@ class Product < ApplicationRecord
         quantity:             (row.to_hash["Количество"] ? row.to_hash["Количество"].to_i : nil),
         min_age:              row.to_hash["Возраст"] 
       }
-      if Product.find_by(product_code: row.to_hash["Артикул"])
-        product = Product.update(params)
+      product = Product.find_by(product_code: row.to_hash["Артикул"])
+      if product
+        product.update(params)
       else
-        product = Product.create!(params)
+        Product.create!(params)
       end
     end
   end
