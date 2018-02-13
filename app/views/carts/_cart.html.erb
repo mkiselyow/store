@@ -2,12 +2,12 @@
   <h1><%= t('cart.title') %></h1>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <div class="container">
-    <table id="cart" class="table table-hover table-condensed">
+    <table id="cart" class="table table-hover">
       <thead>
         <tr>
           <th style="width:50%"><%= t('cart.product') %></th>
-          <th style="width:10%"><%= t('cart.price') %></th>
-          <th style="width:8%"><%= t('cart.quantity') %></th>
+          <th style="width:10%" class="text-center"><%= t('cart.price') %></th>
+          <th style="width:8%" class="text-center"><%= t('cart.quantity') %></th>
           <th style="width:12%" class="text-center"><%= t('cart.amount') %></th>
           <th style="width:10%"></th>
         </tr>
@@ -15,15 +15,25 @@
       <%= render(@cart.line_items.order(:id)) %>
       <tfoot>
         <tr class="visible-xs">
-          <td class="text-center"><strong><%= number_to_currency(@cart.cart_total_price, unit: "₴") %></strong></td>
+          <td class="text-center">
+            <strong>
+              <div class="cart_total_sum">
+                <%= number_to_currency(@cart.cart_total_price, unit: "₴") %>
+              </div>
+            </strong>
+          </td>
         </tr>
         <tr>
           <td>
             <%= link_to "#{ t('cart.back_to_store') }", root_path, class: "btn btn-warning" %>
           </td>
-          <td colspan="2" class="hidden-xs"></td>
-          <td class="hidden-xs text-center cart_total_sum">
-            <h2><%= number_to_currency(@cart.cart_total_price, locale: :ru) %></h2>
+          <td class="hidden-xs"></td>
+          <td colspan="2" class="hidden-xs text-center">
+            <h2>
+              <div class="cart_total_sum">
+                <%= number_to_currency(@cart.cart_total_price, locale: :ru) %>
+              </div>
+            </h2>
           </td>
           <td>
             <%= button_to "#{ t('cart.confirm_order') }", new_order_path, method: :get, class: "btn btn-success btn-block" %>

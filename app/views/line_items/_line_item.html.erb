@@ -5,8 +5,8 @@
 <% end %>
 </ul>
 <tbody>
-  <tr id="line_<%= line_item.id %>">
-    <td>
+  <tr id="line_<%= line_item.id %>" class="sum">
+    <td class="text-center">
       <div class="row">
         <div class="col-sm-2 hidden-xs">
           <%= image_tag(line_item.product.image_url(:thumb), class: "img-responsive", title: "#{line_item.product.title}") %>
@@ -21,30 +21,17 @@
         </div>
       </div>
     </td>
-    <td>
+    <td data-th="<%= t('cart.price') %>" class="text-center">
       <div id="price_item_<%= line_item.id %>">
-        <%= line_item.product.price %>
+        <%= number_to_currency(line_item.product.price, locale: :ru) %>
       </div>
     </td>
-    <td data-th="<%= t('cart.price') %>">
-      <div class="count-item">
-        <p>
-          <%= link_to line_item_increase_quantity_url(line_item), method: :put, remote: true do %>
-            <%= fa_icon 'caret-square-o-up', class: 'fa-1x' %>
-          <% end %>
-        </p>
-        <p id="count_item_<%= line_item.id %>"><%= line_item.quantity %></p>
-        <p>
-          <%= link_to line_item_decrease_quantity_url(line_item), method: :put, remote: true do %>
-            <%= fa_icon 'caret-square-o-down', class: 'fa-1x' %>
-          <% end %>        
-        </p>
-      </div>
-      <div class="count-item-mobile">
+    <td data-th="<%= t('cart.quantity') %>" class="text-center">
+      <div>
         <%= link_to line_item_decrease_quantity_url(line_item), method: :put, remote: true do %>
           <%= fa_icon 'caret-square-o-left', class: 'fa-1x' %>
         <% end %>     
-        <span id="count_item_mobile_<%= line_item.id %>">
+        <span id="count_item_<%= line_item.id %>">
           <%= line_item.quantity %>
         </span>
         <%= link_to line_item_increase_quantity_url(line_item), method: :put, remote: true do %>
@@ -54,11 +41,11 @@
     </td>
     <td data-th="Сумма" class="text-center">
       <div id="sum_item_<%= line_item.id %>" class='price'>
-        <%= line_item.count_line_item_price %>
+        <%= number_to_currency(line_item.count_line_item_price, locale: :ru) %>
       </div>
     </td>
-    <td class="actions" data-th="">
-      <%= link_to line_item, method: :delete, class: "btn btn-danger btn-sm", remote: true do %>
+    <td class="actions">
+      <%= link_to line_item, method: :delete, class: "btn btn-danger btn-sm pull-left", remote: true do %>
         <%= fa_icon 'trash-o', class: 'fa-2x' %>
       <% end %>
     </td>

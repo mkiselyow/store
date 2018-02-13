@@ -54,7 +54,9 @@
             <div class="carousel slide carousel-product" id="myCarousel">
               <div class="carousel-inner carousel-inner-product-show">    
                 <div class="active item">
-                  <%= image_tag( @product.image.url(:medium)) %>
+                  <a data-fancybox="main_image_<%= @product.id %>" href="<%= @product.image.url(:large) %>">
+                    <%= image_tag(@product.image.url(:medium)) %>
+                  </a>
                 </div>
               </div>
             </div>
