@@ -25,7 +25,9 @@
             <div class="carousel slide carousel-product">
               <div class="carousel-inner carousel-inner-product-show">    
                 <div class="active item">
-                  <%= image_tag( @product.image_url(:medium), crop: "scale", class: 'main-image-mobile') %>
+                  <a data-fancybox="main_image_mobile_<%= @product.id %>" href="<%= @product.image.url(:large) %>">
+                    <%= image_tag(@product.image.url(:medium), crop: "scale", class: 'main-image-mobile') %>
+                  </a>
                 </div>
               </div>
             </div>
