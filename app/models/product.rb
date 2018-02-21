@@ -85,6 +85,10 @@ class Product < ApplicationRecord
     end
     options = { headers: true, encoding: file_encoding, :row_sep => :auto, :col_sep => current_col_sep, :skip_blanks => true}
     CSV.foreach(file.path, options) do |row|
+      params_for_update = {
+        purchase_price:       (row.to_hash["Цена грн."] ? row.to_hash["Цена грн."].to_f : nil),
+        quantity:             (row.to_hash["Количество"] ? row.to_hash["Количество"].to_i : nil)
+      }
       params  = {
         title:                row.to_hash["Название на русском"],
         size_a:               (row.to_hash["Длина см."] ? row.to_hash["Длина см."].to_i : nil),
@@ -128,7 +132,7 @@ class Product < ApplicationRecord
       }
       product = Product.find_by(product_code: row.to_hash["Артикул"])
       if product
-        product.update(params)
+        product.update(params_for_update)
       else
         Product.create!(params)
       end

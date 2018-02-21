@@ -14,6 +14,10 @@ class Category < ApplicationRecord
   scope :only_parent, -> { where(ancestry: nil) }
   scope :without_subcategory, -> { where('parent_category_id IS NOT NULL') }
 
+  def title_with_ancestors
+    "#{ancestors.map{|anc| anc.name}.join(' === ')} === #{name}"
+  end
+
   def self.get_collection_of_categories_ids
     @categories = where(ancestry: nil)
     @acc = []

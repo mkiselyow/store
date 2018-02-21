@@ -62,6 +62,8 @@ Rails.application.routes.draw do
     end
     resources :useful_articles
     resources :products do
+      get :set_exchange_rates, on: :collection
+      post :set_exchange_rates, to: 'products#update_products_with_exchange_rates', on: :collection
       collection { post :import }
       delete :delete_products_created_today, on: :collection
     end

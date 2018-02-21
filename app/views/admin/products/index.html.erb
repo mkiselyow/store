@@ -17,7 +17,10 @@
 </div>
 <br>
 <div class="row">
-  <div class="col-md-6 col-md-offset-6 col-xs-12">
+  <div class="col-md-6 col-xs-12">
+    <%= link_to("Oбновить товары согласно курсу", set_exchange_rates_admin_products_path, target: '_blank', class: 'btn btn-success', title: 'В новой вкладке') %>
+  </div>
+  <div class="col-md-6 col-xs-12">
     <%= form_tag(admin_products_path, method: :get) do %>
       <span class="input-group">
         <%= text_field_tag :product_code, nil, placeholder: "Введите код товара", class: 'form-control search-input' %>
