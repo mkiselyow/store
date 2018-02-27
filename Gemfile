@@ -20,6 +20,8 @@ gem 'turbolinks', '~> 5'
 
 gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 
+gem 'sitemap_generator'
+
 gem 'devise'
 
 gem 'rails_12factor', group: :production
