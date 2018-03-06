@@ -20,3 +20,4 @@ SitemapGenerator::Sitemap.create do
   #   add product_path(product), :changefreq => 'weekly', :lastmod => product.updated_at
   # end
 end
+SitemapGenerator::Sitemap.ping_search_engines

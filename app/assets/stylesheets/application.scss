@@ -90,16 +90,6 @@
 .comment-alert{
   display: none;
 }
-.profile-avatar{
-  width: 200px;
-  height: 200px;
-}
-@media (max-width: 768px){
-  .profile-avatar {
-    width: 100%;
-    height: 100%;
-  }
-}
 .btn-danger{
   background: #ff3801;
 }

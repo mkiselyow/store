@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
+  def require_user
+    redirect_to root_path unless current_user
+  end
+
   def set_tags
     set_meta_tags title: 'Мапапама - Подари ребёнку радость :)',
                   description: 'Интернет магазин детских игрушек Мапапама',

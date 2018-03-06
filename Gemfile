@@ -64,9 +64,6 @@ gem 'omniauth-vkontakte'
 # google omniauth
 gem 'omniauth-google-oauth2'
 
-# paperclip+heroku images
-# gem 'aws-sdk'
-
 # add WYSAWYG text-creator
 gem 'ckeditor'
 gem 'trix'
