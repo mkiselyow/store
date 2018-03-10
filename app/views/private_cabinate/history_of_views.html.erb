@@ -1,0 +1,24 @@
+<h1>История просмотров</h1>
+<div class="row">
+  <div class="col-md-3 col-xs-12">
+    <div class="list-group">
+      <%= render 'menu' %>
+    </div>
+  </div>
+  <div class="col-md-9 col-xs-12">
+    <div class="well">
+      <% if @user_views != 0 %>
+        <div class="row">
+          <div class="col-md-12">
+            <% @user_views.each do |view| %>
+              <div class="col-md-3 col-sm-4 col-xs-6 product_view_class product_view_class_all" >
+                <%= render  partial: "products/product", locals: { product: view.product } %>
+                <%= button_to t('products.add_to_cart'), product_line_items_path(view.product.id), class: "buttom_add_to_cart", remote: true %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<h1>Профиль пользователя</h1>
+<div class="row">
+  <div class="col-md-3 col-xs-12">
+    <div class="list-group">
+      <%= render 'menu' %>
+    </div>
+  </div>
+  <div class="col-md-9 col-xs-12">
+    <div class="well">
+      <h3>
+        <%= @user.full_name %>
+        <% if current_user.id == @user.id %>
+          <%= link_to edit_user_registration_path(@user) do %>
+            <%= fa_icon 'pencil', title: t('profile.edit_profile') %>
+          <% end %>
+        <% end %>
+      </h3>
+      <div class="row">
+        <div class="col-md-2 col-xs-3">
+          <%= image_tag @user.avatar_url(:medium), class: 'img-thumbnail profile-avatar' %>
+        </div>
+        <div class="col-md-10 col-xs-9">
+          <p>
+            <strong><%= t('profile.email') %></strong>
+            <%= @user.email %>
+          </p>
+          <p>
+            <strong><%= t('profile.number_phone') %></strong>
+            <%= @user.number %>
+          </p>
+          <p>
+            <strong><%= t('profile.role') %></strong>
+            <% if @user.admin? %>
+              <span class="label label-danger"><%= t('profile.admin') %></span>
+            <% else %>
+              <span class="label label-primary"><%= t('profile.user') %></span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

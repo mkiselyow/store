@@ -1,0 +1,14 @@
+.profile-avatar{
+  width: 100px;
+  height: 100px;
+}
+.image_product_view_history{
+  width: 150px;
+  max-height: 150px;
+}
+@media (max-width: 768px){
+  .profile-avatar {
+    width: 100%;
+    height: 100%;
+  }
+}

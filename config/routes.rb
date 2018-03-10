@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'errors/not_found'
-
-  get 'errors/internal_server_error'
-
   mount Ckeditor::Engine => '/ckeditor'
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
@@ -12,12 +8,15 @@ Rails.application.routes.draw do
   root to: 'pages#main'
   resources :products
 
-  # scope ":locale", locale: /en|ru|ua/, defaults: {locale: 'ru'} do
-
   resources :line_items do
     put 'decrease_quantity'
     put 'increase_quantity'
   end
+
+  get '/private_cabinate', to: 'private_cabinate#index'
+  get '/private_cabinate/history_of_orders', to: 'private_cabinate#history_of_orders'
+  get '/private_cabinate/history_of_views', to: 'private_cabinate#history_of_views'
+
 
   resources :carts
   resources :orders
