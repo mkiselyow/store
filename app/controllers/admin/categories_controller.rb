@@ -1,8 +1,6 @@
 class Admin::CategoriesController < AdminsController
   before_action :category_resource, only: %i[edit update destroy show]
-  after_action do
-    Category::CATEGORIES_SELECT = Category.get_collection_of_categories_ids
-  end
+  after_action :select_resource, only: [:create]
 
   def index
     @categories = Category.where(ancestry: nil).order(:position)
@@ -48,5 +46,9 @@ class Admin::CategoriesController < AdminsController
 
   def category_resource
     @category = Category.find(params[:id])
+  end
+
+  def select_resource
+    Category.get_collection_of_categories_ids
   end
 end

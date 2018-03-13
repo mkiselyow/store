@@ -1,26 +1,47 @@
 <%= form_with model: @product, local: true do |form| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group">
+        <%= form.label :last_rates %>
+        <%= form.text_field :last_rates, placeholder: "Старый Курс", class: 'form-control search-input' %>
+      </div>
 
-  <div class="input-group">
-    <%= form.label :last_rates %>
-    <%= form.text_field :last_rates, placeholder: "Старый Курс", class: 'form-control search-input' %>
-  </div>
+      <div class="input-group">
+        <%= form.label :current_rates %>
+        <%= form.text_field :current_rates, placeholder: "Новый Курс", class: 'form-control search-input' %>
+      </div>
 
-  <div class="input-group">
-    <%= form.label :current_rates %>
-    <%= form.text_field :current_rates, placeholder: "Новый Курс", class: 'form-control search-input' %>
-  </div>
+      <div><strong>Category</strong></div>
+      <div class="input-group" style="display: flex; flex-direction: column; overflow: scroll; height: 300px; border: 1px solid #ccc; border-radius: 4px; ">
+        <%= collection_check_boxes(:category, :category_id, Category.all, :id, :title_with_ancestors, html_options = {}) do |b| %>
+          <div class="form-check" style="flex: 1 1 auto">
+            <%= b.label class: "form-check-label" do%>
+              <%= b.check_box %>
+              <%= b.text%>
+            <% end %>
+          </div>
+        <% end %>
+      </div> 
+    </div>
 
-  <div><strong>Category</strong></div>
-  <div class="input-group" style="display: flex; flex-direction: column; overflow: scroll; height: 300px; width: 35%; border: 1px solid #ccc; border-radius: 4px; ">
-    <%= collection_check_boxes(:category, :category_id, Category.all, :id, :title_with_ancestors, html_options = {}) do |b| %>
-      <div class="form-check" style="flex: 1 1 auto">
-        <%= b.label class: "form-check-label" do%>
-          <%= b.check_box %>
-          <%= b.text%>
+    <div class="col-md-6">
+      <div><strong>Brand</strong></div>
+      <div class="input-group" style="display: flex; flex-direction: column; overflow: scroll; height: 415px; border: 1px solid #ccc; border-radius: 4px; ">
+        <%= collection_check_boxes(:brand, :brand, @brands_all, :to_s, :to_s, html_options = {}) do |b| %>
+          <div class="form-check" style="flex: 1 1 auto">
+            <%= b.label class: "form-check-label" do%>
+              <%= b.check_box %>
+              <%= b.text%>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %> 
-  </div>
+    </div>
 
-  <%= form.submit "Пересчитать Товары", class: "btn btn-default" %>
+    <div class="col-md-12">
+      <div>Если не один бренд не выбран то поиск товаров для обновления будет произведен среди всех брендов</div>
+      <center><%= form.submit "Пересчитать Товары", class: "btn btn-default" %></center>
+    </div>
+
+  </div>
 <% end %>

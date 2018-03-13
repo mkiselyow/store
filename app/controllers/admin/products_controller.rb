@@ -24,68 +24,32 @@ class Admin::ProductsController < AdminsController
   end
 
   def set_exchange_rates
-    @products = Product.all
+    @brands_all = Product.select('brand').map {|prod| prod.brand}.uniq
   end
 
   def update_products_with_exchange_rates
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    category_ids =  params[:category][:category_id].reject(&:blank?).each {|cat| p Category.find(cat).name}
-    p category_ids.inject(nil) {|acc, cat| acc ||= Product.where(category_id: cat); acc + Product.where(category_id: cat) }
-    # p Product.where(category_id: params[:category]).count
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    p "======================================"
-    @products = Product.all
-    @product = Product.last
+    category_ids =  params[:category][:category_id].reject(&:blank?)
+    selected_brands = params[:brand][:brand].reject(&:blank?)
+    @selected_products = category_ids.inject(nil) do |acc, cat| 
+        acc ||= Product.where(category_id: cat); 
+        acc + Product.where(category_id: cat)
+    end
+    @selected_products = Product.where(id: @selected_products.map(&:id))
+    if !selected_brands.empty?
+        @selected_products = selected_brands.inject(nil) do |acc, brand| 
+            acc ||= selected_products_by_category_ids.where(brand: brand); 
+            acc + selected_products_by_category_ids.where(brand: brand)
+        end
+    end
     rates = params[:current_rates].to_f / params[:last_rates].to_f
-    @product.update(purchase_price: @product.purchase_price*rates)
-    redirect_to admin_products_url, notice: 'Товары обновлены'
+    if @selected_products
+        @selected_products.each do |product|
+            product.update(purchase_price: product.purchase_price*rates)
+        end
+        redirect_to admin_products_url, notice: 'Товары обновлены'
+    else
+        redirect_to admin_products_url, notice: 'Товары не найдены'
+    end
   end
 
   private
