@@ -53,7 +53,9 @@ Rails.application.routes.draw do
     root to: 'users#index'
     resources :users do
       get :banned_user, on: :member
-      put :change_permission, on: :member
+      put :bust_user, on: :member
+      put :make_admin, on: :member
+      put :make_moderator, on: :member
     end
     resources :orders do
       get :all_orders_delivered, on: :collection

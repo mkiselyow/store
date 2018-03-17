@@ -8,14 +8,14 @@ class AdminsController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    keys = %i[email first_name last_name email number admin avatar username banned]
+    keys = %i[email first_name last_name email number admin avatar username banned role]
     devise_parameter_sanitizer.permit(:account_update, keys: keys)
   end
 
   private
 
   def require_admin
-    redirect_to root_path unless current_user.try(:admin)
+    redirect_to root_path unless current_user.admin? or current_user.moderator?
   end
 
   def set_locale

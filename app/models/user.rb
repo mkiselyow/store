@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :user_views, dependent: :destroy
 
+  enum role: [:user, :moderator, :admin]
+
   mount_uploader :avatar, AvatarUploader
 
   self.per_page = 40

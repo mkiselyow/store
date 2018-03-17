@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-md-12 col-xs-12">
     <%= link_to t('sidebar_filter.show_all_discount'), products_with_offers_path, class: 'btn btn-success btn-block' %><br>
-    <% if current_user.try(:admin) %>
-      <%= link_to t('sidebar_filter.add_product'), new_product_path %>
+    <% if current_user %>
+      <% if current_user.admin? or current_user.moderator? %>
+        <%= link_to t('sidebar_filter.add_product'), new_product_path %>
+      <% end %>s
     <% end %>
   </div>
 </div>

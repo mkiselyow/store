@@ -5,9 +5,11 @@
       <div class="col-xs-10">
         <h2>
           <%= @product.title %>
-          <% if current_user.try(:admin) %>
-            <%= link_to edit_product_path(@product) do %>
-              <%= fa_icon 'pencil' %>
+         <% if current_user %>
+            <% if current_user.admin? or current_user.moderator? %>
+              <%= link_to edit_product_path(@product) do %>
+                <%= fa_icon 'pencil' %>
+              <% end %>
             <% end %>
           <% end %>
         </h2>

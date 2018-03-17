@@ -32,6 +32,8 @@
             <strong><%= t('profile.role') %></strong>
             <% if @user.admin? %>
               <span class="label label-danger"><%= t('profile.admin') %></span>
+            <% elsif @user.moderator? %>
+              <span class="label label-warning">Модератор</span>
             <% else %>
               <span class="label label-primary"><%= t('profile.user') %></span>
             <% end %>

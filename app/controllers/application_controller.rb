@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    keys = %i[email first_name last_name email number admin avatar username banned]
+    keys = %i[email first_name last_name email number admin avatar username banned role]
     devise_parameter_sanitizer.permit(:sign_up, keys: keys)
     devise_parameter_sanitizer.permit(:account_update, keys: keys)
     devise_parameter_sanitizer.permit(:login, keys: [:email])
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def only_admin_access
-    redirect_to(root_url) unless current_user&.admin?
+    redirect_to(root_url) unless current_user.admin? or current_user.moderator?
   end
 
   def set_locale
