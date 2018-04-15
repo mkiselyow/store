@@ -4,7 +4,7 @@
     <% if current_user %>
       <% if current_user.admin? or current_user.moderator? %>
         <%= link_to t('sidebar_filter.add_product'), new_product_path %>
-      <% end %>s
+      <% end %>
     <% end %>
   </div>
 </div>
