@@ -25,14 +25,6 @@
         <%= render  partial: "products/carousel_full", locals: { some_array_of_products: @products_most_viewed, rows_count: 5,  id_of_this_carousel: "top_viewed_carousel", name_of_carousel: t('populars') } %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h1><%= t('all_products') %></h1>
-        <div id="products">
-          <%= render 'products' %>
-        </div>
-      </div>
-    </div>
   </article>
 </main>
 
@@ -44,10 +36,4 @@
   <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_with_special_offers, rows_count: 5*4, id_of_this_carousel: "offers_mobile_carousel", name_of_carousel: t('offers') } %>
 
   <%= render  partial: "products/carousel_full_mobile", locals: { some_array_of_products: @products_most_viewed, rows_count: 5*4,  id_of_this_carousel: "top_viewed_mobile_carousel", name_of_carousel: t('populars') } %>
-  <div class="row">
-    <div class="col-xs-12">
-      <%= link_to t('show_all_products'), products_path, class: 'btn btn-info btn-block' %>
-      <br>
-    </div>
-  </div>
 </div>
