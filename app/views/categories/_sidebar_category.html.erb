@@ -9,7 +9,7 @@
           <% end %>
         </li>
 
-        <% cache("sidebar_category", :expires_in => 10.days) do %>
+        <% Rails.cache.fetch("sidebar_category", :expires_in => 10.days) do %>
 
           <% Category.only_parent.order(:position).each_with_index do |category, i| %>
             <% if category.children.count == 0 %>
