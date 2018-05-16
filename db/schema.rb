@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(version: 20180316100241) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "published", default: false
-    t.integer "category_post_id"
+    t.integer "category_id"
     t.index ["user_id"], name: "index_useful_articles_on_user_id"
   end
 
