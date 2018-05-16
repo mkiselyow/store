@@ -9,6 +9,6 @@ class PagesController < ApplicationController
     @products_most_viewed = Product.twenty_most_views
     @products_with_special_offers = Product.with_special_offers.limit(20)
     @newest_ten_products = Product.newest_products
-    expires_in 100.minutes, :public => true
+    expires_in 10.days.seconds.to_i, :public => true
   end
 end
