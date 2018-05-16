@@ -2,6 +2,8 @@ class Admin::CategoriesController < AdminsController
   before_action :category_resource, only: %i[edit update destroy show]
   after_action :select_resource, only: [:create]
 
+  caches_action :select_resource, expires_in: 10.days
+
   def index
     @categories = Category.where(ancestry: nil).order(:position)
     @category = Category.new(parent_id: params[:parent_id])
@@ -9,6 +11,7 @@ class Admin::CategoriesController < AdminsController
 
   def create
     @category = Category.create(category_params)
+    expire_action :action => :select_resource
     if @category.save
       redirect_to admin_categories_path
     else
@@ -21,6 +24,7 @@ class Admin::CategoriesController < AdminsController
   end
 
   def update
+    expire_action :action => :select_resource
     if @category.update(category_params)
       redirect_to admin_categories_path
     else
@@ -29,6 +33,7 @@ class Admin::CategoriesController < AdminsController
   end
 
   def destroy
+    expire_action :action => :select_resource
     @category.destroy!
   end
 

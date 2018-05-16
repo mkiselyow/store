@@ -25,6 +25,7 @@ gem 'sitemap_generator'
 gem 'devise'
 
 gem 'rails_12factor', group: :production
+gem 'actionpack-action_caching'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
