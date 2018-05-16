@@ -51,4 +51,11 @@ Rails.application.configure do
       password:             ENV["password_admin"],
       enable_starttls_auto: true 
   }
-  end
+
+  config.action_controller.perform_caching = true
+
+  config.cache_store = :memory_store
+  config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{10.days.seconds.to_i}"
+    }
+end
