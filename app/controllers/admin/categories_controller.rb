@@ -2,7 +2,7 @@ class Admin::CategoriesController < AdminsController
   before_action :category_resource, only: %i[edit update destroy show]
   after_action :select_resource, only: [:create]
 
-  caches_action :select_resource, expires_in: 10.days
+  caches_action :select_resource
 
   def index
     @categories = Category.where(ancestry: nil).order(:position)
