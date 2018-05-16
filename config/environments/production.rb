@@ -55,6 +55,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.cache_store = :memory_store
+  config.static_cache_control = "public, max-age=3600"
   config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{10.days.seconds.to_i}",
       'Expires' => "#{10.days.from_now.to_formatted_s(:rfc822)}"
