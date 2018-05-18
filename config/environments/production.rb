@@ -1,6 +1,6 @@
 Rails.application.configure do
   config.cache_classes = true
-  config.cache_store = :file_store
+  config.cache_store = :file_store, '/tmp'
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{10.days.seconds.to_i}"
     }
