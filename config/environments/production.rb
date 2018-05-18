@@ -1,8 +1,7 @@
 Rails.application.configure do
   config.cache_classes = true
-  config.action_controller.page_cache_directory = "/tmp"
-  config.cache_store = :file_store, "/tmp"
-  config.public_file_server.headers = {
+  config.cache_store = :file_store
+    config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{10.days.seconds.to_i}"
     }
 

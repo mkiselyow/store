@@ -19,14 +19,14 @@ class Category < ApplicationRecord
   end
 
   def self.get_collection_of_categories_ids
-    Rails.cache.fetch("Category.get_collection_of_categories_ids", :expires_in => 10.days) do
+    # Rails.cache.fetch("Category.get_collection_of_categories_ids", :expires_in => 10.days) do
       @categories = where(ancestry: nil)
       @acc = []
       @categories.each do |category|
         category_children_collecting_ids(category)
       end
       @acc.map { |id| [category_ancestors_names(id), id] }
-    end
+    # end
   end
 
   def self.category_children_collecting_ids(category)
