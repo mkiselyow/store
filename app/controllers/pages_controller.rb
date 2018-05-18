@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  caches_action :main
   def main
     @products_count = Product.count
     @rows_count = (@products_count / 4)
