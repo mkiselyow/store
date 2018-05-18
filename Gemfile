@@ -121,3 +121,5 @@ gem 'russian'
 
 # encoding defining
 gem 'charlock_holmes'
+
+gem 'actionpack-action_caching'
