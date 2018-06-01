@@ -7,6 +7,7 @@ Rails.application.routes.draw do
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
   root to: 'pages#main'
   resources :products
+  get 'robots' => 'products#robots', format: :text
 
   resources :line_items do
     put 'decrease_quantity'

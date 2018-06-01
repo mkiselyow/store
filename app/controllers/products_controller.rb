@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     @products_page = @products.paginate(page: params[:page], per_page: 24)
     @products_page_mobile = @products.paginate(page: params[:page], per_page: 12)
     @categories = Category.all
+    expires_in 1.days.seconds.to_i, public: true
   end
 
   def only_with_discount
@@ -75,6 +76,10 @@ class ProductsController < ApplicationController
       format.html { redirect_to @product, notice: 'Изображение было удалено.' }
       format.json { render :show, status: :ok, location: @product }
     end
+  end
+
+  def robots
+    @products = Product.all
   end
 
   # считаем кол-во просмотров
