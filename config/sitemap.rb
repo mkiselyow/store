@@ -9,15 +9,16 @@ SitemapGenerator::Sitemap.create do
   add delivery_path, priority: 0.5, changefreq: 'daily'
   add payment_path, priority: 0.5, changefreq: 'daily'
 
-  # Category.find_each do |category|
-  #   add category_path(category), :changefreq => 'weekly', :lastmod => category.updated_at
+  Product.find_each do |product|
+    add product_path(product), :changefreq => 'weekly', :lastmod => product.updated_at
+  end
+
+  Category.find_each do |category|
+    add category_path(category), :changefreq => 'weekly', :lastmod => category.updated_at
   
-  #   category.products.each do |product|
-  #     add category_path(category), :changefreq => 'yearly', :lastmod => product.updated_at
-  #   end
-  # end
-  # Product.find_each do |product|
-  #   add product_path(product), :changefreq => 'weekly', :lastmod => product.updated_at
-  # end
+    category.products.each do |product|
+      add category_path(category), :changefreq => 'yearly', :lastmod => product.updated_at
+    end
+  end
 end
 SitemapGenerator::Sitemap.ping_search_engines

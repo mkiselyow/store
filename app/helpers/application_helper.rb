@@ -18,6 +18,10 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def date_of_existence
+    "2017 - #{Time.current.year}"
+  end
+
   def sortable(column, title = nil)
     title ||= column.titleize
     direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"

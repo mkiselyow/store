@@ -1,11 +1,13 @@
 <div class="row">
   <% @products_page.each do |product| %>
-    <div class="col-sm-3 product_view_class product_view_class_all product_<%= product.id %>">
-      <%= render  partial: "products/product", locals: { product: product } %>
-      <%= button_to product_line_items_path(product.id), class: "buttom_add_to_cart", remote: true do %>
-        <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
-      <% end %>
-    </div>
+    <% cache product do %>
+      <div class="col-sm-3 product_view_class product_view_class_all product_<%= product.id %>">
+        <%= render  partial: "products/product", locals: { product: product } %>
+        <%= button_to product_line_items_path(product.id), class: "buttom_add_to_cart", remote: true do %>
+          <%= fa_icon 'cart-plus', text: t('products.add_to_cart') %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <div class="row">
