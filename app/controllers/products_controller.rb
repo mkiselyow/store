@@ -77,10 +77,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def robots
-    @products = Product.all
-  end
-
   # считаем кол-во просмотров
   def add_times_viewed
     if @product.times_viewed
