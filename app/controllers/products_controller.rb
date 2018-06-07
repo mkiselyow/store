@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   before_action :product_views_inc, only: [:show]
   before_action :only_admin_access, only: %i[new create update destroy edit]
   before_action :search_form, only: %i[index only_with_discount]
+  caches_action :index
 
   def index
     @products_count = Product.count
