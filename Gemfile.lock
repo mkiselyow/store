@@ -26,6 +26,13 @@ GEM
       activejob (= 5.1.4)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
+    actionpack (5.1.4)
+      actionview (= 5.1.4)
+      activesupport (= 5.1.4)
+      rack (~> 2.0)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
     actionpack-action_caching (1.2.0)
       actionpack (>= 4.0.0, < 6)
     actionview (5.1.4)
@@ -116,6 +123,11 @@ GEM
     elevatezoom-rails (1.0.0)
     erubi (1.7.0)
     execjs (2.7.0)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
+      railties (>= 3.0.0)
     fancybox-rails (0.3.1)
       railties (>= 3.1.0)
     faraday (0.12.2)
@@ -406,6 +418,7 @@ DEPENDENCIES
   curb
   devise
   elevatezoom-rails
+  factory_bot_rails
   faker!
   fancybox-rails
   figaro
@@ -461,4 +474,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

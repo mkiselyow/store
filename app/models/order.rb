@@ -15,9 +15,9 @@ class Order < ApplicationRecord
   REGIONS.each { |region| Ruuaby.countries['Украина'][region].each_key { |key| AREAS << region + ' ' + key.to_s } }
   AREAS.compact.sort!
 
-  validates :number, presence: { message: 'Укажите Ваш контактный номер телефона' }
-  validates :first_name, presence: { message: 'Укажите Ваше Имя' }
-  validates :last_name, presence: { message: 'Укажите Вашу Фамилию' }
+  validates :number, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   scope :last_five_orders, -> { order('created_at DESC').limit(5) }
 
