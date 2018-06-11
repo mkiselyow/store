@@ -8,8 +8,7 @@
             <span class="sidebar-badge"><%= @products_count %></span>
           <% end %>
         </li>
-<!--         <% Rails.cache.fetch("sidebar_category", :expires_in => 10.days) do %>
- -->          <% Category.only_parent.order(:position).each_with_index do |category, i| %>
+          <% Category.only_parent.order(:position).each_with_index do |category, i| %>
             <% if category.children.count == 0 %>
               <li>
                 <%= link_to category_path(category) do %>
@@ -128,8 +127,7 @@
               </li>
             <% end %>
           <% end %>
-<!--         <% end %>
- -->      </ul>
+      </ul>
     </div>
   </div>
 </div>
